@@ -86,31 +86,43 @@ function WorkPreviewCard(props: {
       aria-label={`Open preview: ${item.title}`}
     >
       <div className="rounded-2xl border border-border bg-card/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-muted">
-          {/* Badge */}
-          {item.badge ? (
-            <div className="absolute left-3 top-3 z-10 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur">
-              {item.badge}
+        <div className="relative overflow-hidden rounded-xl border border-border bg-muted">
+          {/* Browser chrome (subtle frame) */}
+          <div className="flex items-center gap-2 border-b border-border bg-background/70 px-3 py-2 backdrop-blur">
+            <div className="flex items-center gap-1.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-foreground/20" />
+              <span className="h-2.5 w-2.5 rounded-full bg-foreground/20" />
+              <span className="h-2.5 w-2.5 rounded-full bg-foreground/20" />
             </div>
-          ) : null}
+            <div className="ml-2 h-2 w-24 rounded-full bg-foreground/10 sm:w-32" />
+          </div>
 
-          {/* Thumbnail: intentionally cropped/zoomed */}
-          <img
-            src={item.imgSrc}
-            alt={`${item.title} screenshot`}
-            className={cx(
-              "h-full w-full object-cover transition-transform duration-300",
-              "group-hover:scale-[1.03]"
-            )}
-            style={{ objectPosition: item.thumbObjectPosition ?? "center" }}
-            loading="lazy"
-          />
+          <div className="relative aspect-[16/10] overflow-hidden">
+            {/* Badge */}
+            {item.badge ? (
+              <div className="absolute left-3 top-3 z-10 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur">
+                {item.badge}
+              </div>
+            ) : null}
 
-          {/* Subtle overlay hint */}
-          <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.35),rgba(0,0,0,0)_55%)]" />
-            <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs text-white/90 backdrop-blur">
-              Click to view full size <ArrowRight className="h-3.5 w-3.5" />
+            {/* Thumbnail: intentionally cropped/zoomed */}
+            <img
+              src={item.imgSrc}
+              alt={`${item.title} screenshot`}
+              className={cx(
+                "h-full w-full object-cover transition-transform duration-300",
+                "group-hover:scale-[1.03]"
+              )}
+              style={{ objectPosition: item.thumbObjectPosition ?? "center" }}
+              loading="lazy"
+            />
+
+            {/* Subtle overlay hint */}
+            <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.35),rgba(0,0,0,0)_55%)]" />
+              <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs text-white/90 backdrop-blur">
+                Click to view full size <ArrowRight className="h-3.5 w-3.5" />
+              </div>
             </div>
           </div>
         </div>
@@ -181,21 +193,11 @@ function ImageModal(props: {
 
         {/* Full image area (no crop) */}
         <div className="bg-muted/30 p-3 sm:p-4">
-          <div
-            className="relative max-h-[78vh] w-full overflow-auto rounded-xl border border-border bg-background overscroll-contain"
-            style={{ WebkitOverflowScrolling: "touch" }}
-          >
-            {/* Scroll hint (helps FIFO tall screenshots not feel “zoomed”) */}
-            <div className="pointer-events-none sticky top-0 z-10 flex justify-center">
-              <div className="mt-2 rounded-full border border-border bg-background/80 px-3 py-1 text-[11px] text-muted-foreground shadow-sm backdrop-blur">
-                Scroll to see the full page
-              </div>
-            </div>
-
+          <div className="relative max-h-[78vh] w-full overflow-auto rounded-xl border border-border bg-black">
             <img
               src={item.imgSrc}
               alt={`${item.title} full screenshot`}
-              className="block w-full h-auto"
+              className="h-auto w-full object-contain"
             />
           </div>
 
