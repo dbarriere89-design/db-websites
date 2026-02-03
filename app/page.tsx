@@ -185,7 +185,7 @@ function ImageModal(props: {
             <img
               src={item.imgSrc}
               alt={`${item.title} full screenshot`}
-              className="h-auto w-full object-contain"
+              className="mx-auto h-auto max-h-[78vh] w-auto max-w-full object-contain"
             />
           </div>
 
