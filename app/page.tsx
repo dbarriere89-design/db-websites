@@ -61,11 +61,21 @@ type WorkItem = {
   title: string
   subtitle: string
   badge?: string
+
+  // Used for the card thumbnail
   imgSrc: string
+
+  // Used for the modal (lets us use full-page for Mechanic Direct + curated for others)
+  modalImgSrc?: string
+
   // Thumbnail crop control (so FIFO can show pricing headers instead of the middle)
   thumbObjectPosition?: string // e.g. "center", "center top", "50% 20%"
+
   // Optional: open link to the live site (not required)
   href?: string
+
+  // Controls modal behavior (scroll for full-page)
+  modalVariant?: "fullpage" | "curated"
 }
 
 function cx(...classes: Array<string | false | null | undefined>) {
@@ -154,6 +164,9 @@ function ImageModal(props: {
 
   if (!open || !item) return null
 
+  const isFullPage = item.modalVariant === "fullpage"
+  const modalSrc = item.modalImgSrc ?? item.imgSrc
+
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
@@ -191,18 +204,35 @@ function ImageModal(props: {
           </div>
         </div>
 
-        {/* Full image area (no crop) */}
+        {/* Image area */}
         <div className="bg-muted/30 p-3 sm:p-4">
-          <div className="relative max-h-[78vh] w-full overflow-auto rounded-xl border border-border bg-black">
+          <div
+            className={cx(
+              "relative w-full rounded-xl border border-border",
+              "bg-black",
+              // full-page gets scroll (tall screenshot)
+              isFullPage ? "max-h-[78vh] overflow-auto" : "overflow-hidden"
+            )}
+          >
             <img
-              src={item.imgSrc}
+              src={modalSrc}
               alt={`${item.title} full screenshot`}
-              className="h-auto w-full object-contain"
+              className={cx("h-auto w-full", "object-contain")}
+              loading="eager"
             />
           </div>
 
           <div className="mt-3 text-xs text-muted-foreground">
-            Tip: this view is full size (no crop). Press <span className="font-medium">ESC</span> to close.
+            {isFullPage ? (
+              <>
+                Full-page preview (scroll inside). Press{" "}
+                <span className="font-medium">ESC</span> to close.
+              </>
+            ) : (
+              <>
+                Curated preview. Press <span className="font-medium">ESC</span> to close.
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -217,25 +247,45 @@ export default function Home() {
         title: "Mechanic Direct",
         subtitle: "Premium UI + clear conversion",
         badge: "Live product",
+
+        // Thumbnail image (cropped card)
         imgSrc: "/work/mechanic-direct.png",
         thumbObjectPosition: "center left",
+
+        // Modal image (FULL PAGE)
+        modalImgSrc: "/work/mechanic-direct-full.png",
+        modalVariant: "fullpage",
+
         // href: "https://mechanicdirect.com.au",
       },
       {
         title: "FIFO Resume Mate",
         subtitle: "Pricing that sells the value",
         badge: "Pricing section",
-        imgSrc: "/work/fifo-resume-mate.png",
-        // FIFO is tall; make the thumbnail show the *top* where the plan names/prices are
+
+        // Use curated image for thumbnail too (old file was deleted)
+        imgSrc: "/work/fifo-resume-mate-curated.png",
         thumbObjectPosition: "center top",
+
+        // Modal (CURATED / focused)
+        modalImgSrc: "/work/fifo-resume-mate-curated.png",
+        modalVariant: "curated",
+
         // href: "https://fiforesumemate.com",
       },
       {
         title: "Outback Lens",
         subtitle: "Strong hero visual + brand feel",
         badge: "Hero section",
-        imgSrc: "/work/outback-lens.png",
+
+        // Use curated image for thumbnail too (old file was deleted)
+        imgSrc: "/work/outback-lens-curated.png",
         thumbObjectPosition: "center",
+
+        // Modal (CURATED / focused)
+        modalImgSrc: "/work/outback-lens-curated.png",
+        modalVariant: "curated",
+
         // href: "https://outbacklens.com",
       },
     ],
@@ -372,7 +422,7 @@ export default function Home() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl text-center text-sm text-muted-foreground">
-            Click any preview to see the full screenshot — no crop.
+            Click any preview to see the screenshot.
           </div>
         </div>
       </section>
