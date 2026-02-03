@@ -7,7 +7,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { Check, MessageCircle, Mail, ArrowRight, Sparkles } from "lucide-react"
+import {
+  Check,
+  MessageCircle,
+  Mail,
+  ArrowRight,
+  Sparkles,
+  Phone,
+  ArrowUp,
+} from "lucide-react"
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
 const EMAIL = "des@outbacklens.com" // TODO: replace if needed
@@ -33,6 +41,12 @@ const EMAIL_BODY = encodeURIComponent(
     "",
   ].join("\n")
 )
+
+// Messenger doesn't support a universal "prefill message" param.
+// We use a lightweight ref payload so you can identify where they clicked from.
+// (You could later handle this in a ManyChat flow if you want.)
+const MESSENGER_REF = encodeURIComponent("dbwebsites-fitcheck")
+const MESSENGER_URL_WITH_REF = `${FACEBOOK_MESSENGER_URL}?ref=${MESSENGER_REF}`
 
 function SectionHeading(props: { eyebrow?: string; title: string; subtitle?: string }) {
   return (
@@ -76,8 +90,34 @@ function PreviewCard(props: { title: string; subtitle: string }) {
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
+      {/* Mobile sticky CTA */}
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background/80 backdrop-blur sm:hidden">
+        <div className="container mx-auto flex items-center gap-3 px-4 py-3">
+          <Button asChild className="flex-1 shadow-sm">
+            <Link href={MESSENGER_URL_WITH_REF} target="_blank" rel="noreferrer noopener">
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Message me
+            </Link>
+          </Button>
+          <Button asChild variant="outline" className="shrink-0">
+            <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+              <Mail className="mr-2 h-4 w-4" />
+              Email
+            </Link>
+          </Button>
+          <Button asChild variant="ghost" className="shrink-0">
+            <Link href="#top">
+              <ArrowUp className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+      </div>
+
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur">
+      <header
+        id="top"
+        className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur"
+      >
         <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
           <Link
             href="/"
@@ -230,14 +270,15 @@ export default function Home() {
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-stretch">
+            {/* Premium stack: Email directly under Message, same size */}
+            <div className="mt-8 flex flex-col gap-4">
               <Button size="lg" asChild className="w-full shadow-sm">
-                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
+                <Link href={MESSENGER_URL_WITH_REF} target="_blank" rel="noreferrer noopener">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Message me
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" asChild className="w-full">
                 <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                   <Mail className="mr-2 h-4 w-4" />
                   Email with template
@@ -249,6 +290,66 @@ export default function Home() {
               No logo? No worries. We can still get something clean live quickly.
             </div>
           </Card>
+        </div>
+      </section>
+
+      {/* Process strip (premium, simple) */}
+      <section className="border-y border-border bg-muted/30">
+        <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
+          <SectionHeading
+            eyebrow="How it works"
+            title="Three simple steps"
+            subtitle="No long back-and-forth. Just a clean scope, quick build, and a site you’re proud to share."
+          />
+
+          <div className="mx-auto max-w-4xl">
+            <div className="grid gap-6 md:grid-cols-3">
+              <Card className="rounded-2xl p-8 shadow-sm">
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-accent))/0.18] text-foreground">
+                  <MessageCircle className="h-5 w-5" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">1) Message me</h3>
+                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                  Send your business name + services + location. If you’re unsure, I’ll guide you.
+                </p>
+              </Card>
+
+              <Card className="rounded-2xl p-8 shadow-sm">
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-warm))/0.18] text-foreground">
+                  <Phone className="h-5 w-5" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">2) Quick scope</h3>
+                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                  I’ll confirm what’s included (and what’s not) in plain English — no surprises.
+                </p>
+              </Card>
+
+              <Card className="rounded-2xl p-8 shadow-sm">
+                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20 text-foreground">
+                  <ArrowRight className="h-5 w-5" />
+                </div>
+                <h3 className="mb-2 text-lg font-semibold text-foreground">3) Build + launch</h3>
+                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                  You get a clean, modern site that looks premium and turns visitors into calls.
+                </p>
+              </Card>
+            </div>
+
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button size="lg" asChild className="shadow-sm">
+                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Message me
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                  <Mail className="mr-2 h-4 w-4" />
+                  Email me
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -398,7 +499,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="border-t border-border bg-muted/30">
+      <section id="contact" className="border-t border-border bg-muted/30 pb-24 sm:pb-0">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
