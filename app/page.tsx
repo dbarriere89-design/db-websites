@@ -68,14 +68,11 @@ type ProofItem = {
   imageSrc: string
   imageAlt: string
   badge?: string
-  objectPosition?: string
 }
 
-function ProofCard(props: {
-  item: ProofItem
-  onOpen: (item: ProofItem) => void
-}) {
+function ProofCard(props: { item: ProofItem; onOpen: (item: ProofItem) => void }) {
   const { item, onOpen } = props
+
   return (
     <button
       type="button"
@@ -84,19 +81,19 @@ function ProofCard(props: {
       aria-label={`Open screenshot preview: ${item.title}`}
     >
       <div className="rounded-2xl border border-border bg-card/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-muted/30">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-gradient-to-br from-muted/40 via-muted/25 to-background">
+          {/* IMPORTANT CHANGE: object-contain so we DO NOT crop */}
           <Image
             src={item.imageSrc}
             alt={item.imageAlt}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover transition duration-500 group-hover:scale-[1.02]"
-            style={{ objectPosition: item.objectPosition ?? "50% 50%" }}
+            className="object-contain"
             priority={false}
           />
 
           {/* subtle overlay */}
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0)_35%,rgba(0,0,0,0.06)_100%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0)_35%,rgba(0,0,0,0.05)_100%)]" />
 
           {/* hover hint */}
           <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-3 opacity-0 transition group-hover:opacity-100">
@@ -124,31 +121,29 @@ function ProofCard(props: {
 export default function Home() {
   const mailtoUrl = buildMailtoUrl()
 
+  // Put your FULL screenshots in /public/work/
   const proofItems: ProofItem[] = useMemo(
     () => [
       {
         title: "Mechanic Direct",
         subtitle: "Premium UI + clear conversion",
-        imageSrc: "/work/mechanic-direct.webp",
+        imageSrc: "/work/mechanic-direct.png",
         imageAlt: "Mechanic Direct website screenshot",
         badge: "Live product",
-        objectPosition: "55% 30%",
       },
       {
         title: "FIFO Resume Mate",
         subtitle: "Pricing that sells the value",
-        imageSrc: "/work/fifo-resume-mate.webp",
+        imageSrc: "/work/fifo-resume-mate.png",
         imageAlt: "FIFO Resume Mate pricing screenshot",
         badge: "Pricing section",
-        objectPosition: "50% 10%",
       },
       {
         title: "Outback Lens",
         subtitle: "Strong hero visual + brand feel",
-        imageSrc: "/work/outback-lens.webp",
+        imageSrc: "/work/outback-lens.png",
         imageAlt: "Outback Lens website hero screenshot",
         badge: "Hero section",
-        objectPosition: "50% 55%",
       },
     ],
     []
@@ -164,7 +159,6 @@ export default function Home() {
 
   function closeProof() {
     setLightboxOpen(false)
-    // small delay so it feels smooth if you reopen
     setTimeout(() => setActive(null), 150)
   }
 
@@ -293,7 +287,7 @@ export default function Home() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl text-center text-sm text-muted-foreground">
-            Click any screenshot to view it properly (no tiny unreadable previews).
+            Click any screenshot to view it properly.
           </div>
         </div>
       </section>
@@ -535,7 +529,7 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* LIGHTBOX (no shadcn Dialog needed) */}
+      {/* LIGHTBOX */}
       {lightboxOpen && active ? (
         <div
           className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
@@ -553,9 +547,7 @@ export default function Home() {
                 <div className="truncate text-sm font-semibold text-foreground">
                   {active.title}
                   {active.badge ? (
-                    <span className="ml-2 text-xs font-medium text-muted-foreground">
-                      • {active.badge}
-                    </span>
+                    <span className="ml-2 text-xs font-medium text-muted-foreground">• {active.badge}</span>
                   ) : null}
                 </div>
                 <div className="truncate text-xs text-muted-foreground">{active.subtitle}</div>
