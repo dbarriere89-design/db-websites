@@ -1,8 +1,5 @@
-"use client"
-
 import Link from "next/link"
-import Image from "next/image"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import {
@@ -38,10 +35,6 @@ const EMAIL_BODY = encodeURIComponent(
   ].join("\n")
 )
 
-function buildMailtoUrl() {
-  return "mailto:" + EMAIL + "?subject=" + EMAIL_SUBJECT + "&body=" + EMAIL_BODY
-}
-
 function SectionHeading(props: { eyebrow?: string; title: string; subtitle?: string }) {
   return (
     <div className="mx-auto mb-12 max-w-3xl text-center">
@@ -62,15 +55,25 @@ function SectionHeading(props: { eyebrow?: string; title: string; subtitle?: str
   )
 }
 
-type ProofItem = {
+type WorkItem = {
   title: string
   subtitle: string
-  imageSrc: string
-  imageAlt: string
   badge?: string
+  imgSrc: string
+  // Thumbnail crop control (so FIFO can show pricing headers instead of the middle)
+  thumbObjectPosition?: string // e.g. "center", "center top", "50% 20%"
+  // Optional: open link to the live site (not required)
+  href?: string
 }
 
-function ProofCard(props: { item: ProofItem; onOpen: (item: ProofItem) => void }) {
+function cx(...classes: Array<string | false | null | undefined>) {
+  return classes.filter(Boolean).join(" ")
+}
+
+function WorkPreviewCard(props: {
+  item: WorkItem
+  onOpen: (item: WorkItem) => void
+}) {
   const { item, onOpen } = props
 
   return (
@@ -78,35 +81,36 @@ function ProofCard(props: { item: ProofItem; onOpen: (item: ProofItem) => void }
       type="button"
       onClick={() => onOpen(item)}
       className="group text-left"
-      aria-label={`Open screenshot preview: ${item.title}`}
+      aria-label={`Open preview: ${item.title}`}
     >
       <div className="rounded-2xl border border-border bg-card/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-        <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-gradient-to-br from-muted/40 via-muted/25 to-background">
-          {/* IMPORTANT CHANGE: object-contain so we DO NOT crop */}
-          <Image
-            src={item.imageSrc}
-            alt={item.imageAlt}
-            fill
-            sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-contain"
-            priority={false}
-          />
-
-          {/* subtle overlay */}
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0)_35%,rgba(0,0,0,0.05)_100%)]" />
-
-          {/* hover hint */}
-          <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-3 opacity-0 transition group-hover:opacity-100">
-            <div className="rounded-full border border-border bg-background/75 px-3 py-1 text-[11px] font-medium text-muted-foreground shadow-sm backdrop-blur">
-              Click to enlarge
-            </div>
-          </div>
-
+        <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-muted">
+          {/* Badge */}
           {item.badge ? (
-            <div className="absolute left-3 top-3 rounded-full border border-border bg-background/70 px-3 py-1 text-[11px] font-medium text-muted-foreground shadow-sm backdrop-blur">
+            <div className="absolute left-3 top-3 z-10 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur">
               {item.badge}
             </div>
           ) : null}
+
+          {/* Thumbnail: intentionally cropped/zoomed */}
+          <img
+            src={item.imgSrc}
+            alt={`${item.title} screenshot`}
+            className={cx(
+              "h-full w-full object-cover transition-transform duration-300",
+              "group-hover:scale-[1.03]"
+            )}
+            style={{ objectPosition: item.thumbObjectPosition ?? "center" }}
+            loading="lazy"
+          />
+
+          {/* Subtle overlay hint */}
+          <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.35),rgba(0,0,0,0)_55%)]" />
+            <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs text-white/90 backdrop-blur">
+              Click to view full size <ArrowRight className="h-3.5 w-3.5" />
+            </div>
+          </div>
         </div>
 
         <div className="mt-4">
@@ -118,52 +122,119 @@ function ProofCard(props: { item: ProofItem; onOpen: (item: ProofItem) => void }
   )
 }
 
-export default function Home() {
-  const mailtoUrl = buildMailtoUrl()
+function ImageModal(props: {
+  open: boolean
+  item: WorkItem | null
+  onClose: () => void
+}) {
+  const { open, item, onClose } = props
 
-  // Put your FULL screenshots in /public/work/
-  const proofItems: ProofItem[] = useMemo(
+  useEffect(() => {
+    if (!open) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose()
+    }
+    window.addEventListener("keydown", onKeyDown)
+    return () => window.removeEventListener("keydown", onKeyDown)
+  }, [open, onClose])
+
+  if (!open || !item) return null
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Full preview: ${item.title}`}
+      onMouseDown={(e) => {
+        // close if click the backdrop (not the content)
+        if (e.target === e.currentTarget) onClose()
+      }}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+      {/* Modal content */}
+      <div className="relative z-10 w-full max-w-6xl overflow-hidden rounded-2xl border border-border bg-background shadow-2xl">
+        <div className="flex items-start justify-between gap-4 border-b border-border px-4 py-3 sm:px-6">
+          <div className="min-w-0">
+            <div className="text-sm font-semibold text-foreground">{item.title}</div>
+            <div className="mt-0.5 text-xs text-muted-foreground">{item.subtitle}</div>
+          </div>
+
+          <div className="flex shrink-0 items-center gap-2">
+            {item.href ? (
+              <Button asChild variant="outline" size="sm">
+                <a href={item.href} target="_blank" rel="noreferrer noopener">
+                  Visit site <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+            ) : null}
+
+            <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close preview">
+              <X className="h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+
+        {/* Full image area (no crop) */}
+        <div className="bg-muted/30 p-3 sm:p-4">
+          <div className="relative max-h-[78vh] w-full overflow-auto rounded-xl border border-border bg-black">
+            <img
+              src={item.imgSrc}
+              alt={`${item.title} full screenshot`}
+              className="h-auto w-full object-contain"
+            />
+          </div>
+
+          <div className="mt-3 text-xs text-muted-foreground">
+            Tip: this view is full size (no crop). Press <span className="font-medium">ESC</span> to close.
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function Home() {
+  const WORK_ITEMS: WorkItem[] = useMemo(
     () => [
       {
         title: "Mechanic Direct",
         subtitle: "Premium UI + clear conversion",
-        imageSrc: "/work/mechanic-direct.png",
-        imageAlt: "Mechanic Direct website screenshot",
         badge: "Live product",
+        imgSrc: "/work/mechanic-direct.png",
+        thumbObjectPosition: "center left",
+        // href: "https://mechanicdirect.com.au",
       },
       {
         title: "FIFO Resume Mate",
         subtitle: "Pricing that sells the value",
-        imageSrc: "/work/fifo-resume-mate.png",
-        imageAlt: "FIFO Resume Mate pricing screenshot",
         badge: "Pricing section",
+        imgSrc: "/work/fifo-resume-mate.png",
+        // FIFO is tall; make the thumbnail show the *top* where the plan names/prices are
+        thumbObjectPosition: "center top",
+        // href: "https://fiforesumemate.com",
       },
       {
         title: "Outback Lens",
         subtitle: "Strong hero visual + brand feel",
-        imageSrc: "/work/outback-lens.png",
-        imageAlt: "Outback Lens website hero screenshot",
         badge: "Hero section",
+        imgSrc: "/work/outback-lens.png",
+        thumbObjectPosition: "center",
+        // href: "https://outbacklens.com",
       },
     ],
     []
   )
 
-  const [lightboxOpen, setLightboxOpen] = useState(false)
-  const [active, setActive] = useState<ProofItem | null>(null)
-
-  function openProof(item: ProofItem) {
-    setActive(item)
-    setLightboxOpen(true)
-  }
-
-  function closeProof() {
-    setLightboxOpen(false)
-    setTimeout(() => setActive(null), 150)
-  }
+  const [openItem, setOpenItem] = useState<WorkItem | null>(null)
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Modal */}
+      <ImageModal open={!!openItem} item={openItem} onClose={() => setOpenItem(null)} />
+
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
@@ -246,7 +317,7 @@ export default function Home() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href={mailtoUrl}>
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                   <Mail className="mr-2 h-4 w-4" />
                   Email me
                 </Link>
@@ -281,13 +352,13 @@ export default function Home() {
           />
 
           <div className="grid gap-6 md:grid-cols-3">
-            {proofItems.map((item) => (
-              <ProofCard key={item.title} item={item} onOpen={openProof} />
+            {WORK_ITEMS.map((item) => (
+              <WorkPreviewCard key={item.title} item={item} onOpen={setOpenItem} />
             ))}
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl text-center text-sm text-muted-foreground">
-            Click any screenshot to view it properly.
+            Click any preview to see the full screenshot — no crop.
           </div>
         </div>
       </section>
@@ -317,16 +388,15 @@ export default function Home() {
               ))}
             </ul>
 
-            <div className="mt-8 grid gap-4">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-stretch">
               <Button size="lg" asChild className="w-full shadow-sm">
                 <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Message me
                 </Link>
               </Button>
-
-              <Button size="lg" variant="outline" asChild className="w-full">
-                <Link href={mailtoUrl}>
+              <Button size="lg" variant="outline" asChild>
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                   <Mail className="mr-2 h-4 w-4" />
                   Email with template
                 </Link>
@@ -505,7 +575,7 @@ export default function Home() {
               </Button>
 
               <Button size="lg" variant="outline" asChild>
-                <Link href={mailtoUrl}>
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                   <Mail className="mr-2 h-4 w-4" />
                   Email me
                 </Link>
@@ -528,61 +598,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-
-      {/* LIGHTBOX */}
-      {lightboxOpen && active ? (
-        <div
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Screenshot preview: ${active.title}`}
-          onClick={closeProof}
-        >
-          <div
-            className="relative w-full max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-background shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3 sm:px-6">
-              <div className="min-w-0">
-                <div className="truncate text-sm font-semibold text-foreground">
-                  {active.title}
-                  {active.badge ? (
-                    <span className="ml-2 text-xs font-medium text-muted-foreground">• {active.badge}</span>
-                  ) : null}
-                </div>
-                <div className="truncate text-xs text-muted-foreground">{active.subtitle}</div>
-              </div>
-
-              <Button
-                type="button"
-                variant="outline"
-                className="shrink-0"
-                onClick={closeProof}
-                aria-label="Close preview"
-              >
-                <X className="h-4 w-4" />
-              </Button>
-            </div>
-
-            <div className="p-3 sm:p-4">
-              <div className="relative h-[72vh] w-full overflow-hidden rounded-xl border border-border bg-muted/30">
-                <Image
-                  src={active.imageSrc}
-                  alt={active.imageAlt}
-                  fill
-                  sizes="100vw"
-                  className="object-contain"
-                  priority={false}
-                />
-              </div>
-
-              <div className="mt-3 text-xs text-muted-foreground">
-                Click outside the preview to close.
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
     </div>
   )
 }
