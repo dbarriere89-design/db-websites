@@ -58,30 +58,31 @@ export default function Home() {
         </div>
         <div className="container relative mx-auto px-6 py-20 lg:px-8 lg:py-32">
           <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Websites built properly — from fast launches to premium custom
-            builds
-          </h1>
-          <p className="mb-4 text-pretty text-lg text-muted-foreground sm:text-xl">
-            Clean, professional websites for small businesses. No agency fluff,
-            no drawn-out timelines.
-          </p>
-          <p className="mb-10 text-sm font-medium text-accent">
-            Built by a local business owner (Cairns / FNQ)
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" asChild>
-              <Link href="#contact">
-                <MessageCircle className="mr-2 h-4 w-4" />
-                Message me
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="mailto:contact@dbwebsites.com">
-                <Mail className="mr-2 h-4 w-4" />
-                Email me
-              </Link>
-            </Button>
+            <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Websites built properly — from fast launches to premium custom
+              builds
+            </h1>
+            <p className="mb-4 text-pretty text-lg text-muted-foreground sm:text-xl">
+              Clean, professional websites for small businesses. No agency fluff,
+              no drawn-out timelines.
+            </p>
+            <p className="mb-10 text-sm font-medium text-accent">
+              Built by a local business owner (Cairns / FNQ)
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button size="lg" asChild>
+                <Link href="#contact">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Message me
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="mailto:contact@dbwebsites.com">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Email me
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
