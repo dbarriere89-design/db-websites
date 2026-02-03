@@ -266,7 +266,7 @@ export default function Home() {
       },
       {
         title: "Outback Lens",
-        subtitle: "Strong hero visual + brand feel",
+        subtitle: "Photography-first brand + visual storytelling",
         badge: "Hero section",
         imgSrc: "/work/outback-lens-curated.png",
         thumbObjectPosition: "center",
