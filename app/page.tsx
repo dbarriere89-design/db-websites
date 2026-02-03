@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { useMemo, useState } from "react"
@@ -9,13 +11,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
-import { Check, MessageCircle, Mail, ArrowRight, Sparkles } from "lucide-react"
+import { Check, MessageCircle, Mail, ArrowRight, Sparkles, X } from "lucide-react"
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
 const EMAIL = "des@outbacklens.com" // TODO: replace if needed
@@ -66,37 +62,40 @@ function SectionHeading(props: { eyebrow?: string; title: string; subtitle?: str
   )
 }
 
-type PreviewCardProps = {
+type ProofItem = {
   title: string
   subtitle: string
   imageSrc: string
   imageAlt: string
-  objectPosition?: string
   badge?: string
-  onOpen?: () => void
+  objectPosition?: string
 }
 
-function PreviewCard(props: PreviewCardProps) {
+function ProofCard(props: {
+  item: ProofItem
+  onOpen: (item: ProofItem) => void
+}) {
+  const { item, onOpen } = props
   return (
     <button
       type="button"
-      onClick={props.onOpen}
+      onClick={() => onOpen(item)}
       className="group text-left"
-      aria-label={`Open screenshot preview: ${props.title}`}
+      aria-label={`Open screenshot preview: ${item.title}`}
     >
       <div className="rounded-2xl border border-border bg-card/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
         <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-muted/30">
           <Image
-            src={props.imageSrc}
-            alt={props.imageAlt}
+            src={item.imageSrc}
+            alt={item.imageAlt}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover transition duration-500 group-hover:scale-[1.02]"
-            style={{ objectPosition: props.objectPosition ?? "50% 50%" }}
+            style={{ objectPosition: item.objectPosition ?? "50% 50%" }}
             priority={false}
           />
 
-          {/* subtle premium overlay */}
+          {/* subtle overlay */}
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0)_35%,rgba(0,0,0,0.06)_100%)]" />
 
           {/* hover hint */}
@@ -106,29 +105,20 @@ function PreviewCard(props: PreviewCardProps) {
             </div>
           </div>
 
-          {props.badge ? (
+          {item.badge ? (
             <div className="absolute left-3 top-3 rounded-full border border-border bg-background/70 px-3 py-1 text-[11px] font-medium text-muted-foreground shadow-sm backdrop-blur">
-              {props.badge}
+              {item.badge}
             </div>
           ) : null}
         </div>
 
         <div className="mt-4">
-          <div className="text-sm font-semibold text-foreground">{props.title}</div>
-          <div className="mt-1 text-sm text-muted-foreground">{props.subtitle}</div>
+          <div className="text-sm font-semibold text-foreground">{item.title}</div>
+          <div className="mt-1 text-sm text-muted-foreground">{item.subtitle}</div>
         </div>
       </div>
     </button>
   )
-}
-
-type ProofItem = {
-  title: string
-  subtitle: string
-  imageSrc: string
-  imageAlt: string
-  badge?: string
-  objectPosition?: string
 }
 
 export default function Home() {
@@ -142,7 +132,6 @@ export default function Home() {
         imageSrc: "/work/mechanic-direct.webp",
         imageAlt: "Mechanic Direct website screenshot",
         badge: "Live product",
-        // show more of the heading area
         objectPosition: "55% 30%",
       },
       {
@@ -151,7 +140,6 @@ export default function Home() {
         imageSrc: "/work/fifo-resume-mate.webp",
         imageAlt: "FIFO Resume Mate pricing screenshot",
         badge: "Pricing section",
-        // bias toward the top so pricing + headings show
         objectPosition: "50% 10%",
       },
       {
@@ -166,12 +154,18 @@ export default function Home() {
     []
   )
 
-  const [open, setOpen] = useState(false)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
   const [active, setActive] = useState<ProofItem | null>(null)
 
   function openProof(item: ProofItem) {
     setActive(item)
-    setOpen(true)
+    setLightboxOpen(true)
+  }
+
+  function closeProof() {
+    setLightboxOpen(false)
+    // small delay so it feels smooth if you reopen
+    setTimeout(() => setActive(null), 150)
   }
 
   return (
@@ -294,21 +288,12 @@ export default function Home() {
 
           <div className="grid gap-6 md:grid-cols-3">
             {proofItems.map((item) => (
-              <PreviewCard
-                key={item.title}
-                title={item.title}
-                subtitle={item.subtitle}
-                imageSrc={item.imageSrc}
-                imageAlt={item.imageAlt}
-                badge={item.badge}
-                objectPosition={item.objectPosition}
-                onOpen={() => openProof(item)}
-              />
+              <ProofCard key={item.title} item={item} onOpen={openProof} />
             ))}
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl text-center text-sm text-muted-foreground">
-            Tip: click any screenshot to view it properly.
+            Click any screenshot to view it properly (no tiny unreadable previews).
           </div>
         </div>
       </section>
@@ -338,7 +323,6 @@ export default function Home() {
               ))}
             </ul>
 
-            {/* Buttons: stacked + same size */}
             <div className="mt-8 grid gap-4">
               <Button size="lg" asChild className="w-full shadow-sm">
                 <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
@@ -551,42 +535,62 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Proof Lightbox */}
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-5xl p-0">
-          <DialogHeader className="px-6 pt-6">
-            <DialogTitle className="text-base">
-              {active ? active.title : "Preview"}
-              {active?.badge ? (
-                <span className="ml-2 align-middle text-xs font-medium text-muted-foreground">
-                  • {active.badge}
-                </span>
-              ) : null}
-            </DialogTitle>
-          </DialogHeader>
+      {/* LIGHTBOX (no shadcn Dialog needed) */}
+      {lightboxOpen && active ? (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Screenshot preview: ${active.title}`}
+          onClick={closeProof}
+        >
+          <div
+            className="relative w-full max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-background shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3 sm:px-6">
+              <div className="min-w-0">
+                <div className="truncate text-sm font-semibold text-foreground">
+                  {active.title}
+                  {active.badge ? (
+                    <span className="ml-2 text-xs font-medium text-muted-foreground">
+                      • {active.badge}
+                    </span>
+                  ) : null}
+                </div>
+                <div className="truncate text-xs text-muted-foreground">{active.subtitle}</div>
+              </div>
 
-          <div className="px-6 pb-6">
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-muted/30">
-              <div className="relative h-[70vh] w-full">
-                {active ? (
-                  <Image
-                    src={active.imageSrc}
-                    alt={active.imageAlt}
-                    fill
-                    sizes="100vw"
-                    className="object-contain"
-                    priority={false}
-                  />
-                ) : null}
+              <Button
+                type="button"
+                variant="outline"
+                className="shrink-0"
+                onClick={closeProof}
+                aria-label="Close preview"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+
+            <div className="p-3 sm:p-4">
+              <div className="relative h-[72vh] w-full overflow-hidden rounded-xl border border-border bg-muted/30">
+                <Image
+                  src={active.imageSrc}
+                  alt={active.imageAlt}
+                  fill
+                  sizes="100vw"
+                  className="object-contain"
+                  priority={false}
+                />
+              </div>
+
+              <div className="mt-3 text-xs text-muted-foreground">
+                Click outside the preview to close.
               </div>
             </div>
-
-            <div className="mt-3 text-xs text-muted-foreground">
-              Tip: this shows the full screenshot (no crop). Perfect for tall sections like pricing.
-            </div>
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      ) : null}
     </div>
   )
 }
