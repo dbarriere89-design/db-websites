@@ -237,7 +237,7 @@ export default function Home() {
                   Message me
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild
+              <Button size="lg" variant="outline" asChild>
                 <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                   <Mail className="mr-2 h-4 w-4" />
                   Email with template
