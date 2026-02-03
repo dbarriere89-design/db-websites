@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { useMemo, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import {
@@ -8,6 +9,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { Check, MessageCircle, Mail, ArrowRight, Sparkles } from "lucide-react"
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
@@ -36,7 +43,6 @@ const EMAIL_BODY = encodeURIComponent(
 )
 
 function buildMailtoUrl() {
-  // Avoid template-literal parsing weirdness in some bundler edge-cases
   return "mailto:" + EMAIL + "?subject=" + EMAIL_SUBJECT + "&body=" + EMAIL_BODY
 }
 
@@ -67,42 +73,106 @@ type PreviewCardProps = {
   imageAlt: string
   objectPosition?: string
   badge?: string
+  onOpen?: () => void
 }
 
 function PreviewCard(props: PreviewCardProps) {
   return (
-    <div className="group rounded-2xl border border-border bg-card/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-      <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-muted/30">
-        <Image
-          src={props.imageSrc}
-          alt={props.imageAlt}
-          fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover transition duration-500 group-hover:scale-[1.02]"
-          style={{ objectPosition: props.objectPosition ?? "50% 50%" }}
-          priority={false}
-        />
+    <button
+      type="button"
+      onClick={props.onOpen}
+      className="group text-left"
+      aria-label={`Open screenshot preview: ${props.title}`}
+    >
+      <div className="rounded-2xl border border-border bg-card/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-muted/30">
+          <Image
+            src={props.imageSrc}
+            alt={props.imageAlt}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover transition duration-500 group-hover:scale-[1.02]"
+            style={{ objectPosition: props.objectPosition ?? "50% 50%" }}
+            priority={false}
+          />
 
-        {/* subtle premium overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0)_35%,rgba(0,0,0,0.06)_100%)]" />
+          {/* subtle premium overlay */}
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0)_35%,rgba(0,0,0,0.06)_100%)]" />
 
-        {props.badge ? (
-          <div className="absolute left-3 top-3 rounded-full border border-border bg-background/70 px-3 py-1 text-[11px] font-medium text-muted-foreground shadow-sm backdrop-blur">
-            {props.badge}
+          {/* hover hint */}
+          <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-3 opacity-0 transition group-hover:opacity-100">
+            <div className="rounded-full border border-border bg-background/75 px-3 py-1 text-[11px] font-medium text-muted-foreground shadow-sm backdrop-blur">
+              Click to enlarge
+            </div>
           </div>
-        ) : null}
-      </div>
 
-      <div className="mt-4">
-        <div className="text-sm font-semibold text-foreground">{props.title}</div>
-        <div className="mt-1 text-sm text-muted-foreground">{props.subtitle}</div>
+          {props.badge ? (
+            <div className="absolute left-3 top-3 rounded-full border border-border bg-background/70 px-3 py-1 text-[11px] font-medium text-muted-foreground shadow-sm backdrop-blur">
+              {props.badge}
+            </div>
+          ) : null}
+        </div>
+
+        <div className="mt-4">
+          <div className="text-sm font-semibold text-foreground">{props.title}</div>
+          <div className="mt-1 text-sm text-muted-foreground">{props.subtitle}</div>
+        </div>
       </div>
-    </div>
+    </button>
   )
+}
+
+type ProofItem = {
+  title: string
+  subtitle: string
+  imageSrc: string
+  imageAlt: string
+  badge?: string
+  objectPosition?: string
 }
 
 export default function Home() {
   const mailtoUrl = buildMailtoUrl()
+
+  const proofItems: ProofItem[] = useMemo(
+    () => [
+      {
+        title: "Mechanic Direct",
+        subtitle: "Premium UI + clear conversion",
+        imageSrc: "/work/mechanic-direct.webp",
+        imageAlt: "Mechanic Direct website screenshot",
+        badge: "Live product",
+        // show more of the heading area
+        objectPosition: "55% 30%",
+      },
+      {
+        title: "FIFO Resume Mate",
+        subtitle: "Pricing that sells the value",
+        imageSrc: "/work/fifo-resume-mate.webp",
+        imageAlt: "FIFO Resume Mate pricing screenshot",
+        badge: "Pricing section",
+        // bias toward the top so pricing + headings show
+        objectPosition: "50% 10%",
+      },
+      {
+        title: "Outback Lens",
+        subtitle: "Strong hero visual + brand feel",
+        imageSrc: "/work/outback-lens.webp",
+        imageAlt: "Outback Lens website hero screenshot",
+        badge: "Hero section",
+        objectPosition: "50% 55%",
+      },
+    ],
+    []
+  )
+
+  const [open, setOpen] = useState(false)
+  const [active, setActive] = useState<ProofItem | null>(null)
+
+  function openProof(item: ProofItem) {
+    setActive(item)
+    setOpen(true)
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -223,34 +293,22 @@ export default function Home() {
           />
 
           <div className="grid gap-6 md:grid-cols-3">
-            <PreviewCard
-              title="Mechanic Direct"
-              subtitle="Premium UI + clear conversion"
-              imageSrc="/work/mechanic-direct.webp"
-              imageAlt="Mechanic Direct website screenshot"
-              badge="Live product"
-              objectPosition="60% 45%"
-            />
-            <PreviewCard
-              title="FIFO Resume Mate"
-              subtitle="Pricing that sells the value"
-              imageSrc="/work/fifo-resume-mate.webp"
-              imageAlt="FIFO Resume Mate pricing screenshot"
-              badge="Pricing section"
-              objectPosition="50% 12%"
-            />
-            <PreviewCard
-              title="Outback Lens"
-              subtitle="Strong hero visual + brand feel"
-              imageSrc="/work/outback-lens.webp"
-              imageAlt="Outback Lens website hero screenshot"
-              badge="Hero section"
-              objectPosition="50% 55%"
-            />
+            {proofItems.map((item) => (
+              <PreviewCard
+                key={item.title}
+                title={item.title}
+                subtitle={item.subtitle}
+                imageSrc={item.imageSrc}
+                imageAlt={item.imageAlt}
+                badge={item.badge}
+                objectPosition={item.objectPosition}
+                onOpen={() => openProof(item)}
+              />
+            ))}
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl text-center text-sm text-muted-foreground">
-            This is the vibe clients want: modern, simple, and instantly trustworthy.
+            Tip: click any screenshot to view it properly.
           </div>
         </div>
       </section>
@@ -492,6 +550,43 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Proof Lightbox */}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-5xl p-0">
+          <DialogHeader className="px-6 pt-6">
+            <DialogTitle className="text-base">
+              {active ? active.title : "Preview"}
+              {active?.badge ? (
+                <span className="ml-2 align-middle text-xs font-medium text-muted-foreground">
+                  • {active.badge}
+                </span>
+              ) : null}
+            </DialogTitle>
+          </DialogHeader>
+
+          <div className="px-6 pb-6">
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-muted/30">
+              <div className="relative h-[70vh] w-full">
+                {active ? (
+                  <Image
+                    src={active.imageSrc}
+                    alt={active.imageAlt}
+                    fill
+                    sizes="100vw"
+                    className="object-contain"
+                    priority={false}
+                  />
+                ) : null}
+              </div>
+            </div>
+
+            <div className="mt-3 text-xs text-muted-foreground">
+              Tip: this shows the full screenshot (no crop). Perfect for tall sections like pricing.
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
