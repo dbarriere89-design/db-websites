@@ -181,12 +181,21 @@ function ImageModal(props: {
 
         {/* Full image area (no crop) */}
         <div className="bg-muted/30 p-3 sm:p-4">
-          <div className="relative flex max-h-[78vh] w-full items-start justify-center overflow-auto rounded-xl border border-border bg-background">
+          <div
+            className="relative max-h-[78vh] w-full overflow-auto rounded-xl border border-border bg-background overscroll-contain"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            {/* Scroll hint (helps FIFO tall screenshots not feel “zoomed”) */}
+            <div className="pointer-events-none sticky top-0 z-10 flex justify-center">
+              <div className="mt-2 rounded-full border border-border bg-background/80 px-3 py-1 text-[11px] text-muted-foreground shadow-sm backdrop-blur">
+                Scroll to see the full page
+              </div>
+            </div>
+
             <img
               src={item.imgSrc}
               alt={`${item.title} full screenshot`}
-              className="block h-auto w-full object-contain"
-              style={{ objectPosition: "top center" }}
+              className="block w-full h-auto"
             />
           </div>
 
