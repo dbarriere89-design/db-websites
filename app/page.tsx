@@ -9,8 +9,30 @@ import {
 } from "@/components/ui/accordion"
 import { Check, MessageCircle, Mail, ArrowRight, Sparkles } from "lucide-react"
 
-const FACEBOOK_URL = "https://facebook.com/desbarriere" // TODO: replace with your actual profile
-const EMAIL = "outbacklens@gmail.com" // TODO: replace if needed
+const FACEBOOK_URL = "https://facebook.com" // TODO: replace with your actual profile link
+const EMAIL = "contact@dbwebsites.com" // TODO: replace if needed
+
+const EMAIL_SUBJECT = encodeURIComponent("Website enquiry (DB Websites)")
+const EMAIL_BODY = encodeURIComponent(
+  [
+    "Hey Des,",
+    "",
+    "Keen to chat about a website.",
+    "",
+    "Business name:",
+    "Industry / trade:",
+    "Services (dot points):",
+    "Location (suburb/city):",
+    "Do you already own a domain? (yes/no):",
+    "Any links (FB/IG/current site):",
+    "",
+    "Goals (more calls, look professional, show services, etc):",
+    "Anything you want on the site (pricing, gallery, testimonials, etc):",
+    "",
+    "Cheers,",
+    "",
+  ].join("\n")
+)
 
 function SectionHeading(props: { eyebrow?: string; title: string; subtitle?: string }) {
   return (
@@ -39,7 +61,7 @@ function PreviewCard(props: { title: string; subtitle: string }) {
         <div className="flex h-full items-center justify-center">
           <div className="rounded-2xl border border-border bg-background/70 px-4 py-3 text-center text-xs text-muted-foreground shadow-sm">
             Preview placeholder
-            <div className="mt-1 text-[11px]">Drop a screenshot later</div>
+            <div className="mt-1 text-[11px]">Drop screenshots later</div>
           </div>
         </div>
       </div>
@@ -57,7 +79,10 @@ export default function Home() {
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground">
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
+          >
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-accent text-accent-foreground shadow-sm">
               <Sparkles className="h-4 w-4" />
             </span>
@@ -94,7 +119,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -left-24 top-24 h-[520px] w-[520px] rounded-full bg-[hsl(var(--brand-accent))/0.10] blur-3xl" />
@@ -111,18 +136,14 @@ export default function Home() {
 
         <div className="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
-            <div className="mb-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <div className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-sm">
-                Built for local businesses
-              </div>
-              <span className="text-xs text-muted-foreground">
-                Built by a local business owner (Cairns / FNQ)
-              </span>
+            {/* Removed urgency pill; keep trust */}
+            <div className="mb-6 text-xs text-muted-foreground">
+              Built by a local business owner (Cairns / FNQ)
             </div>
 
             <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Websites built properly —
-              <span className="text-foreground/80"> from fast launches to premium custom builds</span>
+              <span className="text-foreground/80"> fast launches to premium custom builds</span>
             </h1>
 
             <p className="mx-auto mb-10 max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
@@ -138,7 +159,7 @@ export default function Home() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href={`mailto:${EMAIL}`}>
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                   <Mail className="mr-2 h-4 w-4" />
                   Email me
                 </Link>
@@ -179,83 +200,96 @@ export default function Home() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl text-center text-sm text-muted-foreground">
-            Once you’ve got real client sites, swap these placeholders with screenshots and it instantly feels 10x less “plain”.
+            Swap placeholders with screenshots once you’ve launched a couple client sites — instant credibility boost.
           </div>
         </div>
       </section>
 
-      {/* Value Proposition */}
+      {/* Conversion upgrade: Fit Check */}
       <section className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
         <SectionHeading
-          eyebrow="Why this works"
-          title="Simple, professional, done properly"
-          subtitle="You don’t need an agency. You need a clean site that turns visitors into calls."
+          eyebrow="Start here"
+          title="Quick fit check"
+          subtitle="If you can answer these 5 things, I can tell you straight away if the $750 build is a good fit."
         />
 
-        <div className="grid gap-6 md:grid-cols-3">
-          <Card className="group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-accent))/0.18] text-foreground">
-              <ArrowRight className="h-5 w-5" />
-            </div>
-            <h3 className="mb-2 text-xl font-semibold text-foreground">Straightforward builds</h3>
-            <p className="text-pretty leading-relaxed text-muted-foreground">
-              Clear scope, no jargon. You’ll know exactly what you’re getting and when.
-            </p>
-          </Card>
+        <div className="mx-auto max-w-3xl">
+          <Card className="rounded-2xl p-8 shadow-sm lg:p-10">
+            <ul className="space-y-4">
+              {[
+                "Business name + what you do",
+                "Your services (dot points)",
+                "Your location (Cairns/FNQ or elsewhere)",
+                "Do you already own a domain? (yes/no)",
+                "Any links (Facebook/Instagram/current site)",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
+                  <span className="text-foreground">{item}</span>
+                </li>
+              ))}
+            </ul>
 
-          <Card className="group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-warm))/0.18] text-foreground">
-              <ArrowRight className="h-5 w-5" />
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Button size="lg" asChild className="w-full shadow-sm">
+                <Link href={FACEBOOK_URL} target="_blank" rel="noreferrer">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Message me
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild className="w-full">
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                  <Mail className="mr-2 h-4 w-4" />
+                  Email with template
+                </Link>
+              </Button>
             </div>
-            <h3 className="mb-2 text-xl font-semibold text-foreground">Mobile-first design</h3>
-            <p className="text-pretty leading-relaxed text-muted-foreground">
-              Looks great on any device. Most customers browse on their phones — your site should too.
-            </p>
-          </Card>
 
-          <Card className="group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20 text-foreground">
-              <ArrowRight className="h-5 w-5" />
+            <div className="mt-6 text-xs text-muted-foreground">
+              No logo? No worries. We can still get something clean live quickly.
             </div>
-            <h3 className="mb-2 text-xl font-semibold text-foreground">Delivered properly</h3>
-            <p className="text-pretty leading-relaxed text-muted-foreground">
-              Fast when needed, premium when it matters. The right level of polish for your business.
-            </p>
           </Card>
         </div>
       </section>
 
-      {/* What's Included */}
+      {/* Value Proposition */}
       <section className="border-y border-border bg-muted/30">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <SectionHeading
-            eyebrow="Included"
-            title="Everything you need to get online"
-            subtitle="Simple package, clean delivery. Domains optional."
+            eyebrow="Why this works"
+            title="Simple, professional, done properly"
+            subtitle="You don’t need an agency. You need a clean site that turns visitors into calls."
           />
 
-          <div className="mx-auto max-w-3xl">
-            <Card className="rounded-2xl p-8 shadow-sm lg:p-10">
-              <ul className="grid gap-4 sm:grid-cols-2">
-                {[
-                  "1–3 page website",
-                  "Contact form",
-                  "Basic SEO setup",
-                  "Deployed & live on Vercel",
-                  "Two rounds of small tweaks",
-                  "Mobile-first design",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                    <span className="text-foreground">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-8 rounded-2xl border border-border bg-background/60 p-5 text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">Not included:</span>{" "}
-                e-commerce, booking systems, complex custom apps, unlimited revisions. If you need those, we quote it as a premium build.
+          <div className="grid gap-6 md:grid-cols-3">
+            <Card className="group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-accent))/0.18] text-foreground">
+                <ArrowRight className="h-5 w-5" />
               </div>
+              <h3 className="mb-2 text-xl font-semibold text-foreground">Straightforward builds</h3>
+              <p className="text-pretty leading-relaxed text-muted-foreground">
+                Clear scope, no jargon. You’ll know exactly what you’re getting and when.
+              </p>
+            </Card>
+
+            <Card className="group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-warm))/0.18] text-foreground">
+                <ArrowRight className="h-5 w-5" />
+              </div>
+              <h3 className="mb-2 text-xl font-semibold text-foreground">Mobile-first design</h3>
+              <p className="text-pretty leading-relaxed text-muted-foreground">
+                Looks great on any device. Most customers browse on their phones — your site should too.
+              </p>
+            </Card>
+
+            <Card className="group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20 text-foreground">
+                <ArrowRight className="h-5 w-5" />
+              </div>
+              <h3 className="mb-2 text-xl font-semibold text-foreground">Delivered properly</h3>
+              <p className="text-pretty leading-relaxed text-muted-foreground">
+                Fast when needed, premium when it matters. The right level of polish for your business.
+              </p>
             </Card>
           </div>
         </div>
@@ -312,81 +346,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="border-y border-border bg-muted/30">
+      {/* FAQ */}
+      <section id="faq" className="border-y border-border bg-muted/30">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-          <SectionHeading
-            eyebrow="Process"
-            title="Three steps. No fluff."
-            subtitle="Quick questions → build preview → go live."
-          />
+          <SectionHeading eyebrow="FAQ" title="Quick answers" subtitle="If you’ve got more questions, just message me." />
 
-          <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-3">
-            {[
-              { n: "1", t: "Quick questions", d: "Business name, services, any logo/photos you have." },
-              { n: "2", t: "Build & preview", d: "I build it fast and send a preview link." },
-              { n: "3", t: "Go live", d: "Small tweaks, then it’s live. Domain optional." },
-            ].map((s) => (
-              <Card key={s.n} className="rounded-2xl p-8 shadow-sm">
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent text-lg font-bold text-accent-foreground shadow-sm">
-                  {s.n}
-                </div>
-                <h3 className="mb-2 text-xl font-semibold text-foreground">{s.t}</h3>
-                <p className="text-pretty leading-relaxed text-muted-foreground">{s.d}</p>
-              </Card>
-            ))}
+          <div className="mx-auto max-w-3xl">
+            <Card className="rounded-2xl p-6 shadow-sm sm:p-8">
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger className="text-left text-base font-semibold">
+                    Do you do domains?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
+                    Yes — domain registration and setup is optional and can be added after launch. I can guide you through it or handle it for you as an add-on.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-2">
+                  <AccordionTrigger className="text-left text-base font-semibold">
+                    How fast is delivery?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
+                    Fast Launch sites can be very quick once I’ve got your basics (business name, services, logo/photos). Premium custom builds are scoped based on complexity.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-3">
+                  <AccordionTrigger className="text-left text-base font-semibold">
+                    What's not included?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
+                    The Fast Launch package doesn’t include e-commerce, booking systems, custom integrations, or unlimited revisions. Those are quoted as premium builds.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-4">
+                  <AccordionTrigger className="text-left text-base font-semibold">
+                    What should I send you to start?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
+                    Business name, services (dot points), location, whether you own a domain, and any links (FB/IG/current site). If you email, the template is pre-filled for you.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-        <SectionHeading eyebrow="FAQ" title="Quick answers" subtitle="If you’ve got more questions, just message me." />
-
-        <div className="mx-auto max-w-3xl">
-          <Card className="rounded-2xl p-6 shadow-sm sm:p-8">
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="text-left text-base font-semibold">
-                  Do you do domains?
-                </AccordionTrigger>
-                <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
-                  Yes — domain registration and setup is optional and can be added after launch. I can guide you through it or handle it for you as an add-on.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-2">
-                <AccordionTrigger className="text-left text-base font-semibold">
-                  How fast is delivery?
-                </AccordionTrigger>
-                <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
-                  Fast Launch sites can be very quick once I’ve got your basics (business name, services, logo/photos). Premium custom builds are scoped based on complexity.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-3">
-                <AccordionTrigger className="text-left text-base font-semibold">
-                  What's not included?
-                </AccordionTrigger>
-                <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
-                  The Fast Launch package doesn’t include e-commerce, booking systems, custom integrations, or unlimited revisions. Those are quoted as premium builds.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-4">
-                <AccordionTrigger className="text-left text-base font-semibold">
-                  Can you do larger custom sites?
-                </AccordionTrigger>
-                <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
-                  Yep. If you need multiple pages, custom features, integrations, or a full brand experience — we’ll scope it out and I’ll provide a clear quote.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </Card>
-        </div>
-      </section>
-
-      {/* Final CTA */}
+      {/* Contact */}
       <section id="contact" className="border-t border-border bg-muted/30">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
@@ -406,7 +415,7 @@ export default function Home() {
               </Button>
 
               <Button size="lg" variant="outline" asChild>
-                <Link href={`mailto:${EMAIL}`}>
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                   <Mail className="mr-2 h-4 w-4" />
                   Email me
                 </Link>
