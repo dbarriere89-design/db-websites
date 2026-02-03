@@ -211,7 +211,7 @@ function ImageModal(props: {
             <img
               src={modalSrc}
               alt={`${item.title} preview`}
-              className="h-auto w-full object-contain"
+              className="max-h-[78vh] w-full object-contain"
               loading="eager"
             />
           </div>
