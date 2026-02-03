@@ -113,7 +113,7 @@ export default function Home() {
           <div className="mx-auto max-w-5xl text-center">
             <div className="mb-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <div className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-sm">
-                One build slot this week
+                Built for local businesses
               </div>
               <span className="text-xs text-muted-foreground">
                 Built by a local business owner (Cairns / FNQ)
