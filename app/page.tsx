@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/accordion"
 import { Check, MessageCircle, Mail, ArrowRight, Sparkles } from "lucide-react"
 
-const FACEBOOK_URL = "https://facebook.com" // TODO: replace with your actual profile link
-const EMAIL = "contact@dbwebsites.com" // TODO: replace if needed
+const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
+const EMAIL = "des@outbacklens.com" // TODO: replace if needed
 
 const EMAIL_SUBJECT = encodeURIComponent("Website enquiry (DB Websites)")
 const EMAIL_BODY = encodeURIComponent(
@@ -110,7 +110,7 @@ export default function Home() {
             </Link>
 
             <Button asChild className="shadow-sm">
-              <Link href="#contact">
+              <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Message me
               </Link>
@@ -153,7 +153,7 @@ export default function Home() {
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild className="shadow-sm">
-                <Link href="#contact">
+                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Message me
                 </Link>
@@ -232,7 +232,7 @@ export default function Home() {
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Button size="lg" asChild className="w-full shadow-sm">
-                <Link href={FACEBOOK_URL} target="_blank" rel="noreferrer">
+                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Message me
                 </Link>
@@ -333,7 +333,9 @@ export default function Home() {
                   <div className="mt-1 text-sm text-muted-foreground">AUD — one-off</div>
 
                   <Button size="lg" className="mt-6 w-full shadow-sm" asChild>
-                    <Link href="#contact">Message me to check fit</Link>
+                    <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
+                      Message me to check fit
+                    </Link>
                   </Button>
 
                   <div className="mt-3 text-xs text-muted-foreground">
@@ -408,7 +410,7 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild className="shadow-sm">
-                <Link href={FACEBOOK_URL} target="_blank" rel="noreferrer">
+                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Message me
                 </Link>
