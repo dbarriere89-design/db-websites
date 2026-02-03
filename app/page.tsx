@@ -402,14 +402,15 @@ export default function Home() {
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-stretch">
+            {/* FIX: keep buttons stacked + same width */}
+            <div className="mt-8 flex flex-col gap-4">
               <Button size="lg" asChild className="w-full shadow-sm">
                 <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Message me
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" asChild className="w-full">
                 <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                   <Mail className="mr-2 h-4 w-4" />
                   Email with template
