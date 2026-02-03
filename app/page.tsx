@@ -181,11 +181,11 @@ function ImageModal(props: {
 
         {/* Full image area (no crop) */}
         <div className="bg-muted/30 p-3 sm:p-4">
-          <div className="relative max-h-[78vh] w-full overflow-auto rounded-xl border border-border bg-black">
+          <div className="relative max-h-[78vh] w-full overflow-auto rounded-xl border border-border bg-background">
             <img
               src={item.imgSrc}
               alt={`${item.title} full screenshot`}
-              className="mx-auto h-auto max-h-[78vh] w-auto max-w-full object-contain"
+              className="h-auto w-full object-contain"
             />
           </div>
 
