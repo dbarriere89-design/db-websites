@@ -1,7 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import {
   Accordion,
   AccordionContent,
@@ -18,9 +17,9 @@ function SectionHeading(props: { eyebrow?: string; title: string; subtitle?: str
     <div className="mx-auto mb-12 max-w-3xl text-center">
       {props.eyebrow ? (
         <div className="mb-3 flex items-center justify-center gap-2">
-          <Badge variant="secondary" className="rounded-full px-3 py-1 text-xs">
+          <div className="rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
             {props.eyebrow}
-          </Badge>
+          </div>
         </div>
       ) : null}
       <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -97,7 +96,6 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        {/* Background effects */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -left-24 top-24 h-[520px] w-[520px] rounded-full bg-[hsl(var(--brand-accent))/0.10] blur-3xl" />
           <div className="absolute -right-24 top-36 h-[480px] w-[480px] rounded-full bg-[hsl(var(--brand-warm))/0.10] blur-3xl" />
@@ -113,11 +111,11 @@ export default function Home() {
 
         <div className="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
-            <div className="mb-6 flex items-center justify-center gap-2">
-              <Badge className="rounded-full px-3 py-1 text-xs shadow-sm">
+            <div className="mb-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <div className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-foreground shadow-sm">
                 One build slot this week
-              </Badge>
-              <span className="hidden text-xs text-muted-foreground sm:inline">
+              </div>
+              <span className="text-xs text-muted-foreground">
                 Built by a local business owner (Cairns / FNQ)
               </span>
             </div>
