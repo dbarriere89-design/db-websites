@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/accordion"
 import { Check, MessageCircle, Mail, ArrowRight, Sparkles } from "lucide-react"
 
-const FACEBOOK_URL = "https://facebook.com" // TODO: replace with your actual profile
-const EMAIL = "contact@dbwebsites.com" // TODO: replace if needed
+const FACEBOOK_URL = "https://facebook.com/desbarriere" // TODO: replace with your actual profile
+const EMAIL = "outbacklens@gmail.com" // TODO: replace if needed
 
 function SectionHeading(props: { eyebrow?: string; title: string; subtitle?: string }) {
   return (
