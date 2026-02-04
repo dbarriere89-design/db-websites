@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   description:
     "Clean, professional websites for small businesses in Cairns & FNQ. From fast launches to premium custom builds. No agency fluff, no drawn-out timelines.",
   generator: "v0.app",
+  verification: {
+    google: "089lNLrHjvhCX-nbwhPpj_WESgFCvlTqomZsX8q_uHY",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" }, // critical fallback (tabs, Safari, Windows)
