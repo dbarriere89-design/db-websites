@@ -291,7 +291,7 @@ export default function Home() {
             className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
           >
             <img
-  src="/favicon-96x96.png"
+  src="/favicon-512x512.png"
   alt="DB Websites logo"
   className="h-8 w-8 rounded-full shadow-sm"
 />
