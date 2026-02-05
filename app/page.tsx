@@ -13,7 +13,7 @@ import {
 import { Check, MessageCircle, Mail, ArrowRight, Sparkles, X } from "lucide-react"
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
-const EMAIL = "des@outbacklens.com" // TODO: replace if needed
+const EMAIL = "desbarriere.au@gmail.com" // TODO: replace if needed
 
 const EMAIL_SUBJECT = encodeURIComponent("Website enquiry (DB Websites)")
 const EMAIL_BODY = encodeURIComponent(
