@@ -10,7 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { Check, MessageCircle, Mail, ArrowRight, Sparkles, X } from "lucide-react"
+import { Check, MessageCircle, Mail, ArrowRight, X } from "lucide-react"
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
 const EMAIL = "desbarriere.au@gmail.com" // TODO: replace if needed
@@ -290,9 +290,11 @@ export default function Home() {
             href="/"
             className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
           >
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-accent text-accent-foreground shadow-sm">
-              <Sparkles className="h-4 w-4" />
-            </span>
+            <img
+  src="/favicon-96x96.png"
+  alt="DB Websites logo"
+  className="h-8 w-8 rounded-full shadow-sm"
+/>
             DB Websites
           </Link>
 
