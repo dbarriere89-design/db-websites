@@ -8,7 +8,6 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  // ✅ ADD THIS — fixes absolute OG URLs + redirects
   metadataBase: new URL("https://www.dbwebsites.au"),
 
   title: "DB Websites — Websites built properly",
@@ -28,7 +27,6 @@ export const metadata: Metadata = {
     siteName: "DB Websites",
     images: [
       {
-        // ✅ NOW ABSOLUTE (no inference)
         url: "https://www.dbwebsites.au/og-image.png",
         width: 1200,
         height: 630,
@@ -50,11 +48,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
+      <head>
+        {/* Tidio Website Enquiry Assistant */}
+        <script
+          src="//code.tidio.co/svuowosee2lpcoiumlepae66awnaymao.js"
+          async
+        ></script>
+      </head>
       <body className="font-sans antialiased">
         {children}
         <Analytics />
