@@ -385,7 +385,7 @@ export default function Home() {
                 ✅ Clear scope
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1">
-                ✅ Deployed on Vercel
+                ✅ Fast, secure hosting
               </span>
             </div>
           </div>
