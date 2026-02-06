@@ -103,3 +103,74 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ------------------------------------------------------------
+   Premium ambient background (subtle, brand-matched, CSS-only)
+   Usage: add class "premium-ambient" to any relative container.
+------------------------------------------------------------ */
+.premium-ambient {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Two very soft, slow-moving gradient layers */
+.premium-ambient::before,
+.premium-ambient::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(48px);
+  opacity: 0.06; /* keep it premium, not loud */
+  transform: translate3d(0, 0, 0);
+}
+
+.premium-ambient::before {
+  background: radial-gradient(
+      circle at 30% 30%,
+      hsl(var(--brand-accent) / 0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      hsl(var(--brand-warm) / 0.18),
+      transparent 60%
+    );
+  animation: premium-drift-1 55s ease-in-out infinite;
+}
+
+.premium-ambient::after {
+  background: radial-gradient(
+      circle at 60% 35%,
+      hsl(var(--brand-warm) / 0.16),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 25% 70%,
+      hsl(var(--brand-accent) / 0.18),
+      transparent 60%
+    );
+  animation: premium-drift-2 65s ease-in-out infinite;
+  opacity: 0.05;
+}
+
+@keyframes premium-drift-1 {
+  0%   { transform: translate3d(-2%, -1%, 0) scale(1.02); }
+  50%  { transform: translate3d( 2%,  2%, 0) scale(1.06); }
+  100% { transform: translate3d(-2%, -1%, 0) scale(1.02); }
+}
+
+@keyframes premium-drift-2 {
+  0%   { transform: translate3d( 2%,  1%, 0) scale(1.02); }
+  50%  { transform: translate3d(-2%, -2%, 0) scale(1.07); }
+  100% { transform: translate3d( 2%,  1%, 0) scale(1.02); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .premium-ambient::before,
+  .premium-ambient::after {
+    animation: none !important;
+  }
+}
