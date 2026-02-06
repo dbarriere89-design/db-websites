@@ -118,41 +118,28 @@
 .premium-ambient::after {
   content: "";
   position: absolute;
-  inset: -40%;
+  inset: -35%;
   pointer-events: none;
-  z-index: 0;
-  filter: blur(48px);
-  opacity: 0.14; /* keep it premium, not loud */
+  z-index: 2;               /* pull it above other hero background layers */
+  filter: blur(60px);
+  opacity: 0.22;            /* visible, still soft */
+  mix-blend-mode: multiply; /* KEY: makes teal show on near-white */
   transform: translate3d(0, 0, 0);
 }
 
 .premium-ambient::before {
-  background: radial-gradient(
-      circle at 30% 35%,
-      hsl(var(--brand-accent) / 0.28),
-      transparent 58%
-    ),
-    radial-gradient(
-      circle at 70% 60%,
-      hsl(var(--brand-accent) / 0.12),
-      transparent 65%
-    );
+  background:
+    radial-gradient(circle at 30% 35%, hsl(var(--brand-accent) / 0.35), transparent 60%),
+    radial-gradient(circle at 78% 55%, hsl(var(--brand-ink) / 0.10), transparent 68%);
   animation: premium-drift-1 55s ease-in-out infinite;
 }
 
 .premium-ambient::after {
-  background: radial-gradient(
-      circle at 60% 35%,
-      hsl(var(--brand-warm) / 0.16),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at 25% 70%,
-      hsl(var(--brand-accent) / 0.18),
-      transparent 60%
-    );
+  background:
+    radial-gradient(circle at 70% 30%, hsl(var(--brand-accent) / 0.22), transparent 62%),
+    radial-gradient(circle at 22% 70%, hsl(var(--brand-ink) / 0.08), transparent 70%);
   animation: premium-drift-2 65s ease-in-out infinite;
-  opacity: 0.05;
+  opacity: 0.18;
 }
 
 @keyframes premium-drift-1 {
