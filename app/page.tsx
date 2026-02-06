@@ -329,7 +329,7 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden premium-ambient bg-[oklch(0.965_0.004_220)]">
+      <section className="relative overflow-hidden premium-ambient bg-[oklch(0.955_0.01_200)">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute -left-24 top-24 h-[520px] w-[520px] rounded-full bg-[hsl(var(--brand-accent))/0.10] blur-3xl" />
           <div className="absolute -right-24 top-36 h-[480px] w-[480px] rounded-full bg-[hsl(var(--brand-warm))/0.10] blur-3xl" />
@@ -375,7 +375,7 @@ export default function Home() {
             </div>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1">
                 ✅ Mobile-first
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1">
