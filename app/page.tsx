@@ -64,20 +64,10 @@ type WorkItem = {
   title: string
   subtitle: string
   badge?: string
-
-  // Used for the card thumbnail
   imgSrc: string
-
-  // Used for the modal (lets us use full-page for Mechanic Direct + curated for others)
   modalImgSrc?: string
-
-  // Thumbnail crop control
   thumbObjectPosition?: string
-
-  // Optional: open link to the live site (not required)
   href?: string
-
-  // Controls modal behavior (scroll for full-page)
   modalVariant?: "fullpage" | "curated"
 }
 
@@ -98,7 +88,7 @@ function WorkPreviewCard(props: {
       className="group text-left"
       aria-label={`Open preview: ${item.title}`}
     >
-      <div className="rounded-2xl border border-border bg-card/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <div className="premium-card rounded-2xl border border-border bg-card/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
         <div className="relative overflow-hidden rounded-xl border border-border bg-muted">
           {/* Browser chrome */}
           <div className="flex items-center gap-2 border-b border-border bg-background/70 px-3 py-2 backdrop-blur">
@@ -329,13 +319,13 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden premium-ambient bg-[oklch(0.955_0.01_200)">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-24 top-24 h-[520px] w-[520px] rounded-full bg-[hsl(var(--brand-accent))/0.10] blur-3xl" />
-          <div className="absolute -right-24 top-36 h-[480px] w-[480px] rounded-full bg-[hsl(var(--brand-warm))/0.10] blur-3xl" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.4),transparent_55%)]" />
+      <section className="relative overflow-hidden premium-ambient bg-[oklch(0.955_0.01_200)]">
+        {/* Extra “premium sheen” (very subtle) */}
+        <div className="pointer-events-none absolute inset-0 z-[1]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.55),transparent_55%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.35),transparent_40%)] opacity-50" />
           <div
-            className="absolute inset-0 opacity-[0.02]"
+            className="absolute inset-0 opacity-[0.03]"
             style={{
               backgroundImage:
                 `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E")`,
@@ -343,20 +333,20 @@ export default function Home() {
           />
         </div>
 
-        <div className="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
+        <div className="container relative z-[2] mx-auto px-6 py-20 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
             <div className="mb-6 text-xs text-muted-foreground">
               Built for small businesses (Cairns / FNQ + remote)
             </div>
 
             <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Websites for small business —
-              <span className="text-foreground/80"> new builds and clean upgrades</span>
+              Websites for small business —{" "}
+              <span className="text-foreground/80">new builds and clean upgrades</span>
             </h1>
 
             <p className="mx-auto mb-10 max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Launch a new site fast, or fix the one you’ve already got. Clear messaging, mobile cleanup, speed improvements,
-              and a contact flow that turns visitors into enquiries.
+              Launch a new site fast, or fix the one you’ve already got. Clear messaging, mobile cleanup,
+              speed improvements, and a contact flow that turns visitors into enquiries.
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -392,7 +382,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ✅ NEW: Conversion & enquiries section (added without changing anything else) */}
+      {/* Conversion & enquiries */}
       <section className="border-y border-border bg-muted/30">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-4xl text-center">
@@ -405,27 +395,27 @@ export default function Home() {
             </h2>
 
             <p className="mx-auto mt-4 max-w-3xl text-pretty text-lg text-muted-foreground">
-              Most websites don’t fail because of design — they fail because visitors don’t feel confident enough to take the
-              next step. I focus on finding where people drop off, fixing the leaks, and recovering missed enquiries so your
-              existing traffic actually turns into work.
+              Most websites don’t fail because of design — they fail because visitors don’t feel confident
+              enough to take the next step. I focus on finding where people drop off, fixing the leaks,
+              and recovering missed enquiries so your existing traffic actually turns into work.
             </p>
 
             <div className="mt-10 grid gap-6 md:grid-cols-3">
-              <Card className="rounded-2xl p-6 shadow-sm">
+              <Card className="premium-card rounded-2xl p-6 shadow-sm">
                 <h3 className="text-lg font-semibold text-foreground">Find the leaks</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   See where visitors hesitate, get confused, or leave — on mobile and desktop.
                 </p>
               </Card>
 
-              <Card className="rounded-2xl p-6 shadow-sm">
+              <Card className="premium-card rounded-2xl p-6 shadow-sm">
                 <h3 className="text-lg font-semibold text-foreground">Fix what matters</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Clear messaging, better calls-to-action, trust signals, and cleaner contact flows.
                 </p>
               </Card>
 
-              <Card className="rounded-2xl p-6 shadow-sm">
+              <Card className="premium-card rounded-2xl p-6 shadow-sm">
                 <h3 className="text-lg font-semibold text-foreground">Recover missed leads</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Follow up with people who almost enquire or buy — instead of losing them silently.
@@ -474,7 +464,7 @@ export default function Home() {
         />
 
         <div className="mx-auto max-w-3xl">
-          <Card className="rounded-2xl p-8 shadow-sm lg:p-10">
+          <Card className="premium-card rounded-2xl p-8 shadow-sm lg:p-10">
             <ul className="space-y-4">
               {[
                 "Business name + what you do",
@@ -522,7 +512,7 @@ export default function Home() {
           />
 
           <div className="grid gap-6 md:grid-cols-3">
-            <Card className="group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+            <Card className="premium-card group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-accent))/0.18] text-foreground">
                 <ArrowRight className="h-5 w-5" />
               </div>
@@ -532,7 +522,7 @@ export default function Home() {
               </p>
             </Card>
 
-            <Card className="group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+            <Card className="premium-card group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-warm))/0.18] text-foreground">
                 <ArrowRight className="h-5 w-5" />
               </div>
@@ -542,7 +532,7 @@ export default function Home() {
               </p>
             </Card>
 
-            <Card className="group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+            <Card className="premium-card group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20 text-foreground">
                 <ArrowRight className="h-5 w-5" />
               </div>
@@ -566,7 +556,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl">
           <div className="grid gap-6 md:grid-cols-2">
             {/* New build */}
-            <Card className="relative overflow-hidden rounded-2xl p-8 shadow-sm lg:p-10">
+            <Card className="premium-card relative overflow-hidden rounded-2xl p-8 shadow-sm lg:p-10">
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_55%,rgba(0,0,0,0.03)_100%)]" />
               <div className="relative">
                 <h3 className="text-2xl font-bold text-foreground">Fast Launch Website</h3>
@@ -574,7 +564,6 @@ export default function Home() {
                   Ideal for most small businesses that want a clean site live quickly.
                 </p>
 
-                {/* ✅ small addition */}
                 <p className="mt-2 text-sm text-muted-foreground">
                   Built with clear messaging and an enquiry flow from day one.
                 </p>
@@ -607,7 +596,7 @@ export default function Home() {
             </Card>
 
             {/* Fix/upgrade */}
-            <Card className="relative overflow-hidden rounded-2xl p-8 shadow-sm lg:p-10">
+            <Card className="premium-card relative overflow-hidden rounded-2xl p-8 shadow-sm lg:p-10">
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_55%,rgba(0,0,0,0.03)_100%)]" />
               <div className="relative">
                 <h3 className="text-2xl font-bold text-foreground">Website Fix / Upgrade</h3>
@@ -615,7 +604,6 @@ export default function Home() {
                   For existing sites that are slow, outdated, confusing, or not getting enquiries.
                 </p>
 
-                {/* ✅ small addition */}
                 <p className="mt-2 text-sm text-muted-foreground">
                   Focused on improving conversions, clarity, and missed enquiries — not just looks.
                 </p>
@@ -667,7 +655,7 @@ export default function Home() {
           <SectionHeading eyebrow="FAQ" title="Quick answers" subtitle="If you’ve got more questions, just message me." />
 
           <div className="mx-auto max-w-3xl">
-            <Card className="rounded-2xl p-6 shadow-sm sm:p-8">
+            <Card className="premium-card rounded-2xl p-6 shadow-sm sm:p-8">
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-left text-base font-semibold">
