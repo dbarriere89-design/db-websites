@@ -631,7 +631,7 @@ export default function Home() {
                 <div className="mt-8 rounded-2xl border border-border bg-background/60 p-6">
                   <div className="text-sm font-semibold text-muted-foreground">Starts from</div>
                   <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">$250</div>
-                  <div className="mt-1 text-sm text-muted-foreground">AUD — depends on scope</div>
+                  <div className="mt-1 text-sm text-muted-foreground">AUD — for small upgrades (scope-based)</div>
 
                   <Button size="lg" className="mt-6 w-full shadow-sm" asChild>
                     <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
