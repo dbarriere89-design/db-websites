@@ -340,13 +340,13 @@ export default function Home() {
             </div>
 
             <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Websites for small business —{" "}
-              <span className="text-foreground/80">new builds and clean upgrades</span>
+              Websites that{" "}
+              <span className="text-foreground/80">catch enquiries</span>
             </h1>
 
             <p className="mx-auto mb-10 max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Launch a new site fast, or fix the one you’ve already got. Clear messaging, mobile cleanup,
-              speed improvements, and a contact flow that turns visitors into enquiries.
+              New site or existing site — the goal is the same: make it easy for people to call, message, or enquire.
+              Clear layout, mobile cleanup, speed improvements, and a contact flow that works after hours.
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -369,10 +369,10 @@ export default function Home() {
                 ✅ Mobile-first
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1">
-                ✅ Fix or rebuild
+                ✅ Clear contact flow
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1">
-                ✅ Clear scope
+                ✅ Fix or rebuild
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1">
                 ✅ Fast, secure hosting
@@ -387,38 +387,37 @@ export default function Home() {
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
-              Conversion & enquiries
+              Enquiries & conversion
             </div>
 
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Turn website visitors into enquiries
+              Make it obvious how to contact you
             </h2>
 
             <p className="mx-auto mt-4 max-w-3xl text-pretty text-lg text-muted-foreground">
-              Most websites don’t fail because of design — they fail because visitors don’t feel confident
-              enough to take the next step. I focus on finding where people drop off, fixing the leaks,
-              and recovering missed enquiries so your existing traffic actually turns into work.
+              Most websites don’t fail because of design — they fail because visitors don’t know what to do next.
+              I focus on clarity, mobile cleanup, and contact flows that turn existing traffic into calls and messages.
             </p>
 
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               <Card className="premium-card rounded-2xl p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-foreground">Find the leaks</h3>
+                <h3 className="text-lg font-semibold text-foreground">Clear services</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  See where visitors hesitate, get confused, or leave — on mobile and desktop.
+                  People understand what you do in 10 seconds — especially on mobile.
                 </p>
               </Card>
 
               <Card className="premium-card rounded-2xl p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-foreground">Fix what matters</h3>
+                <h3 className="text-lg font-semibold text-foreground">Contact is front & centre</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Clear messaging, better calls-to-action, trust signals, and cleaner contact flows.
+                  Phone, email, and enquiry options are obvious and easy to use.
                 </p>
               </Card>
 
               <Card className="premium-card rounded-2xl p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-foreground">Recover missed leads</h3>
+                <h3 className="text-lg font-semibold text-foreground">Enquiry capture</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Follow up with people who almost enquire or buy — instead of losing them silently.
+                  If someone visits after hours, you still get the lead and their details.
                 </p>
               </Card>
             </div>
@@ -426,7 +425,7 @@ export default function Home() {
             <div className="mt-10">
               <Button size="lg" asChild className="shadow-sm">
                 <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                  See why your site isn&apos;t converting
+                  Message me your business name
                 </Link>
               </Button>
             </div>
@@ -460,7 +459,7 @@ export default function Home() {
         <SectionHeading
           eyebrow="Start here"
           title="Quick fit check"
-          subtitle="Answer these and I can tell you straight away if it’s a fast launch, a fix, or a full rebuild."
+          subtitle="Answer these and I can tell you straight away if it’s a fast launch or a clean upgrade."
         />
 
         <div className="mx-auto max-w-3xl">
@@ -469,7 +468,7 @@ export default function Home() {
               {[
                 "Business name + what you do",
                 "Do you already have a website? If yes, link it",
-                "What’s broken / annoying right now? (slow, old, confusing, no enquiries)",
+                "What’s annoying right now? (slow, messy on mobile, not getting enquiries)",
                 "Your services (dot points)",
                 "Your location (Cairns/FNQ or elsewhere)",
               ].map((item) => (
@@ -507,7 +506,7 @@ export default function Home() {
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="Why this works"
-            title="Simple, professional, done properly"
+            title="Simple, professional, enquiry-focused"
             subtitle="Whether it’s a fresh build or a cleanup, the goal is the same: trust + clarity + enquiries."
           />
 
@@ -536,9 +535,9 @@ export default function Home() {
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20 text-foreground">
                 <ArrowRight className="h-5 w-5" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-foreground">Built to convert</h3>
+              <h3 className="mb-2 text-xl font-semibold text-foreground">Built to capture leads</h3>
               <p className="text-pretty leading-relaxed text-muted-foreground">
-                Clear messaging + obvious contact flow so people actually call or message.
+                Clear messaging + obvious contact flow so people actually call, message, or enquire.
               </p>
             </Card>
           </div>
@@ -550,7 +549,7 @@ export default function Home() {
         <SectionHeading
           eyebrow="Pricing"
           title="Simple and transparent"
-          subtitle="One option for a fast new site — and an upgrade option if you already have a site that needs love."
+          subtitle="One option for a fast new site — and an upgrade option if you already have a site."
         />
 
         <div className="mx-auto max-w-5xl">
@@ -561,7 +560,7 @@ export default function Home() {
               <div className="relative">
                 <h3 className="text-2xl font-bold text-foreground">Fast Launch Website</h3>
                 <p className="mt-3 text-pretty text-muted-foreground">
-                  Ideal for most small businesses that want a clean site live quickly.
+                  Ideal for small businesses that want a clean site live quickly.
                 </p>
 
                 <p className="mt-2 text-sm text-muted-foreground">
@@ -569,7 +568,12 @@ export default function Home() {
                 </p>
 
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {["Mobile-first layout", "Contact form", "Basic SEO tidy", "Two tweak rounds"].map((x) => (
+                  {[
+                    "Mobile-first layout",
+                    "Services + trust sections",
+                    "Contact/enquiry setup",
+                    "Two tweak rounds",
+                  ].map((x) => (
                     <div key={x} className="flex items-center gap-2 text-sm text-foreground">
                       <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--brand-warm))]" />
                       {x}
@@ -595,27 +599,27 @@ export default function Home() {
               </div>
             </Card>
 
-            {/* Fix/upgrade */}
+            {/* Upgrade */}
             <Card className="premium-card relative overflow-hidden rounded-2xl p-8 shadow-sm lg:p-10">
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_55%,rgba(0,0,0,0.03)_100%)]" />
               <div className="relative">
-                <h3 className="text-2xl font-bold text-foreground">Website Fix / Upgrade</h3>
+                <h3 className="text-2xl font-bold text-foreground">Website Upgrade + Enquiry Capture</h3>
                 <p className="mt-3 text-pretty text-muted-foreground">
-                  For existing sites that are slow, outdated, confusing, or not getting enquiries.
+                  For businesses that already have a website but still miss calls and enquiries.
                 </p>
 
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Focused on improving conversions, clarity, and missed enquiries — not just looks.
+                  Focused on clarity, contact flow, and after-hours enquiry capture — not just looks.
                 </p>
 
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   {[
                     "Mobile layout cleanup",
-                    "Speed improvements",
-                    "Fix broken sections/links",
+                    "Fix broken links/sections",
                     "Clearer call-to-action",
-                    "Basic SEO tidy",
                     "Contact flow improvement",
+                    "Basic SEO tidy",
+                    "Enquiry capture setup",
                   ].map((x) => (
                     <div key={x} className="flex items-center gap-2 text-sm text-foreground">
                       <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--brand-accent))]" />
@@ -636,7 +640,7 @@ export default function Home() {
                   </Button>
 
                   <div className="mt-3 text-xs text-muted-foreground">
-                    I’ll tell you straight away if it’s a quick fix, a proper upgrade, or a rebuild.
+                    I’ll tell you straight away if it’s a quick upgrade or a bigger rebuild.
                   </div>
                 </div>
               </div>
@@ -668,11 +672,11 @@ export default function Home() {
 
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="text-left text-base font-semibold">
-                    Can you fix my existing website?
+                    Can you upgrade my existing website?
                   </AccordionTrigger>
                   <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
                     Yep. Send me the link and what’s bugging you (slow, messy on mobile, not getting enquiries, outdated copy).
-                    I’ll tell you quickly if it’s a fix, upgrade, or rebuild.
+                    I’ll tell you quickly if it’s a quick upgrade or a rebuild.
                   </AccordionContent>
                 </AccordionItem>
 
@@ -681,7 +685,7 @@ export default function Home() {
                     How fast is delivery?
                   </AccordionTrigger>
                   <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
-                    Fixes can be quick depending on scope. Fast Launch sites can also be very quick once I’ve got your basics (business name, services, logo/photos).
+                    Upgrades can be quick depending on scope. Fast Launch sites can also be very quick once I’ve got your basics (business name, services, logo/photos).
                     Bigger rebuilds are scoped based on complexity.
                   </AccordionContent>
                 </AccordionItem>
@@ -691,8 +695,8 @@ export default function Home() {
                     What should I send you to start?
                   </AccordionTrigger>
                   <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
-                    Business name, services (dot points), location, whether you own a domain, and any links (FB/IG/current site).
-                    If you’re fixing an existing site, send the link and what you want improved.
+                    Business name, services (dot points), location, and any links (FB/IG/current site).
+                    If you’re upgrading an existing site, send the link and what you want improved.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
@@ -706,7 +710,7 @@ export default function Home() {
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Want a website done properly — or want your current one fixed?
+              Want a website that actually brings enquiries?
             </h2>
             <p className="mt-3 text-pretty text-lg text-muted-foreground">
               Message me and I’ll tell you straight up what the best option is.

@@ -170,6 +170,13 @@
 ------------------------------------------------------------ */
 .premium-card {
   position: relative;
+  isolation: isolate;
+}
+
+/* ensure content sits above the glow layer */
+.premium-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .premium-card::before {
