@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useMemo, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import {
@@ -10,49 +9,60 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { Check, MessageCircle, Mail, ArrowRight, X } from "lucide-react"
+import {
+  ArrowRight,
+  Check,
+  Mail,
+  MessageCircle,
+  MonitorSmartphone,
+  ShoppingBag,
+  Wrench,
+} from "lucide-react"
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
-const EMAIL = "desbarriere.au@gmail.com" // TODO: replace if needed
+const EMAIL = "desbarriere.au@gmail.com"
 
-const EMAIL_SUBJECT = encodeURIComponent("Website enquiry (DB Websites)")
+const EMAIL_SUBJECT = encodeURIComponent("Project enquiry (DB Websites)")
 const EMAIL_BODY = encodeURIComponent(
   [
     "Hey Des,",
     "",
-    "Keen to chat about a website.",
+    "Keen to chat about a project.",
     "",
     "Business name:",
-    "Industry / trade:",
-    "Do you already have a website? (yes/no):",
-    "If yes, link:",
+    "Industry:",
+    "What do you need help with? (new website / Shopify store / WordPress fixes):",
+    "Current website link (if any):",
     "",
-    "Services (dot points):",
-    "Location (suburb/city):",
-    "Do you already own a domain? (yes/no):",
-    "Any links (FB/IG/current site):",
+    "Main goal:",
+    "Budget range:",
+    "Timeline:",
     "",
-    "Goals (more calls, look professional, show services, etc):",
-    "If fixing an existing site, what’s broken / annoying right now?:",
+    "Anything else:",
     "",
     "Cheers,",
-    "",
   ].join("\n")
 )
 
-function SectionHeading(props: { eyebrow?: string; title: string; subtitle?: string }) {
+function SectionHeading(props: {
+  eyebrow?: string
+  title: string
+  subtitle?: string
+}) {
   return (
     <div className="mx-auto mb-12 max-w-3xl text-center">
       {props.eyebrow ? (
-        <div className="mb-3 flex items-center justify-center gap-2">
+        <div className="mb-3 flex items-center justify-center">
           <div className="rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
             {props.eyebrow}
           </div>
         </div>
       ) : null}
+
       <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
         {props.title}
       </h2>
+
       {props.subtitle ? (
         <p className="mt-3 text-pretty text-muted-foreground">{props.subtitle}</p>
       ) : null}
@@ -60,221 +70,68 @@ function SectionHeading(props: { eyebrow?: string; title: string; subtitle?: str
   )
 }
 
-type WorkItem = {
+type CaseStudy = {
   title: string
-  subtitle: string
-  badge?: string
-  imgSrc: string
-  modalImgSrc?: string
-  thumbObjectPosition?: string
+  category: string
+  summary: string
+  image: string
+  imageAlt: string
+  stats?: string[]
+  bullets: string[]
   href?: string
-  modalVariant?: "fullpage" | "curated"
 }
 
-function cx(...classes: Array<string | false | null | undefined>) {
-  return classes.filter(Boolean).join(" ")
-}
-
-function WorkPreviewCard(props: {
-  item: WorkItem
-  onOpen: (item: WorkItem) => void
-}) {
-  const { item, onOpen } = props
-
-  return (
-    <button
-      type="button"
-      onClick={() => onOpen(item)}
-      className="group text-left"
-      aria-label={`Open preview: ${item.title}`}
-    >
-      <div className="premium-card rounded-2xl border border-border bg-card/70 p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-        <div className="relative overflow-hidden rounded-xl border border-border bg-muted">
-          {/* Browser chrome */}
-          <div className="flex items-center gap-2 border-b border-border bg-background/70 px-3 py-2 backdrop-blur">
-            <div className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-foreground/20" />
-              <span className="h-2.5 w-2.5 rounded-full bg-foreground/20" />
-              <span className="h-2.5 w-2.5 rounded-full bg-foreground/20" />
-            </div>
-            <div className="ml-2 h-2 w-24 rounded-full bg-foreground/10 sm:w-32" />
-          </div>
-
-          <div className="relative aspect-[16/10] overflow-hidden">
-            {item.badge ? (
-              <div className="absolute left-3 top-3 z-10 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur">
-                {item.badge}
-              </div>
-            ) : null}
-
-            <img
-              src={item.imgSrc}
-              alt={`${item.title} screenshot`}
-              className={cx(
-                "h-full w-full object-cover transition-transform duration-300",
-                "group-hover:scale-[1.03]"
-              )}
-              style={{ objectPosition: item.thumbObjectPosition ?? "center" }}
-              loading="lazy"
-            />
-
-            <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.35),rgba(0,0,0,0)_55%)]" />
-              <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs text-white/90 backdrop-blur">
-                Click to view <ArrowRight className="h-3.5 w-3.5" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-4">
-          <div className="text-sm font-semibold text-foreground">{item.title}</div>
-          <div className="mt-1 text-sm text-muted-foreground">{item.subtitle}</div>
-        </div>
-      </div>
-    </button>
-  )
-}
-
-function ImageModal(props: {
-  open: boolean
-  item: WorkItem | null
-  onClose: () => void
-}) {
-  const { open, item, onClose } = props
-
-  useEffect(() => {
-    if (!open) return
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose()
-    }
-    window.addEventListener("keydown", onKeyDown)
-    return () => window.removeEventListener("keydown", onKeyDown)
-  }, [open, onClose])
-
-  if (!open || !item) return null
-
-  const isFullPage = item.modalVariant === "fullpage"
-  const modalSrc = item.modalImgSrc ?? item.imgSrc
-
-  return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-      role="dialog"
-      aria-modal="true"
-      aria-label={`Preview: ${item.title}`}
-      onMouseDown={(e) => {
-        if (e.target === e.currentTarget) onClose()
-      }}
-    >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-
-      <div className="relative z-10 w-full max-w-6xl overflow-hidden rounded-2xl border border-border bg-background shadow-2xl">
-        <div className="flex items-start justify-between gap-4 border-b border-border px-4 py-3 sm:px-6">
-          <div className="min-w-0">
-            <div className="text-sm font-semibold text-foreground">{item.title}</div>
-            <div className="mt-0.5 text-xs text-muted-foreground">{item.subtitle}</div>
-          </div>
-
-          <div className="flex shrink-0 items-center gap-2">
-            {item.href ? (
-              <Button asChild variant="outline" size="sm">
-                <a href={item.href} target="_blank" rel="noreferrer noopener">
-                  Visit site <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-            ) : null}
-
-            <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close preview">
-              <X className="h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-
-        <div className="bg-muted/30 p-3 sm:p-4">
-          <div
-            className={cx(
-              "relative w-full rounded-xl border border-border bg-black",
-              isFullPage ? "max-h-[78vh] overflow-auto" : "overflow-hidden"
-            )}
-          >
-            <img
-              src={modalSrc}
-              alt={`${item.title} preview`}
-              className="max-h-[78vh] w-full object-contain"
-              loading="eager"
-            />
-          </div>
-
-          <div className="mt-3 text-xs text-muted-foreground">
-            {isFullPage ? (
-              <>
-                Full-page preview (scroll inside). Press{" "}
-                <span className="font-medium">ESC</span> to close.
-              </>
-            ) : (
-              <>
-                Curated preview. Press <span className="font-medium">ESC</span> to close.
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
+const CASE_STUDIES: CaseStudy[] = [
+  {
+    title: "Tripple Pluggers",
+    category: "Shopify ecommerce",
+    summary:
+      "Built and refined a Shopify store for an Australian product brand, with a focus on product presentation, mobile UX, conversion flow, and real-world sales proof.",
+    image: "/work/tripple-pluggers-case-study.jpg",
+    imageAlt: "Tripple Pluggers Shopify case study screenshot",
+    stats: ["925 sessions", "15 orders", "$645 sales", "1.62% conversion"],
+    bullets: [
+      "Shopify storefront setup and refinement",
+      "Product page and variant UX improvements",
+      "Mobile-first ecommerce presentation",
+      "Real analytics and order proof from launch period",
+    ],
+  },
+  {
+    title: "FIFO Resume Mate",
+    category: "Digital product funnel",
+    summary:
+      "Structured a conversion-focused landing page for a paid digital service, including pricing psychology, clean CTA flow, and checkout-ready user journeys.",
+    image: "/work/fifo-resume-mate-case-study.jpg",
+    imageAlt: "FIFO Resume Mate case study screenshot",
+    bullets: [
+      "Landing page designed to convert traffic into buyers",
+      "Pricing section built to guide plan selection",
+      "Digital product funnel thinking, not just brochure design",
+      "Strong fit for service businesses and lead-gen pages",
+    ],
+  },
+  {
+    title: "FNQ Lodge",
+    category: "WordPress booking website",
+    summary:
+      "Cleaned up and improved a booking-focused WordPress website with a stronger user journey, mobile usability, and a clearer path to reservation.",
+    image: "/work/fnq-lodge-case-study.jpg",
+    imageAlt: "FNQ Lodge booking website case study screenshot",
+    bullets: [
+      "WordPress layout and booking flow improvements",
+      "Mobile-friendly accommodation experience",
+      "Better reservation path and cleaner UX",
+      "Ideal proof for tourism, stays, and service sites",
+    ],
+  },
+]
 
 export default function Home() {
-  const WORK_ITEMS: WorkItem[] = useMemo(
-    () => [
-      {
-        title: "Mechanic Direct",
-        subtitle: "Premium UI + clear conversion",
-        badge: "Live product",
-        imgSrc: "/work/mechanic-direct.png",
-        thumbObjectPosition: "center left",
-        modalImgSrc: "/work/mechanic-direct-full.png",
-        modalVariant: "fullpage",
-      },
-      {
-        title: "Local Small Business Template",
-        subtitle: "Classic layout: services + reviews + enquiry flow",
-        badge: "Concept build",
-        imgSrc: "/work/small-biz-template-curated.png",
-        thumbObjectPosition: "center",
-        modalImgSrc: "/work/small-biz-template-curated.png",
-        modalVariant: "curated",
-      },
-      {
-        title: "FIFO Resume Mate",
-        subtitle: "Pricing that sells the value",
-        badge: "Pricing section",
-        imgSrc: "/work/fifo-resume-mate-curated.png",
-        thumbObjectPosition: "center top",
-        modalImgSrc: "/work/fifo-resume-mate-curated.png",
-        modalVariant: "curated",
-      },
-      {
-        title: "Outback Lens",
-        subtitle: "Photography-first brand + visual storytelling",
-        badge: "Hero section",
-        imgSrc: "/work/outback-lens-curated.png",
-        thumbObjectPosition: "center",
-        modalImgSrc: "/work/outback-lens-curated.png",
-        modalVariant: "curated",
-      },
-    ],
-    []
-  )
-
-  const [openItem, setOpenItem] = useState<WorkItem | null>(null)
-
   return (
     <div className="min-h-screen bg-background">
-      <ImageModal open={!!openItem} item={openItem} onClose={() => setOpenItem(null)} />
-
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-border bg-background/70 backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
           <Link
             href="/"
@@ -288,18 +145,18 @@ export default function Home() {
             DB Websites
           </Link>
 
-          <nav className="flex items-center gap-7">
-            <Link
-              href="#pricing"
-              className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block"
-            >
-              Pricing
-            </Link>
+          <nav className="flex items-center gap-6">
             <Link
               href="#work"
               className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block"
             >
               Work
+            </Link>
+            <Link
+              href="#services"
+              className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block"
+            >
+              Services
             </Link>
             <Link
               href="#faq"
@@ -319,401 +176,379 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden premium-ambient bg-[oklch(0.955_0.01_200)]">
-        {/* Extra “premium sheen” (very subtle) */}
-        <div className="pointer-events-none absolute inset-0 z-[1]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.55),transparent_55%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.35),transparent_40%)] opacity-50" />
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage:
-                `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E")`,
-            }}
-          />
+      <section className="relative overflow-hidden premium-ambient bg-[oklch(0.97_0.01_200)]">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.9),transparent_45%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.55),transparent_40%)]" />
         </div>
 
         <div className="container relative z-[2] mx-auto px-6 py-20 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
-            <div className="mb-6 text-xs text-muted-foreground">
-              Built for small businesses (Cairns / FNQ + remote)
+            <div className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Next.js / Vercel • Shopify • WordPress fixes
             </div>
 
-            <h1 className="mb-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Websites that{" "}
-              <span className="text-foreground/80">catch enquiries</span>
+            <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              High-performance websites and ecommerce builds that actually move people.
             </h1>
 
-            <p className="mx-auto mb-10 max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              New site or existing site — the goal is the same: make it easy for people to call, message, or enquire.
-              Clear layout, mobile cleanup, speed improvements, and a contact flow that works after hours.
+            <p className="mx-auto mt-6 max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              I build modern websites, Shopify stores, and sharp WordPress upgrades for Australian businesses that want
+              better presentation, better UX, and better conversion paths.
             </p>
 
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild className="shadow-sm">
-                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Message me
+                <Link href="#work">
+                  View case studies
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
+
               <Button size="lg" variant="outline" asChild>
-                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
-                  <Mail className="mr-2 h-4 w-4" />
-                  Email me
+                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Start a project
                 </Link>
               </Button>
             </div>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1">
-                ✅ Mobile-first
+                ✅ Modern builds with Next.js / Vercel
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1">
-                ✅ Clear contact flow
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1">
+                ✅ Shopify stores with real sales proof
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1">
-                ✅ Fix or rebuild
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-1">
-                ✅ Fast, secure hosting
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1">
+                ✅ WordPress upgrades and fixes
               </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Conversion & enquiries */}
+      {/* Positioning strip */}
       <section className="border-y border-border bg-muted/30">
-        <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
-              Enquiries & conversion
+        <div className="container mx-auto px-6 py-12 lg:px-8">
+          <div className="grid gap-6 text-center md:grid-cols-3">
+            <div>
+              <div className="text-sm font-semibold text-foreground">Built by an operator</div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Real-world experience building and marketing digital businesses, not just pretty mockups.
+              </p>
             </div>
-
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Make it obvious how to contact you
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-3xl text-pretty text-lg text-muted-foreground">
-              Most websites don’t fail because of design — they fail because visitors don’t know what to do next.
-              I focus on clarity, mobile cleanup, and contact flows that turn existing traffic into calls and messages.
-            </p>
-
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              <Card className="premium-card rounded-2xl p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-foreground">Clear services</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  People understand what you do in 10 seconds — especially on mobile.
-                </p>
-              </Card>
-
-              <Card className="premium-card rounded-2xl p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-foreground">Contact is front & centre</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Phone, email, and enquiry options are obvious and easy to use.
-                </p>
-              </Card>
-
-              <Card className="premium-card rounded-2xl p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-foreground">Enquiry capture</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  If someone visits after hours, you still get the lead and their details.
-                </p>
-              </Card>
+            <div>
+              <div className="text-sm font-semibold text-foreground">Focused on outcomes</div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Stronger UX, better trust, cleaner structure, and clearer paths to purchase or enquiry.
+              </p>
             </div>
-
-            <div className="mt-10">
-              <Button size="lg" asChild className="shadow-sm">
-                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                  Message me your business name
-                </Link>
-              </Button>
+            <div>
+              <div className="text-sm font-semibold text-foreground">Modern stack first</div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                New builds lean modern. Existing WordPress sites can still be cleaned up, fixed, and improved.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Work Preview */}
-      <section id="work" className="border-y border-border bg-muted/30">
-        <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-          <SectionHeading
-            eyebrow="Proof"
-            title="A quick look at the style"
-            subtitle="Modern, clean, and built to convert — new sites or upgraded existing ones."
-          />
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {WORK_ITEMS.map((item) => (
-              <WorkPreviewCard key={item.title} item={item} onOpen={setOpenItem} />
-            ))}
-          </div>
-
-          <div className="mx-auto mt-10 max-w-3xl text-center text-sm text-muted-foreground">
-            Click any preview to see the screenshot.
-          </div>
-        </div>
-      </section>
-
-      {/* Fit Check */}
-      <section className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
+      {/* Work */}
+      <section id="work" className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
         <SectionHeading
-          eyebrow="Start here"
-          title="Quick fit check"
-          subtitle="Answer these and I can tell you straight away if it’s a fast launch or a clean upgrade."
+          eyebrow="Featured work"
+          title="Real projects, presented properly"
+          subtitle="Three different business models. Three different proof points. All aimed at trust, conversion, and cleaner digital experiences."
         />
 
-        <div className="mx-auto max-w-3xl">
-          <Card className="premium-card rounded-2xl p-8 shadow-sm lg:p-10">
-            <ul className="space-y-4">
-              {[
-                "Business name + what you do",
-                "Do you already have a website? If yes, link it",
-                "What’s annoying right now? (slow, messy on mobile, not getting enquiries)",
-                "Your services (dot points)",
-                "Your location (Cairns/FNQ or elsewhere)",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                  <span className="text-foreground">{item}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="space-y-8">
+          {CASE_STUDIES.map((item) => (
+            <Card
+              key={item.title}
+              className="premium-card overflow-hidden rounded-3xl border border-border bg-card/70 p-0 shadow-sm"
+            >
+              <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
+                <div className="border-b border-border lg:border-b-0 lg:border-r">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
 
-            <div className="mt-8 flex flex-col gap-4">
-              <Button size="lg" asChild className="w-full shadow-sm">
-                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Message me
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="w-full">
-                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
-                  <Mail className="mr-2 h-4 w-4" />
-                  Email with template
-                </Link>
-              </Button>
-            </div>
+                <div className="p-6 sm:p-8 lg:p-10">
+                  <div className="mb-3 inline-flex rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground">
+                    {item.category}
+                  </div>
 
-            <div className="mt-6 text-xs text-muted-foreground">
-              No logo? No worries. If you’ve got photos + a rough services list, we can still get something clean live.
-            </div>
-          </Card>
+                  <h3 className="text-2xl font-bold tracking-tight text-foreground">{item.title}</h3>
+
+                  <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
+                    {item.summary}
+                  </p>
+
+                  {item.stats?.length ? (
+                    <div className="mt-6 grid grid-cols-2 gap-3">
+                      {item.stats.map((stat) => (
+                        <div
+                          key={stat}
+                          className="rounded-2xl border border-border bg-background/60 px-4 py-3 text-sm font-medium text-foreground"
+                        >
+                          {stat}
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+
+                  <div className="mt-6 space-y-3">
+                    {item.bullets.map((bullet) => (
+                      <div key={bullet} className="flex items-start gap-3">
+                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
+                        <span className="text-sm text-foreground">{bullet}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
       </section>
 
-      {/* Value Proposition */}
-      <section className="border-y border-border bg-muted/30">
+      {/* Services */}
+      <section id="services" className="border-y border-border bg-muted/30">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <SectionHeading
-            eyebrow="Why this works"
-            title="Simple, professional, enquiry-focused"
-            subtitle="Whether it’s a fresh build or a cleanup, the goal is the same: trust + clarity + enquiries."
+            eyebrow="Services"
+            title="What I actually want to be hired for"
+            subtitle="Modern custom builds, Shopify ecommerce work, and selective WordPress fixes where it makes sense."
           />
 
           <div className="grid gap-6 md:grid-cols-3">
-            <Card className="premium-card group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-accent))/0.18] text-foreground">
-                <ArrowRight className="h-5 w-5" />
+            <Card className="premium-card rounded-3xl p-8 shadow-sm">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-accent))/0.15]">
+                <MonitorSmartphone className="h-6 w-6 text-foreground" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-foreground">Straightforward scope</h3>
-              <p className="text-pretty leading-relaxed text-muted-foreground">
-                Clear deliverables, fast turnaround, and no confusing agency fluff.
+              <h3 className="text-xl font-semibold text-foreground">Modern websites</h3>
+              <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">
+                Premium custom sites built with modern tooling and deployed properly. Best for businesses that want
+                something cleaner, faster, and stronger than a typical template site.
               </p>
+              <div className="mt-5 text-sm font-medium text-foreground">Next.js / Vercel builds</div>
             </Card>
 
-            <Card className="premium-card group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-[hsl(var(--brand-warm))/0.18] text-foreground">
-                <ArrowRight className="h-5 w-5" />
+            <Card className="premium-card rounded-3xl p-8 shadow-sm">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-warm))/0.18]">
+                <ShoppingBag className="h-6 w-6 text-foreground" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-foreground">Mobile + speed cleanup</h3>
-              <p className="text-pretty leading-relaxed text-muted-foreground">
-                Fix the “old site” vibe: layout issues, slow pages, messy sections, broken links.
+              <h3 className="text-xl font-semibold text-foreground">Shopify ecommerce</h3>
+              <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">
+                Product-focused stores with better presentation, cleaner purchase flow, and stronger mobile UX. Great
+                for brands that want a store that feels more considered and converts better.
               </p>
+              <div className="mt-5 text-sm font-medium text-foreground">Store builds + conversion improvements</div>
             </Card>
 
-            <Card className="premium-card group rounded-2xl p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20 text-foreground">
-                <ArrowRight className="h-5 w-5" />
+            <Card className="premium-card rounded-3xl p-8 shadow-sm">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/20">
+                <Wrench className="h-6 w-6 text-foreground" />
               </div>
-              <h3 className="mb-2 text-xl font-semibold text-foreground">Built to capture leads</h3>
-              <p className="text-pretty leading-relaxed text-muted-foreground">
-                Clear messaging + obvious contact flow so people actually call, message, or enquire.
+              <h3 className="text-xl font-semibold text-foreground">WordPress fixes</h3>
+              <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">
+                Existing WordPress site looking tired, clunky, or annoying? I can help clean up layout issues, contact
+                flow, booking pages, and general front-end presentation.
               </p>
+              <div className="mt-5 text-sm font-medium text-foreground">Fixes, upgrades, and tidy-ups</div>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
+        <SectionHeading
+          eyebrow="Process"
+          title="Simple process, clean delivery"
+          subtitle="No agency theatre. Just clear scope, clean work, and a better end result."
+        />
+
+        <div className="grid gap-6 md:grid-cols-4">
+          {[
+            {
+              step: "01",
+              title: "Scope",
+              text: "You send the current site, business details, goals, and what’s annoying right now.",
+            },
+            {
+              step: "02",
+              title: "Direction",
+              text: "I map the best fit: fresh build, Shopify work, or a more targeted upgrade.",
+            },
+            {
+              step: "03",
+              title: "Build",
+              text: "I build or refine the site with a strong focus on clarity, responsiveness, and flow.",
+            },
+            {
+              step: "04",
+              title: "Launch",
+              text: "You get a cleaner digital presence that feels more premium and works harder.",
+            },
+          ].map((item) => (
+            <Card key={item.step} className="premium-card rounded-3xl p-8 shadow-sm">
+              <div className="text-sm font-semibold text-muted-foreground">{item.step}</div>
+              <h3 className="mt-2 text-lg font-semibold text-foreground">{item.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+            </Card>
+          ))}
         </div>
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-        <SectionHeading
-          eyebrow="Pricing"
-          title="Simple and transparent"
-          subtitle="One option for a fast new site — and an upgrade option if you already have a site."
-        />
+      <section className="border-y border-border bg-muted/30">
+        <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
+          <SectionHeading
+            eyebrow="Pricing"
+            title="Smaller fixes are easy. Bigger builds are scoped properly."
+            subtitle="I’ve removed the bargain-bin feel here on purpose. Small WordPress upgrades can be quoted quickly. Proper builds get scoped to match the job."
+          />
 
-        <div className="mx-auto max-w-5xl">
-          <div className="grid gap-6 md:grid-cols-2">
-            {/* New build */}
-            <Card className="premium-card relative overflow-hidden rounded-2xl p-8 shadow-sm lg:p-10">
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_55%,rgba(0,0,0,0.03)_100%)]" />
-              <div className="relative">
-                <h3 className="text-2xl font-bold text-foreground">Fast Launch Website</h3>
-                <p className="mt-3 text-pretty text-muted-foreground">
-                  Ideal for small businesses that want a clean site live quickly.
-                </p>
+          <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
+            <Card className="premium-card rounded-3xl p-8 shadow-sm lg:p-10">
+              <h3 className="text-2xl font-bold text-foreground">WordPress fixes & upgrades</h3>
+              <p className="mt-3 text-pretty text-muted-foreground">
+                Best for existing websites that need layout cleanup, mobile fixes, contact flow improvements, booking
+                page tweaks, or general front-end tidy-up work.
+              </p>
 
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Built with clear messaging and an enquiry flow from day one.
-                </p>
-
-                <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {[
-                    "Mobile-first layout",
-                    "Services + trust sections",
-                    "Contact/enquiry setup",
-                    "Two tweak rounds",
-                  ].map((x) => (
-                    <div key={x} className="flex items-center gap-2 text-sm text-foreground">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--brand-warm))]" />
-                      {x}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 rounded-2xl border border-border bg-background/60 p-6">
-                  <div className="text-sm font-semibold text-muted-foreground">Price</div>
-                  <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">$750</div>
-                  <div className="mt-1 text-sm text-muted-foreground">AUD — one-off</div>
-
-                  <Button size="lg" className="mt-6 w-full shadow-sm" asChild>
-                    <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                      Message me to check fit
-                    </Link>
-                  </Button>
-
-                  <div className="mt-3 text-xs text-muted-foreground">
-                    Domain is optional and can be added after launch.
+              <div className="mt-6 space-y-3">
+                {[
+                  "Mobile layout cleanup",
+                  "Contact and enquiry improvements",
+                  "Broken sections or awkward UX fixes",
+                  "General polish to make the site feel more current",
+                ].map((x) => (
+                  <div key={x} className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
+                    <span className="text-sm text-foreground">{x}</span>
                   </div>
-                </div>
+                ))}
+              </div>
+
+              <div className="mt-8 rounded-2xl border border-border bg-background/70 p-6">
+                <div className="text-sm font-semibold text-muted-foreground">Typical quick jobs</div>
+                <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">$250+</div>
+                <div className="mt-1 text-sm text-muted-foreground">AUD depending on scope</div>
               </div>
             </Card>
 
-            {/* Upgrade */}
-            <Card className="premium-card relative overflow-hidden rounded-2xl p-8 shadow-sm lg:p-10">
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0)_55%,rgba(0,0,0,0.03)_100%)]" />
-              <div className="relative">
-                <h3 className="text-2xl font-bold text-foreground">Website Upgrade + Enquiry Capture</h3>
-                <p className="mt-3 text-pretty text-muted-foreground">
-                  For businesses that already have a website but still miss calls and enquiries.
-                </p>
+            <Card className="premium-card rounded-3xl p-8 shadow-sm lg:p-10">
+              <h3 className="text-2xl font-bold text-foreground">Modern builds & Shopify projects</h3>
+              <p className="mt-3 text-pretty text-muted-foreground">
+                Best for businesses that want a stronger digital presence from the ground up, with better structure,
+                better presentation, and a more premium customer experience.
+              </p>
 
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Focused on clarity, contact flow, and after-hours enquiry capture — not just looks.
-                </p>
-
-                <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                  {[
-                    "Mobile layout cleanup",
-                    "Fix broken links/sections",
-                    "Clearer call-to-action",
-                    "Contact flow improvement",
-                    "Basic SEO tidy",
-                    "Enquiry capture setup",
-                  ].map((x) => (
-                    <div key={x} className="flex items-center gap-2 text-sm text-foreground">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--brand-accent))]" />
-                      {x}
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-8 rounded-2xl border border-border bg-background/60 p-6">
-                  <div className="text-sm font-semibold text-muted-foreground">Starts from</div>
-                  <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">$250</div>
-                  <div className="mt-1 text-sm text-muted-foreground">AUD — for small upgrades (scope-based)</div>
-
-                  <Button size="lg" className="mt-6 w-full shadow-sm" asChild>
-                    <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                      Message me your site link
-                    </Link>
-                  </Button>
-
-                  <div className="mt-3 text-xs text-muted-foreground">
-                    I’ll tell you straight away if it’s a quick upgrade or a bigger rebuild.
+              <div className="mt-6 space-y-3">
+                {[
+                  "Custom modern site builds",
+                  "Shopify storefronts and product presentation",
+                  "Digital product or lead-gen funnels",
+                  "Scoped to fit the actual commercial value of the project",
+                ].map((x) => (
+                  <div key={x} className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-warm))]" />
+                    <span className="text-sm text-foreground">{x}</span>
                   </div>
-                </div>
+                ))}
+              </div>
+
+              <div className="mt-8 rounded-2xl border border-border bg-background/70 p-6">
+                <div className="text-sm font-semibold text-muted-foreground">Custom project range</div>
+                <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">$1.5k+</div>
+                <div className="mt-1 text-sm text-muted-foreground">AUD and scoped per job</div>
               </div>
             </Card>
           </div>
 
-          <div className="mt-6 text-center text-xs text-muted-foreground">
-            Premium custom builds and bigger rebuilds are scoped separately.
+          <div className="mt-8 text-center">
+            <Button size="lg" asChild className="shadow-sm">
+              <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
+                Message me about your project
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="border-y border-border bg-muted/30">
-        <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-          <SectionHeading eyebrow="FAQ" title="Quick answers" subtitle="If you’ve got more questions, just message me." />
+      <section id="faq" className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
+        <SectionHeading
+          eyebrow="FAQ"
+          title="Quick answers"
+          subtitle="Simple stuff, no smoke machine."
+        />
 
-          <div className="mx-auto max-w-3xl">
-            <Card className="premium-card rounded-2xl p-6 shadow-sm sm:p-8">
-              <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1">
-                  <AccordionTrigger className="text-left text-base font-semibold">
-                    Do you do domains?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
-                    Yes — domain registration and setup is optional and can be added after launch. I can guide you through it or handle it for you as an add-on.
-                  </AccordionContent>
-                </AccordionItem>
+        <div className="mx-auto max-w-3xl">
+          <Card className="premium-card rounded-3xl p-6 shadow-sm sm:p-8">
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-left text-base font-semibold">
+                  Do you still work on WordPress?
+                </AccordionTrigger>
+                <AccordionContent className="leading-relaxed text-muted-foreground">
+                  Yes — especially for fixes, upgrades, layout cleanup, booking flow improvements, and general front-end
+                  tidy-up work. For brand new premium builds, I prefer modern stacks where it makes sense.
+                </AccordionContent>
+              </AccordionItem>
 
-                <AccordionItem value="item-2">
-                  <AccordionTrigger className="text-left text-base font-semibold">
-                    Can you upgrade my existing website?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
-                    Yep. Send me the link and what’s bugging you (slow, messy on mobile, not getting enquiries, outdated copy).
-                    I’ll tell you quickly if it’s a quick upgrade or a rebuild.
-                  </AccordionContent>
-                </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-left text-base font-semibold">
+                  Are you mainly doing Shopify now too?
+                </AccordionTrigger>
+                <AccordionContent className="leading-relaxed text-muted-foreground">
+                  Yes. Shopify is absolutely part of the offer now, especially for product brands that want stronger
+                  presentation, cleaner product pages, and better mobile UX.
+                </AccordionContent>
+              </AccordionItem>
 
-                <AccordionItem value="item-3">
-                  <AccordionTrigger className="text-left text-base font-semibold">
-                    How fast is delivery?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
-                    Upgrades can be quick depending on scope. Fast Launch sites can also be very quick once I’ve got your basics (business name, services, logo/photos).
-                    Bigger rebuilds are scoped based on complexity.
-                  </AccordionContent>
-                </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="text-left text-base font-semibold">
+                  Can you help if I already have a website?
+                </AccordionTrigger>
+                <AccordionContent className="leading-relaxed text-muted-foreground">
+                  Yep. Send the link and tell me what feels off. I’ll tell you quickly whether it’s a straightforward
+                  fix, a worthwhile upgrade, or something better rebuilt properly.
+                </AccordionContent>
+              </AccordionItem>
 
-                <AccordionItem value="item-4">
-                  <AccordionTrigger className="text-left text-base font-semibold">
-                    What should I send you to start?
-                  </AccordionTrigger>
-                  <AccordionContent className="text-pretty text-muted-foreground leading-relaxed">
-                    Business name, services (dot points), location, and any links (FB/IG/current site).
-                    If you’re upgrading an existing site, send the link and what you want improved.
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </Card>
-          </div>
+              <AccordionItem value="item-4">
+                <AccordionTrigger className="text-left text-base font-semibold">
+                  What should I send you to start?
+                </AccordionTrigger>
+                <AccordionContent className="leading-relaxed text-muted-foreground">
+                  Business name, current site if you have one, a rough idea of what you need, your main goal, and any
+                  deadlines. That’s enough to start the conversation.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </Card>
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="border-t border-border bg-muted/30">
+      {/* CTA */}
+      <section className="border-t border-border bg-muted/30">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Want a website that actually brings enquiries?
+              Want your website to feel sharper, faster, and more premium?
             </h2>
-            <p className="mt-3 text-pretty text-lg text-muted-foreground">
-              Message me and I’ll tell you straight up what the best option is.
+
+            <p className="mt-4 text-pretty text-lg text-muted-foreground">
+              Send me the link or tell me what you want to build. I’ll tell you straight whether it’s a quick fix, a
+              Shopify job, or something worth building properly from scratch.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -733,7 +568,7 @@ export default function Home() {
             </div>
 
             <div className="mt-8 text-xs text-muted-foreground">
-              DB Websites • Built by Des • Cairns / FNQ
+              DB Websites • dbwebsites.au • Built by Des
             </div>
           </div>
         </div>
@@ -744,7 +579,9 @@ export default function Home() {
         <div className="container mx-auto px-6 py-10 lg:px-8">
           <div className="text-center">
             <p className="text-sm font-semibold text-foreground">© DB Websites — Built by Des</p>
-            <p className="mt-1 text-sm text-muted-foreground">Websites built properly</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Modern websites, Shopify stores, and sharp WordPress upgrades
+            </p>
           </div>
         </div>
       </footer>

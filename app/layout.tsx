@@ -4,15 +4,15 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const geist = Geist({ subsets: ["latin"] })
+const geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.dbwebsites.au"),
 
-  title: "DB Websites — Websites built properly",
+  title: "DB Websites — Modern websites, Shopify stores, and WordPress fixes",
   description:
-    "Clean, professional websites for small businesses in Cairns & FNQ. From fast launches to premium custom builds. No agency fluff, no drawn-out timelines.",
+    "High-performance websites, Shopify ecommerce builds, and WordPress upgrades for Australian businesses. Built to look sharper, work better, and convert more cleanly.",
   generator: "v0.app",
 
   verification: {
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "DB Websites — Websites built properly",
+    title: "DB Websites — Modern websites, Shopify stores, and WordPress fixes",
     description:
-      "Clean, professional websites for small businesses. New builds and site upgrades.",
+      "Modern websites, Shopify ecommerce builds, and selective WordPress upgrades for Australian businesses.",
     url: "https://www.dbwebsites.au",
     siteName: "DB Websites",
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "https://www.dbwebsites.au/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DB Websites — Small business websites",
+        alt: "DB Websites — Modern websites, Shopify stores, and WordPress fixes",
       },
     ],
     locale: "en_AU",
@@ -52,9 +52,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${geist.className} ${geistMono.variable}`}>
       <head>
-        {/* Tidio Website Enquiry Assistant */}
         <script
           src="//code.tidio.co/svuowosee2lpcoiumlepae66awnaymao.js"
           async
