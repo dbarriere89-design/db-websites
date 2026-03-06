@@ -33,7 +33,10 @@ export default function TripplePluggersPage() {
     <div className="min-h-screen bg-background">
       <header className="border-b border-border bg-background/80 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground">
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
+          >
             <img
               src="/web-app-manifest-512x512.png"
               alt="DB Websites logo"
@@ -52,7 +55,7 @@ export default function TripplePluggersPage() {
       </header>
 
       <main className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-6xl">
           <div className="mb-6 inline-flex rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground">
             Shopify ecommerce
           </div>
@@ -62,8 +65,12 @@ export default function TripplePluggersPage() {
           </h1>
 
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            A Shopify ecommerce project focused on stronger product presentation, cleaner purchase flow, and mobile-first
-            UX for an Australian product brand.
+            A Shopify ecommerce build focused on strong product presentation, cleaner purchase flow, and mobile-first UX
+            for an Australian product brand.
+          </p>
+
+          <p className="mt-3 text-sm text-muted-foreground">
+            Built and operated as a real Shopify store with live traffic, live orders, and live payments.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -79,8 +86,8 @@ export default function TripplePluggersPage() {
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
             <img
-              src="/work/tripple-pluggers-case-study.jpg"
-              alt="Tripple Pluggers homepage screenshot"
+              src="/work/tripple-pluggers/tp-hero.jpg"
+              alt="Tripple Pluggers Shopify storefront"
               className="w-full object-cover"
             />
           </div>
@@ -128,21 +135,61 @@ export default function TripplePluggersPage() {
             </Card>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
-              <img
-                src="/work/tripple-pluggers-case-study.jpg"
-                alt="Tripple Pluggers storefront screenshot"
-                className="w-full object-cover"
-              />
-            </div>
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold text-foreground">Storefront & buying experience</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              These screenshots show the actual product and purchase flow across desktop and mobile.
+            </p>
 
-            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
-              <img
-                src="/work/tripple-pluggers-case-study.jpg"
-                alt="Tripple Pluggers alternate screenshot"
-                className="w-full object-cover"
-              />
+            <div className="mt-6 grid gap-6 md:grid-cols-2">
+              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+                <img
+                  src="/work/tripple-pluggers/tp-product-desktop.jpg"
+                  alt="Tripple Pluggers desktop product page"
+                  className="w-full object-cover"
+                />
+              </div>
+
+              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+                <img
+                  src="/work/tripple-pluggers/tp-product-mobile.jpg"
+                  alt="Tripple Pluggers mobile product page"
+                  className="w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold text-foreground">Commercial proof</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              This is what separates the build from a concept — real analytics, real orders, and a live checkout flow.
+            </p>
+
+            <div className="mt-6 grid gap-6 md:grid-cols-3">
+              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+                <img
+                  src="/work/tripple-pluggers/tp-dashboard.jpg"
+                  alt="Tripple Pluggers Shopify analytics"
+                  className="w-full object-cover"
+                />
+              </div>
+
+              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+                <img
+                  src="/work/tripple-pluggers/tp-orders.jpg"
+                  alt="Tripple Pluggers Shopify orders"
+                  className="w-full object-cover"
+                />
+              </div>
+
+              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+                <img
+                  src="/work/tripple-pluggers/tp-checkout.jpg"
+                  alt="Tripple Pluggers checkout"
+                  className="w-full object-cover"
+                />
+              </div>
             </div>
           </div>
 
