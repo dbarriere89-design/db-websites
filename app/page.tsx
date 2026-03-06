@@ -78,7 +78,7 @@ type CaseStudy = {
   imageAlt: string
   stats?: string[]
   bullets: string[]
-  href?: string
+  href: string
 }
 
 const CASE_STUDIES: CaseStudy[] = [
@@ -96,6 +96,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "Mobile-first ecommerce presentation",
       "Real analytics and order proof from launch period",
     ],
+    href: "/work/tripple-pluggers",
   },
   {
     title: "FIFO Resume Mate",
@@ -110,6 +111,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "Digital product funnel thinking, not just brochure design",
       "Strong fit for service businesses and lead-gen pages",
     ],
+    href: "/work/fifo-resume-mate",
   },
   {
     title: "FNQ Lodge",
@@ -124,13 +126,13 @@ const CASE_STUDIES: CaseStudy[] = [
       "Better reservation path and cleaner UX",
       "Ideal proof for tourism, stays, and service sites",
     ],
+    href: "/work/fnq-lodge",
   },
 ]
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
           <Link
@@ -175,7 +177,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero */}
       <section className="relative overflow-hidden premium-ambient bg-[oklch(0.97_0.01_200)]">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.9),transparent_45%)]" />
@@ -248,7 +249,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Positioning strip */}
       <section className="border-y border-border bg-muted/30">
         <div className="container mx-auto px-6 py-12 lg:px-8">
           <div className="grid gap-6 text-center md:grid-cols-3">
@@ -274,7 +274,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Work */}
       <section id="work" className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
         <SectionHeading
           eyebrow="Featured work"
@@ -290,12 +289,14 @@ export default function Home() {
             >
               <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
                 <div className="border-b border-border lg:border-b-0 lg:border-r">
-                  <img
-                    src={item.image}
-                    alt={item.imageAlt}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
+                  <Link href={item.href} className="block">
+                    <img
+                      src={item.image}
+                      alt={item.imageAlt}
+                      className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.01]"
+                      loading="lazy"
+                    />
+                  </Link>
                 </div>
 
                 <div className="p-6 sm:p-8 lg:p-10">
@@ -330,6 +331,15 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
+
+                  <div className="mt-8">
+                    <Button asChild variant="outline">
+                      <Link href={item.href}>
+                        View case study
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </Card>
@@ -337,7 +347,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services */}
       <section id="services" className="border-y border-border bg-muted/30">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <SectionHeading
@@ -386,7 +395,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process */}
       <section className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
         <SectionHeading
           eyebrow="Process"
@@ -426,7 +434,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing */}
       <section className="border-y border-border bg-muted/30">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <SectionHeading
@@ -504,13 +511,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section id="faq" className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-        <SectionHeading
-          eyebrow="FAQ"
-          title="Quick answers"
-          subtitle="Simple stuff, no smoke machine."
-        />
+        <SectionHeading eyebrow="FAQ" title="Quick answers" subtitle="Simple stuff, no smoke machine." />
 
         <div className="mx-auto max-w-3xl">
           <Card className="premium-card rounded-3xl p-6 shadow-sm sm:p-8">
@@ -559,7 +561,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="border-t border-border bg-muted/30">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
@@ -595,7 +596,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-background">
         <div className="container mx-auto px-6 py-10 lg:px-8">
           <div className="text-center">
