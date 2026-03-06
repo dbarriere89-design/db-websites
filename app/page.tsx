@@ -87,7 +87,7 @@ const CASE_STUDIES: CaseStudy[] = [
     category: "Shopify ecommerce",
     summary:
       "Built and refined a Shopify store for an Australian product brand, with a focus on product presentation, mobile UX, conversion flow, and real-world sales proof.",
-    image: "/work/tripple-pluggers-case-study.jpg",
+    image: "/work/tripple-pluggers/tp-hero.jpg",
     imageAlt: "Tripple Pluggers Shopify case study screenshot",
     stats: ["925 visitors", "15 orders", "$645 revenue", "1.62% conversion"],
     bullets: [
