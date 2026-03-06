@@ -89,7 +89,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "Built and refined a Shopify store for an Australian product brand, with a focus on product presentation, mobile UX, conversion flow, and real-world sales proof.",
     image: "/work/tripple-pluggers-case-study.jpg",
     imageAlt: "Tripple Pluggers Shopify case study screenshot",
-    stats: ["925 sessions", "15 orders", "$645 sales", "1.62% conversion"],
+    stats: ["925 visitors", "15 orders", "$645 revenue", "1.62% conversion"],
     bullets: [
       "Shopify storefront setup and refinement",
       "Product page and variant UX improvements",
@@ -166,9 +166,9 @@ export default function Home() {
             </Link>
 
             <Button asChild className="shadow-sm">
-              <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                <MessageCircle className="mr-2 h-4 w-4" />
-                Message me
+              <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                <Mail className="mr-2 h-4 w-4" />
+                Start a project
               </Link>
             </Button>
           </nav>
@@ -189,7 +189,7 @@ export default function Home() {
             </div>
 
             <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              High-performance websites and ecommerce builds that actually move people.
+              High-performance websites built to drive enquiries and sales.
             </h1>
 
             <p className="mx-auto mt-6 max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
@@ -199,18 +199,28 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild className="shadow-sm">
-                <Link href="#work">
-                  View case studies
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                  <Mail className="mr-2 h-4 w-4" />
+                  Start a project
                 </Link>
               </Button>
 
               <Button size="lg" variant="outline" asChild>
                 <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
                   <MessageCircle className="mr-2 h-4 w-4" />
-                  Start a project
+                  Message me
                 </Link>
               </Button>
+            </div>
+
+            <div className="mt-5">
+              <Link
+                href="#work"
+                className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                View case studies
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
@@ -223,6 +233,16 @@ export default function Home() {
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1">
                 ✅ WordPress upgrades and fixes
               </span>
+            </div>
+
+            <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
+              <span>Built with Next.js</span>
+              <span className="opacity-40">•</span>
+              <span>Shopify</span>
+              <span className="opacity-40">•</span>
+              <span>WordPress</span>
+              <span className="opacity-40">•</span>
+              <span>Vercel</span>
             </div>
           </div>
         </div>
@@ -266,7 +286,7 @@ export default function Home() {
           {CASE_STUDIES.map((item) => (
             <Card
               key={item.title}
-              className="premium-card overflow-hidden rounded-3xl border border-border bg-card/70 p-0 shadow-sm"
+              className="premium-card overflow-hidden rounded-3xl border border-border bg-card/70 p-0 shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
             >
               <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
                 <div className="border-b border-border lg:border-b-0 lg:border-r">
@@ -475,8 +495,9 @@ export default function Home() {
 
           <div className="mt-8 text-center">
             <Button size="lg" asChild className="shadow-sm">
-              <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                Message me about your project
+              <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                <Mail className="mr-2 h-4 w-4" />
+                Start a project
               </Link>
             </Button>
           </div>
@@ -553,16 +574,16 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild className="shadow-sm">
-                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Message me
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                  <Mail className="mr-2 h-4 w-4" />
+                  Start a project
                 </Link>
               </Button>
 
               <Button size="lg" variant="outline" asChild>
-                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
-                  <Mail className="mr-2 h-4 w-4" />
-                  Email me
+                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Message me
                 </Link>
               </Button>
             </div>
