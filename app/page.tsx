@@ -289,15 +289,13 @@ export default function Home() {
             >
               <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
                 <div className="border-b border-border lg:border-b-0 lg:border-r">
-                  <Link href={item.href} className="block">
-                    <img
-                      src={item.image}
-                      alt={item.imageAlt}
-                      className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.01]"
-                      loading="lazy"
-                    />
-                  </Link>
-                </div>
+  <img
+    src={item.image}
+    alt={item.imageAlt}
+    className="h-full w-full object-cover"
+    loading="lazy"
+  />
+</div>
 
                 <div className="p-6 sm:p-8 lg:p-10">
                   <div className="mb-3 inline-flex rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground">
@@ -333,12 +331,9 @@ export default function Home() {
                   </div>
 
                   <div className="mt-8">
-                    <Button asChild variant="outline">
-                      <Link href={item.href}>
-                        View case study
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
+                    <Button variant="outline" disabled>
+  Case study coming soon
+</Button>
                   </div>
                 </div>
               </div>
