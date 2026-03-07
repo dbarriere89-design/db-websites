@@ -79,6 +79,7 @@ type CaseStudy = {
   stats?: string[]
   bullets: string[]
   href: string
+  cta: string
 }
 
 const CASE_STUDIES: CaseStudy[] = [
@@ -86,47 +87,50 @@ const CASE_STUDIES: CaseStudy[] = [
     title: "Tripple Pluggers",
     category: "Shopify ecommerce",
     summary:
-      "Built and refined a Shopify store for an Australian product brand, with a focus on product presentation, mobile UX, conversion flow, and real-world sales proof.",
+      "A real Shopify ecommerce project focused on stronger product presentation, clearer variant selection, mobile-first UX, and a cleaner path from product page to checkout.",
     image: "/work/tripple-pluggers/tp-hero.jpg",
     imageAlt: "Tripple Pluggers Shopify case study screenshot",
     stats: ["925 visitors", "15 orders", "$645 revenue", "1.62% conversion"],
     bullets: [
-      "Shopify storefront setup and refinement",
+      "Shopify storefront refinement",
       "Product page and variant UX improvements",
       "Mobile-first ecommerce presentation",
-      "Real analytics and order proof from launch period",
+      "Real traffic, orders, and revenue proof",
     ],
     href: "/work/tripple-pluggers",
+    cta: "View ecommerce case study",
   },
   {
     title: "FIFO Resume Mate",
     category: "Digital product funnel",
     summary:
-      "Structured a conversion-focused landing page for a paid digital service, including pricing psychology, clean CTA flow, and checkout-ready user journeys.",
+      "A conversion-focused landing page and digital product funnel designed to explain the offer fast, guide plan selection clearly, and move visitors cleanly into purchase.",
     image: "/work/fifo-resume-mate-case-study.jpg",
     imageAlt: "FIFO Resume Mate case study screenshot",
     bullets: [
-      "Landing page designed to convert traffic into buyers",
-      "Pricing section built to guide plan selection",
-      "Digital product funnel thinking, not just brochure design",
-      "Strong fit for service businesses and lead-gen pages",
+      "Offer clarity and hierarchy improvements",
+      "Pricing psychology and package guidance",
+      "Cleaner CTA flow into checkout",
+      "Built around conversion, not just appearance",
     ],
     href: "/work/fifo-resume-mate",
+    cta: "View funnel case study",
   },
   {
     title: "FNQ Lodge",
     category: "WordPress booking website",
     summary:
-      "Cleaned up and improved a booking-focused WordPress website with a stronger user journey, mobile usability, and a clearer path to reservation.",
+      "A booking-focused WordPress improvement project with a stronger reservation path, cleaner page structure, and before/after proof showing how a clunky accommodation site was sharpened up.",
     image: "/work/fnq-lodge-case-study.jpg",
     imageAlt: "FNQ Lodge booking website case study screenshot",
     bullets: [
-      "WordPress layout and booking flow improvements",
-      "Mobile-friendly accommodation experience",
-      "Better reservation path and cleaner UX",
-      "Ideal proof for tourism, stays, and service sites",
+      "Booking journey cleanup",
+      "WordPress layout and UX improvements",
+      "Better mobile presentation",
+      "Before/after proof for tourism and stays",
     ],
     href: "/work/fnq-lodge",
+    cta: "View before / after case study",
   },
 ]
 
@@ -277,25 +281,28 @@ export default function Home() {
       <section id="work" className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
         <SectionHeading
           eyebrow="Featured work"
-          title="Real projects, presented properly"
-          subtitle="Three different business models. Three different proof points. All aimed at trust, conversion, and cleaner digital experiences."
+          title="Case studies with actual proof"
+          subtitle="Different business models. Different platforms. Same goal: cleaner UX, stronger trust, and better conversion paths."
         />
 
-        <div className="space-y-8">
+        <div className="grid gap-8">
           {CASE_STUDIES.map((item) => (
             <Card
               key={item.title}
               className="premium-card overflow-hidden rounded-3xl border border-border bg-card/70 p-0 shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
             >
-              <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
-                <div className="border-b border-border lg:border-b-0 lg:border-r">
-  <img
-    src={item.image}
-    alt={item.imageAlt}
-    className="h-full w-full object-cover"
-    loading="lazy"
-  />
-</div>
+              <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+                <Link
+                  href={item.href}
+                  className="block border-b border-border lg:border-b-0 lg:border-r"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt}
+                    className="h-full min-h-[280px] w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                </Link>
 
                 <div className="p-6 sm:p-8 lg:p-10">
                   <div className="mb-3 inline-flex rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground">
@@ -330,10 +337,20 @@ export default function Home() {
                     ))}
                   </div>
 
-                  <div className="mt-8">
-                    <Button variant="outline" disabled>
-  Case study coming soon
-</Button>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Button asChild>
+                      <Link href={item.href}>
+                        {item.cta}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+
+                    <Button variant="outline" asChild>
+                      <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                        <Mail className="mr-2 h-4 w-4" />
+                        Start a similar project
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               </div>

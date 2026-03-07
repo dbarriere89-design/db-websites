@@ -33,7 +33,10 @@ export default function FIFOResumeMatePage() {
     <div className="min-h-screen bg-background">
       <header className="border-b border-border bg-background/80 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground">
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
+          >
             <img
               src="/web-app-manifest-512x512.png"
               alt="DB Websites logo"
@@ -62,32 +65,33 @@ export default function FIFOResumeMatePage() {
           </h1>
 
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            A conversion-focused digital product funnel designed to guide visitors clearly through the offer, pricing,
-            and purchase path.
+            A conversion-focused landing page and digital product funnel designed to explain the offer fast, guide plan
+            selection clearly, and move visitors cleanly into purchase.
           </p>
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
             <img
               src="/work/fifo-resume-mate-case-study.jpg"
-              alt="FIFO Resume Mate pricing screenshot"
+              alt="FIFO Resume Mate hero screenshot"
               className="w-full object-cover"
             />
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <Card className="rounded-3xl p-8 shadow-sm">
-              <h2 className="text-2xl font-semibold text-foreground">What the project needed</h2>
+              <h2 className="text-2xl font-semibold text-foreground">The challenge</h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                The page needed to explain the offer fast, build trust, and make it easy for visitors to choose the
-                right package without friction or confusion.
+                The page needed to sell a digital offer clearly and quickly. Visitors had to understand what the
+                product was, why it mattered, which package was right for them, and what to do next — without friction,
+                confusion, or too much waffle.
               </p>
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Clear offer explanation",
-                  "Better structure for fast decision-making",
-                  "Tiered pricing that guides package selection",
-                  "A cleaner path from landing to checkout",
+                  "Explain the offer fast",
+                  "Build trust without clutter",
+                  "Guide users toward the right package",
+                  "Create a cleaner path from landing to checkout",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
@@ -102,10 +106,10 @@ export default function FIFOResumeMatePage() {
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Landing page layout and hierarchy",
-                  "Pricing section structure and positioning",
-                  "Conversion-focused CTA flow",
-                  "Sharper sales messaging and offer presentation",
+                  "Landing page hierarchy and section flow",
+                  "Offer positioning and sales messaging",
+                  "Pricing table structure and plan guidance",
+                  "CTA placement and conversion path cleanup",
                   "A stronger digital product funnel overall",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
@@ -118,28 +122,69 @@ export default function FIFOResumeMatePage() {
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
-              <img
-                src="/work/fifo-resume-mate-case-study.jpg"
-                alt="FIFO Resume Mate pricing screenshot"
-                className="w-full object-cover"
-              />
-            </div>
+            <Card className="rounded-3xl p-8 shadow-sm">
+              <h2 className="text-2xl font-semibold text-foreground">What makes this valuable</h2>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                This case study shows more than visual design. It shows offer clarity, pricing psychology, and
+                conversion thinking. The page was built to help visitors choose and buy, not just scroll around and
+                admire the furniture.
+              </p>
 
-            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
-              <img
-                src="/work/fifo-resume-mate-case-study.jpg"
-                alt="FIFO Resume Mate alternate screenshot"
-                className="w-full object-cover"
-              />
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                That makes it especially relevant for lead-gen businesses, consultants, digital products, and service
+                offers that need clearer structure to convert traffic properly.
+              </p>
+            </Card>
+
+            <Card className="rounded-3xl p-8 shadow-sm">
+              <h2 className="text-2xl font-semibold text-foreground">Key outcomes</h2>
+              <div className="mt-6 space-y-3">
+                {[
+                  "Cleaner offer communication",
+                  "Better pricing-section guidance",
+                  "Stronger hierarchy and CTA flow",
+                  "A more decisive path toward purchase",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
+                    <span className="text-sm text-foreground">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold text-foreground">Landing page and funnel presentation</h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+              These screenshots represent the page structure and conversion flow built around the offer, pricing, and
+              checkout path.
+            </p>
+
+            <div className="mt-6 grid gap-6 md:grid-cols-2">
+              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+                <img
+                  src="/work/fifo-resume-mate-case-study.jpg"
+                  alt="FIFO Resume Mate landing page screenshot"
+                  className="w-full object-cover"
+                />
+              </div>
+
+              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+                <img
+                  src="/work/fifo-resume-mate-case-study.jpg"
+                  alt="FIFO Resume Mate pricing and funnel screenshot"
+                  className="w-full object-cover"
+                />
+              </div>
             </div>
           </div>
 
           <Card className="mt-12 rounded-3xl p-8 shadow-sm">
             <h2 className="text-2xl font-semibold text-foreground">Why it matters</h2>
             <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-              This project shows strong lead-gen and digital product thinking. It is proof that I can structure pages
-              around offers, pricing, and conversion rather than just making a site look nice.
+              This project shows strong digital product and lead-gen thinking. It proves I can structure pages around
+              offers, pricing, trust, and conversion — not just make something look polished and call it a day.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">

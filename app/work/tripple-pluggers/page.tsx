@@ -28,6 +28,8 @@ const EMAIL_BODY = encodeURIComponent(
   ].join("\n")
 )
 
+const stats = ["925 visitors", "15 orders", "$645 revenue", "1.62% conversion"]
+
 export default function TripplePluggersPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -65,16 +67,17 @@ export default function TripplePluggersPage() {
           </h1>
 
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            A Shopify ecommerce build focused on strong product presentation, cleaner purchase flow, and mobile-first UX
-            for an Australian product brand.
+            A real Shopify ecommerce build focused on product presentation, purchase flow, and mobile-first UX for an
+            Australian product brand.
           </p>
 
-          <p className="mt-3 text-sm text-muted-foreground">
-            Built and operated as a real Shopify store with live traffic, live orders, and live payments.
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+            This wasn’t just a mockup job. The store was built and operated as a real ecommerce project with live
+            traffic, live checkouts, and real sales data.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {["925 visitors", "15 orders", "$645 revenue", "1.62% conversion"].map((stat) => (
+            {stats.map((stat) => (
               <div
                 key={stat}
                 className="rounded-2xl border border-border bg-background/70 px-4 py-4 text-sm font-medium text-foreground"
@@ -94,18 +97,18 @@ export default function TripplePluggersPage() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <Card className="rounded-3xl p-8 shadow-sm">
-              <h2 className="text-2xl font-semibold text-foreground">What the project needed</h2>
+              <h2 className="text-2xl font-semibold text-foreground">The challenge</h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                The goal was to create a product-focused storefront that felt stronger visually, worked well on mobile,
-                and made it easier for visitors to move from browsing into buying.
+                The brand needed a stronger storefront experience that looked more credible, felt better on mobile, and
+                made it easier for shoppers to move from interest to purchase without getting bogged down by clunky UX.
               </p>
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Stronger storefront presentation",
-                  "Cleaner product and variant UX",
-                  "Better mobile-first layout decisions",
-                  "A more credible, conversion-friendly buying experience",
+                  "Make the storefront feel stronger and more polished",
+                  "Improve product and variant selection flow",
+                  "Support mobile-first shopping behaviour",
+                  "Build trust fast enough to earn early orders",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
@@ -120,11 +123,11 @@ export default function TripplePluggersPage() {
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Shopify storefront setup and refinement",
-                  "Homepage and product presentation improvements",
-                  "Variant and product-page UX cleanup",
+                  "Shopify storefront structure and refinement",
+                  "Homepage and collection presentation improvements",
+                  "Product-page and variant UX cleanup",
                   "Mobile usability improvements",
-                  "General conversion-focused polish",
+                  "Checkout-path and conversion-focused polish",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-warm))]" />
@@ -135,10 +138,45 @@ export default function TripplePluggersPage() {
             </Card>
           </div>
 
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            <Card className="rounded-3xl p-8 shadow-sm lg:col-span-2">
+              <h2 className="text-2xl font-semibold text-foreground">Why this case study is strong</h2>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                Plenty of people can make a Shopify store look decent in screenshots. What matters more is whether the
+                store holds together as a real buying experience. This one did. It had actual visitors, actual orders,
+                and real revenue, which makes it far stronger proof than a design-only portfolio piece.
+              </p>
+
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                It also shows range: product presentation, ecommerce UX, mobile thinking, and commercial awareness —
+                not just slapping products on a page and hoping for the best like some sort of brave little internet
+                possum.
+              </p>
+            </Card>
+
+            <Card className="rounded-3xl p-8 shadow-sm">
+              <h2 className="text-2xl font-semibold text-foreground">Key outcomes</h2>
+              <div className="mt-6 space-y-3">
+                {[
+                  "A cleaner and more credible storefront",
+                  "A clearer route from product page to checkout",
+                  "Better mobile browsing and buying flow",
+                  "Commercial proof, not just visual proof",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
+                    <span className="text-sm text-foreground">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
+
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold text-foreground">Storefront & buying experience</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              These screenshots show the actual product and purchase flow across desktop and mobile.
+            <h2 className="text-2xl font-semibold text-foreground">Storefront and product flow</h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+              These screenshots show the real store experience across desktop and mobile, including product-page layout,
+              presentation, and the buying journey.
             </p>
 
             <div className="mt-6 grid gap-6 md:grid-cols-2">
@@ -161,9 +199,10 @@ export default function TripplePluggersPage() {
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold text-foreground">Commercial proof</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              This is what separates the build from a concept — real analytics, real orders, and a live checkout flow.
+            <h2 className="text-2xl font-semibold text-foreground">Real commercial proof</h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+              This is the bit that matters. Live analytics, live orders, and a real checkout experience turn this from
+              a nice-looking build into genuine ecommerce proof.
             </p>
 
             <div className="mt-6 grid gap-6 md:grid-cols-3">
@@ -196,8 +235,8 @@ export default function TripplePluggersPage() {
           <Card className="mt-12 rounded-3xl p-8 shadow-sm">
             <h2 className="text-2xl font-semibold text-foreground">Why it matters</h2>
             <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-              This project is strong proof of ecommerce capability because it combines real storefront work with real
-              traffic, real orders, and real sales data. It shows more than visual design — it shows commercial thinking.
+              This project proves ecommerce capability with more than visuals. It shows real storefront thinking, real
+              UX work, real revenue proof, and the ability to make Shopify feel sharper and more conversion-ready.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
