@@ -289,19 +289,28 @@ export default function Home() {
           {CASE_STUDIES.map((item) => (
             <Card
               key={item.title}
-              className="premium-card overflow-hidden rounded-3xl border border-border bg-card/70 p-0 shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
+              className="group premium-card overflow-hidden rounded-3xl border border-border bg-card/70 p-0 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.12)]"
             >
               <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
                 <Link
                   href={item.href}
-                  className="block border-b border-border lg:border-b-0 lg:border-r"
+                  className="relative block overflow-hidden border-b border-border lg:border-b-0 lg:border-r"
                 >
                   <img
                     src={item.image}
                     alt={item.imageAlt}
-                    className="h-full min-h-[280px] w-full object-cover transition-transform duration-300 hover:scale-[1.02]"
+                    className="h-full min-h-[280px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                     loading="lazy"
                   />
+
+                  <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+
+                  <div className="pointer-events-none absolute bottom-4 left-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-sm">
+                      View case study
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </div>
+                  </div>
                 </Link>
 
                 <div className="p-6 sm:p-8 lg:p-10">
