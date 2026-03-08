@@ -143,79 +143,74 @@ export default function TripplePluggersPage() {
 
           </div>
 
-          <div className="mt-12">
+          <div className="mt-6 space-y-6">
 
-            <h2 className="text-2xl font-semibold text-foreground">
-              Storefront and product flow
-            </h2>
+  {/* Desktop product page */}
+  <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6">
+    <img
+      src="/work/tripple-pluggers/tp-product-desktop.jpg"
+      alt="Tripple Pluggers desktop product page"
+      className="w-full object-contain"
+    />
+  </div>
 
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              These screenshots show the real store experience across desktop and mobile,
-              including product page layout, presentation, and the buying journey.
-            </p>
+  {/* Mobile product screenshot */}
+  <div className="flex justify-center">
+    <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6 max-w-sm">
+      <img
+        src="/work/tripple-pluggers/tp-product-mobile.jpg"
+        alt="Tripple Pluggers mobile product page"
+        className="mx-auto max-h-[720px] object-contain"
+      />
+    </div>
+  </div>
 
-            <div className="mt-6 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
-
-              <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6">
-                <img
-                  src="/work/tripple-pluggers/tp-product-desktop.jpg"
-                  alt="Tripple Pluggers desktop product page"
-                  className="w-full object-contain"
-                />
-              </div>
-
-              <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6 flex items-center justify-center">
-                <img
-                  src="/work/tripple-pluggers/tp-product-mobile.jpg"
-                  alt="Tripple Pluggers mobile product page"
-                  className="max-h-[700px] object-contain"
-                />
-              </div>
-
-            </div>
-          </div>
+</div>
 
           <div className="mt-12">
+  <h2 className="text-2xl font-semibold text-foreground">
+    Real commercial proof
+  </h2>
 
-            <h2 className="text-2xl font-semibold text-foreground">
-              Real commercial proof
-            </h2>
+  <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+    Live analytics, real orders, and a functioning checkout experience
+    turn this from a nice-looking build into genuine ecommerce proof.
+  </p>
 
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              Live analytics, real orders, and a functioning checkout experience
-              turn this from a nice-looking build into genuine ecommerce proof.
-            </p>
+  {/* Top row: analytics + orders */}
+  <div className="mt-6 grid gap-6 lg:grid-cols-2">
 
-            <div className="mt-6 grid gap-6 md:grid-cols-3">
+    <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6">
+      <img
+        src="/work/tripple-pluggers/tp-dashboard.jpg"
+        alt="Shopify analytics dashboard"
+        className="w-full object-contain"
+      />
+    </div>
 
-              <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6">
-                <img
-                  src="/work/tripple-pluggers/tp-dashboard.jpg"
-                  alt="Shopify analytics dashboard"
-                  className="w-full object-contain"
-                />
-              </div>
+    <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6">
+      <img
+        src="/work/tripple-pluggers/tp-orders.jpg"
+        alt="Shopify orders list"
+        className="w-full object-contain"
+      />
+    </div>
 
-              <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6">
-                <img
-                  src="/work/tripple-pluggers/tp-orders.jpg"
-                  alt="Shopify orders list"
-                  className="w-full object-contain"
-                />
-              </div>
+  </div>
 
-              <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6 flex items-center justify-center">
-                <img
-                  src="/work/tripple-pluggers/tp-checkout.jpg"
-                  alt="Shopify checkout"
-                  className="max-h-[650px] object-contain"
-                />
-              </div>
+  {/* Bottom row: checkout */}
+  <div className="mt-6 flex justify-center">
 
-            </div>
+    <div className="w-full max-w-md overflow-hidden rounded-3xl border border-border bg-muted p-6">
+      <img
+        src="/work/tripple-pluggers/tp-checkout.jpg"
+        alt="Shopify checkout page"
+        className="mx-auto max-h-[720px] object-contain"
+      />
+    </div>
 
-          </div>
-
+  </div>
+</div>
           <Card className="mt-12 rounded-3xl p-8 shadow-sm">
 
             <h2 className="text-2xl font-semibold text-foreground">
