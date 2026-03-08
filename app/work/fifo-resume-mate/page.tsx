@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft, ArrowRight, Check, Mail, MessageCircle } from "lucide-react"
+import Lightbox from "@/components/lightbox"
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
 const EMAIL = "desbarriere.au@gmail.com"
@@ -74,8 +75,8 @@ export default function FIFOResumeMatePage() {
             selection clearly, and move visitors cleanly from landing page to checkout.
           </p>
 
-          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-            <img
+          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+            <Lightbox
               src={HERO_IMAGE}
               alt="FIFO Resume Mate landing page hero screenshot"
               className="w-full object-cover"
@@ -169,7 +170,7 @@ export default function FIFOResumeMatePage() {
 
             <div className="mt-6 grid gap-6 md:grid-cols-2">
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm flex items-center justify-center p-6">
-                <img
+                <Lightbox
                   src={PRICING_IMAGE}
                   alt="FIFO Resume Mate pricing section screenshot"
                   className="max-h-[600px] w-auto object-contain"
@@ -177,7 +178,7 @@ export default function FIFOResumeMatePage() {
               </div>
 
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm flex items-center justify-center p-6">
-                <img
+                <Lightbox
                   src={BUILDER_IMAGE}
                   alt="FIFO Resume Mate resume builder screenshot"
                   className="max-h-[600px] w-auto object-contain"
@@ -186,7 +187,7 @@ export default function FIFOResumeMatePage() {
             </div>
 
             <div className="mt-6 overflow-hidden rounded-3xl border border-border bg-card shadow-sm p-6 flex items-center justify-center">
-              <img
+              <Lightbox
                 src={CHECKOUT_IMAGE}
                 alt="FIFO Resume Mate Stripe checkout screenshot"
                 className="w-full object-contain"

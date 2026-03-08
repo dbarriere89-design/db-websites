@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft, ArrowRight, Check, Mail, MessageCircle } from "lucide-react"
+import Lightbox from "@/components/lightbox"
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
 const EMAIL = "desbarriere.au@gmail.com"
@@ -73,8 +74,8 @@ export default function FNQLodgePage() {
             reservation journey — with before and after proof to show the difference clearly.
           </p>
 
-          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-            <img
+          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+            <Lightbox
               src={HERO_IMAGE}
               alt="FNQ Lodge improved homepage screenshot"
               className="w-full object-cover"
@@ -139,11 +140,13 @@ export default function FNQLodgePage() {
                     Clunkier presentation, weaker visual hierarchy, and a less obvious reservation path.
                   </p>
                 </div>
-                <img
-                  src={BEFORE_IMAGE}
-                  alt="FNQ Lodge before redesign screenshot"
-                  className="w-full object-cover"
-                />
+                <div className="p-6">
+                  <Lightbox
+                    src={BEFORE_IMAGE}
+                    alt="FNQ Lodge before redesign screenshot"
+                    className="w-full object-cover"
+                  />
+                </div>
               </Card>
 
               <Card className="overflow-hidden rounded-3xl p-0 shadow-sm">
@@ -153,11 +156,13 @@ export default function FNQLodgePage() {
                     Cleaner structure, stronger accommodation presentation, and a clearer path into booking.
                   </p>
                 </div>
-                <img
-                  src={AFTER_IMAGE}
-                  alt="FNQ Lodge after redesign screenshot"
-                  className="w-full object-cover"
-                />
+                <div className="p-6">
+                  <Lightbox
+                    src={AFTER_IMAGE}
+                    alt="FNQ Lodge after redesign screenshot"
+                    className="w-full object-cover"
+                  />
+                </div>
               </Card>
             </div>
           </div>
