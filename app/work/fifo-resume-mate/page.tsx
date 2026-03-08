@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowLeft, ArrowRight, Check, Mail, MessageCircle } from "lucide-react"
+import BrowserFrame from "@/components/browser-frame"
 import Lightbox from "@/components/lightbox"
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
@@ -75,12 +76,14 @@ export default function FIFOResumeMatePage() {
             selection clearly, and move visitors cleanly from landing page to checkout.
           </p>
 
-          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
-            <Lightbox
-              src={HERO_IMAGE}
-              alt="FIFO Resume Mate landing page hero screenshot"
-              className="w-full object-cover"
-            />
+          <div className="mt-10">
+            <BrowserFrame>
+              <img
+                src={HERO_IMAGE}
+                alt="FIFO Resume Mate landing page hero screenshot"
+                className="w-full object-cover"
+              />
+            </BrowserFrame>
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -169,29 +172,31 @@ export default function FIFOResumeMatePage() {
             </p>
 
             <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm flex items-center justify-center p-6">
+              <BrowserFrame>
                 <Lightbox
                   src={PRICING_IMAGE}
                   alt="FIFO Resume Mate pricing section screenshot"
-                  className="max-h-[600px] w-auto object-contain"
+                  className="mx-auto max-h-[600px] w-auto object-contain"
                 />
-              </div>
+              </BrowserFrame>
 
-              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm flex items-center justify-center p-6">
-                <Lightbox
+              <BrowserFrame>
+                <img
                   src={BUILDER_IMAGE}
                   alt="FIFO Resume Mate resume builder screenshot"
-                  className="max-h-[600px] w-auto object-contain"
+                  className="mx-auto max-h-[600px] w-auto object-contain"
                 />
-              </div>
+              </BrowserFrame>
             </div>
 
-            <div className="mt-6 overflow-hidden rounded-3xl border border-border bg-card shadow-sm p-6 flex items-center justify-center">
-              <Lightbox
-                src={CHECKOUT_IMAGE}
-                alt="FIFO Resume Mate Stripe checkout screenshot"
-                className="w-full object-contain"
-              />
+            <div className="mt-6">
+              <BrowserFrame>
+                <img
+                  src={CHECKOUT_IMAGE}
+                  alt="FIFO Resume Mate Stripe checkout screenshot"
+                  className="w-full object-contain"
+                />
+              </BrowserFrame>
             </div>
           </div>
 
