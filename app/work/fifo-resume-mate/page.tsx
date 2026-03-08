@@ -167,20 +167,19 @@ export default function FIFOResumeMatePage() {
               builder, and the checkout experience.
             </p>
 
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
-                <img
-                  src={PRICING_IMAGE}
-                  alt="FIFO Resume Mate pricing section screenshot"
-                  className="w-full object-cover"
-                />
-              </div>
+            <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm flex items-center justify-center p-6">
+  <img
+    src={PRICING_IMAGE}
+    alt="FIFO Resume Mate pricing"
+    className="max-h-[600px] w-auto object-contain"
+  />
+</div>
 
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
                 <img
                   src={BUILDER_IMAGE}
                   alt="FIFO Resume Mate resume builder screenshot"
-                  className="w-full object-cover"
+                  className="max-h-[600px] w-auto object-contain"
                 />
               </div>
             </div>

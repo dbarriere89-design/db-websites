@@ -30,13 +30,6 @@ const EMAIL_BODY = encodeURIComponent(
 
 const stats = ["925 visitors", "15 orders", "$645 revenue", "1.62% conversion"]
 
-const HERO_IMAGE = "/work/tripple-pluggers/tp-hero.jpg"
-const PRODUCT_DESKTOP_IMAGE = "/work/tripple-pluggers/tp-product-desktop.jpg"
-const PRODUCT_MOBILE_IMAGE = "/work/tripple-pluggers/tp-product-mobile.jpg"
-const DASHBOARD_IMAGE = "/work/tripple-pluggers/tp-dashboard.jpg"
-const ORDERS_IMAGE = "/work/tripple-pluggers/tp-orders.jpg"
-const CHECKOUT_IMAGE = "/work/tripple-pluggers/tp-checkout.jpg"
-
 export default function TripplePluggersPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -65,6 +58,7 @@ export default function TripplePluggersPage() {
 
       <main className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-6xl">
+
           <div className="mb-6 inline-flex rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground">
             Shopify ecommerce
           </div>
@@ -74,13 +68,13 @@ export default function TripplePluggersPage() {
           </h1>
 
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            A real Shopify ecommerce build focused on product presentation, purchase flow, and mobile-first UX for an
-            Australian product brand.
+            A real Shopify ecommerce build focused on product presentation,
+            purchase flow, and mobile-first UX for an Australian product brand.
           </p>
 
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            This wasn’t just a mockup job. The store was built and operated as a real ecommerce project with live
-            traffic, live checkouts, and real sales data.
+            This wasn’t just a mockup job. The store was built and operated as a real
+            ecommerce project with live traffic, live checkouts, and real sales data.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -96,18 +90,21 @@ export default function TripplePluggersPage() {
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
             <img
-              src={HERO_IMAGE}
+              src="/work/tripple-pluggers/tp-hero.jpg"
               alt="Tripple Pluggers Shopify storefront"
               className="w-full object-cover"
             />
           </div>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+
             <Card className="rounded-3xl p-8 shadow-sm">
               <h2 className="text-2xl font-semibold text-foreground">The challenge</h2>
+
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                The brand needed a stronger storefront experience that looked more credible, felt better on mobile, and
-                made it easier for shoppers to move from interest to purchase without getting bogged down by clunky UX.
+                The brand needed a stronger storefront experience that looked more
+                credible, felt better on mobile, and made it easier for shoppers to
+                move from interest to purchase without getting bogged down by clunky UX.
               </p>
 
               <div className="mt-6 space-y-3">
@@ -143,110 +140,96 @@ export default function TripplePluggersPage() {
                 ))}
               </div>
             </Card>
-          </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            <Card className="rounded-3xl p-8 shadow-sm lg:col-span-2">
-              <h2 className="text-2xl font-semibold text-foreground">Why this case study is strong</h2>
-              <p className="mt-4 leading-relaxed text-muted-foreground">
-                Plenty of people can make a Shopify store look decent in screenshots. What matters more is whether the
-                store holds together as a real buying experience. This one did. It had actual visitors, actual orders,
-                and real revenue, which makes it far stronger proof than a design-only portfolio piece.
-              </p>
-
-              <p className="mt-4 leading-relaxed text-muted-foreground">
-                It also shows range: product presentation, ecommerce UX, mobile thinking, and commercial awareness —
-                not just slapping products on a page and hoping for the best like some sort of brave little internet
-                possum.
-              </p>
-            </Card>
-
-            <Card className="rounded-3xl p-8 shadow-sm">
-              <h2 className="text-2xl font-semibold text-foreground">Key outcomes</h2>
-              <div className="mt-6 space-y-3">
-                {[
-                  "A cleaner and more credible storefront",
-                  "A clearer route from product page to checkout",
-                  "Better mobile browsing and buying flow",
-                  "Commercial proof, not just visual proof",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                    <span className="text-sm text-foreground">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </Card>
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold text-foreground">Storefront and product flow</h2>
+
+            <h2 className="text-2xl font-semibold text-foreground">
+              Storefront and product flow
+            </h2>
+
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              These screenshots show the real store experience across desktop and mobile, including product-page layout,
-              presentation, and the buying journey.
+              These screenshots show the real store experience across desktop and mobile,
+              including product page layout, presentation, and the buying journey.
             </p>
 
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+            <div className="mt-6 grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
+
+              <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6">
                 <img
-                  src={PRODUCT_DESKTOP_IMAGE}
+                  src="/work/tripple-pluggers/tp-product-desktop.jpg"
                   alt="Tripple Pluggers desktop product page"
-                  className="w-full object-cover"
+                  className="w-full object-contain"
                 />
               </div>
 
-              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+              <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6 flex items-center justify-center">
                 <img
-                  src={PRODUCT_MOBILE_IMAGE}
+                  src="/work/tripple-pluggers/tp-product-mobile.jpg"
                   alt="Tripple Pluggers mobile product page"
-                  className="w-full object-cover"
+                  className="max-h-[700px] object-contain"
                 />
               </div>
+
             </div>
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold text-foreground">Real commercial proof</h2>
+
+            <h2 className="text-2xl font-semibold text-foreground">
+              Real commercial proof
+            </h2>
+
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              This is the bit that matters. Live analytics, live orders, and a real checkout experience turn this from
-              a nice-looking build into genuine ecommerce proof.
+              Live analytics, real orders, and a functioning checkout experience
+              turn this from a nice-looking build into genuine ecommerce proof.
             </p>
 
             <div className="mt-6 grid gap-6 md:grid-cols-3">
-              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+
+              <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6">
                 <img
-                  src={DASHBOARD_IMAGE}
-                  alt="Tripple Pluggers Shopify analytics"
-                  className="w-full object-cover"
+                  src="/work/tripple-pluggers/tp-dashboard.jpg"
+                  alt="Shopify analytics dashboard"
+                  className="w-full object-contain"
                 />
               </div>
 
-              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+              <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6">
                 <img
-                  src={ORDERS_IMAGE}
-                  alt="Tripple Pluggers Shopify orders"
-                  className="w-full object-cover"
+                  src="/work/tripple-pluggers/tp-orders.jpg"
+                  alt="Shopify orders list"
+                  className="w-full object-contain"
                 />
               </div>
 
-              <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+              <div className="overflow-hidden rounded-3xl border border-border bg-muted p-6 flex items-center justify-center">
                 <img
-                  src={CHECKOUT_IMAGE}
-                  alt="Tripple Pluggers checkout"
-                  className="w-full object-cover"
+                  src="/work/tripple-pluggers/tp-checkout.jpg"
+                  alt="Shopify checkout"
+                  className="max-h-[650px] object-contain"
                 />
               </div>
+
             </div>
+
           </div>
 
           <Card className="mt-12 rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-semibold text-foreground">Why it matters</h2>
+
+            <h2 className="text-2xl font-semibold text-foreground">
+              Why it matters
+            </h2>
+
             <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-              This project proves ecommerce capability with more than visuals. It shows real storefront thinking, real
-              UX work, real revenue proof, and the ability to make Shopify feel sharper and more conversion-ready.
+              This project proves ecommerce capability with more than visuals.
+              It shows real storefront thinking, real UX work, real revenue proof,
+              and the ability to make Shopify feel sharper and more conversion-ready.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+
               <Button asChild>
                 <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                   <Mail className="mr-2 h-4 w-4" />
@@ -267,8 +250,11 @@ export default function TripplePluggersPage() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
+
             </div>
+
           </Card>
+
         </div>
       </main>
     </div>
