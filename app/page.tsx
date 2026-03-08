@@ -252,6 +252,47 @@ export default function Home() {
           </div>
         </div>
       </section>
+<section className="border-y border-border bg-background">
+  <div className="container mx-auto px-6 py-10 lg:px-8">
+    <div className="grid gap-6 text-center md:grid-cols-3">
+      <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
+        <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Ecommerce proof
+        </div>
+        <div className="mt-2 text-xl font-bold text-foreground">
+          925 visitors · 15 orders · $645 revenue
+        </div>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Real Shopify store performance from the Tripple Pluggers case study.
+        </p>
+      </div>
+
+      <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
+        <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Funnel conversion
+        </div>
+        <div className="mt-2 text-xl font-bold text-foreground">
+          Clear digital product funnel
+        </div>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Landing page, pricing logic, builder UX, and Stripe checkout flow.
+        </p>
+      </div>
+
+      <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
+        <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          Booking UX improvement
+        </div>
+        <div className="mt-2 text-xl font-bold text-foreground">
+          WordPress accommodation upgrade
+        </div>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Cleaner booking flow and stronger presentation for FNQ Lodge.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="border-y border-border bg-muted/30">
         <div className="container mx-auto px-6 py-12 lg:px-8">
