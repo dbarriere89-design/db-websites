@@ -105,7 +105,7 @@ const CASE_STUDIES: CaseStudy[] = [
     category: "Digital product funnel",
     summary:
       "A conversion-focused landing page and digital product funnel designed to explain the offer fast, guide plan selection clearly, and move visitors cleanly into purchase.",
-    image: "/work/fifo-resume-mate-case-study.jpg",
+    image: "/work/fifo-resume-mate-hero.jpg",
     imageAlt: "FIFO Resume Mate case study screenshot",
     bullets: [
       "Offer clarity and hierarchy improvements",
@@ -121,7 +121,7 @@ const CASE_STUDIES: CaseStudy[] = [
     category: "WordPress booking website",
     summary:
       "A booking-focused WordPress improvement project with a stronger reservation path, cleaner page structure, and before/after proof showing how a clunky accommodation site was sharpened up.",
-    image: "/work/fnq-lodge-case-study.jpg",
+    image: "/work/fnq-lodge/hero.jpg",
     imageAlt: "FNQ Lodge booking website case study screenshot",
     bullets: [
       "Booking journey cleanup",
