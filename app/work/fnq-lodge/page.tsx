@@ -28,6 +28,10 @@ const EMAIL_BODY = encodeURIComponent(
   ].join("\n")
 )
 
+const HERO_IMAGE = "/work/fnq-lodge/hero.jpg"
+const BEFORE_IMAGE = "/work/fnq-lodge/before.jpg"
+const AFTER_IMAGE = "/work/fnq-lodge/after.jpg"
+
 export default function FNQLodgePage() {
   return (
     <div className="min-h-screen bg-background">
@@ -71,8 +75,8 @@ export default function FNQLodgePage() {
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
             <img
-              src="/work/fnq-lodge-case-study.jpg"
-              alt="FNQ Lodge hero screenshot"
+              src={HERO_IMAGE}
+              alt="FNQ Lodge improved homepage screenshot"
               className="w-full object-cover"
             />
           </div>
@@ -136,8 +140,8 @@ export default function FNQLodgePage() {
                   </p>
                 </div>
                 <img
-                  src="/work/fnq-lodge-case-study.jpg"
-                  alt="FNQ Lodge before screenshot"
+                  src={BEFORE_IMAGE}
+                  alt="FNQ Lodge before redesign screenshot"
                   className="w-full object-cover"
                 />
               </Card>
@@ -150,8 +154,8 @@ export default function FNQLodgePage() {
                   </p>
                 </div>
                 <img
-                  src="/work/fnq-lodge-case-study.jpg"
-                  alt="FNQ Lodge after screenshot"
+                  src={AFTER_IMAGE}
+                  alt="FNQ Lodge after redesign screenshot"
                   className="w-full object-cover"
                 />
               </Card>

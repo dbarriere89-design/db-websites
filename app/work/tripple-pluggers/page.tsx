@@ -30,6 +30,13 @@ const EMAIL_BODY = encodeURIComponent(
 
 const stats = ["925 visitors", "15 orders", "$645 revenue", "1.62% conversion"]
 
+const HERO_IMAGE = "/work/tripple-pluggers/tp-hero.jpg"
+const PRODUCT_DESKTOP_IMAGE = "/work/tripple-pluggers/tp-product-desktop.jpg"
+const PRODUCT_MOBILE_IMAGE = "/work/tripple-pluggers/tp-product-mobile.jpg"
+const DASHBOARD_IMAGE = "/work/tripple-pluggers/tp-dashboard.jpg"
+const ORDERS_IMAGE = "/work/tripple-pluggers/tp-orders.jpg"
+const CHECKOUT_IMAGE = "/work/tripple-pluggers/tp-checkout.jpg"
+
 export default function TripplePluggersPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -89,7 +96,7 @@ export default function TripplePluggersPage() {
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
             <img
-              src="/work/tripple-pluggers/tp-hero.jpg"
+              src={HERO_IMAGE}
               alt="Tripple Pluggers Shopify storefront"
               className="w-full object-cover"
             />
@@ -182,7 +189,7 @@ export default function TripplePluggersPage() {
             <div className="mt-6 grid gap-6 md:grid-cols-2">
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
                 <img
-                  src="/work/tripple-pluggers/tp-product-desktop.jpg"
+                  src={PRODUCT_DESKTOP_IMAGE}
                   alt="Tripple Pluggers desktop product page"
                   className="w-full object-cover"
                 />
@@ -190,7 +197,7 @@ export default function TripplePluggersPage() {
 
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
                 <img
-                  src="/work/tripple-pluggers/tp-product-mobile.jpg"
+                  src={PRODUCT_MOBILE_IMAGE}
                   alt="Tripple Pluggers mobile product page"
                   className="w-full object-cover"
                 />
@@ -208,7 +215,7 @@ export default function TripplePluggersPage() {
             <div className="mt-6 grid gap-6 md:grid-cols-3">
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
                 <img
-                  src="/work/tripple-pluggers/tp-dashboard.jpg"
+                  src={DASHBOARD_IMAGE}
                   alt="Tripple Pluggers Shopify analytics"
                   className="w-full object-cover"
                 />
@@ -216,7 +223,7 @@ export default function TripplePluggersPage() {
 
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
                 <img
-                  src="/work/tripple-pluggers/tp-orders.jpg"
+                  src={ORDERS_IMAGE}
                   alt="Tripple Pluggers Shopify orders"
                   className="w-full object-cover"
                 />
@@ -224,7 +231,7 @@ export default function TripplePluggersPage() {
 
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
                 <img
-                  src="/work/tripple-pluggers/tp-checkout.jpg"
+                  src={CHECKOUT_IMAGE}
                   alt="Tripple Pluggers checkout"
                   className="w-full object-cover"
                 />

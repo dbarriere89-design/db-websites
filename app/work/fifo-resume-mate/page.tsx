@@ -28,6 +28,11 @@ const EMAIL_BODY = encodeURIComponent(
   ].join("\n")
 )
 
+const HERO_IMAGE = "/work/fifo-resume-mate-hero.jpg"
+const PRICING_IMAGE = "/work/fifo-resume-mate-pricing.jpg"
+const BUILDER_IMAGE = "/work/fifo-resume-mate-builder.jpg"
+const CHECKOUT_IMAGE = "/work/fifo-resume-mate-checkout.jpg"
+
 export default function FIFOResumeMatePage() {
   return (
     <div className="min-h-screen bg-background">
@@ -55,7 +60,7 @@ export default function FIFOResumeMatePage() {
       </header>
 
       <main className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-6xl">
           <div className="mb-6 inline-flex rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground">
             Digital product funnel
           </div>
@@ -66,13 +71,13 @@ export default function FIFOResumeMatePage() {
 
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
             A conversion-focused landing page and digital product funnel designed to explain the offer fast, guide plan
-            selection clearly, and move visitors cleanly into purchase.
+            selection clearly, and move visitors cleanly from landing page to checkout.
           </p>
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
             <img
-              src="/work/fifo-resume-mate-case-study.jpg"
-              alt="FIFO Resume Mate hero screenshot"
+              src={HERO_IMAGE}
+              alt="FIFO Resume Mate landing page hero screenshot"
               className="w-full object-cover"
             />
           </div>
@@ -109,6 +114,7 @@ export default function FIFOResumeMatePage() {
                   "Landing page hierarchy and section flow",
                   "Offer positioning and sales messaging",
                   "Pricing table structure and plan guidance",
+                  "Input-builder experience and UX flow",
                   "CTA placement and conversion path cleanup",
                   "A stronger digital product funnel overall",
                 ].map((item) => (
@@ -125,9 +131,9 @@ export default function FIFOResumeMatePage() {
             <Card className="rounded-3xl p-8 shadow-sm">
               <h2 className="text-2xl font-semibold text-foreground">What makes this valuable</h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                This case study shows more than visual design. It shows offer clarity, pricing psychology, and
-                conversion thinking. The page was built to help visitors choose and buy, not just scroll around and
-                admire the furniture.
+                This case study shows more than visual design. It shows offer clarity, pricing psychology, user flow,
+                and conversion thinking. The page was built to help visitors understand the offer, choose a plan,
+                complete their inputs, and move into payment.
               </p>
 
               <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -143,7 +149,7 @@ export default function FIFOResumeMatePage() {
                   "Cleaner offer communication",
                   "Better pricing-section guidance",
                   "Stronger hierarchy and CTA flow",
-                  "A more decisive path toward purchase",
+                  "A smoother path from intent to payment",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
@@ -157,26 +163,34 @@ export default function FIFOResumeMatePage() {
           <div className="mt-12">
             <h2 className="text-2xl font-semibold text-foreground">Landing page and funnel presentation</h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              These screenshots represent the page structure and conversion flow built around the offer, pricing, and
-              checkout path.
+              These screenshots show the funnel more properly: the landing page, the pricing decision step, the document
+              builder, and the checkout experience.
             </p>
 
             <div className="mt-6 grid gap-6 md:grid-cols-2">
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
                 <img
-                  src="/work/fifo-resume-mate-case-study.jpg"
-                  alt="FIFO Resume Mate landing page screenshot"
+                  src={PRICING_IMAGE}
+                  alt="FIFO Resume Mate pricing section screenshot"
                   className="w-full object-cover"
                 />
               </div>
 
               <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
                 <img
-                  src="/work/fifo-resume-mate-case-study.jpg"
-                  alt="FIFO Resume Mate pricing and funnel screenshot"
+                  src={BUILDER_IMAGE}
+                  alt="FIFO Resume Mate resume builder screenshot"
                   className="w-full object-cover"
                 />
               </div>
+            </div>
+
+            <div className="mt-6 overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+              <img
+                src={CHECKOUT_IMAGE}
+                alt="FIFO Resume Mate Stripe checkout screenshot"
+                className="w-full object-cover"
+              />
             </div>
           </div>
 
@@ -184,7 +198,8 @@ export default function FIFOResumeMatePage() {
             <h2 className="text-2xl font-semibold text-foreground">Why it matters</h2>
             <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
               This project shows strong digital product and lead-gen thinking. It proves I can structure pages around
-              offers, pricing, trust, and conversion — not just make something look polished and call it a day.
+              offers, pricing, trust, user inputs, and conversion — not just make something look polished and call it a
+              day.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
