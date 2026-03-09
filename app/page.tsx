@@ -21,6 +21,7 @@ import {
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
 const EMAIL = "desbarriere.au@gmail.com"
+const UPWORK_URL = "https://www.upwork.com"
 
 const EMAIL_SUBJECT = encodeURIComponent("Project enquiry (DB Websites)")
 const EMAIL_BODY = encodeURIComponent(
@@ -90,7 +91,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "A real Shopify ecommerce project focused on stronger product presentation, clearer variant selection, mobile-first UX, and a cleaner path from product page to checkout.",
     image: "/work/tripple-pluggers/tp-hero.jpg",
     imageAlt: "Tripple Pluggers Shopify case study screenshot",
-    stats: ["925 visitors", "15 orders", "$645 revenue", "1.62% conversion"],
+    stats: ["15 orders", "$645 revenue", "Live store", "Real checkout flow"],
     bullets: [
       "Shopify storefront refinement",
       "Product page and variant UX improvements",
@@ -252,49 +253,43 @@ export default function Home() {
           </div>
         </div>
       </section>
-<section className="border-y border-border bg-background">
-  <div className="container mx-auto px-6 py-10 lg:px-8">
-    <div className="grid gap-6 text-center md:grid-cols-3">
 
-      <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
-        <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Shopify ecommerce
-        </div>
-        <div className="mt-2 text-xl font-bold text-foreground">
-          Real store performance
-        </div>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Live Shopify project showing real visitors, orders, and revenue.
-        </p>
-      </div>
+      <section className="border-y border-border bg-background">
+        <div className="container mx-auto px-6 py-14 lg:px-8">
+          <div className="grid gap-6 text-center md:grid-cols-3">
+            <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Shopify ecommerce
+              </div>
+              <div className="mt-2 text-xl font-bold text-foreground">Real store performance</div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Live Shopify project showing real orders, revenue, and a functioning checkout flow.
+              </p>
+            </div>
 
-      <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
-        <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Digital product funnel
-        </div>
-        <div className="mt-2 text-xl font-bold text-foreground">
-          Landing → pricing → checkout
-        </div>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Conversion-focused funnel with pricing structure and Stripe checkout.
-        </p>
-      </div>
+            <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Digital product funnel
+              </div>
+              <div className="mt-2 text-xl font-bold text-foreground">Landing → pricing → checkout</div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Conversion-focused funnel with pricing structure, builder UX, and Stripe checkout.
+              </p>
+            </div>
 
-      <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
-        <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          WordPress upgrade
+            <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                WordPress upgrade
+              </div>
+              <div className="mt-2 text-xl font-bold text-foreground">Before / after UX improvement</div>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Accommodation website improved with a clearer booking flow and stronger presentation.
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="mt-2 text-xl font-bold text-foreground">
-          Before / after UX improvement
-        </div>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Accommodation website improved with a clearer booking flow.
-        </p>
-      </div>
+      </section>
 
-    </div>
-  </div>
-</section>
       <section className="border-y border-border bg-muted/30">
         <div className="container mx-auto px-6 py-12 lg:px-8">
           <div className="grid gap-6 text-center md:grid-cols-3">
@@ -347,7 +342,7 @@ export default function Home() {
 
                   <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
 
-                  <div className="pointer-events-none absolute bottom-4 left-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="pointer-events-none absolute bottom-4 left-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
                     <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-sm">
                       View case study
                       <ArrowRight className="h-3.5 w-3.5" />
@@ -660,29 +655,28 @@ export default function Home() {
       </section>
 
       <footer className="bg-background">
-  <div className="container mx-auto px-6 py-10 lg:px-8">
-    <div className="text-center">
+        <div className="container mx-auto px-6 py-10 lg:px-8">
+          <div className="text-center">
+            <p className="text-sm font-semibold text-foreground">© DB Websites — Built by Des</p>
 
-      <p className="text-sm font-semibold text-foreground">
-        © DB Websites — Built by Des
-      </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Modern websites, Shopify stores, and sharp WordPress upgrades
+            </p>
 
-      <p className="mt-1 text-sm text-muted-foreground">
-        Modern websites, Shopify stores, and sharp WordPress upgrades
-      </p>
-
-      <p className="mt-3 text-sm text-muted-foreground">
-        Freelance projects also available on{" "}
-        <a
-          href="https://www.upwork.com/freelancers/~01bf146bd0e95935ec"
-          target="_blank"
-          rel="noreferrer"
-          className="underline hover:text-foreground"
-        >
-          Upwork
-        </a>
-      </p>
-
+            <p className="mt-3 text-sm text-muted-foreground">
+              Freelance projects also available on{" "}
+              <a
+                href={https://www.upwork.com/freelancers/~01bf146bd0e95935ec}
+                target="_blank"
+                rel="noreferrer"
+                className="underline hover:text-foreground"
+              >
+                Upwork
+              </a>
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
-  </div>
-</footer>
+  )
+}
