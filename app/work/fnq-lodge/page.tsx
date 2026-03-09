@@ -32,6 +32,8 @@ const EMAIL_BODY = encodeURIComponent(
 const HERO_IMAGE = "/work/fnq-lodge/hero.jpg"
 const BEFORE_IMAGE = "/work/fnq-lodge/before.jpg"
 const AFTER_IMAGE = "/work/fnq-lodge/after.jpg"
+const BOOKING_MOBILE_IMAGE = "/work/fnq-lodge/booking-mobile.jpg"
+const CHECKOUT_DESKTOP_IMAGE = "/work/fnq-lodge/checkout-desktop.jpg"
 
 export default function FNQLodgePage() {
   return (
@@ -112,6 +114,7 @@ export default function FNQLodgePage() {
                 {[
                   "WordPress layout and front-end cleanup",
                   "Booking-page and CTA improvements",
+                  "Booking and checkout flow improvements",
                   "Mobile presentation and usability work",
                   "Sharper structure for a tourism/stay audience",
                   "General polish to make the property feel more credible",
@@ -167,6 +170,48 @@ export default function FNQLodgePage() {
             </div>
           </div>
 
+          <div className="mt-12">
+            <h2 className="text-2xl font-semibold text-foreground">Booking & checkout flow</h2>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+              Improving the reservation experience was a key part of the project. The booking interface and checkout flow
+              were cleaned up to make the process clearer, more trustworthy, and easier to use across desktop and mobile.
+            </p>
+
+            <div className="mt-6 grid gap-6 lg:grid-cols-[0.7fr_1.3fr]">
+              <Card className="overflow-hidden rounded-3xl p-0 shadow-sm">
+                <div className="border-b border-border px-6 py-4">
+                  <div className="text-sm font-semibold text-foreground">Mobile booking interface</div>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Mobile booking page with guest selection and date picker flow.
+                  </p>
+                </div>
+                <div className="p-6">
+                  <Lightbox
+                    src={BOOKING_MOBILE_IMAGE}
+                    alt="FNQ Lodge mobile booking page screenshot"
+                    className="mx-auto max-h-[720px] w-auto object-contain"
+                  />
+                </div>
+              </Card>
+
+              <Card className="overflow-hidden rounded-3xl p-0 shadow-sm">
+                <div className="border-b border-border px-6 py-4">
+                  <div className="text-sm font-semibold text-foreground">Checkout experience</div>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Checkout layout with booking summary, guest details form, and Stripe payment section.
+                  </p>
+                </div>
+                <div className="p-6">
+                  <Lightbox
+                    src={CHECKOUT_DESKTOP_IMAGE}
+                    alt="FNQ Lodge checkout page screenshot"
+                    className="w-full object-contain"
+                  />
+                </div>
+              </Card>
+            </div>
+          </div>
+
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             <Card className="rounded-3xl p-8 shadow-sm">
               <h2 className="text-2xl font-semibold text-foreground">Why this case study matters</h2>
@@ -187,6 +232,7 @@ export default function FNQLodgePage() {
                 {[
                   "Clearer accommodation positioning",
                   "A stronger reservation path",
+                  "Better booking and checkout UX",
                   "Better mobile usability",
                   "More premium front-end presentation",
                 ].map((item) => (
@@ -203,7 +249,8 @@ export default function FNQLodgePage() {
             <h2 className="text-2xl font-semibold text-foreground">Why it matters</h2>
             <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
               This project adds breadth to the portfolio and proves I can improve booking and accommodation websites, not
-              just ecommerce stores or digital funnels. The before/after framing makes that proof much stronger.
+              just ecommerce stores or digital funnels. The before/after framing plus the booking and checkout flow proof
+              makes that capability much stronger.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
