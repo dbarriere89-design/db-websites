@@ -21,7 +21,7 @@ import {
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
 const EMAIL = "desbarriere.au@gmail.com"
-const UPWORK_URL = "https://www.upwork.com"
+const UPWORK_URL = "https://www.upwork.com/freelancers/~01bf146bd0e95935ec"
 
 const EMAIL_SUBJECT = encodeURIComponent("Project enquiry (DB Websites)")
 const EMAIL_BODY = encodeURIComponent(
@@ -32,7 +32,7 @@ const EMAIL_BODY = encodeURIComponent(
     "",
     "Business name:",
     "Industry:",
-    "What do you need help with? (new website / Shopify store / WordPress fixes):",
+    "What do you need help with? (new website / online store / website fixes):",
     "Current website link (if any):",
     "",
     "Main goal:",
@@ -60,12 +60,14 @@ function SectionHeading(props: {
         </div>
       ) : null}
 
-      <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+      <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
         {props.title}
       </h2>
 
       {props.subtitle ? (
-        <p className="mt-3 text-pretty text-muted-foreground">{props.subtitle}</p>
+        <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+          {props.subtitle}
+        </p>
       ) : null}
     </div>
   )
@@ -86,52 +88,52 @@ type CaseStudy = {
 const CASE_STUDIES: CaseStudy[] = [
   {
     title: "Tripple Pluggers",
-    category: "Shopify ecommerce",
+    category: "Online store",
     summary:
-      "A real Shopify ecommerce project focused on stronger product presentation, clearer variant selection, mobile-first UX, and a cleaner path from product page to checkout.",
+      "Built and improved an online store for an Australian footwear brand with clearer product pages, easier buying on mobile, and a smoother path to checkout.",
     image: "/work/tripple-pluggers/tp-hero.jpg",
-    imageAlt: "Tripple Pluggers Shopify case study screenshot",
+    imageAlt: "Tripple Pluggers website screenshot",
     stats: ["15 orders", "$645 revenue", "Live store", "Real checkout flow"],
     bullets: [
-      "Shopify storefront refinement",
-      "Product page and variant UX improvements",
-      "Mobile-first ecommerce presentation",
-      "Real traffic, orders, and revenue proof",
+      "Cleaner product page layout",
+      "Better size and variant selection",
+      "Improved mobile shopping experience",
+      "Real sales proof from a live store",
     ],
     href: "/work/tripple-pluggers",
-    cta: "View ecommerce case study",
+    cta: "View project",
   },
   {
     title: "FIFO Resume Mate",
-    category: "Digital product funnel",
+    category: "Landing page",
     summary:
-      "A conversion-focused landing page and digital product funnel designed to explain the offer fast, guide plan selection clearly, and move visitors cleanly into purchase.",
+      "Built a landing page designed to explain the offer clearly, guide people to the right option, and move them into checkout without confusion.",
     image: "/work/fifo-resume-mate-hero.jpg",
-    imageAlt: "FIFO Resume Mate case study screenshot",
+    imageAlt: "FIFO Resume Mate website screenshot",
     bullets: [
-      "Offer clarity and hierarchy improvements",
-      "Pricing psychology and package guidance",
-      "Cleaner CTA flow into checkout",
-      "Built around conversion, not just appearance",
+      "Clearer offer and pricing layout",
+      "Better flow from landing page to checkout",
+      "Stronger calls to action",
+      "Built to help people take the next step",
     ],
     href: "/work/fifo-resume-mate",
-    cta: "View funnel case study",
+    cta: "View project",
   },
   {
     title: "FNQ Lodge",
-    category: "WordPress booking website",
+    category: "Booking website",
     summary:
-      "A booking-focused WordPress improvement project with a stronger reservation path, cleaner page structure, and before/after proof showing how a clunky accommodation site was sharpened up.",
+      "Improved a booking website for a tropical lodge with a cleaner layout, a better reservation path, and a stronger experience on mobile.",
     image: "/work/fnq-lodge/hero.jpg",
-    imageAlt: "FNQ Lodge booking website case study screenshot",
+    imageAlt: "FNQ Lodge website screenshot",
     bullets: [
-      "Booking journey cleanup",
-      "WordPress layout and UX improvements",
-      "Better mobile presentation",
-      "Before/after proof for tourism and stays",
+      "Cleaner booking journey",
+      "Better layout and page structure",
+      "Improved mobile experience",
+      "Before and after proof",
     ],
     href: "/work/fnq-lodge",
-    cta: "View before / after case study",
+    cta: "View project",
   },
 ]
 
@@ -191,16 +193,16 @@ export default function Home() {
         <div className="container relative z-[2] mx-auto px-6 py-20 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
             <div className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Next.js / Vercel • Shopify • WordPress fixes
+              Websites • online stores • website fixes
             </div>
 
-            <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              High-performance websites built to drive enquiries and sales.
+            <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              Websites that actually help bring you customers
             </h1>
 
-            <p className="mx-auto mt-6 max-w-3xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              I build modern websites, Shopify stores, and sharp WordPress upgrades for Australian businesses that want
-              better presentation, better UX, and better conversion paths.
+            <p className="mx-auto mt-6 max-w-3xl text-pretty text-xl leading-relaxed text-muted-foreground sm:text-2xl">
+              I build new websites and fix broken ones for small businesses that want a cleaner look,
+              a better customer experience, and more enquiries or sales.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -224,31 +226,31 @@ export default function Home() {
                 href="#work"
                 className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
-                View case studies
+                View examples of my work
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1">
-                ✅ Modern builds with Next.js / Vercel
+                ✅ New websites for small businesses
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1">
-                ✅ Shopify stores with real sales proof
+                ✅ Online stores with real sales proof
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-3 py-1">
-                ✅ WordPress upgrades and fixes
+                ✅ Fixes for broken or clunky websites
               </span>
             </div>
 
             <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
-              <span>Built with Next.js</span>
+              <span>New builds</span>
               <span className="opacity-40">•</span>
-              <span>Shopify</span>
+              <span>Online stores</span>
               <span className="opacity-40">•</span>
-              <span>WordPress</span>
+              <span>Booking websites</span>
               <span className="opacity-40">•</span>
-              <span>Vercel</span>
+              <span>Website fixes</span>
             </div>
           </div>
         </div>
@@ -259,31 +261,31 @@ export default function Home() {
           <div className="grid gap-6 text-center md:grid-cols-3">
             <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
               <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Shopify ecommerce
+                Real results
               </div>
-              <div className="mt-2 text-xl font-bold text-foreground">Real store performance</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Live Shopify project showing real orders, revenue, and a functioning checkout flow.
+              <div className="mt-2 text-2xl font-bold text-foreground">Websites that actually work</div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Clear pages, working forms, easier buying, and a better experience for your customers.
               </p>
             </div>
 
             <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
               <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Digital product funnel
+                Better customer flow
               </div>
-              <div className="mt-2 text-xl font-bold text-foreground">Landing → pricing → checkout</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Conversion-focused funnel with pricing structure, builder UX, and Stripe checkout.
+              <div className="mt-2 text-2xl font-bold text-foreground">Cleaner booking and checkout paths</div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Fix the stuff that frustrates customers and makes them give up before they enquire or buy.
               </p>
             </div>
 
             <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
               <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                WordPress upgrade
+                Website fixes
               </div>
-              <div className="mt-2 text-xl font-bold text-foreground">Before / after UX improvement</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Accommodation website improved with a clearer booking flow and stronger presentation.
+              <div className="mt-2 text-2xl font-bold text-foreground">Less clunky. More usable.</div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                I clean up websites that feel old, confusing, broken, or hard to use on mobile.
               </p>
             </div>
           </div>
@@ -294,21 +296,21 @@ export default function Home() {
         <div className="container mx-auto px-6 py-12 lg:px-8">
           <div className="grid gap-6 text-center md:grid-cols-3">
             <div>
-              <div className="text-sm font-semibold text-foreground">Built by an operator</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Real-world experience building and marketing digital businesses, not just pretty mockups.
+              <div className="text-base font-semibold text-foreground">Built by someone who actually runs businesses</div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Real-world experience building, selling, and improving digital businesses — not just making pretty mockups.
               </p>
             </div>
             <div>
-              <div className="text-sm font-semibold text-foreground">Focused on outcomes</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Stronger UX, better trust, cleaner structure, and clearer paths to purchase or enquiry.
+              <div className="text-base font-semibold text-foreground">Focused on what helps customers take action</div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Better clarity, better trust, and better flow so people can actually contact you, book, or buy.
               </p>
             </div>
             <div>
-              <div className="text-sm font-semibold text-foreground">Modern stack first</div>
-              <p className="mt-2 text-sm text-muted-foreground">
-                New builds lean modern. Existing WordPress sites can still be cleaned up, fixed, and improved.
+              <div className="text-base font-semibold text-foreground">New websites or smarter upgrades</div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Some businesses need a fresh start. Others just need the current site cleaned up and fixed properly.
               </p>
             </div>
           </div>
@@ -318,8 +320,8 @@ export default function Home() {
       <section id="work" className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
         <SectionHeading
           eyebrow="Featured work"
-          title="Case studies with actual proof"
-          subtitle="Different business models. Different platforms. Same goal: cleaner UX, stronger trust, and better conversion paths."
+          title="Examples of my work"
+          subtitle="Real businesses. Real websites. Real improvements."
         />
 
         <div className="grid gap-8">
@@ -344,7 +346,7 @@ export default function Home() {
 
                   <div className="pointer-events-none absolute bottom-4 left-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
                     <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-sm">
-                      View case study
+                      View project
                       <ArrowRight className="h-3.5 w-3.5" />
                     </div>
                   </div>
@@ -355,9 +357,9 @@ export default function Home() {
                     {item.category}
                   </div>
 
-                  <h3 className="text-2xl font-bold tracking-tight text-foreground">{item.title}</h3>
+                  <h3 className="text-3xl font-bold tracking-tight text-foreground">{item.title}</h3>
 
-                  <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
+                  <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
                     {item.summary}
                   </p>
 
@@ -378,7 +380,7 @@ export default function Home() {
                     {item.bullets.map((bullet) => (
                       <div key={bullet} className="flex items-start gap-3">
                         <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                        <span className="text-sm text-foreground">{bullet}</span>
+                        <span className="text-sm leading-relaxed text-foreground">{bullet}</span>
                       </div>
                     ))}
                   </div>
@@ -409,8 +411,8 @@ export default function Home() {
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="Services"
-            title="What I actually want to be hired for"
-            subtitle="Modern custom builds, Shopify ecommerce work, and selective WordPress fixes where it makes sense."
+            title="How I can help"
+            subtitle="New websites, online stores, and fixes for sites that feel broken, old, or hard to use."
           />
 
           <div className="grid gap-6 md:grid-cols-3">
@@ -418,36 +420,33 @@ export default function Home() {
               <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-accent))/0.15]">
                 <MonitorSmartphone className="h-6 w-6 text-foreground" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Modern websites</h3>
-              <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">
-                Premium custom sites built with modern tooling and deployed properly. Best for businesses that want
-                something cleaner, faster, and stronger than a typical template site.
+              <h3 className="text-2xl font-semibold text-foreground">New websites</h3>
+              <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground">
+                Need a new website? I build clean, modern sites that make your business easier to understand and easier to contact.
               </p>
-              <div className="mt-5 text-sm font-medium text-foreground">Next.js / Vercel builds</div>
+              <div className="mt-5 text-sm font-medium text-foreground">Best for service businesses and local brands</div>
             </Card>
 
             <Card className="premium-card rounded-3xl p-8 shadow-sm">
               <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-warm))/0.18]">
                 <ShoppingBag className="h-6 w-6 text-foreground" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">Shopify ecommerce</h3>
-              <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">
-                Product-focused stores with better presentation, cleaner purchase flow, and stronger mobile UX. Great
-                for brands that want a store that feels more considered and converts better.
+              <h3 className="text-2xl font-semibold text-foreground">Online stores</h3>
+              <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground">
+                Selling products online? I help make your store clearer, easier to shop, and better on mobile so more people actually buy.
               </p>
-              <div className="mt-5 text-sm font-medium text-foreground">Store builds + conversion improvements</div>
+              <div className="mt-5 text-sm font-medium text-foreground">Store builds + sales-focused improvements</div>
             </Card>
 
             <Card className="premium-card rounded-3xl p-8 shadow-sm">
               <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/20">
                 <Wrench className="h-6 w-6 text-foreground" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground">WordPress fixes</h3>
-              <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">
-                Existing WordPress site looking tired, clunky, or annoying? I can help clean up layout issues, contact
-                flow, booking pages, and general front-end presentation.
+              <h3 className="text-2xl font-semibold text-foreground">Website fixes</h3>
+              <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground">
+                Already have a website? I can fix layout issues, improve mobile use, clean up booking or contact pages, and make the whole thing feel less clunky.
               </p>
-              <div className="mt-5 text-sm font-medium text-foreground">Fixes, upgrades, and tidy-ups</div>
+              <div className="mt-5 text-sm font-medium text-foreground">Fixes, cleanups, and upgrades</div>
             </Card>
           </div>
         </div>
@@ -457,30 +456,30 @@ export default function Home() {
         <SectionHeading
           eyebrow="Process"
           title="Simple process, clean delivery"
-          subtitle="No agency theatre. Just clear scope, clean work, and a better end result."
+          subtitle="No agency waffle. Just clear communication and solid work."
         />
 
         <div className="grid gap-6 md:grid-cols-4">
           {[
             {
               step: "01",
-              title: "Scope",
-              text: "You send the current site, business details, goals, and what’s annoying right now.",
+              title: "Send it through",
+              text: "You send your website link, business details, and what you need help with.",
             },
             {
               step: "02",
-              title: "Direction",
-              text: "I map the best fit: fresh build, Shopify work, or a more targeted upgrade.",
+              title: "Get direction",
+              text: "I’ll tell you whether it needs a quick fix, a proper upgrade, or a fresh build.",
             },
             {
               step: "03",
-              title: "Build",
-              text: "I build or refine the site with a strong focus on clarity, responsiveness, and flow.",
+              title: "Build or fix",
+              text: "I improve the website with a strong focus on clarity, mobile use, and customer flow.",
             },
             {
               step: "04",
-              title: "Launch",
-              text: "You get a cleaner digital presence that feels more premium and works harder.",
+              title: "Launch better",
+              text: "You end up with a cleaner website that feels better and works harder for your business.",
             },
           ].map((item) => (
             <Card key={item.step} className="premium-card rounded-3xl p-8 shadow-sm">
@@ -496,23 +495,22 @@ export default function Home() {
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="Pricing"
-            title="Smaller fixes are easy. Bigger builds are scoped properly."
-            subtitle="I’ve removed the bargain-bin feel here on purpose. Small WordPress upgrades can be quoted quickly. Proper builds get scoped to match the job."
+            title="Website fixes and new builds"
+            subtitle="Smaller jobs can usually be quoted quickly. Bigger projects are priced properly based on the work involved."
           />
 
           <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
             <Card className="premium-card rounded-3xl p-8 shadow-sm lg:p-10">
-              <h3 className="text-2xl font-bold text-foreground">WordPress fixes & upgrades</h3>
+              <h3 className="text-2xl font-bold text-foreground">Website fixes</h3>
               <p className="mt-3 text-pretty text-muted-foreground">
-                Best for existing websites that need layout cleanup, mobile fixes, contact flow improvements, booking
-                page tweaks, or general front-end tidy-up work.
+                Best for existing websites that need layout cleanup, mobile fixes, contact form improvements, booking page tweaks, or general tidy-up work.
               </p>
 
               <div className="mt-6 space-y-3">
                 {[
                   "Mobile layout cleanup",
                   "Contact and enquiry improvements",
-                  "Broken sections or awkward UX fixes",
+                  "Broken sections or awkward page flow",
                   "General polish to make the site feel more current",
                 ].map((x) => (
                   <div key={x} className="flex items-start gap-3">
@@ -530,18 +528,17 @@ export default function Home() {
             </Card>
 
             <Card className="premium-card rounded-3xl p-8 shadow-sm lg:p-10">
-              <h3 className="text-2xl font-bold text-foreground">Modern builds & Shopify projects</h3>
+              <h3 className="text-2xl font-bold text-foreground">New websites and online stores</h3>
               <p className="mt-3 text-pretty text-muted-foreground">
-                Best for businesses that want a stronger digital presence from the ground up, with better structure,
-                better presentation, and a more premium customer experience.
+                Best for businesses that want a stronger online presence from the ground up, with clearer pages, better structure, and a better customer experience.
               </p>
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Custom modern site builds",
-                  "Shopify storefronts and product presentation",
-                  "Digital product or lead-gen funnels",
-                  "Scoped to fit the actual commercial value of the project",
+                  "New business websites",
+                  "Online stores and product pages",
+                  "Landing pages and lead generation pages",
+                  "Quoted based on the size and value of the job",
                 ].map((x) => (
                   <div key={x} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-warm))]" />
@@ -570,28 +567,26 @@ export default function Home() {
       </section>
 
       <section id="faq" className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-        <SectionHeading eyebrow="FAQ" title="Quick answers" subtitle="Simple stuff, no smoke machine." />
+        <SectionHeading eyebrow="FAQ" title="Quick answers" subtitle="Simple answers, straight up." />
 
         <div className="mx-auto max-w-3xl">
           <Card className="premium-card rounded-3xl p-6 shadow-sm sm:p-8">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="text-left text-base font-semibold">
-                  Do you still work on WordPress?
+                  Can you still work on WordPress websites?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  Yes — especially for fixes, upgrades, layout cleanup, booking flow improvements, and general front-end
-                  tidy-up work. For brand new premium builds, I prefer modern stacks where it makes sense.
+                  Yes. I can help with fixes, upgrades, layout cleanup, booking flow improvements, and general front-end tidy-up work on existing WordPress sites.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2">
                 <AccordionTrigger className="text-left text-base font-semibold">
-                  Are you mainly doing Shopify now too?
+                  Can you help with online stores too?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  Yes. Shopify is absolutely part of the offer now, especially for product brands that want stronger
-                  presentation, cleaner product pages, and better mobile UX.
+                  Yes. I can help improve online stores with better product pages, cleaner buying flow, and a better experience on mobile.
                 </AccordionContent>
               </AccordionItem>
 
@@ -600,18 +595,16 @@ export default function Home() {
                   Can you help if I already have a website?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  Yep. Send the link and tell me what feels off. I’ll tell you quickly whether it’s a straightforward
-                  fix, a worthwhile upgrade, or something better rebuilt properly.
+                  Yep. Send me the link and tell me what feels wrong. I’ll tell you quickly whether it’s something worth fixing, upgrading, or rebuilding.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-4">
                 <AccordionTrigger className="text-left text-base font-semibold">
-                  What should I send you to start?
+                  What do you need from me to get started?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  Business name, current site if you have one, a rough idea of what you need, your main goal, and any
-                  deadlines. That’s enough to start the conversation.
+                  Just send your business name, current website if you have one, what you need help with, your main goal, and any timing or budget notes.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -622,13 +615,12 @@ export default function Home() {
       <section className="border-t border-border bg-muted/30">
         <div className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Want your website to feel sharper, faster, and more premium?
+            <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+              Need help fixing your website or building a better one?
             </h2>
 
-            <p className="mt-4 text-pretty text-lg text-muted-foreground">
-              Send me the link or tell me what you want to build. I’ll tell you straight whether it’s a quick fix, a
-              Shopify job, or something worth building properly from scratch.
+            <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              Send me the link or tell me what you need. I’ll tell you straight whether it’s a quick fix, a bigger upgrade, or something that should be built properly from scratch.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -660,7 +652,7 @@ export default function Home() {
             <p className="text-sm font-semibold text-foreground">© DB Websites — Built by Des</p>
 
             <p className="mt-1 text-sm text-muted-foreground">
-              Modern websites, Shopify stores, and sharp WordPress upgrades
+              Websites, online stores, and practical fixes for small businesses
             </p>
 
             <p className="mt-3 text-sm text-muted-foreground">
