@@ -666,7 +666,7 @@ export default function Home() {
             <p className="mt-3 text-sm text-muted-foreground">
               Freelance projects also available on{" "}
               <a
-                href={https://www.upwork.com/freelancers/~01bf146bd0e95935ec}
+                href="https://www.upwork.com/freelancers/~01bf146bd0e95935ec"
                 target="_blank"
                 rel="noreferrer"
                 className="underline hover:text-foreground"
