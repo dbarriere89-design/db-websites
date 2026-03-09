@@ -253,43 +253,45 @@ export default function Home() {
         </div>
       </section>
 <section className="border-y border-border bg-background">
-  <div className="container mx-auto px-6 py-14 lg:px-8">
+  <div className="container mx-auto px-6 py-10 lg:px-8">
     <div className="grid gap-6 text-center md:grid-cols-3">
+
       <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
         <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Ecommerce proof
+          Shopify ecommerce
         </div>
         <div className="mt-2 text-xl font-bold text-foreground">
-          Live store, real orders, real revenue
+          Real store performance
         </div>
         <p className="mt-2 text-sm text-muted-foreground">
-          Tripple Pluggers launched with real customers, real transactions, and a functioning Shopify conversion flow.
+          Live Shopify project showing real visitors, orders, and revenue.
         </p>
       </div>
 
       <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
         <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Funnel conversion
+          Digital product funnel
         </div>
         <div className="mt-2 text-xl font-bold text-foreground">
-          Clear digital product journey
+          Landing → pricing → checkout
         </div>
         <p className="mt-2 text-sm text-muted-foreground">
-          Landing page, pricing logic, builder UX, and Stripe checkout flow built to move users toward purchase.
+          Conversion-focused funnel with pricing structure and Stripe checkout.
         </p>
       </div>
 
       <div className="rounded-2xl border border-border bg-background/70 px-6 py-6 shadow-sm">
         <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          Booking UX improvement
+          WordPress upgrade
         </div>
         <div className="mt-2 text-xl font-bold text-foreground">
-          Cleaner path to reservation
+          Before / after UX improvement
         </div>
         <p className="mt-2 text-sm text-muted-foreground">
-          WordPress accommodation improvements focused on presentation, usability, and stronger booking flow.
+          Accommodation website improved with a clearer booking flow.
         </p>
       </div>
+
     </div>
   </div>
 </section>
@@ -658,15 +660,29 @@ export default function Home() {
       </section>
 
       <footer className="bg-background">
-        <div className="container mx-auto px-6 py-10 lg:px-8">
-          <div className="text-center">
-            <p className="text-sm font-semibold text-foreground">© DB Websites — Built by Des</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Modern websites, Shopify stores, and sharp WordPress upgrades
-            </p>
-          </div>
-        </div>
-      </footer>
+  <div className="container mx-auto px-6 py-10 lg:px-8">
+    <div className="text-center">
+
+      <p className="text-sm font-semibold text-foreground">
+        © DB Websites — Built by Des
+      </p>
+
+      <p className="mt-1 text-sm text-muted-foreground">
+        Modern websites, Shopify stores, and sharp WordPress upgrades
+      </p>
+
+      <p className="mt-3 text-sm text-muted-foreground">
+        Freelance projects also available on{" "}
+        <a
+          href="https://www.upwork.com/freelancers/~01bf146bd0e95935ec"
+          target="_blank"
+          rel="noreferrer"
+          className="underline hover:text-foreground"
+        >
+          Upwork
+        </a>
+      </p>
+
     </div>
-  )
-}
+  </div>
+</footer>
