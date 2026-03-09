@@ -205,7 +205,7 @@ export default function FNQLodgePage() {
                   <Lightbox
   src={CHECKOUT_DESKTOP_IMAGE}
   alt="FNQ Lodge checkout page screenshot"
-  className="mx-auto max-w-[1100px] w-full object-contain"
+  className="mx-auto max-w-[950px] w-full object-contain"
 />
                 </div>
               </Card>
