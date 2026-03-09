@@ -33,7 +33,7 @@ const HERO_IMAGE = "/work/fnq-lodge/hero.jpg"
 const BEFORE_IMAGE = "/work/fnq-lodge/before.jpg"
 const AFTER_IMAGE = "/work/fnq-lodge/after.jpg"
 const BOOKING_MOBILE_IMAGE = "/work/fnq-lodge/booking-mobile.jpg"
-const CHECKOUT_DESKTOP_IMAGE = "/work/fnq-lodge/checkout-desktop.jpg"
+const CHECKOUT_DESKTOP_IMAGE = "/work/fnq-lodge/checkout-desktop-sharp.jpg"
 
 export default function FNQLodgePage() {
   return (
