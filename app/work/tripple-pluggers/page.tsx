@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -32,9 +33,73 @@ const EMAIL_BODY = encodeURIComponent(
 
 const stats = ["925 visitors", "15 orders", "$645 revenue", "1.62% conversion"]
 
+export const metadata: Metadata = {
+  title: "Tripple Pluggers | Work example",
+  description:
+    "A work example from DB Websites showing a real Shopify store build for Tripple Pluggers, with better product pages, mobile shopping, and real sales proof.",
+  alternates: {
+    canonical: "/work/tripple-pluggers",
+  },
+  openGraph: {
+    title: "Tripple Pluggers | Work example | DB Websites",
+    description:
+      "A work example from DB Websites showing a real Shopify store build for Tripple Pluggers, with better product pages, mobile shopping, and real sales proof.",
+    url: "https://dbwebsites.au/work/tripple-pluggers",
+    siteName: "DB Websites",
+    images: [
+      {
+        url: "https://dbwebsites.au/work/tripple-pluggers/tp-hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Tripple Pluggers work example by DB Websites",
+      },
+    ],
+    locale: "en_AU",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tripple Pluggers | Work example | DB Websites",
+    description:
+      "A work example from DB Websites showing a real Shopify store build for Tripple Pluggers, with better product pages, mobile shopping, and real sales proof.",
+    images: ["https://dbwebsites.au/work/tripple-pluggers/tp-hero.jpg"],
+  },
+}
+
+const workExampleSchema = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: "Tripple Pluggers",
+  url: "https://dbwebsites.au/work/tripple-pluggers",
+  description:
+    "A work example from DB Websites showing a real Shopify store build for Tripple Pluggers, with better product pages, mobile shopping, and real sales proof.",
+  creator: {
+    "@type": "Person",
+    name: "Des",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "DB Websites",
+    url: "https://dbwebsites.au",
+  },
+  image: [
+    "https://dbwebsites.au/work/tripple-pluggers/tp-hero.jpg",
+    "https://dbwebsites.au/work/tripple-pluggers/tp-product-desktop.jpg",
+    "https://dbwebsites.au/work/tripple-pluggers/tp-product-mobile.jpg",
+    "https://dbwebsites.au/work/tripple-pluggers/tp-dashboard.jpg",
+    "https://dbwebsites.au/work/tripple-pluggers/tp-orders.jpg",
+    "https://dbwebsites.au/work/tripple-pluggers/tp-checkout.jpg",
+  ],
+}
+
 export default function TripplePluggersPage() {
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(workExampleSchema) }}
+      />
+
       <header className="border-b border-border bg-background/80 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
           <Link
@@ -61,7 +126,7 @@ export default function TripplePluggersPage() {
       <main className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-6 inline-flex rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground">
-            Shopify ecommerce
+            Work example
           </div>
 
           <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
@@ -69,13 +134,13 @@ export default function TripplePluggersPage() {
           </h1>
 
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            A real Shopify ecommerce build focused on product presentation, purchase flow, and mobile-first UX for an
-            Australian product brand.
+            A real online store build for an Australian product brand, focused on clearer product
+            pages, easier shopping on mobile, and a smoother path to checkout.
           </p>
 
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            This wasn’t just a mockup job. The store was built and operated as a real ecommerce project with live
-            traffic, live checkouts, and real sales data.
+            This was not just a design mockup. It was a live store with real visitors, real
+            checkouts, and real sales.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -93,7 +158,7 @@ export default function TripplePluggersPage() {
             <BrowserFrame>
               <img
                 src="/work/tripple-pluggers/tp-hero.jpg"
-                alt="Tripple Pluggers Shopify storefront"
+                alt="Tripple Pluggers online store homepage"
                 className="w-full object-cover"
               />
             </BrowserFrame>
@@ -101,19 +166,20 @@ export default function TripplePluggersPage() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <Card className="rounded-3xl p-8 shadow-sm">
-              <h2 className="text-2xl font-semibold text-foreground">The challenge</h2>
+              <h2 className="text-2xl font-semibold text-foreground">What needed work</h2>
 
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                The brand needed a stronger storefront experience that looked more credible, felt better on mobile, and
-                made it easier for shoppers to move from interest to purchase without getting bogged down by clunky UX.
+                The store needed to feel stronger, clearer, and easier to use. It had to look more
+                trustworthy, work better on mobile, and make it easier for shoppers to go from
+                browsing to buying.
               </p>
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Make the storefront feel stronger and more polished",
-                  "Improve product and variant selection flow",
-                  "Support mobile-first shopping behaviour",
-                  "Build trust fast enough to earn early orders",
+                  "Make the store look stronger and more polished",
+                  "Improve product and variant selection",
+                  "Support mobile-first shopping",
+                  "Build trust quickly enough to earn early orders",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
@@ -128,11 +194,11 @@ export default function TripplePluggersPage() {
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Shopify storefront structure and refinement",
-                  "Homepage and collection presentation improvements",
-                  "Product-page and variant UX cleanup",
-                  "Mobile usability improvements",
-                  "Checkout-path and conversion-focused polish",
+                  "Store layout and structure",
+                  "Homepage and collection page improvements",
+                  "Cleaner product pages and variant selection",
+                  "Better mobile shopping experience",
+                  "A smoother path from product page to checkout",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-warm))]" />
@@ -144,11 +210,11 @@ export default function TripplePluggersPage() {
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold text-foreground">Storefront and product flow</h2>
+            <h2 className="text-2xl font-semibold text-foreground">Storefront and buying flow</h2>
 
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              These screenshots show the real store experience across desktop and mobile, including product page layout,
-              presentation, and the buying journey.
+              These screenshots show the real store experience across desktop and mobile, including
+              the product pages and the buying journey.
             </p>
 
             <div className="mt-6 space-y-6">
@@ -175,18 +241,18 @@ export default function TripplePluggersPage() {
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold text-foreground">Real commercial proof</h2>
+            <h2 className="text-2xl font-semibold text-foreground">Real store proof</h2>
 
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              Live analytics, real orders, and a functioning checkout experience turn this from a nice-looking build
-              into genuine ecommerce proof.
+              Real traffic, real orders, and a working checkout show that this was a live store, not
+              just a nice-looking concept.
             </p>
 
             <div className="mt-6 grid gap-6 lg:grid-cols-2">
               <BrowserFrame>
                 <Lightbox
                   src="/work/tripple-pluggers/tp-dashboard.jpg"
-                  alt="Shopify analytics dashboard"
+                  alt="Tripple Pluggers store analytics"
                   className="w-full object-contain"
                 />
               </BrowserFrame>
@@ -194,7 +260,7 @@ export default function TripplePluggersPage() {
               <BrowserFrame>
                 <Lightbox
                   src="/work/tripple-pluggers/tp-orders.jpg"
-                  alt="Shopify orders list"
+                  alt="Tripple Pluggers orders list"
                   className="w-full object-contain"
                 />
               </BrowserFrame>
@@ -205,7 +271,7 @@ export default function TripplePluggersPage() {
                 <BrowserFrame>
                   <Lightbox
                     src="/work/tripple-pluggers/tp-checkout.jpg"
-                    alt="Shopify checkout page"
+                    alt="Tripple Pluggers checkout page"
                     className="mx-auto max-h-[720px] object-contain"
                   />
                 </BrowserFrame>
@@ -214,11 +280,11 @@ export default function TripplePluggersPage() {
           </div>
 
           <Card className="mt-12 rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-semibold text-foreground">Why it matters</h2>
+            <h2 className="text-2xl font-semibold text-foreground">Simple takeaway</h2>
 
             <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-              This project proves ecommerce capability with more than visuals. It shows real storefront thinking, real
-              UX work, real revenue proof, and the ability to make Shopify feel sharper and more conversion-ready.
+              This project shows I can build and improve online stores that look better, feel easier
+              to use, and are backed by real sales activity — not just polished screenshots.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -238,7 +304,7 @@ export default function TripplePluggersPage() {
 
               <Button asChild variant="ghost">
                 <Link href="/work/fifo-resume-mate">
-                  Next case study
+                  Next work example
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
