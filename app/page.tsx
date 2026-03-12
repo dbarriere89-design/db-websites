@@ -45,6 +45,28 @@ const EMAIL_BODY = encodeURIComponent(
   ].join("\n")
 )
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "DB Websites",
+  url: "https://dbwebsites.au",
+  description:
+    "Simple, modern websites for small businesses in Cairns, Innisfail and Far North Queensland. Shopify stores, website refreshes and practical fixes built to help turn visitors into enquiries.",
+  areaServed: [
+    "Cairns",
+    "Innisfail",
+    "Far North Queensland",
+    "Cassowary Coast",
+    "Atherton Tablelands",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "QLD",
+    addressCountry: "AU",
+  },
+  sameAs: [UPWORK_URL],
+}
+
 function SectionHeading(props: {
   eyebrow?: string
   title: string
@@ -73,7 +95,7 @@ function SectionHeading(props: {
   )
 }
 
-type CaseStudy = {
+type WorkExample = {
   title: string
   category: string
   summary: string
@@ -85,7 +107,7 @@ type CaseStudy = {
   cta: string
 }
 
-const CASE_STUDIES: CaseStudy[] = [
+const WORK_EXAMPLES: WorkExample[] = [
   {
     title: "Tripple Pluggers",
     category: "Online store",
@@ -101,7 +123,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "Real sales proof from a live store",
     ],
     href: "/work/tripple-pluggers",
-    cta: "View project",
+    cta: "View example",
   },
   {
     title: "FIFO Resume Mate",
@@ -117,7 +139,7 @@ const CASE_STUDIES: CaseStudy[] = [
       "Built to help people take the next step",
     ],
     href: "/work/fifo-resume-mate",
-    cta: "View project",
+    cta: "View example",
   },
   {
     title: "FNQ Lodge",
@@ -133,13 +155,18 @@ const CASE_STUDIES: CaseStudy[] = [
       "Before and after proof",
     ],
     href: "/work/fnq-lodge",
-    cta: "View project",
+    cta: "View example",
   },
 ]
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+
       <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
           <Link
@@ -197,12 +224,17 @@ export default function Home() {
             </div>
 
             <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              Websites that actually help bring you customers
+              Websites that help bring in more customers
             </h1>
 
             <p className="mx-auto mt-6 max-w-3xl text-pretty text-xl leading-relaxed text-muted-foreground sm:text-2xl">
-              I build new websites and fix broken ones for small businesses that want a cleaner look,
-              a better customer experience, and more enquiries or sales.
+              I build new websites and improve existing ones for small businesses in Cairns,
+              Innisfail, and across Far North Queensland.
+            </p>
+
+            <p className="mx-auto mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+              The goal is simple: make your business easier to understand, easier to trust, and
+              easier for people to contact, book, or buy from.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -226,7 +258,7 @@ export default function Home() {
                 href="#work"
                 className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
-                View examples of my work
+                View work examples
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -265,7 +297,8 @@ export default function Home() {
               </div>
               <div className="mt-2 text-2xl font-bold text-foreground">Websites that actually work</div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Clear pages, working forms, easier buying, and a better experience for your customers.
+                Clear pages, working forms, easier buying, and a better experience for your
+                customers.
               </p>
             </div>
 
@@ -273,9 +306,12 @@ export default function Home() {
               <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Better customer flow
               </div>
-              <div className="mt-2 text-2xl font-bold text-foreground">Cleaner booking and checkout paths</div>
+              <div className="mt-2 text-2xl font-bold text-foreground">
+                Cleaner booking and checkout paths
+              </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Fix the stuff that frustrates customers and makes them give up before they enquire or buy.
+                Fix the stuff that frustrates customers and makes them give up before they enquire
+                or buy.
               </p>
             </div>
 
@@ -296,36 +332,60 @@ export default function Home() {
         <div className="container mx-auto px-6 py-12 lg:px-8">
           <div className="grid gap-6 text-center md:grid-cols-3">
             <div>
-              <div className="text-base font-semibold text-foreground">Built by someone who actually runs businesses</div>
+              <div className="text-base font-semibold text-foreground">
+                Built by someone who actually runs businesses
+              </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Real-world experience building, selling, and improving digital businesses — not just making pretty mockups.
+                Real-world experience building, selling, and improving digital businesses — not
+                just making pretty mockups.
               </p>
             </div>
             <div>
-              <div className="text-base font-semibold text-foreground">Focused on what helps customers take action</div>
+              <div className="text-base font-semibold text-foreground">
+                Focused on what helps customers take action
+              </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Better clarity, better trust, and better flow so people can actually contact you, book, or buy.
+                Better clarity, better trust, and better flow so people can actually contact you,
+                book, or buy.
               </p>
             </div>
             <div>
-              <div className="text-base font-semibold text-foreground">New websites or smarter upgrades</div>
+              <div className="text-base font-semibold text-foreground">
+                New websites or smarter upgrades
+              </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Some businesses need a fresh start. Others just need the current site cleaned up and fixed properly.
+                Some businesses need a fresh start. Others just need the current site cleaned up
+                and fixed properly.
               </p>
             </div>
           </div>
         </div>
       </section>
 
+      <section className="border-b border-border bg-background">
+        <div className="container mx-auto px-6 py-12 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+              Website help for businesses across Cairns, Innisfail and FNQ
+            </h2>
+            <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+              I work with local service businesses, online stores, accommodation businesses, and
+              growing brands that need a website that feels current, works properly on mobile, and
+              makes it easier for customers to take the next step.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section id="work" className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
         <SectionHeading
-          eyebrow="Featured work"
+          eyebrow="Work examples"
           title="Examples of my work"
           subtitle="Real businesses. Real websites. Real improvements."
         />
 
         <div className="grid gap-8">
-          {CASE_STUDIES.map((item) => (
+          {WORK_EXAMPLES.map((item) => (
             <Card
               key={item.title}
               className="group premium-card overflow-hidden rounded-3xl border border-border bg-card/70 p-0 shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(0,0,0,0.12)]"
@@ -346,7 +406,7 @@ export default function Home() {
 
                   <div className="pointer-events-none absolute bottom-4 left-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
                     <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-sm">
-                      View project
+                      View example
                       <ArrowRight className="h-3.5 w-3.5" />
                     </div>
                   </div>
@@ -422,9 +482,12 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-semibold text-foreground">New websites</h3>
               <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground">
-                Need a new website? I build clean, modern sites that make your business easier to understand and easier to contact.
+                Need a new website? I build clean, modern sites that make your business easier to
+                understand and easier to contact.
               </p>
-              <div className="mt-5 text-sm font-medium text-foreground">Best for service businesses and local brands</div>
+              <div className="mt-5 text-sm font-medium text-foreground">
+                Best for service businesses and local brands
+              </div>
             </Card>
 
             <Card className="premium-card rounded-3xl p-8 shadow-sm">
@@ -433,9 +496,12 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-semibold text-foreground">Online stores</h3>
               <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground">
-                Selling products online? I help make your store clearer, easier to shop, and better on mobile so more people actually buy.
+                Selling products online? I help make your store clearer, easier to shop, and better
+                on mobile so more people actually buy.
               </p>
-              <div className="mt-5 text-sm font-medium text-foreground">Store builds + sales-focused improvements</div>
+              <div className="mt-5 text-sm font-medium text-foreground">
+                Store builds + sales-focused improvements
+              </div>
             </Card>
 
             <Card className="premium-card rounded-3xl p-8 shadow-sm">
@@ -444,9 +510,12 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-semibold text-foreground">Website fixes</h3>
               <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground">
-                Already have a website? I can fix layout issues, improve mobile use, clean up booking or contact pages, and make the whole thing feel less clunky.
+                Already have a website? I can fix layout issues, improve mobile use, clean up
+                booking or contact pages, and make the whole thing feel less clunky.
               </p>
-              <div className="mt-5 text-sm font-medium text-foreground">Fixes, cleanups, and upgrades</div>
+              <div className="mt-5 text-sm font-medium text-foreground">
+                Fixes, cleanups, and upgrades
+              </div>
             </Card>
           </div>
         </div>
@@ -503,7 +572,8 @@ export default function Home() {
             <Card className="premium-card rounded-3xl p-8 shadow-sm lg:p-10">
               <h3 className="text-2xl font-bold text-foreground">Website fixes</h3>
               <p className="mt-3 text-pretty text-muted-foreground">
-                Best for existing websites that need layout cleanup, mobile fixes, contact form improvements, booking page tweaks, or general tidy-up work.
+                Best for existing websites that need layout cleanup, mobile fixes, contact form
+                improvements, booking page tweaks, or general tidy-up work.
               </p>
 
               <div className="mt-6 space-y-3">
@@ -530,7 +600,8 @@ export default function Home() {
             <Card className="premium-card rounded-3xl p-8 shadow-sm lg:p-10">
               <h3 className="text-2xl font-bold text-foreground">New websites and online stores</h3>
               <p className="mt-3 text-pretty text-muted-foreground">
-                Best for businesses that want a stronger online presence from the ground up, with clearer pages, better structure, and a better customer experience.
+                Best for businesses that want a stronger online presence from the ground up, with
+                clearer pages, better structure, and a better customer experience.
               </p>
 
               <div className="mt-6 space-y-3">
@@ -577,7 +648,8 @@ export default function Home() {
                   Can you still work on WordPress websites?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  Yes. I can help with fixes, upgrades, layout cleanup, booking flow improvements, and general front-end tidy-up work on existing WordPress sites.
+                  Yes. I can help with fixes, upgrades, layout cleanup, booking flow improvements,
+                  and general front-end tidy-up work on existing WordPress sites.
                 </AccordionContent>
               </AccordionItem>
 
@@ -586,7 +658,8 @@ export default function Home() {
                   Can you help with online stores too?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  Yes. I can help improve online stores with better product pages, cleaner buying flow, and a better experience on mobile.
+                  Yes. I can help improve online stores with better product pages, cleaner buying
+                  flow, and a better experience on mobile.
                 </AccordionContent>
               </AccordionItem>
 
@@ -595,7 +668,8 @@ export default function Home() {
                   Can you help if I already have a website?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  Yep. Send me the link and tell me what feels wrong. I’ll tell you quickly whether it’s something worth fixing, upgrading, or rebuilding.
+                  Yep. Send me the link and tell me what feels wrong. I’ll tell you quickly whether
+                  it’s something worth fixing, upgrading, or rebuilding.
                 </AccordionContent>
               </AccordionItem>
 
@@ -604,7 +678,19 @@ export default function Home() {
                   What do you need from me to get started?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  Just send your business name, current website if you have one, what you need help with, your main goal, and any timing or budget notes.
+                  Just send your business name, current website if you have one, what you need help
+                  with, your main goal, and any timing or budget notes.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5">
+                <AccordionTrigger className="text-left text-base font-semibold">
+                  Do you only work with businesses in Far North Queensland?
+                </AccordionTrigger>
+                <AccordionContent className="leading-relaxed text-muted-foreground">
+                  No. I can work with businesses Australia-wide, but I’m based in Far North
+                  Queensland and especially happy to work with local businesses in Cairns,
+                  Innisfail, and surrounding areas.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -620,7 +706,8 @@ export default function Home() {
             </h2>
 
             <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Send me the link or tell me what you need. I’ll tell you straight whether it’s a quick fix, a bigger upgrade, or something that should be built properly from scratch.
+              Send me the link or tell me what you need. I’ll tell you straight whether it’s a
+              quick fix, a bigger upgrade, or something that should be built properly from scratch.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -658,7 +745,7 @@ export default function Home() {
             <p className="mt-3 text-sm text-muted-foreground">
               Freelance projects also available on{" "}
               <a
-                href="https://www.upwork.com/freelancers/~01bf146bd0e95935ec"
+                href={UPWORK_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="underline hover:text-foreground"
