@@ -11,12 +11,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://dbwebsites.au"),
 
   title: {
-    default: "DB Websites | Websites for small businesses in Cairns & FNQ",
-    template: "%s | DB Websites",
+    default: "DB Websites | Websites for small businesses in Far North Queensland",   template: "%s | DB Websites",
   },
 
   description:
-    "Simple, modern websites for small businesses in Cairns, Innisfail and Far North Queensland. Shopify stores, website refreshes and practical fixes built to help turn visitors into enquiries.",
+    "Simple, modern websites for small businesses in Cairns, the Tablelands, the Cassowary Coast and across Far North Queensland. Shopify stores, website refreshes and practical fixes built to help turn visitors into enquiries.",
 
   alternates: {
     canonical: "/",
@@ -32,9 +31,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "DB Websites | Websites for small businesses in Cairns & FNQ",
+    title: "DB Websites | Websites for small businesses in Far North Queensland",
     description:
-      "Simple, modern websites for small businesses in Cairns, Innisfail and Far North Queensland. Shopify stores, website refreshes and practical fixes built to help turn visitors into enquiries.",
+      "Simple, modern websites for small businesses in Cairns, the Tablelands, the Cassowary Coast and across Far North Queensland. Shopify stores, website refreshes and practical fixes built to help turn visitors into enquiries.",
     url: "https://dbwebsites.au",
     siteName: "DB Websites",
     images: [
@@ -51,9 +50,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "DB Websites | Websites for small businesses in Cairns & FNQ",
+    title: "DB Websites | Websites for small businesses in Far North Queensland",
     description:
-      "Simple, modern websites for small businesses in Cairns, Innisfail and Far North Queensland.",
+      "Simple, modern websites for small businesses in Cairns, the Tablelands, the Cassowary Coast and across Far North Queensland.",
     images: ["https://dbwebsites.au/og-image.png"],
   },
 

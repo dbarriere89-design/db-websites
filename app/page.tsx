@@ -228,7 +228,7 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-3xl text-pretty text-xl leading-relaxed text-muted-foreground sm:text-2xl">
-              I build new websites and improve existing ones for small businesses in Cairns,
+              I build new websites and improve existing ones for small businesses in Cairns, the Tablelands, the Cassowary Coast, and across Far North Queensland.,
               Innisfail, and across Far North Queensland.
             </p>
 
@@ -366,12 +366,13 @@ export default function Home() {
         <div className="container mx-auto px-6 py-12 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Website help for businesses across Cairns, Innisfail and FNQ
+              Website help for businesses across Cairns, the Tablelands, the Cassowary Coast and FNQ
             </h2>
             <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
               I work with local service businesses, online stores, accommodation businesses, and
-              growing brands that need a website that feels current, works properly on mobile, and
-              makes it easier for customers to take the next step.
+growing brands across Cairns, the Tablelands, the Cassowary Coast, and Far North
+Queensland that need a website that feels current, works properly on mobile, and makes
+it easier for customers to take the next step.
             </p>
           </div>
         </div>
@@ -688,9 +689,7 @@ export default function Home() {
                   Do you only work with businesses in Far North Queensland?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  No. I can work with businesses Australia-wide, but I’m based in Far North
-                  Queensland and especially happy to work with local businesses in Cairns,
-                  Innisfail, and surrounding areas.
+                  No. I can work with businesses Australia-wide, but I’m based in Far North Queensland and especially happy to work with local businesses in Cairns, the Tablelands, the Cassowary Coast, and surrounding areas.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
