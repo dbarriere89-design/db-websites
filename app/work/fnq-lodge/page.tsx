@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -35,9 +36,72 @@ const AFTER_IMAGE = "/work/fnq-lodge/after.jpg"
 const BOOKING_MOBILE_IMAGE = "/work/fnq-lodge/booking-mobile.jpg"
 const CHECKOUT_DESKTOP_IMAGE = "/work/fnq-lodge/checkout-desktop-sharp.jpg"
 
+export const metadata: Metadata = {
+  title: "FNQ Lodge | Work example",
+  description:
+    "A work example from DB Websites showing a clearer accommodation website, a better booking path, mobile improvements, and before-and-after proof for FNQ Lodge.",
+  alternates: {
+    canonical: "/work/fnq-lodge",
+  },
+  openGraph: {
+    title: "FNQ Lodge | Work example | DB Websites",
+    description:
+      "A work example from DB Websites showing a clearer accommodation website, a better booking path, mobile improvements, and before-and-after proof for FNQ Lodge.",
+    url: "https://dbwebsites.au/work/fnq-lodge",
+    siteName: "DB Websites",
+    images: [
+      {
+        url: "https://dbwebsites.au/work/fnq-lodge/hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "FNQ Lodge work example by DB Websites",
+      },
+    ],
+    locale: "en_AU",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FNQ Lodge | Work example | DB Websites",
+    description:
+      "A work example from DB Websites showing a clearer accommodation website, a better booking path, mobile improvements, and before-and-after proof for FNQ Lodge.",
+    images: ["https://dbwebsites.au/work/fnq-lodge/hero.jpg"],
+  },
+}
+
+const workExampleSchema = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: "FNQ Lodge",
+  url: "https://dbwebsites.au/work/fnq-lodge",
+  description:
+    "A work example from DB Websites showing a clearer accommodation website, a better booking path, mobile improvements, and before-and-after proof for FNQ Lodge.",
+  creator: {
+    "@type": "Person",
+    name: "Des",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "DB Websites",
+    url: "https://dbwebsites.au",
+  },
+  image: [
+    "https://dbwebsites.au/work/fnq-lodge/hero.jpg",
+    "https://dbwebsites.au/work/fnq-lodge/before.jpg",
+    "https://dbwebsites.au/work/fnq-lodge/after.jpg",
+    "https://dbwebsites.au/work/fnq-lodge/booking-mobile.jpg",
+    "https://dbwebsites.au/work/fnq-lodge/checkout-desktop-sharp.jpg",
+  ],
+}
+
 export default function FNQLodgePage() {
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(workExampleSchema) }}
+      />
+
       <header className="border-b border-border bg-background/80 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
           <Link
@@ -64,7 +128,7 @@ export default function FNQLodgePage() {
       <main className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-6 inline-flex rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground">
-            WordPress booking website
+            Work example
           </div>
 
           <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
@@ -72,8 +136,8 @@ export default function FNQLodgePage() {
           </h1>
 
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            A WordPress accommodation and booking project focused on improving page structure, mobile usability, and the
-            reservation journey — with before and after proof to show the difference clearly.
+            A booking website improvement project focused on clearer page structure, better mobile
+            use, and an easier path from browsing to booking.
           </p>
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
@@ -86,18 +150,19 @@ export default function FNQLodgePage() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <Card className="rounded-3xl p-8 shadow-sm">
-              <h2 className="text-2xl font-semibold text-foreground">The challenge</h2>
+              <h2 className="text-2xl font-semibold text-foreground">What needed work</h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                The site needed a clearer accommodation story, a cleaner booking path, and a more polished front-end
-                experience so visitors could move from browsing to reserving without friction or confusion.
+                The site needed a clearer story, a cleaner booking path, and a better overall feel
+                so visitors could move from looking around to making a booking without getting
+                confused.
               </p>
 
               <div className="mt-6 space-y-3">
                 {[
-                  "Make the stay feel more premium online",
-                  "Improve the booking journey and CTA flow",
+                  "Make the stay feel better presented online",
+                  "Improve the booking path and calls to action",
                   "Clean up awkward layout and presentation issues",
-                  "Strengthen mobile usability for real visitors",
+                  "Make the site easier to use on mobile",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
@@ -112,12 +177,12 @@ export default function FNQLodgePage() {
 
               <div className="mt-6 space-y-3">
                 {[
-                  "WordPress layout and front-end cleanup",
-                  "Booking-page and CTA improvements",
-                  "Booking and checkout flow improvements",
-                  "Mobile presentation and usability work",
-                  "Sharper structure for a tourism/stay audience",
-                  "General polish to make the property feel more credible",
+                  "WordPress layout cleanup",
+                  "Booking page and call-to-action improvements",
+                  "Booking and checkout improvements",
+                  "Better mobile presentation and usability",
+                  "Clearer structure for people looking to stay or book",
+                  "General polish to make the property feel more trustworthy",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-warm))]" />
@@ -131,8 +196,8 @@ export default function FNQLodgePage() {
           <div className="mt-12">
             <h2 className="text-2xl font-semibold text-foreground">Before and after</h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              This is where the project earns its keep. Rather than vague claims about “improvements”, the before and
-              after structure makes the change in presentation and booking flow much easier to understand.
+              This is where the difference becomes obvious. The before-and-after view makes it much
+              easier to see how the page structure, presentation, and booking path were improved.
             </p>
 
             <div className="mt-6 grid gap-6 md:grid-cols-2">
@@ -140,13 +205,13 @@ export default function FNQLodgePage() {
                 <div className="border-b border-border px-6 py-4">
                   <div className="text-sm font-semibold text-foreground">Before</div>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Clunkier presentation, weaker visual hierarchy, and a less obvious reservation path.
+                    Clunkier presentation, weaker page structure, and a less obvious path to booking.
                   </p>
                 </div>
                 <div className="p-6">
                   <Lightbox
                     src={BEFORE_IMAGE}
-                    alt="FNQ Lodge before redesign screenshot"
+                    alt="FNQ Lodge before improvements screenshot"
                     className="w-full object-cover"
                   />
                 </div>
@@ -156,13 +221,13 @@ export default function FNQLodgePage() {
                 <div className="border-b border-border px-6 py-4">
                   <div className="text-sm font-semibold text-foreground">After</div>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Cleaner structure, stronger accommodation presentation, and a clearer path into booking.
+                    Cleaner structure, clearer presentation, and an easier path into booking.
                   </p>
                 </div>
                 <div className="p-6">
                   <Lightbox
                     src={AFTER_IMAGE}
-                    alt="FNQ Lodge after redesign screenshot"
+                    alt="FNQ Lodge after improvements screenshot"
                     className="w-full object-cover"
                   />
                 </div>
@@ -171,16 +236,17 @@ export default function FNQLodgePage() {
           </div>
 
           <div className="mt-12">
-            <h2 className="text-2xl font-semibold text-foreground">Booking & checkout flow</h2>
+            <h2 className="text-2xl font-semibold text-foreground">Booking and checkout flow</h2>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              Improving the reservation experience was a key part of the project. The booking interface and checkout flow
-              were cleaned up to make the process clearer, more trustworthy, and easier to use across desktop and mobile.
+              Improving the booking experience was a big part of this job. The booking and checkout
+              steps were cleaned up to feel clearer, more trustworthy, and easier to use across
+              desktop and mobile.
             </p>
 
             <div className="mt-6 grid gap-6 lg:grid-cols-[0.7fr_1.3fr]">
               <Card className="overflow-hidden rounded-3xl p-0 shadow-sm">
                 <div className="border-b border-border px-6 py-4">
-                  <div className="text-sm font-semibold text-foreground">Mobile booking interface</div>
+                  <div className="text-sm font-semibold text-foreground">Mobile booking page</div>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Mobile booking page with guest selection and date picker flow.
                   </p>
@@ -196,17 +262,17 @@ export default function FNQLodgePage() {
 
               <Card className="overflow-hidden rounded-3xl p-0 shadow-sm">
                 <div className="border-b border-border px-6 py-4">
-                  <div className="text-sm font-semibold text-foreground">Checkout experience</div>
+                  <div className="text-sm font-semibold text-foreground">Checkout page</div>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Checkout layout with booking summary, guest details form, and Stripe payment section.
+                    Checkout layout with booking summary, guest details form, and payment section.
                   </p>
                 </div>
                 <div className="p-6">
                   <Lightbox
-  src={CHECKOUT_DESKTOP_IMAGE}
-  alt="FNQ Lodge checkout page screenshot"
-  className="mx-auto max-w-[950px] w-full object-contain"
-/>
+                    src={CHECKOUT_DESKTOP_IMAGE}
+                    alt="FNQ Lodge checkout page screenshot"
+                    className="mx-auto w-full max-w-[950px] object-contain"
+                  />
                 </div>
               </Card>
             </div>
@@ -214,27 +280,29 @@ export default function FNQLodgePage() {
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             <Card className="rounded-3xl p-8 shadow-sm">
-              <h2 className="text-2xl font-semibold text-foreground">Why this case study matters</h2>
+              <h2 className="text-2xl font-semibold text-foreground">Why this matters</h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                It shows that the work isn’t limited to Shopify or modern app builds. There’s real value in taking an
-                existing WordPress site and making it cleaner, easier to use, and more commercially effective.
+                This work example shows that the job is not always about building something from
+                scratch. Sometimes the real value is in taking an existing website and making it
+                cleaner, easier to use, and better for real customers.
               </p>
 
               <p className="mt-4 leading-relaxed text-muted-foreground">
-                That’s especially useful for accommodation, tourism, service businesses, and local operators sitting on
-                websites that technically work but feel messy, dated, or harder to use than they should be.
+                That matters for accommodation, tourism, service businesses, and local operators
+                with websites that technically work but still feel messy, dated, or harder to use
+                than they should be.
               </p>
             </Card>
 
             <Card className="rounded-3xl p-8 shadow-sm">
-              <h2 className="text-2xl font-semibold text-foreground">Key outcomes</h2>
+              <h2 className="text-2xl font-semibold text-foreground">Key improvements</h2>
               <div className="mt-6 space-y-3">
                 {[
-                  "Clearer accommodation positioning",
-                  "A stronger reservation path",
-                  "Better booking and checkout UX",
+                  "Clearer accommodation presentation",
+                  "A stronger booking path",
+                  "Better booking and checkout flow",
                   "Better mobile usability",
-                  "More premium front-end presentation",
+                  "A cleaner and more trustworthy feel",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
@@ -246,11 +314,11 @@ export default function FNQLodgePage() {
           </div>
 
           <Card className="mt-12 rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-semibold text-foreground">Why it matters</h2>
+            <h2 className="text-2xl font-semibold text-foreground">Simple takeaway</h2>
             <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-              This project adds breadth to the portfolio and proves I can improve booking and accommodation websites, not
-              just ecommerce stores or digital funnels. The before/after framing plus the booking and checkout flow proof
-              makes that capability much stronger.
+              This project shows I can improve booking and accommodation websites so they feel
+              clearer, easier to use, and better suited to real customers — not just online stores
+              or landing pages.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -270,7 +338,7 @@ export default function FNQLodgePage() {
 
               <Button asChild variant="ghost">
                 <Link href="/work/tripple-pluggers">
-                  Back to ecommerce case study
+                  Back to work examples
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
