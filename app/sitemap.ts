@@ -11,22 +11,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}#work`,
+      url: `${baseUrl}/work/fifo-resume-mate`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}#pricing`,
+      url: `${baseUrl}/work/tripple-pluggers`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}#faq`,
+      url: `${baseUrl}/work/fnq-lodge`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.6,
+      priority: 0.9,
     },
   ]
 }
