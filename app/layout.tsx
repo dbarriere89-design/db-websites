@@ -10,31 +10,51 @@ const geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   metadataBase: new URL("https://dbwebsites.au"),
 
-  title: "DB Websites — Modern websites, Shopify stores, and WordPress fixes",
+  title: {
+    default: "DB Websites | Websites for small businesses in Cairns & FNQ",
+    template: "%s | DB Websites",
+  },
+
   description:
-    "High-performance websites, Shopify ecommerce builds, and WordPress upgrades for Australian businesses. Built to look sharper, work better, and convert more cleanly.",
-  generator: "v0.app",
+    "Simple, modern websites for small businesses in Cairns, Innisfail and Far North Queensland. Shopify stores, website refreshes and practical fixes built to help turn visitors into enquiries.",
+
+  alternates: {
+    canonical: "/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 
   verification: {
     google: "089lNLrHjvhCX-nbwhPpj_WESgFCvlTqomZsX8q_uHY",
   },
 
   openGraph: {
-    title: "DB Websites — Modern websites, Shopify stores, and WordPress fixes",
+    title: "DB Websites | Websites for small businesses in Cairns & FNQ",
     description:
-      "Modern websites, Shopify ecommerce builds, and selective WordPress upgrades for Australian businesses.",
-    url: "https://www.dbwebsites.au",
+      "Simple, modern websites for small businesses in Cairns, Innisfail and Far North Queensland. Shopify stores, website refreshes and practical fixes built to help turn visitors into enquiries.",
+    url: "https://dbwebsites.au",
     siteName: "DB Websites",
     images: [
       {
-        url: "https://www.dbwebsites.au/og-image.png",
+        url: "https://dbwebsites.au/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DB Websites — Modern websites, Shopify stores, and WordPress fixes",
+        alt: "DB Websites | Websites for small businesses in Cairns & FNQ",
       },
     ],
     locale: "en_AU",
     type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "DB Websites | Websites for small businesses in Cairns & FNQ",
+    description:
+      "Simple, modern websites for small businesses in Cairns, Innisfail and Far North Queensland.",
+    images: ["https://dbwebsites.au/og-image.png"],
   },
 
   icons: {
@@ -57,7 +77,7 @@ export default function RootLayout({
         <script
           src="//code.tidio.co/svuowosee2lpcoiumlepae66awnaymao.js"
           async
-        ></script>
+        />
       </head>
       <body className="font-sans antialiased">
         {children}
