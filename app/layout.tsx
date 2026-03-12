@@ -8,7 +8,7 @@ const geist = Geist({ subsets: ["latin"] })
 const geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.dbwebsites.au"),
+  metadataBase: new URL("https://dbwebsites.au"),
 
   title: "DB Websites — Modern websites, Shopify stores, and WordPress fixes",
   description:
