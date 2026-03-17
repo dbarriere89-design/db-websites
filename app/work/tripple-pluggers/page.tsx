@@ -92,6 +92,32 @@ const workExampleSchema = {
   ],
 }
 
+function SectionIntro(props: {
+  eyebrow?: string
+  title: string
+  text?: string
+}) {
+  return (
+    <div className="mb-8 sm:mb-10">
+      {props.eyebrow ? (
+        <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+          {props.eyebrow}
+        </div>
+      ) : null}
+
+      <h2 className="text-balance text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+        {props.title}
+      </h2>
+
+      {props.text ? (
+        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          {props.text}
+        </p>
+      ) : null}
+    </div>
+  )
+}
+
 export default function TripplePluggersPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -100,11 +126,11 @@ export default function TripplePluggersPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(workExampleSchema) }}
       />
 
-      <header className="border-b border-border bg-background/80 backdrop-blur">
-        <div className="container mx-auto flex h-16 items-center justify-between px-6 lg:px-8">
+      <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
-            className="flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground"
+            className="flex items-center gap-2 text-base font-semibold tracking-tight text-foreground sm:text-lg"
           >
             <img
               src="/web-app-manifest-512x512.png"
@@ -114,7 +140,7 @@ export default function TripplePluggersPage() {
             DB Websites
           </Link>
 
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" className="shadow-sm">
             <Link href="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to home
@@ -123,194 +149,288 @@ export default function TripplePluggersPage() {
         </div>
       </header>
 
-      <main className="container mx-auto px-6 py-16 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-6 inline-flex rounded-full border border-border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground">
-            Work example
+      <main>
+        <section className="relative overflow-hidden premium-ambient border-b border-border bg-[oklch(0.972_0.012_205)]">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_40%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,214,153,0.18),transparent_32%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.45),transparent_48%)]" />
           </div>
 
-          <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Tripple Pluggers
-          </h1>
-
-          <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            A real online store build for an Australian product brand, focused on clearer product
-            pages, easier shopping on mobile, and a smoother path to checkout.
-          </p>
-
-          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-            This was not just a design mockup. It was a live store with real visitors, real
-            checkouts, and real sales.
-          </p>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat) => (
-              <div
-                key={stat}
-                className="rounded-2xl border border-border bg-background/70 px-4 py-4 text-sm font-medium text-foreground"
-              >
-                {stat}
+          <div className="container relative z-[2] mx-auto px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24">
+            <div className="mx-auto max-w-5xl">
+              <div className="mb-4 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+                Work example
               </div>
-            ))}
-          </div>
 
-          <div className="mt-10">
-            <BrowserFrame>
-              <img
-                src="/work/tripple-pluggers/tp-hero.jpg"
-                alt="Tripple Pluggers online store homepage"
-                className="w-full object-cover"
-              />
-            </BrowserFrame>
-          </div>
+              <h1 className="max-w-4xl text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                Tripple Pluggers
+              </h1>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <Card className="rounded-3xl p-8 shadow-sm">
-              <h2 className="text-2xl font-semibold text-foreground">What needed work</h2>
-
-              <p className="mt-4 leading-relaxed text-muted-foreground">
-                The store needed to feel stronger, clearer, and easier to use. It had to look more
-                trustworthy, work better on mobile, and make it easier for shoppers to go from
-                browsing to buying.
+              <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
+                A real online store build for an Australian product brand, focused on
+                clearer product pages, easier shopping on mobile, and a smoother path
+                to checkout.
               </p>
 
-              <div className="mt-6 space-y-3">
-                {[
-                  "Make the store look stronger and more polished",
-                  "Improve product and variant selection",
-                  "Support mobile-first shopping",
-                  "Build trust quickly enough to earn early orders",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                    <span className="text-sm text-foreground">{item}</span>
+              <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                This was a live store with real visitors, real orders, and real
+                checkout activity — not just a polished mockup.
+              </p>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {stats.map((stat, index) => (
+                  <div
+                    key={stat}
+                    className={`rounded-2xl border px-4 py-4 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm ${
+                      index % 2 === 0
+                        ? "border-[hsl(var(--brand-accent)/0.18)] bg-[hsl(var(--brand-accent)/0.07)]"
+                        : "border-[hsl(var(--brand-warm)/0.24)] bg-[hsl(var(--brand-warm)/0.09)]"
+                    }`}
+                  >
+                    {stat}
                   </div>
                 ))}
               </div>
-            </Card>
 
-            <Card className="rounded-3xl p-8 shadow-sm">
-              <h2 className="text-2xl font-semibold text-foreground">What I worked on</h2>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Button asChild className="shadow-sm">
+                  <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                    <Mail className="mr-2 h-4 w-4" />
+                    Start a project
+                  </Link>
+                </Button>
 
-              <div className="mt-6 space-y-3">
-                {[
-                  "Store layout and structure",
-                  "Homepage and collection page improvements",
-                  "Cleaner product pages and variant selection",
-                  "Better mobile shopping experience",
-                  "A smoother path from product page to checkout",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-warm))]" />
-                    <span className="text-sm text-foreground">{item}</span>
-                  </div>
-                ))}
+                <Button asChild variant="outline" className="shadow-sm bg-background/70">
+                  <Link
+                    href={FACEBOOK_MESSENGER_URL}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                    Message me
+                  </Link>
+                </Button>
               </div>
-            </Card>
+            </div>
           </div>
+        </section>
 
-          <div className="mt-12">
-            <h2 className="text-2xl font-semibold text-foreground">Storefront and buying flow</h2>
-
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              These screenshots show the real store experience across desktop and mobile, including
-              the product pages and the buying journey.
-            </p>
-
-            <div className="mt-6 space-y-6">
+        <section className="container mx-auto px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+          <div className="mx-auto max-w-6xl">
+            <div className="overflow-hidden rounded-[28px] border border-border bg-card shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
               <BrowserFrame>
                 <img
-                  src="/work/tripple-pluggers/tp-product-desktop.jpg"
-                  alt="Tripple Pluggers desktop product page"
-                  className="w-full object-contain"
+                  src="/work/tripple-pluggers/tp-hero.jpg"
+                  alt="Tripple Pluggers online store homepage"
+                  className="w-full object-cover"
                 />
               </BrowserFrame>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative border-y border-border bg-[linear-gradient(to_bottom,rgba(10,160,185,0.035),rgba(255,255,255,0.7))]">
+          <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+            <div className="mx-auto max-w-6xl">
+              <div className="grid gap-6 lg:grid-cols-2">
+                <Card className="premium-card rounded-3xl border border-[hsl(var(--brand-accent)/0.22)] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(10,160,185,0.05))] p-6 shadow-sm sm:p-8">
+                  <div className="mb-4 inline-flex rounded-full border border-[hsl(var(--brand-accent)/0.18)] bg-[hsl(var(--brand-accent)/0.08)] px-3 py-1 text-xs font-medium text-foreground/80">
+                    What needed work
+                  </div>
+
+                  <h2 className="text-2xl font-bold tracking-tight text-foreground">
+                    The store needed to feel clearer, stronger, and easier to buy from
+                  </h2>
+
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                    It had to look more trustworthy, work better on mobile, and make it
+                    easier for shoppers to move from browsing to buying without getting
+                    lost or second-guessing the store.
+                  </p>
+
+                  <div className="mt-6 space-y-4">
+                    {[
+                      "Make the store look stronger and more polished",
+                      "Improve product and variant selection",
+                      "Support mobile-first shopping",
+                      "Build trust quickly enough to earn early orders",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
+                        <span className="text-sm leading-relaxed text-foreground sm:text-base">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+
+                <Card className="premium-card rounded-3xl border border-[hsl(var(--brand-warm)/0.24)] bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(245,180,70,0.06))] p-6 shadow-sm sm:p-8">
+                  <div className="mb-4 inline-flex rounded-full border border-[hsl(var(--brand-warm)/0.22)] bg-[hsl(var(--brand-warm)/0.10)] px-3 py-1 text-xs font-medium text-foreground/80">
+                    What I worked on
+                  </div>
+
+                  <h2 className="text-2xl font-bold tracking-tight text-foreground">
+                    Practical improvements across layout, product pages, and buying flow
+                  </h2>
+
+                  <div className="mt-6 space-y-4">
+                    {[
+                      "Store layout and structure",
+                      "Homepage and collection page improvements",
+                      "Cleaner product pages and variant selection",
+                      "Better mobile shopping experience",
+                      "A smoother path from product page to checkout",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-warm))]" />
+                        <span className="text-sm leading-relaxed text-foreground sm:text-base">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="container mx-auto px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-6xl">
+            <SectionIntro
+              eyebrow="Storefront and buying flow"
+              title="Real product page experience across desktop and mobile"
+              text="These screenshots show the actual storefront and buying journey, including how the store looked on desktop and how it translated to mobile."
+            />
+
+            <div className="space-y-8">
+              <div className="overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(10,160,185,0.03))] shadow-[0_14px_40px_rgba(0,0,0,0.08)]">
+                <BrowserFrame>
+                  <img
+                    src="/work/tripple-pluggers/tp-product-desktop.jpg"
+                    alt="Tripple Pluggers desktop product page"
+                    className="w-full object-contain"
+                  />
+                </BrowserFrame>
+              </div>
 
               <div className="flex justify-center">
-                <div className="w-full max-w-sm">
-                  <BrowserFrame>
-                    <img
-                      src="/work/tripple-pluggers/tp-product-mobile.jpg"
-                      alt="Tripple Pluggers mobile product page"
-                      className="mx-auto max-h-[720px] object-contain"
-                    />
-                  </BrowserFrame>
+                <div className="w-full max-w-md">
+                  <div className="overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(245,180,70,0.035))] shadow-[0_14px_40px_rgba(0,0,0,0.08)]">
+                    <BrowserFrame>
+                      <img
+                        src="/work/tripple-pluggers/tp-product-mobile.jpg"
+                        alt="Tripple Pluggers mobile product page"
+                        className="mx-auto w-full object-contain"
+                      />
+                    </BrowserFrame>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </section>
 
-          <div className="mt-12">
-            <h2 className="text-2xl font-semibold text-foreground">Real store proof</h2>
+        <section className="relative border-y border-border bg-[linear-gradient(to_bottom,rgba(245,180,70,0.045),rgba(255,255,255,0.84))]">
+          <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+            <div className="mx-auto max-w-6xl">
+              <SectionIntro
+                eyebrow="Real store proof"
+                title="Real traffic, real orders, real checkout activity"
+                text="This was a working store, not a concept page. The screenshots below show real analytics, orders, and a live checkout flow."
+              />
 
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              Real traffic, real orders, and a working checkout show that this was a live store, not
-              just a nice-looking concept.
-            </p>
+              <div className="grid gap-6 lg:grid-cols-2">
+                <div className="overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(10,160,185,0.03))] shadow-[0_14px_40px_rgba(0,0,0,0.08)]">
+                  <BrowserFrame>
+                    <Lightbox
+                      src="/work/tripple-pluggers/tp-dashboard.jpg"
+                      alt="Tripple Pluggers store analytics"
+                      className="w-full object-contain"
+                    />
+                  </BrowserFrame>
+                </div>
 
-            <div className="mt-6 grid gap-6 lg:grid-cols-2">
-              <BrowserFrame>
-                <Lightbox
-                  src="/work/tripple-pluggers/tp-dashboard.jpg"
-                  alt="Tripple Pluggers store analytics"
-                  className="w-full object-contain"
-                />
-              </BrowserFrame>
+                <div className="overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(245,180,70,0.04))] shadow-[0_14px_40px_rgba(0,0,0,0.08)]">
+                  <BrowserFrame>
+                    <Lightbox
+                      src="/work/tripple-pluggers/tp-orders.jpg"
+                      alt="Tripple Pluggers orders list"
+                      className="w-full object-contain"
+                    />
+                  </BrowserFrame>
+                </div>
+              </div>
 
-              <BrowserFrame>
-                <Lightbox
-                  src="/work/tripple-pluggers/tp-orders.jpg"
-                  alt="Tripple Pluggers orders list"
-                  className="w-full object-contain"
-                />
-              </BrowserFrame>
-            </div>
-
-            <div className="mt-6 flex justify-center">
-              <div className="w-full max-w-md">
-                <BrowserFrame>
-                  <Lightbox
-                    src="/work/tripple-pluggers/tp-checkout.jpg"
-                    alt="Tripple Pluggers checkout page"
-                    className="mx-auto max-h-[720px] object-contain"
-                  />
-                </BrowserFrame>
+              <div className="mt-6 flex justify-center">
+                <div className="w-full max-w-md">
+                  <div className="overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(10,160,185,0.03))] shadow-[0_14px_40px_rgba(0,0,0,0.08)]">
+                    <BrowserFrame>
+                      <Lightbox
+                        src="/work/tripple-pluggers/tp-checkout.jpg"
+                        alt="Tripple Pluggers checkout page"
+                        className="mx-auto w-full object-contain"
+                      />
+                    </BrowserFrame>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </section>
 
-          <Card className="mt-12 rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-semibold text-foreground">Simple takeaway</h2>
+        <section className="container mx-auto px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-5xl">
+            <Card className="premium-card relative overflow-hidden rounded-[32px] border border-border bg-[linear-gradient(135deg,rgba(10,160,185,0.08),rgba(255,255,255,0.96),rgba(245,180,70,0.10))] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.08)] sm:p-8 lg:p-10">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.10),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_32%)]" />
 
-            <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-              This project shows I can build and improve online stores that look better, feel easier
-              to use, and are backed by real sales activity — not just polished screenshots.
-            </p>
+              <div className="relative z-[1]">
+                <div className="mb-4 inline-flex rounded-full border border-border bg-background/75 px-3 py-1 text-xs font-medium text-muted-foreground">
+                  Simple takeaway
+                </div>
 
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Button asChild>
-                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
-                  <Mail className="mr-2 h-4 w-4" />
-                  Start a project
-                </Link>
-              </Button>
+                <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                  This project proves I can build stores that look better and actually function in the real world
+                </h2>
 
-              <Button asChild variant="outline">
-                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Message me
-                </Link>
-              </Button>
+                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  The point is not just that the store looked cleaner. The point is that it
+                  became easier to use, easier to trust, and capable of generating real
+                  sales activity from a live audience.
+                </p>
 
-              <Button asChild variant="ghost">
-                <Link href="/work/fifo-resume-mate">
-                  Next work example
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </Card>
-        </div>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <Button asChild className="shadow-sm">
+                    <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                      <Mail className="mr-2 h-4 w-4" />
+                      Start a project
+                    </Link>
+                  </Button>
+
+                  <Button asChild variant="outline" className="shadow-sm bg-background/70">
+                    <Link
+                      href={FACEBOOK_MESSENGER_URL}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      <MessageCircle className="mr-2 h-4 w-4" />
+                      Message me
+                    </Link>
+                  </Button>
+
+                  <Button asChild variant="ghost">
+                    <Link href="/work/fifo-resume-mate">
+                      Next work example
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </section>
       </main>
     </div>
   )
