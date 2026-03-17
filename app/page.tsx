@@ -228,7 +228,7 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto mt-6 max-w-3xl text-pretty text-xl leading-relaxed text-muted-foreground sm:text-2xl">
-              I build new websites and improve existing ones for small businesses in Cairns, the Tablelands, the Cassowary Coast, and across Far North Queensland, Innisfail, and across Far North Queensland.
+              I build new websites and improve existing ones for small businesses in Cairns, the Tablelands, the Cassowary Coast, and across Far North Queensland.
             </p>
 
             <p className="mx-auto mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
