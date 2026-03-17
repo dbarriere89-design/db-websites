@@ -150,7 +150,7 @@ export default function TripplePluggersPage() {
       </header>
 
       <main>
-        <section className="relative overflow-hidden premium-ambient border-b border-border bg-[oklch(0.972_0.012_205)]">
+        <section className="relative overflow-hidden premium-ambient border-b border-border bg-[linear-gradient(180deg,oklch(0.94_0.015_205),oklch(0.98_0.003_220))]">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_40%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,214,153,0.18),transparent_32%)]" />
@@ -182,10 +182,10 @@ export default function TripplePluggersPage() {
                 {stats.map((stat, index) => (
                   <div
                     key={stat}
-                    className={`rounded-2xl border px-4 py-4 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm ${
+                    className={`rounded-2xl border px-4 py-4 text-sm font-semibold text-foreground shadow-md backdrop-blur-sm ${
                       index % 2 === 0
-                        ? "border-[hsl(var(--brand-accent)/0.18)] bg-[hsl(var(--brand-accent)/0.07)]"
-                        : "border-[hsl(var(--brand-warm)/0.24)] bg-[hsl(var(--brand-warm)/0.09)]"
+                        ? "border-[hsl(var(--brand-accent)/0.35)] bg-[hsl(var(--brand-accent)/0.12)]"
+                        : "border-[hsl(var(--brand-warm)/0.35)] bg-[hsl(var(--brand-warm)/0.14)]"
                     }`}
                   >
                     {stat}
@@ -212,6 +212,8 @@ export default function TripplePluggersPage() {
                   </Link>
                 </Button>
               </div>
+
+              <div className="mt-10 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent" />
             </div>
           </div>
         </section>
