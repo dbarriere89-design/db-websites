@@ -211,92 +211,80 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative overflow-hidden premium-ambient border-b border-border bg-[linear-gradient(180deg,rgba(240,245,245,0.92),rgba(255,255,255,0.98))]">
+      <section className="relative overflow-hidden premium-ambient border-b border-border bg-[oklch(0.97_0.01_200)]">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),transparent_42%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,214,153,0.12),transparent_28%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.52),transparent_42%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_45%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,214,153,0.10),transparent_26%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.45),transparent_40%)]" />
         </div>
 
         <div className="container relative z-[2] mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
-            <div className="mx-auto max-w-4xl rounded-[32px] border border-border bg-white/72 p-6 shadow-[0_16px_50px_rgba(0,0,0,0.08)] backdrop-blur-md sm:p-8 lg:p-10">
-              <div className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                Websites • online stores • website fixes
-              </div>
+            <div className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              Websites • online stores • website fixes
+            </div>
 
-              <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-                Websites that help bring in more customers
-              </h1>
+            <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              Websites that help bring in more customers
+            </h1>
 
-              <p className="mx-auto mt-6 max-w-3xl text-pretty text-xl leading-relaxed text-muted-foreground sm:text-2xl">
-                I build new websites and improve existing ones for small businesses in
-                Cairns, the Tablelands, the Cassowary Coast, and across Far North
-                Queensland.
-              </p>
+            <p className="mx-auto mt-6 max-w-3xl text-pretty text-xl leading-relaxed text-muted-foreground sm:text-2xl">
+              I build new websites and improve existing ones for small businesses in
+              Cairns, the Tablelands, the Cassowary Coast, and across Far North
+              Queensland.
+            </p>
 
-              <p className="mx-auto mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-                The goal is simple: make your business easier to understand, easier to
-                trust, and easier for people to contact, book, or buy from.
-              </p>
+            <p className="mx-auto mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+              The goal is simple: make your business easier to understand, easier to
+              trust, and easier for people to contact, book, or buy from.
+            </p>
 
-              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button size="lg" asChild className="shadow-md">
-                  <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
-                    <Mail className="mr-2 h-4 w-4" />
-                    Start a project
-                  </Link>
-                </Button>
-
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="bg-white/75 shadow-sm backdrop-blur"
-                >
-                  <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                    <MessageCircle className="mr-2 h-4 w-4" />
-                    Message me
-                  </Link>
-                </Button>
-              </div>
-
-              <div className="mt-5">
-                <Link
-                  href="#work"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  View work examples
-                  <ArrowRight className="h-4 w-4" />
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button size="lg" asChild className="shadow-md">
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                  <Mail className="mr-2 h-4 w-4" />
+                  Start a project
                 </Link>
-              </div>
+              </Button>
 
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 shadow-sm">
-                  ✅ New websites for small businesses
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 shadow-sm">
-                  ✅ Online stores with real sales proof
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 shadow-sm">
-                  ✅ Fixes for broken or clunky websites
-                </span>
-              </div>
+              <Button size="lg" variant="outline" asChild className="bg-white/75 shadow-sm">
+                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Message me
+                </Link>
+              </Button>
+            </div>
 
-              <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
-                <span className="rounded-full border border-border bg-white/75 px-3 py-1 shadow-sm">
-                  Cairns
-                </span>
-                <span className="rounded-full border border-border bg-white/75 px-3 py-1 shadow-sm">
-                  Tablelands
-                </span>
-                <span className="rounded-full border border-border bg-white/75 px-3 py-1 shadow-sm">
-                  Cassowary Coast
-                </span>
-                <span className="rounded-full border border-border bg-white/75 px-3 py-1 shadow-sm">
-                  FNQ
-                </span>
-              </div>
+            <div className="mt-5">
+              <Link
+                href="#work"
+                className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                View work examples
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 shadow-sm">
+                ✅ New websites for small businesses
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 shadow-sm">
+                ✅ Online stores with real sales proof
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 shadow-sm">
+                ✅ Fixes for broken or clunky websites
+              </span>
+            </div>
+
+            <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
+              <span>New builds</span>
+              <span className="opacity-40">•</span>
+              <span>Online stores</span>
+              <span className="opacity-40">•</span>
+              <span>Booking websites</span>
+              <span className="opacity-40">•</span>
+              <span>Website fixes</span>
             </div>
 
             <div className="mx-auto mt-10 h-px w-full max-w-5xl bg-gradient-to-r from-transparent via-border to-transparent" />
@@ -395,6 +383,10 @@ export default function Home() {
               Cassowary Coast, and Far North Queensland that need a website that feels
               current, works properly on mobile, and makes it easier for customers to
               take the next step.
+            </p>
+            <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+              I can help with Shopify stores, WordPress websites, and modern custom
+              business websites depending on what suits the job best.
             </p>
           </div>
         </div>
@@ -522,12 +514,12 @@ export default function Home() {
                 easier to understand and easier to contact.
               </p>
               <div className="mt-5 text-sm font-medium text-foreground">
-                Best for service businesses and local brands
+                Shopify, WordPress, and custom business websites
               </div>
             </Card>
 
             <Card className="premium-card rounded-3xl border border-border bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-warm))/0.12]">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-warm))/0.10]">
                 <ShoppingBag className="h-6 w-6 text-foreground" />
               </div>
               <h3 className="text-2xl font-semibold text-foreground">Online stores</h3>
@@ -743,6 +735,16 @@ export default function Home() {
 
               <AccordionItem value="item-5">
                 <AccordionTrigger className="text-left text-base font-semibold">
+                  What platforms do you work with?
+                </AccordionTrigger>
+                <AccordionContent className="leading-relaxed text-muted-foreground">
+                  I can help with Shopify stores, WordPress websites, and modern custom
+                  business websites depending on what suits the project best.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-6">
+                <AccordionTrigger className="text-left text-base font-semibold">
                   Do you only work with businesses in Far North Queensland?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
@@ -756,7 +758,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.04),rgba(255,255,255,0.96),rgba(245,180,70,0.08))]">
+      <section className="border-t border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.04),rgba(255,255,255,0.96),rgba(245,180,70,0.06))]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
@@ -781,12 +783,7 @@ export default function Home() {
                 </Link>
               </Button>
 
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="bg-white/80 shadow-sm backdrop-blur"
-              >
+              <Button size="lg" variant="outline" asChild className="bg-white/80 shadow-sm">
                 <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Message me
