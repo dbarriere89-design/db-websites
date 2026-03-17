@@ -115,7 +115,7 @@ const WORK_EXAMPLES: WorkExample[] = [
       "Built and improved an online store for an Australian footwear brand with clearer product pages, easier buying on mobile, and a smoother path to checkout.",
     image: "/work/tripple-pluggers/tp-hero.jpg",
     imageAlt: "Tripple Pluggers website screenshot",
-    stats: ["15 orders", "$645 revenue", "Live store", "Real checkout flow"],
+    stats: ["28 orders", "$1456 revenue", "Live store", "Real checkout flow"],
     bullets: [
       "Cleaner product page layout",
       "Better size and variant selection",
