@@ -194,8 +194,8 @@ export default function FNQLodgePage() {
                     key={stat}
                     className={`rounded-2xl border px-4 py-4 text-sm font-semibold text-foreground shadow-md backdrop-blur-sm ${
                       index % 2 === 0
-                        ? "border-[hsl(var(--brand-accent)/0.35)] bg-[hsl(var(--brand-accent)/0.12)]"
-                        : "border-[hsl(var(--brand-warm)/0.35)] bg-[hsl(var(--brand-warm)/0.14)]"
+  ? "border-[hsl(var(--brand-accent)/0.30)] bg-[hsl(var(--brand-accent)/0.10)]"
+  : "border-border bg-white/90"
                     }`}
                   >
                     {stat}
