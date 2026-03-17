@@ -31,7 +31,7 @@ const EMAIL_BODY = encodeURIComponent(
   ].join("\n")
 )
 
-const stats = ["925 visitors", "15 orders", "$645 revenue", "1.62% conversion"]
+const stats = ["1,570 visitors", "28 orders", "$1,456 revenue", "1.78% conversion"]
 
 export const metadata: Metadata = {
   title: "Tripple Pluggers | Work example",
