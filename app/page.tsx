@@ -601,7 +601,7 @@ export default function Home() {
                 <img
                   src={VISUALS_IMAGE}
                   alt="Lifestyle product photography example"
-                  className="h-full w-full object-cover"
+                  className="mx-auto h-auto max-h-[520px] w-full max-w-[420px] object-cover"
                 />
               </div>
             </div>
@@ -850,9 +850,7 @@ export default function Home() {
               </Button>
             </div>
 
-            <div className="mt-8 text-xs text-muted-foreground">
-              DB Websites • dbwebsites.au • Built by Des
-            </div>
+         
           </div>
         </div>
       </section>
