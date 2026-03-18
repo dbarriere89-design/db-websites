@@ -346,7 +346,8 @@ export default function Home() {
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 Real-world experience building, selling, and improving digital
-                businesses — not just making pretty mockups.
+  businesses — plus a background in photography, which helps create
+  cleaner, better-looking websites without relying on generic stock images.
               </p>
             </div>
             <div>
@@ -549,6 +550,27 @@ export default function Home() {
           </div>
         </div>
       </section>
+<section className="border-b border-border bg-background">
+  <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-3xl text-center">
+      <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+        Better websites start with better visuals
+      </h2>
+
+      <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+        A lot of websites fall flat because they rely on generic stock images.
+        I have a background in photography, so I can help create or guide
+        better visuals that actually fit your business and make your website
+        feel more real and more trustworthy.
+      </p>
+
+      <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+        For some projects, this means improving your existing images. For others,
+        it can include shooting new content to match the website properly.
+      </p>
+    </div>
+  </div>
+</section>
 
       <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <SectionHeading
