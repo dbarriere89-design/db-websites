@@ -327,7 +327,7 @@ export default function Home() {
               <div className="relative">
   <div className="absolute -inset-6 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.10),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.10),transparent_40%)] blur-2xl" />
 
-  <div className="relative overflow-hidden rounded-[32px] border border-border bg-[#f8fafc] p-5 shadow-[0_30px_80px_rgba(0,0,0,0.12)] sm:p-6">
+  <div className="relative overflow-hidden rounded-[32px] border border-border bg-slate-50 p-5 shadow-[0_30px_80px_rgba(0,0,0,0.12)] sm:p-6">
     <div className="flex items-start justify-between gap-4 border-b border-border pb-5">
       <div>
         <div className="text-lg font-semibold text-foreground">
@@ -352,14 +352,14 @@ export default function Home() {
       ].map((item) => (
         <div
           key={item}
-          className="rounded-2xl border border-border bg-white/80 px-4 py-4 text-sm font-medium text-foreground shadow-sm"
+          className="rounded-2xl border border-border bg-white px-4 py-4 text-sm font-medium text-foreground shadow-sm"
         >
           {item}
         </div>
       ))}
     </div>
 
-    <div className="mt-5 rounded-[24px] border border-[hsl(var(--brand-accent)/0.18)] bg-[hsl(var(--brand-accent)/0.07)] p-5">
+    <div className="mt-5 rounded-[24px] border border-border bg-sky-50 p-5">
       <div className="flex items-start gap-3">
         <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
         <div>
@@ -375,7 +375,6 @@ export default function Home() {
     </div>
   </div>
 </div>
-
                     <div className="mt-5 grid gap-3 sm:grid-cols-3">
                       <div className="rounded-2xl border border-border bg-background px-4 py-4 text-center shadow-sm">
                         <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
