@@ -658,16 +658,16 @@ export default function Home() {
               </div>
 
               <div className="mt-8 rounded-2xl border border-border bg-white/90 p-6 shadow-sm">
-                <div className="text-sm font-semibold text-muted-foreground">
-                  Custom project range
-                </div>
-                <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">
-                  $1.5k+
-                </div>
-                <div className="mt-1 text-sm text-muted-foreground">
-                  AUD and scoped per job
-                </div>
-              </div>
+  <div className="text-sm font-semibold text-muted-foreground">
+    Custom project pricing
+  </div>
+  <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">
+    $950+
+  </div>
+  <div className="mt-1 text-sm text-muted-foreground">
+    AUD depending on scope
+  </div>
+</div>
             </Card>
           </div>
 
