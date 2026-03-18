@@ -553,61 +553,65 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(10,160,185,0.035))]">
-        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr]">
-            <div>
-              <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
-                Visuals matter
+      <section className="border-b border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(10,160,185,0.03))]">
+  <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <div className="rounded-[36px] border border-border bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(10,160,185,0.04),rgba(255,255,255,0.98))] px-6 py-8 shadow-[0_18px_50px_rgba(0,0,0,0.06)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+      <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+        <div className="max-w-xl">
+          <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+            Visuals matter
+          </div>
+
+          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Better websites start with better visuals
+          </h2>
+
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            A lot of websites fall flat because they rely on generic stock images.
+            I have a background in photography, so I can help create or guide
+            better visuals that actually fit your business and make your website
+            feel more real and more trustworthy.
+          </p>
+
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            For some projects, this means improving your existing images. For
+            others, it can include shooting new content to match the website
+            properly.
+          </p>
+
+          <div className="mt-6 space-y-3">
+            {[
+              "Better first impressions",
+              "More trust from customers",
+              "Less reliance on generic stock images",
+              "Stronger brand feel across the whole website",
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-3">
+                <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
+                <span className="text-sm leading-relaxed text-foreground sm:text-base">
+                  {item}
+                </span>
               </div>
+            ))}
+          </div>
+        </div>
 
-              <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Better websites start with better visuals
-              </h2>
-
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                A lot of websites fall flat because they rely on generic stock images.
-                I have a background in photography, so I can help create or guide
-                better visuals that actually fit your business and make your website
-                feel more real and more trustworthy.
-              </p>
-
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
-                For some projects, this means improving your existing images. For
-                others, it can include shooting new content to match the website
-                properly.
-              </p>
-
-              <div className="mt-6 space-y-3">
-                {[
-                  "Better first impressions",
-                  "More trust from customers",
-                  "Less reliance on generic stock images",
-                  "Stronger brand feel across the whole website",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                    <span className="text-sm leading-relaxed text-foreground sm:text-base">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="absolute inset-0 rounded-[32px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.12),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_38%)]" />
-              <div className="relative inline-block overflow-hidden rounded-[32px] border border-border bg-white shadow-[0_18px_48px_rgba(0,0,0,0.10)]">
-                <img
-                  src={VISUALS_IMAGE}
-                  alt="Lifestyle product photography example"
-                  className="block h-auto w-auto max-h-[520px] max-w-[380px] object-cover"
-                />
-              </div>
+        <div className="flex justify-center lg:justify-end">
+          <div className="relative inline-block">
+            <div className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.14),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.14),transparent_40%)] blur-xl" />
+            <div className="relative overflow-hidden rounded-[32px] border border-border bg-white shadow-[0_18px_48px_rgba(0,0,0,0.10)]">
+              <img
+                src={VISUALS_IMAGE}
+                alt="Lifestyle product photography example"
+                className="block h-auto w-auto max-h-[520px] max-w-[380px] object-cover"
+              />
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <SectionHeading
