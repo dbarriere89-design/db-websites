@@ -325,55 +325,56 @@ export default function Home() {
               </div>
 
               <div className="relative">
-                <div className="absolute -inset-6 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.12),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_40%)] blur-2xl" />
+  <div className="absolute -inset-6 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.10),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.10),transparent_40%)] blur-2xl" />
 
-                <div className="relative overflow-hidden rounded-[32px] border border-border bg-white/95 p-4 shadow-[0_24px_70px_rgba(0,0,0,0.10)] sm:p-5">
-                  <div className="rounded-[24px] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(248,250,252,1))] p-5 sm:p-6">
-                    <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
-                      <div>
-                        <div className="text-sm font-semibold text-foreground">
-                          What better websites usually improve
-                        </div>
-                        <div className="mt-1 text-sm text-muted-foreground">
-                          The fundamentals that help people actually take action
-                        </div>
-                      </div>
+  <div className="relative overflow-hidden rounded-[32px] border border-border bg-[#f8fafc] p-5 shadow-[0_30px_80px_rgba(0,0,0,0.12)] sm:p-6">
+    <div className="flex items-start justify-between gap-4 border-b border-border pb-5">
+      <div>
+        <div className="text-lg font-semibold text-foreground">
+          What better websites usually improve
+        </div>
+        <div className="mt-1 text-sm leading-relaxed text-muted-foreground">
+          The fundamentals that help people trust your business and take action.
+        </div>
+      </div>
 
-                      <div className="hidden rounded-2xl border border-border bg-background px-3 py-2 text-xs font-medium text-muted-foreground shadow-sm sm:block">
-                        Small business focused
-                      </div>
-                    </div>
+      <div className="hidden rounded-2xl border border-border bg-white/80 px-3 py-2 text-xs font-medium text-muted-foreground shadow-sm sm:block">
+        Small business focused
+      </div>
+    </div>
 
-                    <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                      {[
-                        "Stronger first impression",
-                        "Clearer offer and messaging",
-                        "Better mobile experience",
-                        "Cleaner enquiry or booking flow",
-                      ].map((item) => (
-                        <div
-                          key={item}
-                          className="rounded-2xl border border-border bg-white px-4 py-4 text-sm font-medium text-foreground shadow-sm"
-                        >
-                          {item}
-                        </div>
-                      ))}
-                    </div>
+    <div className="mt-5 grid gap-3 sm:grid-cols-2">
+      {[
+        "Stronger first impression",
+        "Clearer offer and messaging",
+        "Better mobile experience",
+        "Cleaner enquiry or booking flow",
+      ].map((item) => (
+        <div
+          key={item}
+          className="rounded-2xl border border-border bg-white/80 px-4 py-4 text-sm font-medium text-foreground shadow-sm"
+        >
+          {item}
+        </div>
+      ))}
+    </div>
 
-                    <div className="mt-5 rounded-[22px] border border-[hsl(var(--brand-accent)/0.18)] bg-[hsl(var(--brand-accent)/0.06)] p-5">
-                      <div className="flex items-start gap-3">
-                        <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                        <div>
-                          <div className="text-sm font-semibold text-foreground">
-                            Clean design is only half the job
-                          </div>
-                          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                            The site also needs to feel trustworthy, guide people
-                            clearly, and make the next step obvious.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+    <div className="mt-5 rounded-[24px] border border-[hsl(var(--brand-accent)/0.18)] bg-[hsl(var(--brand-accent)/0.07)] p-5">
+      <div className="flex items-start gap-3">
+        <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
+        <div>
+          <div className="text-sm font-semibold text-foreground">
+            Clean design is only half the job
+          </div>
+          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+            Your website also needs to feel trustworthy, guide people clearly,
+            and make the next step obvious.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
                     <div className="mt-5 grid gap-3 sm:grid-cols-3">
                       <div className="rounded-2xl border border-border bg-background px-4 py-4 text-center shadow-sm">
