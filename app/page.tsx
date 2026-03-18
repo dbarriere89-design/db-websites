@@ -16,6 +16,7 @@ import {
   MessageCircle,
   MonitorSmartphone,
   ShoppingBag,
+  Sparkles,
   Wrench,
 } from "lucide-react"
 
@@ -69,6 +70,70 @@ const localBusinessSchema = {
   sameAs: [UPWORK_URL],
 }
 
+type WorkExample = {
+  title: string
+  category: string
+  summary: string
+  image: string
+  imageAlt: string
+  stats?: string[]
+  bullets: string[]
+  href: string
+  cta: string
+}
+
+const WORK_EXAMPLES: WorkExample[] = [
+  {
+    title: "Tripple Pluggers",
+    category: "Online store",
+    summary:
+      "A stronger ecommerce experience with cleaner product pages, better mobile shopping, and a smoother path from product view to checkout.",
+    image: "/work/tripple-pluggers/tp-hero.jpg",
+    imageAlt: "Tripple Pluggers website screenshot",
+    stats: ["28 orders", "$1456 revenue", "Live store", "Real checkout flow"],
+    bullets: [
+      "Clearer product page structure",
+      "Better mobile buying experience",
+      "Improved variant and size selection",
+      "Built around real-world sales, not mockups",
+    ],
+    href: "/work/tripple-pluggers",
+    cta: "View project",
+  },
+  {
+    title: "FIFO Resume Mate",
+    category: "Landing page",
+    summary:
+      "A clearer landing page built to explain the offer fast, reduce confusion, and move visitors toward the right action without friction.",
+    image: "/work/fifo-resume-mate-hero.jpg",
+    imageAlt: "FIFO Resume Mate website screenshot",
+    bullets: [
+      "Cleaner offer and pricing layout",
+      "Stronger page structure and flow",
+      "Clearer calls to action",
+      "Built to help visitors convert faster",
+    ],
+    href: "/work/fifo-resume-mate",
+    cta: "View project",
+  },
+  {
+    title: "FNQ Lodge",
+    category: "Booking website",
+    summary:
+      "A cleaner accommodation website with a more polished layout, better mobile presentation, and a clearer path into bookings.",
+    image: "/work/fnq-lodge/hero.jpg",
+    imageAlt: "FNQ Lodge website screenshot",
+    bullets: [
+      "Stronger visual presentation",
+      "Cleaner booking journey",
+      "Improved mobile usability",
+      "Before and after improvement proof",
+    ],
+    href: "/work/fnq-lodge",
+    cta: "View project",
+  },
+]
+
 function SectionHeading(props: {
   eyebrow?: string
   title: string
@@ -77,8 +142,8 @@ function SectionHeading(props: {
   return (
     <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-14">
       {props.eyebrow ? (
-        <div className="mb-3 flex items-center justify-center">
-          <div className="rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+        <div className="mb-4 flex items-center justify-center">
+          <div className="rounded-full border border-border bg-white/90 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
             {props.eyebrow}
           </div>
         </div>
@@ -97,69 +162,31 @@ function SectionHeading(props: {
   )
 }
 
-type WorkExample = {
-  title: string
-  category: string
-  summary: string
-  image: string
-  imageAlt: string
-  stats?: string[]
-  bullets: string[]
-  href: string
-  cta: string
-}
+function BulletList({
+  items,
+  iconTone = "accent",
+}: {
+  items: string[]
+  iconTone?: "accent" | "warm"
+}) {
+  const iconClass =
+    iconTone === "warm"
+      ? "text-[hsl(var(--brand-warm))]"
+      : "text-[hsl(var(--brand-accent))]"
 
-const WORK_EXAMPLES: WorkExample[] = [
-  {
-    title: "Tripple Pluggers",
-    category: "Online store",
-    summary:
-      "Built and improved an online store for an Australian footwear brand with clearer product pages, easier buying on mobile, and a smoother path to checkout.",
-    image: "/work/tripple-pluggers/tp-hero.jpg",
-    imageAlt: "Tripple Pluggers website screenshot",
-    stats: ["28 orders", "$1456 revenue", "Live store", "Real checkout flow"],
-    bullets: [
-      "Cleaner product page layout",
-      "Better size and variant selection",
-      "Improved mobile shopping experience",
-      "Real sales proof from a live store",
-    ],
-    href: "/work/tripple-pluggers",
-    cta: "View example",
-  },
-  {
-    title: "FIFO Resume Mate",
-    category: "Landing page",
-    summary:
-      "Built a landing page designed to explain the offer clearly, guide people to the right option, and move them into checkout without confusion.",
-    image: "/work/fifo-resume-mate-hero.jpg",
-    imageAlt: "FIFO Resume Mate website screenshot",
-    bullets: [
-      "Clearer offer and pricing layout",
-      "Better flow from landing page to checkout",
-      "Stronger calls to action",
-      "Built to help people take the next step",
-    ],
-    href: "/work/fifo-resume-mate",
-    cta: "View example",
-  },
-  {
-    title: "FNQ Lodge",
-    category: "Booking website",
-    summary:
-      "Improved a booking website for a tropical lodge with a cleaner layout, a better reservation path, and a stronger experience on mobile.",
-    image: "/work/fnq-lodge/hero.jpg",
-    imageAlt: "FNQ Lodge website screenshot",
-    bullets: [
-      "Cleaner booking journey",
-      "Better layout and page structure",
-      "Improved mobile experience",
-      "Before and after proof",
-    ],
-    href: "/work/fnq-lodge",
-    cta: "View example",
-  },
-]
+  return (
+    <div className="space-y-3">
+      {items.map((item) => (
+        <div key={item} className="flex items-start gap-3">
+          <Check className={`mt-0.5 h-5 w-5 shrink-0 ${iconClass}`} />
+          <span className="text-sm leading-relaxed text-foreground sm:text-[15px]">
+            {item}
+          </span>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export default function Home() {
   return (
@@ -197,6 +224,12 @@ export default function Home() {
               Services
             </Link>
             <Link
+              href="#pricing"
+              className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block"
+            >
+              Pricing
+            </Link>
+            <Link
               href="#faq"
               className="hidden text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-block"
             >
@@ -213,126 +246,210 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative overflow-hidden premium-ambient border-b border-border bg-[oklch(0.97_0.01_200)]">
+      <section className="relative overflow-hidden border-b border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(10,160,185,0.04),rgba(255,255,255,1))]">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_45%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,214,153,0.10),transparent_26%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.45),transparent_40%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),transparent_42%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(245,180,70,0.10),transparent_30%)]" />
+          <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[hsl(var(--brand-accent)/0.08)] blur-3xl" />
         </div>
 
-        <div className="container relative z-[2] mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
-          <div className="mx-auto max-w-5xl text-center">
-            <div className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Websites • online stores • website fixes
+        <div className="container relative z-[1] mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+              <div className="text-center lg:text-left">
+                <div className="mb-5 inline-flex rounded-full border border-border bg-white/85 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground shadow-sm">
+                  Websites • online stores • fixes
+                </div>
+
+                <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+                  Premium websites that make your business look the part
+                </h1>
+
+                <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl lg:mx-0">
+                  I build and improve websites for small businesses that want to look
+                  more professional, feel easier to trust, and turn more visitors into
+                  enquiries, bookings, or sales.
+                </p>
+
+                <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
+                  Clearer messaging. Better layout. Stronger visuals. Cleaner mobile
+                  experience. Less fluff. More confidence.
+                </p>
+
+                <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
+                  <Button size="lg" asChild className="shadow-md">
+                    <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                      <Mail className="mr-2 h-4 w-4" />
+                      Start a project
+                    </Link>
+                  </Button>
+
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    asChild
+                    className="bg-white/80 shadow-sm"
+                  >
+                    <Link
+                      href={FACEBOOK_MESSENGER_URL}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      <MessageCircle className="mr-2 h-4 w-4" />
+                      Message me
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="mt-6">
+                  <Link
+                    href="#work"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    View recent work
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground lg:justify-start">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/85 px-3 py-1 shadow-sm">
+                    ✅ Real business projects
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/85 px-3 py-1 shadow-sm">
+                    ✅ Shopify, WordPress, custom builds
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/85 px-3 py-1 shadow-sm">
+                    ✅ Based in Far North Queensland
+                  </span>
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="absolute -inset-6 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.12),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_40%)] blur-2xl" />
+
+                <div className="relative overflow-hidden rounded-[32px] border border-border bg-white/95 p-4 shadow-[0_24px_70px_rgba(0,0,0,0.10)] sm:p-5">
+                  <div className="rounded-[24px] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(248,250,252,1))] p-5 sm:p-6">
+                    <div className="flex items-center justify-between gap-4 border-b border-border pb-4">
+                      <div>
+                        <div className="text-sm font-semibold text-foreground">
+                          What better websites usually improve
+                        </div>
+                        <div className="mt-1 text-sm text-muted-foreground">
+                          The fundamentals that help people actually take action
+                        </div>
+                      </div>
+
+                      <div className="hidden rounded-2xl border border-border bg-background px-3 py-2 text-xs font-medium text-muted-foreground shadow-sm sm:block">
+                        Small business focused
+                      </div>
+                    </div>
+
+                    <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                      {[
+                        "Stronger first impression",
+                        "Clearer offer and messaging",
+                        "Better mobile experience",
+                        "Cleaner enquiry or booking flow",
+                      ].map((item) => (
+                        <div
+                          key={item}
+                          className="rounded-2xl border border-border bg-white px-4 py-4 text-sm font-medium text-foreground shadow-sm"
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 rounded-[22px] border border-[hsl(var(--brand-accent)/0.18)] bg-[hsl(var(--brand-accent)/0.06)] p-5">
+                      <div className="flex items-start gap-3">
+                        <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
+                        <div>
+                          <div className="text-sm font-semibold text-foreground">
+                            Clean design is only half the job
+                          </div>
+                          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                            The site also needs to feel trustworthy, guide people
+                            clearly, and make the next step obvious.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                      <div className="rounded-2xl border border-border bg-background px-4 py-4 text-center shadow-sm">
+                        <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                          Clear
+                        </div>
+                        <div className="mt-1 text-sm font-medium text-foreground">
+                          Messaging
+                        </div>
+                      </div>
+                      <div className="rounded-2xl border border-border bg-background px-4 py-4 text-center shadow-sm">
+                        <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                          Better
+                        </div>
+                        <div className="mt-1 text-sm font-medium text-foreground">
+                          Flow
+                        </div>
+                      </div>
+                      <div className="rounded-2xl border border-border bg-background px-4 py-4 text-center shadow-sm">
+                        <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                          More
+                        </div>
+                        <div className="mt-1 text-sm font-medium text-foreground">
+                          Trust
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              Websites that help bring in more customers
-            </h1>
-
-            <p className="mx-auto mt-6 max-w-3xl text-pretty text-xl leading-relaxed text-muted-foreground sm:text-2xl">
-              I build new websites and improve existing ones for small businesses in
-              Cairns, the Tablelands, the Cassowary Coast, and across Far North
-              Queensland.
-            </p>
-
-            <p className="mx-auto mt-4 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-              The goal is simple: make your business easier to understand, easier to
-              trust, and easier for people to contact, book, or buy from.
-            </p>
-
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button size="lg" asChild className="shadow-md">
-                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
-                  <Mail className="mr-2 h-4 w-4" />
-                  Start a project
-                </Link>
-              </Button>
-
-              <Button size="lg" variant="outline" asChild className="bg-white/75 shadow-sm">
-                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Message me
-                </Link>
-              </Button>
-            </div>
-
-            <div className="mt-5">
-              <Link
-                href="#work"
-                className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                View work examples
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 shadow-sm">
-                ✅ New websites for small businesses
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 shadow-sm">
-                ✅ Online stores with real sales proof
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 shadow-sm">
-                ✅ Fixes for broken or clunky websites
-              </span>
-            </div>
-
-            <div className="mx-auto mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
-              <span>New builds</span>
-              <span className="opacity-40">•</span>
-              <span>Online stores</span>
-              <span className="opacity-40">•</span>
-              <span>Booking websites</span>
-              <span className="opacity-40">•</span>
-              <span>Website fixes</span>
-            </div>
-
-            <div className="mx-auto mt-10 h-px w-full max-w-5xl bg-gradient-to-r from-transparent via-border to-transparent" />
+            <div className="mx-auto mt-12 h-px w-full max-w-6xl bg-gradient-to-r from-transparent via-border to-transparent" />
           </div>
         </div>
       </section>
 
       <section className="border-b border-border bg-background">
         <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
-          <div className="grid gap-6 text-center md:grid-cols-3">
-            <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
               <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Real results
+                Built for action
               </div>
               <div className="mt-2 text-2xl font-bold text-foreground">
-                Websites that actually work
+                Better websites do more than look nice
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Clear pages, working forms, easier buying, and a better experience for
-                your customers.
+                They help people understand what you do, trust your business faster,
+                and take the next step without getting lost.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
+            <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
               <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Better customer flow
               </div>
               <div className="mt-2 text-2xl font-bold text-foreground">
-                Cleaner booking and checkout paths
+                Cleaner paths to enquire, book, or buy
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Fix the stuff that frustrates customers and makes them give up before
-                they enquire or buy.
+                Less friction, less confusion, and fewer weird little dead ends that
+                quietly kill conversions.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-shadow hover:shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
+            <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
               <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Website fixes
+                Practical upgrades
               </div>
               <div className="mt-2 text-2xl font-bold text-foreground">
-                Less clunky. More usable.
+                Fix the clunky stuff first
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                I clean up websites that feel old, confusing, broken, or hard to use on
-                mobile.
+                Mobile issues, weak layouts, awkward pages, outdated visuals, and
+                confusing messaging can all be cleaned up properly.
               </p>
             </div>
           </div>
@@ -347,27 +464,26 @@ export default function Home() {
                 Built by someone who actually runs businesses
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Real-world experience building, selling, and improving digital
-                businesses — plus a background in photography, which helps create
-                cleaner, better-looking websites without relying on generic stock images.
+                Not just design for design’s sake. Real-world understanding of offers,
+                customer trust, selling online, and making websites pull their weight.
               </p>
             </div>
             <div>
               <div className="text-base font-semibold text-foreground">
-                Focused on what helps customers take action
+                Stronger visuals without the generic stock-photo vibe
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Better clarity, better trust, and better flow so people can actually
-                contact you, book, or buy.
+                My photography background helps bring a cleaner, more polished visual
+                standard to websites that need to feel more premium and more real.
               </p>
             </div>
             <div>
               <div className="text-base font-semibold text-foreground">
-                New websites or smarter upgrades
+                New builds or sharp upgrades
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Some businesses need a fresh start. Others just need the current site
-                cleaned up and fixed properly.
+                Some projects need a fresh start. Others just need the current site
+                tightened up, simplified, and made better on mobile.
               </p>
             </div>
           </div>
@@ -378,18 +494,18 @@ export default function Home() {
         <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Website help for businesses across Cairns, the Tablelands, the Cassowary Coast and FNQ
+              Website help for businesses across Cairns, the Tablelands, the
+              Cassowary Coast and Far North Queensland
             </h2>
             <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
               I work with local service businesses, online stores, accommodation
-              businesses, and growing brands across Cairns, the Tablelands, the
-              Cassowary Coast, and Far North Queensland that need a website that feels
-              current, works properly on mobile, and makes it easier for customers to
-              take the next step.
+              businesses, and growing brands that need a website that feels current,
+              works properly on mobile, and makes it easier for customers to take the
+              next step.
             </p>
             <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-              I can help with Shopify stores, WordPress websites, and modern custom
-              business websites depending on what suits the job best.
+              Shopify, WordPress, and modern custom business websites — depending on
+              what makes the most sense for the job.
             </p>
           </div>
         </div>
@@ -397,38 +513,36 @@ export default function Home() {
 
       <section
         id="work"
-        className="border-b border-border bg-[linear-gradient(to_bottom,rgba(10,160,185,0.035),rgba(255,255,255,1))]"
+        className="border-b border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.03),rgba(255,255,255,1))]"
       >
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <SectionHeading
-            eyebrow="Work examples"
-            title="Examples of my work"
-            subtitle="Real businesses. Real websites. Real improvements."
+            eyebrow="Selected work"
+            title="Examples of recent work"
+            subtitle="Real projects with cleaner structure, stronger visuals, and a clearer path for customers."
           />
 
           <div className="grid gap-8">
             {WORK_EXAMPLES.map((item) => (
               <Card
                 key={item.title}
-                className="group premium-card overflow-hidden rounded-3xl border border-border bg-white p-0 shadow-[0_12px_34px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(0,0,0,0.12)]"
+                className="group overflow-hidden rounded-[30px] border border-border bg-white p-0 shadow-[0_14px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(0,0,0,0.12)]"
               >
                 <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
                   <Link
                     href={item.href}
-                    className="relative block overflow-hidden border-b border-border lg:border-b-0 lg:border-r"
+                    className="relative block overflow-hidden border-b border-border bg-muted lg:border-b-0 lg:border-r"
                   >
                     <img
                       src={item.image}
                       alt={item.imageAlt}
-                      className="h-full min-h-[280px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      className="h-full min-h-[280px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       loading="lazy"
                     />
-
-                    <div className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
-
-                    <div className="pointer-events-none absolute bottom-4 left-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/18 via-transparent to-transparent" />
+                    <div className="pointer-events-none absolute bottom-4 left-4">
                       <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-sm">
-                        View example
+                        View project
                         <ArrowRight className="h-3.5 w-3.5" />
                       </div>
                     </div>
@@ -453,9 +567,9 @@ export default function Home() {
                           <div
                             key={stat}
                             className={`rounded-2xl border px-4 py-3 text-sm font-medium text-foreground shadow-sm ${
-                              index % 2 === 0
-                                ? "border-[hsl(var(--brand-accent)/0.25)] bg-[hsl(var(--brand-accent)/0.08)]"
-                                : "border-border bg-white/90"
+                              index === 0 || index === 2
+                                ? "border-[hsl(var(--brand-accent)/0.22)] bg-[hsl(var(--brand-accent)/0.06)]"
+                                : "border-border bg-white"
                             }`}
                           >
                             {stat}
@@ -464,15 +578,8 @@ export default function Home() {
                       </div>
                     ) : null}
 
-                    <div className="mt-6 space-y-3">
-                      {item.bullets.map((bullet) => (
-                        <div key={bullet} className="flex items-start gap-3">
-                          <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                          <span className="text-sm leading-relaxed text-foreground">
-                            {bullet}
-                          </span>
-                        </div>
-                      ))}
+                    <div className="mt-6">
+                      <BulletList items={item.bullets} />
                     </div>
 
                     <div className="mt-8 flex flex-wrap gap-3">
@@ -486,7 +593,7 @@ export default function Home() {
                       <Button variant="outline" asChild className="bg-white/80 shadow-sm">
                         <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                           <Mail className="mr-2 h-4 w-4" />
-                          Start a similar project
+                          Start something similar
                         </Link>
                       </Button>
                     </div>
@@ -503,50 +610,49 @@ export default function Home() {
           <SectionHeading
             eyebrow="Services"
             title="How I can help"
-            subtitle="New websites, online stores, and fixes for sites that feel broken, old, or hard to use."
+            subtitle="New websites, online stores, and practical improvements for sites that feel outdated, unclear, or awkward to use."
           />
 
           <div className="grid gap-6 md:grid-cols-3">
-            <Card className="premium-card rounded-3xl border border-border bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+            <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
               <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-accent))/0.15]">
                 <MonitorSmartphone className="h-6 w-6 text-foreground" />
               </div>
               <h3 className="text-2xl font-semibold text-foreground">New websites</h3>
               <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground">
-                Need a new website? I build clean, modern sites that make your business
-                easier to understand and easier to contact.
+                Clean, modern business websites with clearer messaging, better layout,
+                and a stronger first impression.
               </p>
               <div className="mt-5 text-sm font-medium text-foreground">
-                Shopify, WordPress, and custom business websites
+                Business websites, landing pages, and custom builds
               </div>
             </Card>
 
-            <Card className="premium-card rounded-3xl border border-border bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
-              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-warm))/0.10]">
+            <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+              <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[hsl(var(--brand-warm))/0.12]">
                 <ShoppingBag className="h-6 w-6 text-foreground" />
               </div>
               <h3 className="text-2xl font-semibold text-foreground">Online stores</h3>
               <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground">
-                Selling products online? I help make your store clearer, easier to shop,
-                and better on mobile so more people actually buy.
+                Ecommerce pages that look sharper, feel easier to shop, and remove the
+                little bits of friction that hurt sales.
               </p>
               <div className="mt-5 text-sm font-medium text-foreground">
-                Store builds + sales-focused improvements
+                Shopify stores, product pages, and conversion improvements
               </div>
             </Card>
 
-            <Card className="premium-card rounded-3xl border border-border bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+            <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
               <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/15">
                 <Wrench className="h-6 w-6 text-foreground" />
               </div>
               <h3 className="text-2xl font-semibold text-foreground">Website fixes</h3>
               <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground">
-                Already have a website? I can fix layout issues, improve mobile use,
-                clean up booking or contact pages, and make the whole thing feel less
-                clunky.
+                Mobile fixes, layout cleanup, booking flow improvements, page polish,
+                and smarter upgrades to websites that are nearly there but not quite.
               </p>
               <div className="mt-5 text-sm font-medium text-foreground">
-                Fixes, cleanups, and upgrades
+                Fixes, cleanups, redesigns, and upgrades
               </div>
             </Card>
           </div>
@@ -554,71 +660,64 @@ export default function Home() {
       </section>
 
       <section className="border-b border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(10,160,185,0.03))]">
-  <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-    <div className="rounded-[36px] border border-border bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(10,160,185,0.04),rgba(255,255,255,0.98))] px-6 py-8 shadow-[0_18px_50px_rgba(0,0,0,0.06)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
-      <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
-        <div className="max-w-xl">
-          <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
-            Visuals matter
-          </div>
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="overflow-hidden rounded-[36px] border border-border bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(10,160,185,0.04),rgba(255,255,255,0.98))] shadow-[0_20px_60px_rgba(0,0,0,0.07)]">
+            <div className="grid items-center gap-0 lg:grid-cols-[1fr_0.95fr]">
+              <div className="px-6 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12">
+                <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+                  Visuals matter
+                </div>
 
-          <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Better websites start with better visuals
-          </h2>
+                <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                  Stronger websites usually start with stronger visuals
+                </h2>
 
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            A lot of websites fall flat because they rely on generic stock images.
-            I have a background in photography, so I can help create or guide
-            better visuals that actually fit your business and make your website
-            feel more real and more trustworthy.
-          </p>
+                <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  A lot of business websites feel cheap because the visuals feel cheap.
+                  Generic stock images, weak crops, inconsistent photos, or no visual
+                  direction at all.
+                </p>
 
-          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            For some projects, this means improving your existing images. For
-            others, it can include shooting new content to match the website
-            properly.
-          </p>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                  I bring a photography background into the process, which helps create
+                  a site that feels cleaner, more believable, and more premium from the
+                  first glance.
+                </p>
 
-          <div className="mt-6 space-y-3">
-            {[
-              "Better first impressions",
-              "More trust from customers",
-              "Less reliance on generic stock images",
-              "Stronger brand feel across the whole website",
-            ].map((item) => (
-              <div key={item} className="flex items-start gap-3">
-                <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                <span className="text-sm leading-relaxed text-foreground sm:text-base">
-                  {item}
-                </span>
+                <div className="mt-6">
+                  <BulletList
+                    items={[
+                      "Better first impressions",
+                      "More trust from customers",
+                      "Less reliance on generic stock imagery",
+                      "A more polished brand feel across the whole site",
+                    ]}
+                  />
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        <div className="flex justify-center lg:justify-center">
-          <div className="relative inline-block w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[400px]">
-            <div className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.12),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_40%)] blur-xl" />
-
-            <div className="relative overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
-              <img
-                src={VISUALS_IMAGE}
-                alt="Lifestyle product photography example"
-                className="w-full h-auto object-cover"
-              />
+              <div className="relative h-full border-t border-border lg:border-l lg:border-t-0">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.10),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_40%)]" />
+                <div className="relative flex h-full items-center justify-center p-5 sm:p-6 lg:p-8">
+                  <div className="w-full max-w-[520px] overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_18px_40px_rgba(0,0,0,0.12)]">
+                    <img
+                      src={VISUALS_IMAGE}
+                      alt="Lifestyle product photography example"
+                      className="block h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <SectionHeading
           eyebrow="Process"
-          title="Simple process, clean delivery"
-          subtitle="No agency waffle. Just clear communication and solid work."
+          title="Simple process, solid delivery"
+          subtitle="No agency waffle. No mystery. Just clear communication and strong work."
         />
 
         <div className="grid gap-6 md:grid-cols-4">
@@ -626,7 +725,7 @@ export default function Home() {
             {
               step: "01",
               title: "Send it through",
-              text: "You send your website link, business details, and what you need help with.",
+              text: "You send your website link, business details, and what you want help with.",
             },
             {
               step: "02",
@@ -635,63 +734,69 @@ export default function Home() {
             },
             {
               step: "03",
-              title: "Build or fix",
-              text: "I improve the website with a strong focus on clarity, mobile use, and customer flow.",
+              title: "Build or improve",
+              text: "I work on the site with a strong focus on clarity, visuals, mobile use, and flow.",
             },
             {
               step: "04",
               title: "Launch better",
-              text: "You end up with a cleaner website that feels better and works harder for your business.",
+              text: "You end up with a cleaner, stronger website that feels more premium and works harder.",
             },
           ].map((item) => (
             <Card
               key={item.step}
-              className="premium-card rounded-3xl border border-border bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)]"
+              className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)]"
             >
-              <div className="text-sm font-semibold text-muted-foreground">{item.step}</div>
-              <h3 className="mt-2 text-lg font-semibold text-foreground">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
+              <div className="text-sm font-semibold text-muted-foreground">
+                {item.step}
+              </div>
+              <h3 className="mt-2 text-lg font-semibold text-foreground">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {item.text}
+              </p>
             </Card>
           ))}
         </div>
       </section>
 
-      <section className="border-y border-border bg-muted/30">
+      <section
+        id="pricing"
+        className="border-y border-border bg-[linear-gradient(180deg,rgba(248,250,252,1),rgba(255,255,255,1))]"
+      >
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="Pricing"
-            title="Website fixes and new builds"
-            subtitle="Smaller jobs can usually be quoted quickly. Bigger projects are priced properly based on the work involved."
+            title="Straightforward pricing guidance"
+            subtitle="Smaller jobs can usually be quoted quickly. Larger projects are priced properly based on scope, platform, and what the website needs to do."
           />
 
           <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
-            <Card className="premium-card rounded-3xl border border-border bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] lg:p-10">
+            <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] lg:p-10">
               <h3 className="text-2xl font-bold text-foreground">Website fixes</h3>
               <p className="mt-3 text-pretty text-muted-foreground">
-                Best for existing websites that need layout cleanup, mobile fixes,
-                contact form improvements, booking page tweaks, or general tidy-up work.
+                Best for existing websites that need cleanup, mobile improvements,
+                better enquiry flow, page polish, or practical fixes.
               </p>
 
-              <div className="mt-6 space-y-3">
-                {[
-                  "Mobile layout cleanup",
-                  "Contact and enquiry improvements",
-                  "Broken sections or awkward page flow",
-                  "General polish to make the site feel more current",
-                ].map((x) => (
-                  <div key={x} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                    <span className="text-sm text-foreground">{x}</span>
-                  </div>
-                ))}
+              <div className="mt-6">
+                <BulletList
+                  items={[
+                    "Mobile layout cleanup",
+                    "Contact and enquiry improvements",
+                    "Broken sections or awkward page flow",
+                    "General polish to make the site feel more current",
+                  ]}
+                />
               </div>
 
               <div className="mt-8 rounded-2xl border border-[hsl(var(--brand-accent)/0.18)] bg-[hsl(var(--brand-accent)/0.06)] p-6">
                 <div className="text-sm font-semibold text-muted-foreground">
-                  Typical quick jobs
+                  Smaller improvement jobs
                 </div>
                 <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">
-                  $250+
+                  From $250
                 </div>
                 <div className="mt-1 text-sm text-muted-foreground">
                   AUD depending on scope
@@ -699,34 +804,34 @@ export default function Home() {
               </div>
             </Card>
 
-            <Card className="premium-card rounded-3xl border border-border bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.06)] lg:p-10">
-              <h3 className="text-2xl font-bold text-foreground">New websites and online stores</h3>
+            <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] lg:p-10">
+              <h3 className="text-2xl font-bold text-foreground">
+                New websites and online stores
+              </h3>
               <p className="mt-3 text-pretty text-muted-foreground">
-                Best for businesses that want a stronger online presence from the ground
-                up, with clearer pages, better structure, and a better customer
+                Best for businesses that want a stronger online presence with clearer
+                pages, better structure, stronger visuals, and a more polished customer
                 experience.
               </p>
 
-              <div className="mt-6 space-y-3">
-                {[
-                  "New business websites",
-                  "Online stores and product pages",
-                  "Landing pages and lead generation pages",
-                  "Quoted based on the size and value of the job",
-                ].map((x) => (
-                  <div key={x} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-warm))]" />
-                    <span className="text-sm text-foreground">{x}</span>
-                  </div>
-                ))}
+              <div className="mt-6">
+                <BulletList
+                  items={[
+                    "New business websites",
+                    "Online stores and product pages",
+                    "Landing pages and lead generation pages",
+                    "Quoted based on the size, platform, and value of the job",
+                  ]}
+                  iconTone="warm"
+                />
               </div>
 
               <div className="mt-8 rounded-2xl border border-border bg-white/90 p-6 shadow-sm">
                 <div className="text-sm font-semibold text-muted-foreground">
-                  Custom project pricing
+                  New build projects typically start from
                 </div>
                 <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">
-                  $950+
+                  $950
                 </div>
                 <div className="mt-1 text-sm text-muted-foreground">
                   AUD depending on scope
@@ -736,12 +841,20 @@ export default function Home() {
           </div>
 
           <div className="mt-8 text-center">
-            <Button size="lg" asChild className="shadow-md">
-              <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
-                <Mail className="mr-2 h-4 w-4" />
-                Start a project
-              </Link>
-            </Button>
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Not sure what category your project falls into? Send it through anyway.
+              I’ll tell you pretty quickly whether it’s a tidy-up job, a bigger
+              upgrade, or something that should be rebuilt properly.
+            </p>
+
+            <div className="mt-6">
+              <Button size="lg" asChild className="shadow-md">
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                  <Mail className="mr-2 h-4 w-4" />
+                  Start a project
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -754,7 +867,7 @@ export default function Home() {
         />
 
         <div className="mx-auto max-w-3xl">
-          <Card className="premium-card rounded-3xl border border-border bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.06)] sm:p-8">
+          <Card className="rounded-3xl border border-border bg-white p-6 shadow-[0_12px_30px_rgba(0,0,0,0.06)] sm:p-8">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="text-left text-base font-semibold">
@@ -762,8 +875,8 @@ export default function Home() {
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
                   Yes. I can help with fixes, upgrades, layout cleanup, booking flow
-                  improvements, and general front-end tidy-up work on existing WordPress
-                  sites.
+                  improvements, and general front-end tidy-up work on existing
+                  WordPress sites.
                 </AccordionContent>
               </AccordionItem>
 
@@ -782,8 +895,8 @@ export default function Home() {
                   Can you help if I already have a website?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  Yep. Send me the link and tell me what feels wrong. I’ll tell you
-                  quickly whether it’s something worth fixing, upgrading, or rebuilding.
+                  Yep. Send me the link and tell me what feels off. I’ll tell you
+                  whether it’s worth fixing, upgrading, or rebuilding.
                 </AccordionContent>
               </AccordionItem>
 
@@ -802,8 +915,8 @@ export default function Home() {
                   What platforms do you work with?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
-                  I can help with Shopify stores, WordPress websites, and modern custom
-                  business websites depending on what suits the project best.
+                  Shopify stores, WordPress websites, and modern custom business
+                  websites depending on what suits the project best.
                 </AccordionContent>
               </AccordionItem>
 
@@ -813,8 +926,9 @@ export default function Home() {
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
                   No. I can work with businesses Australia-wide, but I’m based in Far
-                  North Queensland and especially happy to work with local businesses in
-                  Cairns, the Tablelands, the Cassowary Coast, and surrounding areas.
+                  North Queensland and especially happy to work with local businesses
+                  in Cairns, the Tablelands, the Cassowary Coast, and surrounding
+                  areas.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -822,7 +936,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.04),rgba(255,255,255,0.96),rgba(245,180,70,0.06))]">
+      <section className="border-t border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.04),rgba(255,255,255,0.96),rgba(245,180,70,0.05))]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
@@ -830,12 +944,12 @@ export default function Home() {
             </div>
 
             <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              Need help fixing your website or building a better one?
+              Need a website that feels more polished and works better?
             </h2>
 
             <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Send me the link or tell me what you need. I’ll tell you straight whether
-              it’s a quick fix, a bigger upgrade, or something that should be built
+              Send me the link or tell me what you need. I’ll tell you straight
+              whether it’s a quick fix, a bigger upgrade, or something worth building
               properly from scratch.
             </p>
 
@@ -848,14 +962,16 @@ export default function Home() {
               </Button>
 
               <Button size="lg" variant="outline" asChild className="bg-white/80 shadow-sm">
-                <Link href={FACEBOOK_MESSENGER_URL} target="_blank" rel="noreferrer noopener">
+                <Link
+                  href={FACEBOOK_MESSENGER_URL}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Message me
                 </Link>
               </Button>
             </div>
-
-         
           </div>
         </div>
       </section>
@@ -863,7 +979,7 @@ export default function Home() {
       <footer className="bg-background">
         <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-sm font-semibold text-foreground">© DB Websites — Built by Des</p>
+            <p className="text-sm font-semibold text-foreground">© DB Websites</p>
 
             <p className="mt-1 text-sm text-muted-foreground">
               Websites, online stores, and practical fixes for small businesses
