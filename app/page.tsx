@@ -597,11 +597,11 @@ export default function Home() {
 
             <div className="relative">
               <div className="absolute inset-0 rounded-[32px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.12),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_38%)]" />
-              <div className="relative overflow-hidden rounded-[32px] border border-border bg-white shadow-[0_18px_48px_rgba(0,0,0,0.10)]">
+              <div className="relative inline-block overflow-hidden rounded-[32px] border border-border bg-white shadow-[0_18px_48px_rgba(0,0,0,0.10)]">
                 <img
                   src={VISUALS_IMAGE}
                   alt="Lifestyle product photography example"
-                  className="mx-auto h-auto max-h-[520px] w-full max-w-[420px] object-cover"
+                  className="block h-auto w-auto max-h-[520px] max-w-[380px] object-cover"
                 />
               </div>
             </div>
