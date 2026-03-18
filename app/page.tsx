@@ -684,6 +684,18 @@ export default function Home() {
                   first glance.
                 </p>
 
+<p className="mt-4 text-sm text-muted-foreground">
+  You can see some of my photography work at{" "}
+  <a
+    href="https://outbacklens.com"
+    target="_blank"
+    rel="noreferrer"
+    className="font-medium underline underline-offset-4 hover:text-foreground"
+  >
+    Outback Lens
+  </a>
+</p>
+
                 <div className="mt-6">
                   <BulletList
                     items={[
