@@ -73,6 +73,7 @@ const localBusinessSchema = {
 type WorkExample = {
   title: string
   category: string
+  label: string
   summary: string
   image: string
   imageAlt: string
@@ -86,6 +87,7 @@ const WORK_EXAMPLES: WorkExample[] = [
   {
     title: "Tripple Pluggers",
     category: "Online store",
+    label: "Shopify store improvements",
     summary:
       "A stronger ecommerce experience with cleaner product pages, better mobile shopping, and a smoother path from product view to checkout.",
     image: "/work/tripple-pluggers/tp-hero.jpg",
@@ -103,6 +105,7 @@ const WORK_EXAMPLES: WorkExample[] = [
   {
     title: "FIFO Resume Mate",
     category: "Landing page",
+    label: "Conversion-focused landing page",
     summary:
       "A clearer landing page built to explain the offer fast, reduce confusion, and move visitors toward the right action without friction.",
     image: "/work/fifo-resume-mate-hero.jpg",
@@ -119,6 +122,7 @@ const WORK_EXAMPLES: WorkExample[] = [
   {
     title: "FNQ Lodge",
     category: "Booking website",
+    label: "Before / after website refresh",
     summary:
       "A cleaner accommodation website with a more polished layout, better mobile presentation, and a clearer path into bookings.",
     image: "/work/fnq-lodge/hero.jpg",
@@ -262,18 +266,13 @@ export default function Home() {
                 </div>
 
                 <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-                  Premium websites that make your business look the part
+                  Websites that make your business look better — and perform better
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl lg:mx-0">
                   I build and improve websites for small businesses that want to look
-                  more professional, feel easier to trust, and turn more visitors into
+                  more professional, build trust faster, and turn visitors into real
                   enquiries, bookings, or sales.
-                </p>
-
-                <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
-                  Clearer messaging. Better layout. Stronger visuals. Cleaner mobile
-                  experience. Less fluff. More confidence.
                 </p>
 
                 <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
@@ -296,7 +295,7 @@ export default function Home() {
                       rel="noreferrer noopener"
                     >
                       <MessageCircle className="mr-2 h-4 w-4" />
-                      Message me
+                      Send a message
                     </Link>
                   </Button>
                 </div>
@@ -352,7 +351,7 @@ export default function Home() {
                     ].map((item) => (
                       <div
                         key={item}
-                        className="rounded-2xl border border-border bg-white px-4 py-4 text-sm font-medium text-foreground shadow-sm"
+                        className="rounded-2xl border border-border bg-white px-4 py-5 text-sm font-medium text-foreground shadow-sm"
                       >
                         {item}
                       </div>
@@ -387,14 +386,14 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
               <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Built for action
+                Not just looks
               </div>
               <div className="mt-2 text-2xl font-bold text-foreground">
-                Better websites do more than look nice
+                Not just a nice-looking website
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                They help people understand what you do, trust your business faster,
-                and take the next step without getting lost.
+                A better website should help people understand what you do, trust your
+                business faster, and feel more confident taking the next step.
               </p>
             </div>
 
@@ -403,11 +402,11 @@ export default function Home() {
                 Better customer flow
               </div>
               <div className="mt-2 text-2xl font-bold text-foreground">
-                Cleaner paths to enquire, book, or buy
+                Make it easier for customers to act
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Less friction, less confusion, and fewer weird little dead ends that
-                quietly kill conversions.
+                Clearer pages, better mobile use, and less friction help more people
+                enquire, book, or buy without giving up halfway through.
               </p>
             </div>
 
@@ -416,11 +415,11 @@ export default function Home() {
                 Practical upgrades
               </div>
               <div className="mt-2 text-2xl font-bold text-foreground">
-                Fix the clunky stuff first
+                Fix what’s actually hurting your site
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Mobile issues, weak layouts, awkward pages, outdated visuals, and
-                confusing messaging can all be cleaned up properly.
+                Weak layouts, outdated visuals, awkward pages, and mobile issues can all
+                quietly hurt trust and conversions if they’re left alone.
               </p>
             </div>
           </div>
@@ -527,6 +526,10 @@ export default function Home() {
                     <h3 className="text-3xl font-bold tracking-tight text-foreground">
                       {item.title}
                     </h3>
+
+                    <p className="mt-1 text-sm font-medium text-muted-foreground">
+                      {item.label}
+                    </p>
 
                     <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
                       {item.summary}
@@ -951,7 +954,7 @@ export default function Home() {
                   rel="noreferrer noopener"
                 >
                   <MessageCircle className="mr-2 h-4 w-4" />
-                  Message me
+                  Send a message
                 </Link>
               </Button>
             </div>
