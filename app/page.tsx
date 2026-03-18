@@ -597,20 +597,21 @@ export default function Home() {
         </div>
 
         <div className="flex justify-center lg:justify-center">
-  <div className="relative inline-block w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[400px]">
-    
-    <div className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.12),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_40%)] blur-xl" />
-    
-    <div className="relative overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
-      <img
-        src={VISUALS_IMAGE}
-        alt="Lifestyle product photography example"
-        className="w-full h-auto object-cover"
-      />
-    </div>
+          <div className="relative inline-block w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[400px]">
+            <div className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.12),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_40%)] blur-xl" />
 
+            <div className="relative overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
+              <img
+                src={VISUALS_IMAGE}
+                alt="Lifestyle product photography example"
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </section>
 
       <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
