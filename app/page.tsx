@@ -556,7 +556,7 @@ export default function Home() {
       <section className="border-b border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(10,160,185,0.03))]">
   <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
     <div className="rounded-[36px] border border-border bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(10,160,185,0.04),rgba(255,255,255,0.98))] px-6 py-8 shadow-[0_18px_50px_rgba(0,0,0,0.06)] sm:px-8 sm:py-10 lg:px-10 lg:py-12">
-      <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+      <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
         <div className="max-w-xl">
           <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
             Visuals matter
@@ -596,21 +596,21 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center lg:justify-end">
-          <div className="relative inline-block">
-            <div className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.14),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.14),transparent_40%)] blur-xl" />
-            <div className="relative overflow-hidden rounded-[32px] border border-border bg-white shadow-[0_18px_48px_rgba(0,0,0,0.10)]">
-              <img
-                src={VISUALS_IMAGE}
-                alt="Lifestyle product photography example"
-                className="block h-auto w-auto max-h-[520px] max-w-[380px] object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+        <div className="flex justify-center lg:justify-center">
+  <div className="relative inline-block w-full max-w-[320px] sm:max-w-[360px] lg:max-w-[400px]">
+    
+    <div className="absolute -inset-3 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.12),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_40%)] blur-xl" />
+    
+    <div className="relative overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_16px_40px_rgba(0,0,0,0.10)]">
+      <img
+        src={VISUALS_IMAGE}
+        alt="Lifestyle product photography example"
+        className="w-full h-auto object-cover"
+      />
     </div>
+
   </div>
+</div>
 </section>
 
       <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
