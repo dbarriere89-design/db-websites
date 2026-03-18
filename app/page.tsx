@@ -324,141 +324,108 @@ export default function Home() {
                 </div>
               </div>
 
-       <section className="relative overflow-hidden border-b border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(10,160,185,0.04),rgba(255,255,255,1))]">
-  <div className="pointer-events-none absolute inset-0">
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),transparent_42%)]" />
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(245,180,70,0.10),transparent_30%)]" />
-    <div className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[hsl(var(--brand-accent)/0.08)] blur-3xl" />
-  </div>
+              <div className="relative">
+                <div className="absolute -inset-6 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.10),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.10),transparent_40%)] blur-2xl" />
 
-  <div className="container relative z-[1] mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
-    <div className="mx-auto max-w-6xl">
-      <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
-        <div className="text-center lg:text-left">
-          <div className="mb-5 inline-flex rounded-full border border-border bg-white/85 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground shadow-sm">
-            Websites • online stores • fixes
-          </div>
+                <div className="relative overflow-hidden rounded-[32px] border border-border bg-slate-50 p-5 shadow-[0_30px_80px_rgba(0,0,0,0.12)] sm:p-6">
+                  <div className="flex items-start justify-between gap-4 border-b border-border pb-5">
+                    <div>
+                      <div className="text-lg font-semibold text-foreground">
+                        What better websites usually improve
+                      </div>
+                      <div className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                        The fundamentals that help people trust your business and take action.
+                      </div>
+                    </div>
 
-          <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-            Premium websites that make your business look the part
-          </h1>
-
-          <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl lg:mx-0">
-            I build and improve websites for small businesses that want to look
-            more professional, feel easier to trust, and turn more visitors into
-            enquiries, bookings, or sales.
-          </p>
-
-          <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
-            Clearer messaging. Better layout. Stronger visuals. Cleaner mobile
-            experience. Less fluff. More confidence.
-          </p>
-
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
-            <Button size="lg" asChild className="shadow-md">
-              <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
-                <Mail className="mr-2 h-4 w-4" />
-                Start a project
-              </Link>
-            </Button>
-
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="bg-white/80 shadow-sm"
-            >
-              <Link
-                href={FACEBOOK_MESSENGER_URL}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <MessageCircle className="mr-2 h-4 w-4" />
-                Message me
-              </Link>
-            </Button>
-          </div>
-
-          <div className="mt-6">
-            <Link
-              href="#work"
-              className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              View recent work
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground lg:justify-start">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/85 px-3 py-1 shadow-sm">
-              ✅ Real business projects
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/85 px-3 py-1 shadow-sm">
-              ✅ Shopify, WordPress, custom builds
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/85 px-3 py-1 shadow-sm">
-              ✅ Based in Far North Queensland
-            </span>
-          </div>
-        </div>
-
-        <div className="relative">
-          <div className="absolute -inset-6 rounded-[36px] bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.10),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.10),transparent_40%)] blur-2xl" />
-
-          <div className="relative overflow-hidden rounded-[32px] border border-border bg-slate-50 p-5 shadow-[0_30px_80px_rgba(0,0,0,0.12)] sm:p-6">
-            <div className="flex items-start justify-between gap-4 border-b border-border pb-5">
-              <div>
-                <div className="text-lg font-semibold text-foreground">
-                  What better websites usually improve
-                </div>
-                <div className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  The fundamentals that help people trust your business and take action.
-                </div>
-              </div>
-
-              <div className="hidden rounded-2xl border border-border bg-white/80 px-3 py-2 text-xs font-medium text-muted-foreground shadow-sm sm:block">
-                Small business focused
-              </div>
-            </div>
-
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              {[
-                "Stronger first impression",
-                "Clearer offer and messaging",
-                "Better mobile experience",
-                "Cleaner enquiry or booking flow",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-2xl border border-border bg-white px-4 py-4 text-sm font-medium text-foreground shadow-sm"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-5 rounded-[24px] border border-border bg-sky-50 p-5">
-              <div className="flex items-start gap-3">
-                <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                <div>
-                  <div className="text-sm font-semibold text-foreground">
-                    Clean design is only half the job
+                    <div className="hidden rounded-2xl border border-border bg-white/80 px-3 py-2 text-xs font-medium text-muted-foreground shadow-sm sm:block">
+                      Small business focused
+                    </div>
                   </div>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    Your website also needs to feel trustworthy, guide people clearly,
-                    and make the next step obvious.
-                  </p>
+
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                    {[
+                      "Stronger first impression",
+                      "Clearer offer and messaging",
+                      "Better mobile experience",
+                      "Cleaner enquiry or booking flow",
+                    ].map((item) => (
+                      <div
+                        key={item}
+                        className="rounded-2xl border border-border bg-white px-4 py-4 text-sm font-medium text-foreground shadow-sm"
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-5 rounded-[24px] border border-border bg-sky-50 p-5">
+                    <div className="flex items-start gap-3">
+                      <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
+                      <div>
+                        <div className="text-sm font-semibold text-foreground">
+                          Clean design is only half the job
+                        </div>
+                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                          Your website also needs to feel trustworthy, guide people clearly,
+                          and make the next step obvious.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            <div className="mx-auto mt-12 h-px w-full max-w-6xl bg-gradient-to-r from-transparent via-border to-transparent" />
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="mx-auto mt-12 h-px w-full max-w-6xl bg-gradient-to-r from-transparent via-border to-transparent" />
-    </div>
-  </div>
-</section>
+      <section className="border-b border-border bg-background">
+        <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Built for action
+              </div>
+              <div className="mt-2 text-2xl font-bold text-foreground">
+                Better websites do more than look nice
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                They help people understand what you do, trust your business faster,
+                and take the next step without getting lost.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Better customer flow
+              </div>
+              <div className="mt-2 text-2xl font-bold text-foreground">
+                Cleaner paths to enquire, book, or buy
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Less friction, less confusion, and fewer weird little dead ends that
+                quietly kill conversions.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+              <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Practical upgrades
+              </div>
+              <div className="mt-2 text-2xl font-bold text-foreground">
+                Fix the clunky stuff first
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Mobile issues, weak layouts, awkward pages, outdated visuals, and
+                confusing messaging can all be cleaned up properly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="border-b border-border bg-muted/30">
         <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
@@ -572,7 +539,7 @@ export default function Home() {
                             key={stat}
                             className={`rounded-2xl border px-4 py-3 text-sm font-medium text-foreground shadow-sm ${
                               index === 0 || index === 2
-                                ? "border-[hsl(var(--brand-accent)/0.22)] bg-[hsl(var(--brand-accent)/0.06)]"
+                                ? "border-border bg-sky-50"
                                 : "border-border bg-white"
                             }`}
                           >
@@ -688,17 +655,17 @@ export default function Home() {
                   first glance.
                 </p>
 
-<p className="mt-4 text-sm text-muted-foreground">
-  You can see some of my photography work at{" "}
-  <a
-    href="https://outbacklens.com"
-    target="_blank"
-    rel="noreferrer"
-    className="font-medium underline underline-offset-4 hover:text-foreground"
-  >
-    Outback Lens
-  </a>
-</p>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  You can see some of my photography work at{" "}
+                  <a
+                    href="https://outbacklens.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-medium underline underline-offset-4 hover:text-foreground"
+                  >
+                    Outback Lens
+                  </a>
+                </p>
 
                 <div className="mt-6">
                   <BulletList
@@ -807,7 +774,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="mt-8 rounded-2xl border border-[hsl(var(--brand-accent)/0.18)] bg-[hsl(var(--brand-accent)/0.06)] p-6">
+              <div className="mt-8 rounded-2xl border border-border bg-sky-50 p-6">
                 <div className="text-sm font-semibold text-muted-foreground">
                   Smaller improvement jobs
                 </div>
