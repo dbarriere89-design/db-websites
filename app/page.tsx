@@ -12,6 +12,7 @@ import {
 import {
   ArrowRight,
   Check,
+  Facebook,
   Mail,
   MessageCircle,
   MonitorSmartphone,
@@ -399,6 +400,54 @@ export default function Home() {
         </div>
       </section>
 
+<section className="border-b border-border bg-muted/30">
+  <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <SectionHeading
+      eyebrow="Client feedback"
+      title="What clients are saying"
+      subtitle="Real feedback from real projects."
+    />
+
+    <div className="mx-auto max-w-3xl">
+      <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] sm:p-10">
+
+        {/* ⭐ Stars */}
+        <div className="mb-4 flex items-center justify-center gap-1 text-[hsl(var(--brand-warm))]">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <span key={i}>★</span>
+          ))}
+        </div>
+
+        {/* 💬 Quote */}
+        <p className="text-pretty text-lg leading-relaxed text-foreground sm:text-xl text-center">
+          “Love your work and passion Des and thanks very much for going above and beyond with all you are doing for Tripple Pluggers and continue to do 👍”
+        </p>
+
+        {/* 👇 Footer */}
+        <div className="mt-6 flex flex-col items-center gap-2 text-sm text-muted-foreground">
+
+          {/* Verified badge */}
+          <div className="rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium shadow-sm">
+            Verified client
+          </div>
+
+          {/* Name */}
+          <div className="font-medium text-foreground">
+            <a
+              href="https://tripplepluggers.com.au"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-4 hover:text-foreground"
+            >
+              Tripple Pluggers
+            </a>
+          </div>
+        </div>
+
+      </Card>
+    </div>
+  </div>
+</section>
       <section className="border-b border-border bg-background">
         <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
           <div className="grid gap-6 md:grid-cols-3">
@@ -1079,20 +1128,25 @@ export default function Home() {
               Websites, online stores, and practical fixes for small businesses
             </p>
 
-            <p className="mt-3 text-sm text-muted-foreground">
-              Freelance projects also available on{" "}
-              <a
-                href={UPWORK_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="underline hover:text-foreground"
-              >
-                Upwork
-              </a>
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
+  <a
+    href={UPWORK_URL}
+    target="_blank"
+    rel="noreferrer"
+    className="underline hover:text-foreground"
+  >
+    Upwork
+  </a>
+
+  <a
+    href="https://www.facebook.com/dbwebsitesau"
+    target="_blank"
+    rel="noreferrer"
+    className="inline-flex items-center gap-2 underline hover:text-foreground"
+  >
+    <Facebook className="h-4 w-4" />
+    Facebook
+  </a>
+</div>
   )
 }
