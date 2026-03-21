@@ -369,7 +369,7 @@ export default function AirconPage() {
               <SectionIntro
                 eyebrow="Real work"
                 title="Real work, real jobs"
-                text="These images help show the kind of work the business actually does, from everyday installs and servicing through to larger commercial jobs."
+                text="Click any image to enlarge it. These images help show the kind of work the business actually does, from everyday installs and servicing through to larger commercial jobs."
               />
 
               <div className="grid gap-6 md:grid-cols-2">
@@ -378,17 +378,17 @@ export default function AirconPage() {
                     <Lightbox
                       src={HYDRO_IMAGE}
                       alt="Aircon hydro cleaning service"
-                      className="mx-auto max-h-[600px] w-full object-cover"
+                      className="mx-auto max-h-[600px] w-full cursor-zoom-in object-cover"
                     />
                   </BrowserFrame>
                 </div>
 
                 <div className="overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(245,180,70,0.035))] shadow-[0_14px_40px_rgba(0,0,0,0.08)]">
                   <BrowserFrame>
-                    <img
+                    <Lightbox
                       src={INSTALL_IMAGE}
                       alt="Air conditioning installation units"
-                      className="mx-auto max-h-[600px] w-full object-cover"
+                      className="mx-auto max-h-[600px] w-full cursor-zoom-in object-cover"
                     />
                   </BrowserFrame>
                 </div>
@@ -397,20 +397,20 @@ export default function AirconPage() {
               <div className="mt-6 grid gap-6 md:grid-cols-2">
                 <div className="overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(10,160,185,0.03))] shadow-[0_14px_40px_rgba(0,0,0,0.08)]">
                   <BrowserFrame>
-                    <img
+                    <Lightbox
                       src={HOUSE_IMAGE}
                       alt="Residential air conditioning install"
-                      className="mx-auto max-h-[600px] w-full object-cover"
+                      className="mx-auto max-h-[600px] w-full cursor-zoom-in object-cover"
                     />
                   </BrowserFrame>
                 </div>
 
                 <div className="overflow-hidden rounded-[28px] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,1),rgba(245,180,70,0.035))] shadow-[0_14px_40px_rgba(0,0,0,0.08)]">
                   <BrowserFrame>
-                    <img
+                    <Lightbox
                       src={CRANE_IMAGE}
                       alt="Commercial air conditioning crane install"
-                      className="mx-auto max-h-[600px] w-full object-cover"
+                      className="mx-auto max-h-[600px] w-full cursor-zoom-in object-cover"
                     />
                   </BrowserFrame>
                 </div>
