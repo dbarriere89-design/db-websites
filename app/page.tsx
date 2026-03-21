@@ -441,7 +441,7 @@ export default function Home() {
   </div>
 </section>
 
-      <section className="border-b border-border bg-background">
+      <section className="border-b border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.06),rgba(255,255,255,1))]">
         <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
           <div className="grid gap-6 md:grid-cols-3">
             <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
@@ -486,7 +486,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-muted/30">
+      <section className="border-b border-border bg-[linear-gradient(180deg,rgba(245,180,70,0.06),rgba(255,255,255,1))]">
         <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid gap-8 text-center md:grid-cols-3">
             <div>
@@ -520,7 +520,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-b border-border bg-background">
+      <section className="border-b border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.04),rgba(255,255,255,1))]">
         <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -809,7 +809,7 @@ export default function Home() {
 
       <section
         id="pricing"
-        className="border-y border-border bg-[linear-gradient(180deg,rgba(248,250,252,1),rgba(255,255,255,1))]"
+        className="border-y border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.03),rgba(255,255,255,1))]"
       >
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <SectionHeading
