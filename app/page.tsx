@@ -259,7 +259,7 @@ export default function Home() {
             </Link>
 
             <Button asChild className="shadow-md">
-              <Link href="#contact"
+              <Link href="#contact">
                 <Mail className="mr-2 h-4 w-4" />
                 Start a project
               </Link>
@@ -295,7 +295,7 @@ export default function Home() {
 
                 <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
                   <Button size="lg" asChild className="shadow-md">
-                    <Link href="#contact"
+                    <Link href="#contact">
                       <Mail className="mr-2 h-4 w-4" />
                       Start a project
                     </Link>
@@ -583,7 +583,7 @@ export default function Home() {
                       </Button>
 
                       <Button variant="outline" asChild className="bg-white/80 shadow-sm">
-                        <Link href="#contact"
+                        <Link href="#contact">
                           <Mail className="mr-2 h-4 w-4" />
                           Start something similar
                         </Link>
@@ -853,7 +853,7 @@ export default function Home() {
 
             <div className="mt-6">
               <Button size="lg" asChild className="shadow-md">
-                <Link href="#contact"
+                <Link href="#contact">
                   <Mail className="mr-2 h-4 w-4" />
                   Start a project
                 </Link>
@@ -959,7 +959,7 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild className="shadow-md">
-                <Link href="#contact"
+                <Link href="#contact">
                   <Mail className="mr-2 h-4 w-4" />
                   Start a project
                 </Link>
