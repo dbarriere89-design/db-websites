@@ -1113,33 +1113,34 @@ export default function Home() {
 </section>
 
       <footer className="bg-background">
-        <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-sm font-semibold text-foreground">© DB Websites</p>
+  <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
+    <div className="text-center">
+      <p className="text-sm font-semibold text-foreground">© DB Websites</p>
 
-            <p className="mt-1 text-sm text-muted-foreground">
-              Websites, online stores, and practical fixes for small businesses
-            </p>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Websites, online stores, and practical fixes for small businesses
+      </p>
 
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
-  <a
-    href={UPWORK_URL}
-    target="_blank"
-    rel="noreferrer"
-    className="underline hover:text-foreground"
-  >
-    Upwork
-  </a>
+      <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
+        <a
+          href={UPWORK_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="underline hover:text-foreground"
+        >
+          Upwork
+        </a>
 
-  <a
-    href="https://www.facebook.com/dbwebsitesau"
-    target="_blank"
-    rel="noreferrer"
-    className="inline-flex items-center gap-2 underline hover:text-foreground"
-  >
-    <Facebook className="h-4 w-4" />
-    Facebook
-  </a>
-</div>
-  )
-}
+        <a
+          href="https://www.facebook.com/dbwebsitesau"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 underline hover:text-foreground"
+        >
+          <Facebook className="h-4 w-4" />
+          Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
