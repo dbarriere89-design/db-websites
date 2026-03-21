@@ -259,7 +259,7 @@ export default function Home() {
             </Link>
 
             <Button asChild className="shadow-md">
-              <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+              <Link href="#contact"
                 <Mail className="mr-2 h-4 w-4" />
                 Start a project
               </Link>
@@ -295,7 +295,7 @@ export default function Home() {
 
                 <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
                   <Button size="lg" asChild className="shadow-md">
-                    <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                    <Link href="#contact"
                       <Mail className="mr-2 h-4 w-4" />
                       Start a project
                     </Link>
@@ -583,7 +583,7 @@ export default function Home() {
                       </Button>
 
                       <Button variant="outline" asChild className="bg-white/80 shadow-sm">
-                        <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                        <Link href="#contact"
                           <Mail className="mr-2 h-4 w-4" />
                           Start something similar
                         </Link>
@@ -853,7 +853,7 @@ export default function Home() {
 
             <div className="mt-6">
               <Button size="lg" asChild className="shadow-md">
-                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                <Link href="#contact"
                   <Mail className="mr-2 h-4 w-4" />
                   Start a project
                 </Link>
@@ -959,7 +959,7 @@ export default function Home() {
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button size="lg" asChild className="shadow-md">
-                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                <Link href="#contact"
                   <Mail className="mr-2 h-4 w-4" />
                   Start a project
                 </Link>
@@ -979,6 +979,96 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+<section id="contact" className="border-t border-border bg-background">
+  <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <div className="mx-auto max-w-3xl text-center">
+      <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+        Start a project
+      </div>
+
+      <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+        Tell me about your project
+      </h2>
+
+      <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
+        Fill this out and I’ll get back to you with the best way forward — whether
+        it’s a quick fix, upgrade, or full rebuild.
+      </p>
+    </div>
+
+    <div className="mx-auto mt-12 max-w-2xl">
+      <form
+        action="https://formspree.io/f/xnjgybly"
+        method="POST"
+        className="space-y-5"
+      >
+        <div className="grid gap-4 sm:grid-cols-2">
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name"
+            required
+            className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm"
+          />
+
+          <input
+            type="text"
+            name="business"
+            placeholder="Business name"
+            className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm"
+          />
+        </div>
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email address"
+          required
+          className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm"
+        />
+
+        <input
+          type="text"
+          name="website"
+          placeholder="Current website (optional)"
+          className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm"
+        />
+
+        <textarea
+          name="message"
+          rows={5}
+          placeholder="What do you need help with?"
+          required
+          className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm"
+        />
+
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button type="submit" size="lg" className="shadow-md">
+            Send enquiry
+          </Button>
+
+          <Button
+            type="button"
+            variant="outline"
+            size="lg"
+            asChild
+            className="bg-white/80 shadow-sm"
+          >
+            <Link
+              href={FACEBOOK_MESSENGER_URL}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Message instead
+            </Link>
+          </Button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
 
       <footer className="bg-background">
         <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
