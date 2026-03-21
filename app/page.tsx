@@ -84,7 +84,25 @@ type WorkExample = {
 }
 
 const WORK_EXAMPLES: WorkExample[] = [
-  {
+  
+{
+  title: "Air Conditioning Business",
+  category: "Service website",
+  label: "Local tradie website rebuild",
+  summary:
+    "A clean, modern service website designed to build trust faster, clearly explain services, and make it easy for customers to enquire or book without friction.",
+  image: "/work/aircon/hero.jpg",
+  imageAlt: "Air conditioning business website screenshot",
+  bullets: [
+    "Stronger first impression and cleaner layout",
+    "Clear service breakdown for easier understanding",
+    "Improved mobile experience for on-the-go customers",
+    "Simplified enquiry flow to increase leads",
+  ],
+  href: "/work/aircon",
+  cta: "View project",
+},
+{
     title: "Tripple Pluggers",
     category: "Online store",
     label: "Shopify store improvements",
