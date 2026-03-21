@@ -410,28 +410,21 @@ export default function Home() {
 
     <div className="mx-auto max-w-3xl">
       <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] sm:p-10">
-
-        {/* ⭐ Stars */}
         <div className="mb-4 flex items-center justify-center gap-1 text-[hsl(var(--brand-warm))]">
           {Array.from({ length: 5 }).map((_, i) => (
             <span key={i}>★</span>
           ))}
         </div>
 
-        {/* 💬 Quote */}
-        <p className="text-pretty text-lg leading-relaxed text-foreground sm:text-xl text-center">
+        <p className="text-pretty text-center text-lg leading-relaxed text-foreground sm:text-xl">
           “Love your work and passion Des and thanks very much for going above and beyond with all you are doing for Tripple Pluggers and continue to do 👍”
         </p>
 
-        {/* 👇 Footer */}
         <div className="mt-6 flex flex-col items-center gap-2 text-sm text-muted-foreground">
-
-          {/* Verified badge */}
           <div className="rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium shadow-sm">
             Verified client
           </div>
 
-          {/* Name */}
           <div className="font-medium text-foreground">
             <a
               href="https://tripplepluggers.com.au"
@@ -443,11 +436,11 @@ export default function Home() {
             </a>
           </div>
         </div>
-
       </Card>
     </div>
   </div>
 </section>
+
       <section className="border-b border-border bg-background">
         <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
           <div className="grid gap-6 md:grid-cols-3">
