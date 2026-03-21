@@ -182,6 +182,49 @@ export default function AirconProjectPage() {
         </div>
       </section>
 
+<section className="border-y border-border bg-muted/30">
+  <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+
+    <div className="mx-auto max-w-4xl text-center">
+      <h2 className="text-3xl font-bold text-foreground">
+        Real work, real jobs
+      </h2>
+      <p className="mt-4 text-muted-foreground">
+        The website reflects the kind of work the business actually does —
+        from everyday installs through to larger commercial jobs.
+      </p>
+    </div>
+
+    <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+      <img
+        src="/work/aircon/hydro.jpg"
+        alt="Aircon hydro cleaning service"
+        className="rounded-2xl border border-border object-cover w-full h-[220px]"
+      />
+
+      <img
+        src="/work/aircon/install.jpg"
+        alt="Air conditioning installation units"
+        className="rounded-2xl border border-border object-cover w-full h-[220px]"
+      />
+
+      <img
+        src="/work/aircon/house.jpg"
+        alt="Residential air conditioning install"
+        className="rounded-2xl border border-border object-cover w-full h-[220px]"
+      />
+
+      <img
+        src="/work/aircon/crane.jpg"
+        alt="Commercial air conditioning crane install"
+        className="rounded-2xl border border-border object-cover w-full h-[220px]"
+      />
+
+    </div>
+  </div>
+</section>
+
       {/* RESULT */}
       <section className="border-y border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.04),rgba(255,255,255,1))]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
