@@ -917,7 +917,7 @@ export default function Home() {
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger className="text-left text-base font-semibold">
-                  Can you still work on WordPress websites?
+                  Do you work with WordPress websites?
                 </AccordionTrigger>
                 <AccordionContent className="leading-relaxed text-muted-foreground">
                   Yes. I can help with fixes, upgrades, layout cleanup, booking flow
