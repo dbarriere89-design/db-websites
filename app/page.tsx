@@ -761,15 +761,15 @@ export default function Home() {
       <section className="border-b border-border bg-[linear-gradient(180deg,rgba(245,180,70,0.05),rgba(255,255,255,1))]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-            <div className="flex justify-center lg:justify-start">
-              <div className="w-full max-w-[420px] overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_18px_40px_rgba(0,0,0,0.10)]">
-                <img
-                  src="/about-des.jpg"
-                  alt="Des from DB Websites"
-                  className="block h-full w-full object-cover"
-                />
-              </div>
-            </div>
+            <div className="flex justify-center lg:justify-end lg:pr-6">
+  <div className="w-full max-w-[420px] overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_18px_40px_rgba(0,0,0,0.10)] lg:translate-x-6">
+    <img
+      src="/about-des.jpg"
+      alt="Des from DB Websites"
+      className="block h-full w-full object-cover"
+    />
+  </div>
+</div>
 
             <div>
               <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
