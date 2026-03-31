@@ -85,25 +85,24 @@ type WorkExample = {
 }
 
 const WORK_EXAMPLES: WorkExample[] = [
-  
-{
-  title: "Air Conditioning Business",
-  category: "Service website",
-  label: "Local tradie website rebuild",
-  summary:
-    "A clean, modern service website designed to build trust faster, clearly explain services, and make it easy for customers to enquire or book without friction.",
-  image: "/work/aircon/hero.jpg",
-  imageAlt: "Air conditioning business website screenshot",
-  bullets: [
-    "Stronger first impression and cleaner layout",
-    "Clear service breakdown for easier understanding",
-    "Improved mobile experience for on-the-go customers",
-    "Simplified enquiry flow to increase leads",
-  ],
-  href: "/work/aircon",
-  cta: "View project",
-},
-{
+  {
+    title: "Air Conditioning Business",
+    category: "Service website",
+    label: "Local tradie website rebuild",
+    summary:
+      "A clean, modern service website designed to build trust faster, clearly explain services, and make it easy for customers to enquire or book without friction.",
+    image: "/work/aircon/hero.jpg",
+    imageAlt: "Air conditioning business website screenshot",
+    bullets: [
+      "Stronger first impression and cleaner layout",
+      "Clear service breakdown for easier understanding",
+      "Improved mobile experience for on-the-go customers",
+      "Simplified enquiry flow to increase leads",
+    ],
+    href: "/work/aircon",
+    cta: "View project",
+  },
+  {
     title: "Tripple Pluggers",
     category: "Online store",
     label: "Shopify store improvements",
@@ -400,46 +399,46 @@ export default function Home() {
         </div>
       </section>
 
-<section className="border-b border-border bg-muted/30">
-  <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-    <SectionHeading
-      eyebrow="Client feedback"
-      title="What clients are saying"
-      subtitle="Real feedback from real projects."
-    />
+      <section className="border-b border-border bg-muted/30">
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <SectionHeading
+            eyebrow="Client feedback"
+            title="What clients are saying"
+            subtitle="Real feedback from real projects."
+          />
 
-    <div className="mx-auto max-w-3xl">
-      <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] sm:p-10">
-        <div className="mb-4 flex items-center justify-center gap-1 text-[hsl(var(--brand-warm))]">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i}>★</span>
-          ))}
-        </div>
+          <div className="mx-auto max-w-3xl">
+            <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)] sm:p-10">
+              <div className="mb-4 flex items-center justify-center gap-1 text-[hsl(var(--brand-warm))]">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i}>★</span>
+                ))}
+              </div>
 
-        <p className="text-pretty text-center text-lg leading-relaxed text-foreground sm:text-xl">
-          “Love your work and passion Des and thanks very much for going above and beyond with all you are doing for Tripple Pluggers and continue to do 👍”
-        </p>
+              <p className="text-pretty text-center text-lg leading-relaxed text-foreground sm:text-xl">
+                “Love your work and passion Des and thanks very much for going above and beyond with all you are doing for Tripple Pluggers and continue to do 👍”
+              </p>
 
-        <div className="mt-6 flex flex-col items-center gap-2 text-sm text-muted-foreground">
-          <div className="rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium shadow-sm">
-            Verified client
+              <div className="mt-6 flex flex-col items-center gap-2 text-sm text-muted-foreground">
+                <div className="rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium shadow-sm">
+                  Verified client
+                </div>
+
+                <div className="font-medium text-foreground">
+                  <a
+                    href="https://tripplepluggers.com.au"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline underline-offset-4 hover:text-foreground"
+                  >
+                    Tripple Pluggers
+                  </a>
+                </div>
+              </div>
+            </Card>
           </div>
-
-          <div className="font-medium text-foreground">
-            <a
-              href="https://tripplepluggers.com.au"
-              target="_blank"
-              rel="noreferrer"
-              className="underline underline-offset-4 hover:text-foreground"
-            >
-              Tripple Pluggers
-            </a>
-          </div>
         </div>
-      </Card>
-    </div>
-  </div>
-</section>
+      </section>
 
       <section className="border-b border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.06),rgba(255,255,255,1))]">
         <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
@@ -759,101 +758,105 @@ export default function Home() {
         </div>
       </section>
 
-     <section className="border-b border-border bg-[linear-gradient(180deg,rgba(245,180,70,0.05),rgba(255,255,255,1))]">
-  <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-    <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-      <div className="flex justify-center lg:justify-start">
-        <div className="w-full max-w-[420px] overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_18px_40px_rgba(0,0,0,0.10)]">
-          <img
-            src="/about-des.jpg"
-            alt="Des from DB Websites"
-            className="block h-full w-full object-cover"
-          />
-        </div>
-      </div>
-
-      <div>
-        <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
-          About
-        </div>
-
-        <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Built by someone who actually runs businesses
-        </h2>
-
-        <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-          I’m Des — I build and improve websites for small businesses that want to
-          look more professional, build trust faster, and turn visitors into real
-          enquiries, bookings, or sales.
-        </p>
-
-        <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
-          I’m not just focused on making websites look nice. I care about clarity,
-          customer trust, stronger visuals, and giving people a cleaner path to take
-          action.
-        </p>
-
-        <div className="mt-6">
-          <BulletList
-            items={[
-              "Real-world business experience, not just design theory",
-              "Strong visual direction from a photography background",
-              "Focused on clarity, trust, and conversion",
-              "Based in Far North Queensland",
-            ]}
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-        <SectionHeading
-          eyebrow="Process"
-          title="Simple process, solid delivery"
-          subtitle="No agency waffle. No mystery. Just clear communication and strong work."
-        />
-
-        <div className="grid gap-6 md:grid-cols-4">
-          {[
-            {
-              step: "01",
-              title: "Send it through",
-              text: "You send your website link, business details, and what you want help with.",
-            },
-            {
-              step: "02",
-              title: "Get direction",
-              text: "I’ll tell you whether it needs a quick fix, a proper upgrade, or a fresh build.",
-            },
-            {
-              step: "03",
-              title: "Build or improve",
-              text: "I work on the site with a strong focus on clarity, visuals, mobile use, and flow.",
-            },
-            {
-              step: "04",
-              title: "Launch better",
-              text: "You end up with a cleaner, stronger website that feels more premium and works harder.",
-            },
-          ].map((item) => (
-            <Card
-              key={item.step}
-              className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)]"
-            >
-              <div className="text-sm font-semibold text-muted-foreground">
-                {item.step}
+      <section className="border-b border-border bg-[linear-gradient(180deg,rgba(245,180,70,0.05),rgba(255,255,255,1))]">
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+            <div className="flex justify-center lg:justify-start">
+              <div className="w-full max-w-[420px] overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_18px_40px_rgba(0,0,0,0.10)]">
+                <img
+                  src="/about-des.jpg"
+                  alt="Des from DB Websites"
+                  className="block h-full w-full object-cover"
+                />
               </div>
-              <h3 className="mt-2 text-lg font-semibold text-foreground">
-                {item.title}
+            </div>
+
+            <div>
+              <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+                About
+              </div>
+
+              <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Built by someone who actually runs businesses
+              </h2>
+
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                I’m Des — I build and improve websites for small businesses that want to
+                look more professional, build trust faster, and turn visitors into real
+                enquiries, bookings, or sales.
+              </p>
+
+              <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+                I’m not just focused on making websites look nice. I care about clarity,
+                customer trust, stronger visuals, and giving people a cleaner path to take
+                action.
+              </p>
+
+              <div className="mt-6">
+                <BulletList
+                  items={[
+                    "Real-world business experience",
+                    "A strong eye for visuals and presentation",
+                    "Practical thinking around enquiries, bookings, and sales",
+                    "Focused on cleaner customer flow, not just design",
+                  ]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-muted/30">
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <SectionHeading
+            eyebrow="How it works"
+            title="Simple process, straight up"
+            subtitle="Most projects are easier once we’ve looked at what you already have, what’s not working, and what the site actually needs to do."
+          />
+
+          <div className="grid gap-6 md:grid-cols-3">
+            <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-sky-50 text-sm font-bold text-foreground">
+                1
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-foreground">
+                Send through the details
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {item.text}
+                Send your business name, current website if you have one, and what you
+                want help with.
               </p>
             </Card>
-          ))}
+
+            <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-sky-50 text-sm font-bold text-foreground">
+                2
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-foreground">
+                I look at what’s needed
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                I’ll tell you whether it looks like a tidy-up, a bigger upgrade, or
+                something that should be rebuilt properly.
+              </p>
+            </Card>
+
+            <Card className="rounded-3xl border border-border bg-white p-8 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-sky-50 text-sm font-bold text-foreground">
+                3
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-foreground">
+                We get it moving
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Once the scope is clear, I’ll get started on the fixes, redesign, or new
+                build.
+              </p>
+            </Card>
+          </div>
         </div>
-            </section>
+      </section>
 
       <section
         id="pricing"
@@ -920,9 +923,9 @@ export default function Home() {
                 />
               </div>
 
-              <div className="mt-8 rounded-2xl border border-border bg-white/90 p-6 shadow-sm">
+              <div className="mt-8 rounded-2xl border border-border bg-white p-6">
                 <div className="text-sm font-semibold text-muted-foreground">
-                  New build projects typically start from
+                  Typical starting point
                 </div>
                 <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">
                   $950
@@ -1070,128 +1073,152 @@ export default function Home() {
         </div>
       </section>
 
-<section id="contact" className="border-t border-border bg-background">
-  <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-    <div className="mx-auto max-w-3xl text-center">
-      <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
-        Start a project
-      </div>
+      <section id="contact" className="border-t border-border bg-background">
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+              Start a project
+            </div>
 
-      <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-        Tell me about your project
-      </h2>
+            <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+              Tell me what you need
+            </h2>
 
-      <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
-        Fill this out and I’ll get back to you with the best way forward — whether
-        it’s a quick fix, upgrade, or full rebuild.
-      </p>
-    </div>
+            <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              Send through a few details and I’ll tell you whether it looks like a quick
+              fix, a larger upgrade, or a fresh build.
+            </p>
+          </div>
 
-    <div className="mx-auto mt-12 max-w-2xl">
-      <form
-        action="https://formspree.io/f/xnjgybly"
-        method="POST"
-        className="space-y-5"
-      >
-        <div className="grid gap-4 sm:grid-cols-2">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your name"
-            required
-            className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm"
-          />
-
-          <input
-            type="text"
-            name="business"
-            placeholder="Business name"
-            className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm"
-          />
-        </div>
-
-        <input
-          type="email"
-          name="email"
-          placeholder="Email address"
-          required
-          className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm"
-        />
-
-        <input
-          type="text"
-          name="website"
-          placeholder="Current website (optional)"
-          className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm"
-        />
-
-        <textarea
-          name="message"
-          rows={5}
-          placeholder="What do you need help with?"
-          required
-          className="w-full rounded-xl border border-border bg-white px-4 py-3 text-sm"
-        />
-
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Button type="submit" size="lg" className="shadow-md">
-            Send enquiry
-          </Button>
-
-          <Button
-            type="button"
-            variant="outline"
-            size="lg"
-            asChild
-            className="bg-white/80 shadow-sm"
-          >
-            <Link
-              href={FACEBOOK_MESSENGER_URL}
-              target="_blank"
-              rel="noreferrer noopener"
+          <div className="mx-auto mt-10 max-w-2xl">
+            <form
+              className="rounded-[32px] border border-border bg-white p-6 shadow-[0_18px_40px_rgba(0,0,0,0.08)] sm:p-8"
+              action={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}
+              method="post"
+              encType="text/plain"
             >
-              <MessageCircle className="mr-2 h-4 w-4" />
-              Message instead
-            </Link>
-          </Button>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div className="sm:col-span-2">
+                  <label className="mb-2 block text-sm font-medium text-foreground">
+                    Business name
+                  </label>
+                  <input
+                    type="text"
+                    name="business-name"
+                    className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-foreground"
+                    placeholder="Your business name"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-foreground">
+                    Your name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-foreground"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-foreground">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-foreground"
+                    placeholder="you@example.com"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="mb-2 block text-sm font-medium text-foreground">
+                    Current website
+                  </label>
+                  <input
+                    type="text"
+                    name="website"
+                    className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-foreground"
+                    placeholder="https://"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="mb-2 block text-sm font-medium text-foreground">
+                    What do you need help with?
+                  </label>
+                  <textarea
+                    name="message"
+                    rows={6}
+                    className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition focus:border-foreground"
+                    placeholder="New website, online store, fixes, redesign, booking flow improvements..."
+                  />
+                </div>
+              </div>
+
+              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+                <Button type="submit" size="lg" className="shadow-md">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Send enquiry
+                </Button>
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="lg"
+                  asChild
+                  className="bg-white/80 shadow-sm"
+                >
+                  <Link
+                    href={FACEBOOK_MESSENGER_URL}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                    Message instead
+                  </Link>
+                </Button>
+              </div>
+            </form>
+          </div>
         </div>
-      </form>
-    </div>
-  </div>
-</section>
+      </section>
 
       <footer className="bg-background">
-  <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
-    <div className="text-center">
-      <p className="text-sm font-semibold text-foreground">© DB Websites</p>
+        <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-sm font-semibold text-foreground">© DB Websites</p>
 
-      <p className="mt-1 text-sm text-muted-foreground">
-        Websites, online stores, and practical fixes for small businesses
-      </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Websites, online stores, and practical fixes for small businesses
+            </p>
 
-      <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
-        <a
-          href={UPWORK_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="underline hover:text-foreground"
-        >
-          Upwork
-        </a>
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
+              <a
+                href={UPWORK_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="underline hover:text-foreground"
+              >
+                Upwork
+              </a>
 
-        <a
-          href="https://www.facebook.com/dbwebsitesau"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 underline hover:text-foreground"
-        >
-          <Facebook className="h-4 w-4" />
-          Facebook
-        </a>
-      </div>
+              <a
+                href="https://www.facebook.com/dbwebsitesau"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 underline hover:text-foreground"
+              >
+                <Facebook className="h-4 w-4" />
+                Facebook
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-  </div>
-</footer>
-</div>
   )
 }
