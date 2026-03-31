@@ -490,7 +490,7 @@ export default function Home() {
           <div className="grid gap-8 text-center md:grid-cols-3">
             <div>
               <div className="text-base font-semibold text-foreground">
-                Built by someone who actually runs businesses
+                Built with real-world business experience
               </div>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 Not just design for design’s sake. Real-world understanding of offers,
