@@ -111,7 +111,7 @@ const WORK_EXAMPLES: WorkExample[] = [
       "A stronger ecommerce experience with cleaner product pages, better mobile shopping, and a smoother path from product view to checkout.",
     image: "/work/tripple-pluggers/tp-hero.jpg",
     imageAlt: "Tripple Pluggers website screenshot",
-    stats: ["28 orders", "$1456 revenue", "Live store", "Real checkout flow"],
+    stats: ["37 orders", "$2096 revenue", "Live store", "Real checkout flow"],
     bullets: [
       "Clearer product page structure",
       "Better mobile buying experience",
@@ -855,7 +855,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
+      <section>
         id="pricing"
         className="border-y border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.03),rgba(255,255,255,1))]"
       >
