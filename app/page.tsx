@@ -759,7 +759,55 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+     <section className="border-b border-border bg-[linear-gradient(180deg,rgba(245,180,70,0.05),rgba(255,255,255,1))]">
+  <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+      <div className="flex justify-center lg:justify-start">
+        <div className="w-full max-w-[420px] overflow-hidden rounded-[28px] border border-border bg-white shadow-[0_18px_40px_rgba(0,0,0,0.10)]">
+          <img
+            src="/about-des.jpg"
+            alt="Des from DB Websites"
+            className="block h-full w-full object-cover"
+          />
+        </div>
+      </div>
+
+      <div>
+        <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+          About
+        </div>
+
+        <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          Built by someone who actually runs businesses
+        </h2>
+
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          I’m Des — I build and improve websites for small businesses that want to
+          look more professional, build trust faster, and turn visitors into real
+          enquiries, bookings, or sales.
+        </p>
+
+        <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          I’m not just focused on making websites look nice. I care about clarity,
+          customer trust, stronger visuals, and giving people a cleaner path to take
+          action.
+        </p>
+
+        <div className="mt-6">
+          <BulletList
+            items={[
+              "Real-world business experience, not just design theory",
+              "Strong visual direction from a photography background",
+              "Focused on clarity, trust, and conversion",
+              "Based in Far North Queensland",
+            ]}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
         <SectionHeading
           eyebrow="Process"
           title="Simple process, solid delivery"
