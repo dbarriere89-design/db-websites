@@ -855,10 +855,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
-        id="pricing"
-        className="border-y border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.03),rgba(255,255,255,1))]"
-      >
+      <section
+  id="pricing"
+  className="border-y border-border bg-[linear-gradient(180deg,rgba(10,160,185,0.03),rgba(255,255,255,1))]"
+>
+    
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="Pricing"
