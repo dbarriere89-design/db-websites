@@ -284,7 +284,7 @@ export default function Home() {
                 </div>
 
                 <h1 className="text-balance text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-                  Websites that make your business look better — and perform better
+                  Websites that make your business look better and perform better
                 </h1>
 
                 <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl lg:mx-0">
