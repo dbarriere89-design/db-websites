@@ -720,7 +720,7 @@ export default function Home() {
                 <p className="mt-4 text-sm text-muted-foreground">
                   You can see some of my photography work at{" "}
                   <a
-                    href="https://outbacklens.com"
+                    href="https://outbacklens.com.au"
                     target="_blank"
                     rel="noreferrer"
                     className="font-medium underline underline-offset-4 hover:text-foreground"
