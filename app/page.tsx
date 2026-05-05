@@ -928,7 +928,7 @@ export default function Home() {
                   Typical starting point
                 </div>
                 <div className="mt-2 text-4xl font-bold tracking-tight text-foreground">
-                  $950
+                  $750
                 </div>
                 <div className="mt-1 text-sm text-muted-foreground">
                   AUD depending on scope
