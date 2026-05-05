@@ -1,5 +1,6 @@
 "use client"
 
+import type React from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -26,6 +27,17 @@ const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/desbarriere.au@gmail.com"
 const UPWORK_URL = "https://www.upwork.com/freelancers/~01bf146bd0e95935ec"
 
 const VISUALS_IMAGE = "/visuals-section.jpg"
+
+const BRAND = {
+  light: "#6BD4E8",
+  primary: "#59C7E6",
+  deep: "#1E4E57",
+  dark: "#14393F",
+  warm: "#E5A73B",
+  cream: "#FFF8EA",
+  soft: "#EAF8FC",
+  page: "#F8FBFC",
+}
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -88,7 +100,7 @@ const WORK_EXAMPLES: WorkExample[] = [
       "A stronger ecommerce experience with cleaner product pages, better mobile shopping, and a smoother path from product view to checkout.",
     image: "/work/tripple-pluggers/tp-hero.jpg",
     imageAlt: "Tripple Pluggers website screenshot",
-    stats: ["37 orders", "$2096 revenue", "Live store", "Real checkout flow"],
+    stats: ["70 orders", "$4217 revenue", "Live store", "Real checkout flow"],
     bullets: [
       "Clearer product page structure",
       "Better mobile buying experience",
@@ -134,37 +146,58 @@ const WORK_EXAMPLES: WorkExample[] = [
   },
 ]
 
-function SectionHeading(props: {
+function SectionHeading({
+  eyebrow,
+  title,
+  subtitle,
+  align = "center",
+  dark = false,
+}: {
   eyebrow?: string
   title: string
   subtitle?: string
   align?: "center" | "left"
   dark?: boolean
 }) {
-  const alignClass = props.align === "left" ? "text-left mx-0" : "text-center mx-auto"
-  const titleClass = props.dark ? "text-white" : "text-foreground"
-  const subtitleClass = props.dark ? "text-white/72" : "text-muted-foreground"
-  const badgeClass = props.dark
-    ? "border-white/15 bg-white/10 text-white/75"
-    : "border-border bg-white/90 text-muted-foreground"
-
   return (
-    <div className={`mb-12 max-w-3xl sm:mb-14 ${alignClass}`}>
-      {props.eyebrow ? (
-        <div className={`mb-4 flex ${props.align === "left" ? "justify-start" : "justify-center"}`}>
-          <div className={`rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] shadow-sm ${badgeClass}`}>
-            {props.eyebrow}
+    <div
+      className={`mb-10 max-w-3xl sm:mb-12 ${
+        align === "left" ? "text-left" : "mx-auto text-center"
+      }`}
+    >
+      {eyebrow ? (
+        <div
+          className={`mb-4 flex ${
+            align === "left" ? "justify-start" : "justify-center"
+          }`}
+        >
+          <div
+            className={`rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] shadow-sm ${
+              dark
+                ? "border-white/20 bg-white/10 text-white/80"
+                : "border-slate-200 bg-white text-slate-600"
+            }`}
+          >
+            {eyebrow}
           </div>
         </div>
       ) : null}
 
-      <h2 className={`text-balance text-4xl font-bold tracking-tight sm:text-5xl ${titleClass}`}>
-        {props.title}
+      <h2
+        className={`text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl ${
+          dark ? "text-white" : "text-slate-950"
+        }`}
+      >
+        {title}
       </h2>
 
-      {props.subtitle ? (
-        <p className={`mt-4 text-pretty text-base leading-relaxed sm:text-lg ${subtitleClass}`}>
-          {props.subtitle}
+      {subtitle ? (
+        <p
+          className={`mt-4 text-pretty text-base leading-relaxed sm:text-lg ${
+            dark ? "text-white/75" : "text-slate-600"
+          }`}
+        >
+          {subtitle}
         </p>
       ) : null}
     </div>
@@ -173,24 +206,27 @@ function SectionHeading(props: {
 
 function BulletList({
   items,
-  iconTone = "accent",
+  warm = false,
   dark = false,
 }: {
   items: string[]
-  iconTone?: "accent" | "warm"
+  warm?: boolean
   dark?: boolean
 }) {
-  const iconClass =
-    iconTone === "warm"
-      ? "text-[#F59E0B]"
-      : "text-[#0EA5A8]"
-
   return (
     <div className="space-y-3">
       {items.map((item) => (
         <div key={item} className="flex items-start gap-3">
-          <Check className={`mt-0.5 h-5 w-5 shrink-0 ${iconClass}`} />
-          <span className={`text-sm leading-relaxed sm:text-[15px] ${dark ? "text-white/82" : "text-foreground"}`}>
+          <Check
+            className={`mt-0.5 h-5 w-5 shrink-0 ${
+              warm ? "text-[#E5A73B]" : "text-[#59C7E6]"
+            }`}
+          />
+          <span
+            className={`text-sm leading-relaxed sm:text-[15px] ${
+              dark ? "text-white/82" : "text-slate-700"
+            }`}
+          >
             {item}
           </span>
         </div>
@@ -199,125 +235,147 @@ function BulletList({
   )
 }
 
-function BrowserFrame() {
+function HeroPreview() {
   return (
-    <div className="relative mx-auto w-full max-w-[520px]">
-      <div className="absolute -left-5 top-10 hidden w-40 rotate-[-8deg] rounded-3xl border border-white/15 bg-white/10 p-4 text-white shadow-2xl backdrop-blur md:block">
-        <div className="text-xs font-semibold uppercase tracking-[0.16em] text-white/55">
-          Mobile
-        </div>
-        <div className="mt-2 text-2xl font-bold">Clearer</div>
-        <div className="mt-1 text-xs leading-relaxed text-white/65">
-          Less friction on phone screens.
+    <div className="relative mx-auto w-full max-w-[560px]">
+      <div className="absolute -inset-4 rounded-[34px] bg-[#6BD4E8]/20 blur-2xl" />
+
+      <div className="relative rounded-[30px] border border-white/30 bg-white/75 p-3 shadow-[0_24px_70px_rgba(20,57,63,0.18)] backdrop-blur">
+        <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-sm">
+          <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-3">
+            <span className="h-3 w-3 rounded-full bg-[#E5A73B]" />
+            <span className="h-3 w-3 rounded-full bg-[#59C7E6]" />
+            <span className="h-3 w-3 rounded-full bg-slate-300" />
+            <div className="ml-2 h-6 flex-1 rounded-full bg-slate-200" />
+          </div>
+
+          <div className="grid gap-3 bg-white p-3">
+            <div className="relative overflow-hidden rounded-[20px] bg-slate-100">
+              <img
+                src="/work/aircon/hero.jpg"
+                alt="Air conditioning website preview"
+                className="aspect-[16/9] w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#14393F]/75 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="inline-flex rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#1E4E57]">
+                  Recent website project
+                </div>
+                <div className="mt-3 max-w-sm text-2xl font-bold leading-tight text-white">
+                  Cleaner pages. Stronger trust. Easier enquiries.
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-[18px] border border-slate-200 bg-[#EAF8FC] p-4">
+                <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[#1E4E57]/70">
+                  Mobile flow
+                </div>
+                <div className="mt-2 text-xl font-bold text-[#14393F]">
+                  Clearer
+                </div>
+              </div>
+
+              <div className="rounded-[18px] border border-slate-200 bg-[#FFF8EA] p-4">
+                <div className="text-xs font-semibold uppercase tracking-[0.12em] text-[#1E4E57]/70">
+                  First impression
+                </div>
+                <div className="mt-2 text-xl font-bold text-[#14393F]">
+                  Sharper
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="absolute -right-4 bottom-10 hidden w-44 rotate-[7deg] rounded-3xl border border-[#F59E0B]/30 bg-[#F59E0B]/15 p-4 text-white shadow-2xl backdrop-blur md:block">
-        <div className="text-xs font-semibold uppercase tracking-[0.16em] text-[#FCD38A]">
-          Enquiries
+      <div className="absolute -bottom-5 -right-2 hidden max-w-[210px] rounded-2xl border border-white bg-white p-4 shadow-xl sm:block">
+        <div className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
+          Built for
         </div>
-        <div className="mt-2 text-2xl font-bold">Easier</div>
-        <div className="mt-1 text-xs leading-relaxed text-white/70">
-          Stronger calls to action.
-        </div>
-      </div>
-
-      <div className="overflow-hidden rounded-[30px] border border-white/15 bg-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.45)] backdrop-blur">
-        <div className="flex items-center gap-2 border-b border-white/10 bg-white/10 px-5 py-4">
-          <span className="h-3 w-3 rounded-full bg-[#F59E0B]" />
-          <span className="h-3 w-3 rounded-full bg-[#0EA5A8]" />
-          <span className="h-3 w-3 rounded-full bg-white/35" />
-          <div className="ml-3 h-7 flex-1 rounded-full bg-white/10" />
-        </div>
-
-        <div className="bg-[#F8FBFA] p-5">
-          <div className="rounded-[24px] bg-[#073B3A] p-6 text-white">
-            <div className="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/75">
-              Small business website
-            </div>
-            <div className="mt-5 h-8 w-4/5 rounded-full bg-white/90" />
-            <div className="mt-3 h-8 w-3/5 rounded-full bg-white/80" />
-            <div className="mt-5 space-y-2">
-              <div className="h-3 w-full rounded-full bg-white/25" />
-              <div className="h-3 w-5/6 rounded-full bg-white/20" />
-              <div className="h-3 w-4/6 rounded-full bg-white/15" />
-            </div>
-            <div className="mt-6 flex gap-3">
-              <div className="h-11 w-36 rounded-full bg-[#F59E0B]" />
-              <div className="h-11 w-32 rounded-full border border-white/20 bg-white/10" />
-            </div>
-          </div>
-
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200 bg-white p-4">
-              <div className="h-4 w-24 rounded-full bg-slate-200" />
-              <div className="mt-4 h-16 rounded-2xl bg-[#EAF8FA]" />
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-4">
-              <div className="h-4 w-28 rounded-full bg-slate-200" />
-              <div className="mt-4 h-16 rounded-2xl bg-[#FFF7EA]" />
-            </div>
-          </div>
+        <div className="mt-1 text-lg font-bold text-[#14393F]">
+          Real small businesses
         </div>
       </div>
     </div>
   )
 }
 
-function FeatureCard(props: {
-  title: string
+function FeatureCard({
+  eyebrow,
+  title,
+  text,
+  tone = "blue",
+}: {
   eyebrow: string
+  title: string
   text: string
-  tone?: "teal" | "warm" | "dark"
+  tone?: "blue" | "warm" | "deep"
 }) {
-  const toneClass =
-    props.tone === "warm"
-      ? "bg-[#FFF7EA]"
-      : props.tone === "dark"
-        ? "bg-[#073B3A] text-white"
-        : "bg-[#EAF8FA]"
-
-  const eyebrowClass = props.tone === "dark" ? "text-white/55" : "text-muted-foreground"
-  const textClass = props.tone === "dark" ? "text-white/70" : "text-muted-foreground"
+  const styles =
+    tone === "warm"
+      ? "bg-[#FFF8EA]"
+      : tone === "deep"
+        ? "bg-[#1E4E57] text-white"
+        : "bg-[#EAF8FC]"
 
   return (
-    <div className={`rounded-[28px] border border-black/5 p-6 shadow-[0_12px_30px_rgba(0,0,0,0.06)] ${toneClass}`}>
-      <div className={`text-xs font-semibold uppercase tracking-[0.16em] ${eyebrowClass}`}>
-        {props.eyebrow}
+    <div
+      className={`rounded-[26px] border border-black/5 p-6 shadow-[0_12px_35px_rgba(20,57,63,0.08)] ${styles}`}
+    >
+      <div
+        className={`text-[11px] font-semibold uppercase tracking-[0.12em] ${
+          tone === "deep" ? "text-white/60" : "text-slate-500"
+        }`}
+      >
+        {eyebrow}
       </div>
-      <div className="mt-3 text-2xl font-bold tracking-tight">
-        {props.title}
-      </div>
-      <p className={`mt-3 text-sm leading-relaxed ${textClass}`}>{props.text}</p>
+      <div className="mt-3 text-2xl font-bold tracking-tight">{title}</div>
+      <p
+        className={`mt-3 text-sm leading-relaxed ${
+          tone === "deep" ? "text-white/72" : "text-slate-600"
+        }`}
+      >
+        {text}
+      </p>
     </div>
   )
 }
 
-function ServiceCard(props: {
+function ServiceCard({
+  icon,
+  title,
+  text,
+  detail,
+  tone = "blue",
+}: {
   icon: React.ReactNode
   title: string
   text: string
   detail: string
-  tone?: "teal" | "warm" | "blue"
+  tone?: "blue" | "warm" | "white"
 }) {
   const iconBg =
-    props.tone === "warm"
-      ? "bg-[#F59E0B]/15"
-      : props.tone === "blue"
-        ? "bg-sky-100"
-        : "bg-[#0EA5A8]/15"
+    tone === "warm"
+      ? "bg-[#E5A73B]/16"
+      : tone === "white"
+        ? "bg-white"
+        : "bg-[#59C7E6]/18"
 
   return (
-    <Card className="group rounded-[30px] border border-black/5 bg-white p-8 shadow-[0_16px_45px_rgba(7,59,58,0.09)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(7,59,58,0.14)]">
-      <div className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl ${iconBg}`}>
-        {props.icon}
+    <Card className="rounded-[28px] border border-black/5 bg-white p-7 shadow-[0_16px_45px_rgba(20,57,63,0.09)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(20,57,63,0.14)] sm:p-8">
+      <div
+        className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl ${iconBg}`}
+      >
+        {icon}
       </div>
-      <h3 className="text-2xl font-semibold text-foreground">{props.title}</h3>
-      <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground">
-        {props.text}
+      <h3 className="text-2xl font-semibold text-slate-950">{title}</h3>
+      <p className="mt-3 text-pretty text-base leading-relaxed text-slate-600">
+        {text}
       </p>
-      <div className="mt-5 rounded-2xl bg-[#F8FBFA] px-4 py-3 text-sm font-medium text-foreground">
-        {props.detail}
+      <div className="mt-5 rounded-2xl bg-[#F8FBFC] px-4 py-3 text-sm font-medium text-[#14393F]">
+        {detail}
       </div>
     </Card>
   )
@@ -327,21 +385,23 @@ function WorkCard({ item, index }: { item: WorkExample; index: number }) {
   const imageFirst = index % 2 === 0
 
   return (
-    <Card className="group overflow-hidden rounded-[34px] border border-black/5 bg-white p-0 shadow-[0_20px_60px_rgba(7,59,58,0.12)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(7,59,58,0.18)]">
+    <Card className="group overflow-hidden rounded-[30px] border border-black/5 bg-white p-0 shadow-[0_18px_55px_rgba(20,57,63,0.10)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(20,57,63,0.16)]">
       <div className="grid gap-0 lg:grid-cols-2">
         <Link
           href={item.href}
-          className={`relative block min-h-[300px] overflow-hidden bg-slate-100 ${imageFirst ? "" : "lg:order-2"}`}
+          className={`relative block overflow-hidden bg-slate-100 ${
+            imageFirst ? "" : "lg:order-2"
+          }`}
         >
           <img
             src={item.image}
             alt={item.imageAlt}
-            className="h-full min-h-[300px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+            className="aspect-[16/10] w-full object-cover lg:h-full lg:min-h-[430px]"
             loading="lazy"
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#073B3A]/80 via-[#073B3A]/10 to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#14393F]/82 via-[#14393F]/10 to-transparent" />
           <div className="pointer-events-none absolute bottom-5 left-5 right-5">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-lg backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-lg backdrop-blur">
               {item.category}
               <ArrowRight className="h-3.5 w-3.5" />
             </div>
@@ -349,15 +409,15 @@ function WorkCard({ item, index }: { item: WorkExample; index: number }) {
         </Link>
 
         <div className="p-6 sm:p-8 lg:p-10">
-          <div className="mb-3 inline-flex rounded-full border border-[#0EA5A8]/20 bg-[#EAF8FA] px-3 py-1 text-xs font-semibold text-[#073B3A] shadow-sm">
+          <div className="mb-3 inline-flex rounded-full border border-[#59C7E6]/25 bg-[#EAF8FC] px-3 py-1 text-xs font-semibold text-[#1E4E57] shadow-sm">
             {item.label}
           </div>
 
-          <h3 className="text-3xl font-bold tracking-tight text-foreground">
+          <h3 className="text-3xl font-bold tracking-tight text-slate-950">
             {item.title}
           </h3>
 
-          <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-4 text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
             {item.summary}
           </p>
 
@@ -368,8 +428,8 @@ function WorkCard({ item, index }: { item: WorkExample; index: number }) {
                   key={stat}
                   className={`rounded-2xl border px-4 py-3 text-sm font-semibold shadow-sm ${
                     statIndex === 0 || statIndex === 2
-                      ? "border-[#0EA5A8]/20 bg-[#EAF8FA] text-[#073B3A]"
-                      : "border-[#F59E0B]/20 bg-[#FFF7EA] text-[#073B3A]"
+                      ? "border-[#59C7E6]/25 bg-[#EAF8FC] text-[#14393F]"
+                      : "border-[#E5A73B]/25 bg-[#FFF8EA] text-[#14393F]"
                   }`}
                 >
                   {stat}
@@ -383,7 +443,10 @@ function WorkCard({ item, index }: { item: WorkExample; index: number }) {
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild className="bg-[#073B3A] text-white shadow-sm hover:bg-[#052f2e]">
+            <Button
+              asChild
+              className="bg-[#1E4E57] text-white shadow-sm hover:bg-[#14393F]"
+            >
               <Link href={item.href}>
                 {item.cta}
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -405,22 +468,22 @@ function WorkCard({ item, index }: { item: WorkExample; index: number }) {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#F8FBFA]">
+    <div className="min-h-screen bg-[#F8FBFC] text-slate-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#073B3A]/92 text-white backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link
             href="/"
-            className="flex items-center gap-2 text-base font-semibold tracking-tight text-white sm:text-lg"
+            className="flex items-center gap-2 text-base font-semibold tracking-tight text-[#14393F] sm:text-lg"
           >
             <img
               src="/web-app-manifest-512x512.png"
               alt="DB Websites logo"
-              className="h-8 w-8 rounded-full border border-white/20 shadow-sm"
+              className="h-9 w-9 rounded-full shadow-sm"
             />
             DB Websites
           </Link>
@@ -428,30 +491,33 @@ export default function Home() {
           <nav className="flex items-center gap-4 sm:gap-6">
             <Link
               href="#work"
-              className="hidden text-sm font-medium text-white/70 transition-colors hover:text-white sm:inline-block"
+              className="hidden text-sm font-medium text-slate-600 transition-colors hover:text-[#14393F] sm:inline-block"
             >
               Work
             </Link>
             <Link
               href="#services"
-              className="hidden text-sm font-medium text-white/70 transition-colors hover:text-white sm:inline-block"
+              className="hidden text-sm font-medium text-slate-600 transition-colors hover:text-[#14393F] sm:inline-block"
             >
               Services
             </Link>
             <Link
               href="#pricing"
-              className="hidden text-sm font-medium text-white/70 transition-colors hover:text-white sm:inline-block"
+              className="hidden text-sm font-medium text-slate-600 transition-colors hover:text-[#14393F] sm:inline-block"
             >
               Pricing
             </Link>
             <Link
               href="#faq"
-              className="hidden text-sm font-medium text-white/70 transition-colors hover:text-white sm:inline-block"
+              className="hidden text-sm font-medium text-slate-600 transition-colors hover:text-[#14393F] sm:inline-block"
             >
               FAQ
             </Link>
 
-            <Button asChild className="bg-[#F59E0B] text-[#111827] shadow-md hover:bg-[#f8ae2f]">
+            <Button
+              asChild
+              className="bg-[#E5A73B] text-[#14393F] shadow-sm hover:bg-[#efb84e]"
+            >
               <Link href="#contact">
                 <Mail className="mr-2 h-4 w-4" />
                 Start a project
@@ -461,26 +527,24 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative overflow-hidden bg-[#073B3A] text-white">
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#EAF8FC_0%,#F8FBFC_88%)]">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(14,165,168,0.32),transparent_36%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.24),transparent_34%)]" />
-          <div className="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-white/5 blur-3xl" />
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#F8FBFA] to-transparent" />
+          <div className="absolute left-[-120px] top-[-160px] h-[360px] w-[360px] rounded-full bg-[#6BD4E8]/35 blur-3xl" />
+          <div className="absolute right-[-140px] top-[120px] h-[380px] w-[380px] rounded-full bg-[#E5A73B]/18 blur-3xl" />
         </div>
 
-        <div className="container relative z-[1] mx-auto px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="container relative z-[1] mx-auto px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-14">
             <div className="text-center lg:text-left">
-              <div className="mb-5 inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/75 shadow-sm backdrop-blur">
+              <div className="mb-5 inline-flex rounded-full border border-[#59C7E6]/30 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1E4E57] shadow-sm">
                 Websites • online stores • practical fixes
               </div>
 
-              <h1 className="text-balance text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+              <h1 className="text-balance text-4xl font-bold tracking-tight text-[#14393F] sm:text-5xl lg:text-6xl">
                 Websites that make small businesses look sharper and win more trust
               </h1>
 
-              <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-white/75 sm:text-xl lg:mx-0">
+              <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 sm:text-lg lg:mx-0">
                 I build and improve websites for small businesses that need stronger
                 visuals, clearer messaging, better mobile flow, and more confidence
                 from customers.
@@ -490,7 +554,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   asChild
-                  className="bg-[#F59E0B] text-[#111827] shadow-xl hover:bg-[#f8ae2f]"
+                  className="bg-[#E5A73B] text-[#14393F] shadow-md hover:bg-[#efb84e]"
                 >
                   <Link href="#contact">
                     <Mail className="mr-2 h-4 w-4" />
@@ -502,7 +566,7 @@ export default function Home() {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="border-white/20 bg-white/10 text-white shadow-sm backdrop-blur hover:bg-white/15 hover:text-white"
+                  className="border-[#59C7E6]/35 bg-white/80 text-[#14393F] shadow-sm hover:bg-white"
                 >
                   <Link
                     href={FACEBOOK_MESSENGER_URL}
@@ -523,27 +587,26 @@ export default function Home() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="rounded-2xl border border-white/12 bg-white/8 px-4 py-3 text-sm font-medium text-white/82 shadow-sm backdrop-blur"
+                    className="rounded-2xl border border-white bg-white/80 px-4 py-3 text-sm font-medium text-[#14393F] shadow-sm"
                   >
-                    <Check className="mb-2 h-4 w-4 text-[#F59E0B]" />
+                    <Check className="mb-2 h-4 w-4 text-[#59C7E6]" />
                     {item}
                   </div>
                 ))}
               </div>
             </div>
 
-            <BrowserFrame />
+            <HeroPreview />
           </div>
         </div>
       </section>
 
-      <section className="bg-[#F8FBFA] px-4 pb-10 sm:px-6 lg:px-8">
-        <div className="container mx-auto -mt-8 grid gap-5 md:grid-cols-3">
+      <section className="bg-[#F8FBFC]">
+        <div className="container mx-auto grid gap-5 px-4 pb-12 sm:px-6 md:grid-cols-3 lg:px-8">
           <FeatureCard
             eyebrow="Not just looks"
             title="A stronger first impression"
             text="A better website should make people understand what you do, trust you faster, and feel confident taking the next step."
-            tone="teal"
           />
           <FeatureCard
             eyebrow="Customer flow"
@@ -555,108 +618,93 @@ export default function Home() {
             eyebrow="Practical upgrades"
             title="Fix what’s hurting trust"
             text="Weak layouts, dated visuals, awkward forms, and confusing pages quietly cost businesses enquiries."
-            tone="dark"
+            tone="deep"
           />
         </div>
       </section>
 
-      <section className="bg-[#FFF7EA]">
-        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <section className="bg-[#FFF8EA]">
+        <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <SectionHeading
             eyebrow="Client feedback"
             title="Real feedback from real projects"
             subtitle="The goal is simple. Build websites that look better, feel clearer, and help the business move forward."
           />
 
-          <div className="mx-auto max-w-4xl">
-            <Card className="overflow-hidden rounded-[34px] border border-[#F59E0B]/20 bg-white shadow-[0_20px_60px_rgba(120,70,0,0.12)]">
-              <div className="grid gap-0 lg:grid-cols-[0.75fr_1.25fr]">
-                <div className="bg-[#073B3A] p-8 text-white sm:p-10">
-                  <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#FCD38A]">
-                    Verified client
-                  </div>
-                  <div className="mt-4 text-4xl font-bold">5.0 feel</div>
-                  <p className="mt-3 text-sm leading-relaxed text-white/68">
-                    This is the kind of trust signal the site should be showing more strongly.
-                  </p>
-                  <div className="mt-6 flex gap-1 text-[#F59E0B]">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <span key={i}>★</span>
-                    ))}
-                  </div>
-                </div>
+          <div className="mx-auto max-w-3xl">
+            <Card className="rounded-[30px] border border-[#E5A73B]/25 bg-white p-7 shadow-[0_18px_55px_rgba(120,70,0,0.10)] sm:p-9">
+              <div className="mb-4 flex justify-center gap-1 text-[#E5A73B]">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i}>★</span>
+                ))}
+              </div>
 
-                <div className="p-8 sm:p-10">
-                  <p className="text-pretty text-xl leading-relaxed text-foreground sm:text-2xl">
-                    “Love your work and passion Des and thanks very much for going above and beyond with all you are doing for Tripple Pluggers and continue to do 👍”
-                  </p>
+              <p className="text-pretty text-center text-lg leading-relaxed text-slate-800 sm:text-xl">
+                “Love your work and passion Des and thanks very much for going above and beyond with all you are doing for Tripple Pluggers and continue to do 👍”
+              </p>
 
-                  <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                    <a
-                      href="https://tripplepluggers.com.au"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-full border border-border bg-[#F8FBFA] px-4 py-2 font-medium text-foreground underline-offset-4 hover:underline"
-                    >
-                      Tripple Pluggers
-                    </a>
-                    <span className="rounded-full border border-border bg-[#F8FBFA] px-4 py-2">
-                      Ecommerce project
-                    </span>
-                  </div>
-                </div>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm text-slate-600">
+                <a
+                  href="https://tripplepluggers.com.au"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-slate-200 bg-[#F8FBFC] px-4 py-2 font-medium text-[#14393F] underline-offset-4 hover:underline"
+                >
+                  Tripple Pluggers
+                </a>
+                <span className="rounded-full border border-slate-200 bg-[#F8FBFC] px-4 py-2">
+                  Verified client
+                </span>
               </div>
             </Card>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#F8FBFA]">
+      <section className="bg-[#F8FBFC]">
         <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
-          <div className="grid gap-8 text-center md:grid-cols-3">
-            <div className="rounded-[28px] bg-white p-6 shadow-[0_14px_40px_rgba(7,59,58,0.07)]">
-              <div className="text-base font-semibold text-foreground">
-                Built with real business experience
+          <div className="grid gap-5 md:grid-cols-3">
+            {[
+              {
+                title: "Built with real business experience",
+                text: "Not design for design’s sake. Real-world understanding of offers, customer trust, selling online, and making websites pull their weight.",
+              },
+              {
+                title: "Stronger visuals without the stock-photo feel",
+                text: "My photography background helps create sites that feel sharper, more believable, and more premium from the first glance.",
+              },
+              {
+                title: "New builds or sharp upgrades",
+                text: "Some projects need a fresh start. Others just need the current site tightened up, simplified, and made better on mobile.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-[26px] bg-white p-6 shadow-[0_12px_35px_rgba(20,57,63,0.07)]"
+              >
+                <div className="text-base font-semibold text-[#14393F]">
+                  {item.title}
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {item.text}
+                </p>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Not design for design’s sake. Real-world understanding of offers,
-                customer trust, selling online, and making websites pull their weight.
-              </p>
-            </div>
-            <div className="rounded-[28px] bg-white p-6 shadow-[0_14px_40px_rgba(7,59,58,0.07)]">
-              <div className="text-base font-semibold text-foreground">
-                Stronger visuals without the stock-photo feel
-              </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                My photography background helps create sites that feel sharper,
-                more believable, and more premium from the first glance.
-              </p>
-            </div>
-            <div className="rounded-[28px] bg-white p-6 shadow-[0_14px_40px_rgba(7,59,58,0.07)]">
-              <div className="text-base font-semibold text-foreground">
-                New builds or sharp upgrades
-              </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Some projects need a fresh start. Others just need the current site
-                tightened up, simplified, and made better on mobile.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#073B3A] text-white">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(14,165,168,0.30),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(245,158,11,0.20),transparent_30%)]" />
-        <div className="container relative z-[1] mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <section className="bg-[#1E4E57] text-white">
+        <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-4 inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/70 shadow-sm">
+            <div className="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/78 shadow-sm">
               Far North Queensland and Australia-wide
             </div>
 
-            <h2 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl">
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Website help for businesses across Cairns, the Tablelands, the Cassowary Coast and beyond
             </h2>
-            <p className="mt-5 text-pretty text-lg leading-relaxed text-white/72">
+            <p className="mt-5 text-pretty text-base leading-relaxed text-white/74 sm:text-lg">
               I work with local service businesses, online stores, accommodation
               businesses, and growing brands that need a website that feels current,
               works properly on mobile, and makes it easier for customers to take the
@@ -670,7 +718,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="work" className="bg-[#F8FBFA]">
+      <section id="work" className="bg-[#F8FBFC]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="Selected work"
@@ -686,7 +734,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="bg-[#EAF8FA]">
+      <section id="services" className="bg-[#EAF8FC]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="Services"
@@ -696,15 +744,14 @@ export default function Home() {
 
           <div className="grid gap-6 md:grid-cols-3">
             <ServiceCard
-              icon={<MonitorSmartphone className="h-6 w-6 text-[#073B3A]" />}
+              icon={<MonitorSmartphone className="h-6 w-6 text-[#14393F]" />}
               title="New websites"
               text="Clean, modern business websites with clearer messaging, better layout, and a stronger first impression."
               detail="Business websites, landing pages, and custom builds"
-              tone="teal"
             />
 
             <ServiceCard
-              icon={<ShoppingBag className="h-6 w-6 text-[#073B3A]" />}
+              icon={<ShoppingBag className="h-6 w-6 text-[#14393F]" />}
               title="Online stores"
               text="Ecommerce pages that look sharper, feel easier to shop, and remove the little bits of friction that hurt sales."
               detail="Shopify stores, product pages, and conversion improvements"
@@ -712,66 +759,66 @@ export default function Home() {
             />
 
             <ServiceCard
-              icon={<Wrench className="h-6 w-6 text-[#073B3A]" />}
+              icon={<Wrench className="h-6 w-6 text-[#14393F]" />}
               title="Website fixes"
               text="Mobile fixes, layout cleanup, booking flow improvements, page polish, and smarter upgrades to sites that are nearly there."
               detail="Fixes, cleanups, redesigns, and upgrades"
-              tone="blue"
+              tone="white"
             />
           </div>
         </div>
       </section>
 
-      <section className="bg-[#073B3A] text-white">
+      <section className="bg-[#F8FBFC]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.95fr]">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
             <div>
               <SectionHeading
                 align="left"
-                dark
                 eyebrow="Visuals matter"
                 title="Strong websites usually start with stronger visuals"
                 subtitle="A lot of business websites feel cheap because the visuals feel cheap. Generic stock images, weak crops, inconsistent photos, or no visual direction at all."
               />
 
-              <p className="text-base leading-relaxed text-white/72 sm:text-lg">
-                I bring a photography background into the process, which helps create
-                a site that feels cleaner, more believable, and more premium from the
-                first glance.
-              </p>
+              <div className="rounded-[28px] border border-[#59C7E6]/25 bg-white p-6 shadow-[0_16px_45px_rgba(20,57,63,0.08)]">
+                <p className="text-base leading-relaxed text-slate-600 sm:text-lg">
+                  I bring a photography background into the process, which helps create
+                  a site that feels cleaner, more believable, and more premium from the
+                  first glance.
+                </p>
 
-              <p className="mt-4 text-sm text-white/60">
-                You can see some of my photography work at{" "}
-                <a
-                  href="https://outbacklens.com.au"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-medium text-[#FCD38A] underline underline-offset-4 hover:text-[#F59E0B]"
-                >
-                  Outback Lens
-                </a>
-              </p>
+                <p className="mt-4 text-sm text-slate-600">
+                  You can see some of my photography work at{" "}
+                  <a
+                    href="https://outbacklens.com.au"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold text-[#1E4E57] underline underline-offset-4 hover:text-[#14393F]"
+                  >
+                    Outback Lens
+                  </a>
+                </p>
 
-              <div className="mt-6">
-                <BulletList
-                  dark
-                  items={[
-                    "Better first impressions",
-                    "More trust from customers",
-                    "Less reliance on generic stock imagery",
-                    "A more polished brand feel across the whole site",
-                  ]}
-                />
+                <div className="mt-6">
+                  <BulletList
+                    items={[
+                      "Better first impressions",
+                      "More trust from customers",
+                      "Less reliance on generic stock imagery",
+                      "A more polished brand feel across the whole site",
+                    ]}
+                  />
+                </div>
               </div>
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-5 rounded-[34px] bg-[#0EA5A8]/20 blur-2xl" />
-              <div className="relative overflow-hidden rounded-[34px] border border-white/15 bg-white/10 p-3 shadow-[0_28px_80px_rgba(0,0,0,0.32)]">
+              <div className="absolute -inset-4 rounded-[34px] bg-[#6BD4E8]/22 blur-2xl" />
+              <div className="relative overflow-hidden rounded-[30px] border border-white bg-white p-3 shadow-[0_24px_70px_rgba(20,57,63,0.16)]">
                 <img
                   src={VISUALS_IMAGE}
                   alt="Lifestyle product photography example"
-                  className="block aspect-[4/3] w-full rounded-[26px] object-cover"
+                  className="block h-auto w-full rounded-[24px] object-contain"
                 />
               </div>
             </div>
@@ -779,38 +826,38 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#FFF7EA]">
+      <section className="bg-[#FFF8EA]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
             <div className="flex justify-center lg:justify-end lg:pr-6">
               <div className="relative w-full max-w-[420px]">
-                <div className="absolute -inset-4 rounded-[34px] bg-[#F59E0B]/18 blur-2xl" />
-                <div className="relative overflow-hidden rounded-[30px] border border-black/5 bg-white p-3 shadow-[0_24px_70px_rgba(120,70,0,0.18)]">
+                <div className="absolute -inset-4 rounded-[34px] bg-[#E5A73B]/18 blur-2xl" />
+                <div className="relative overflow-hidden rounded-[30px] border border-white bg-white p-3 shadow-[0_24px_70px_rgba(120,70,0,0.16)]">
                   <img
                     src="/about-des.jpg"
                     alt="Des from DB Websites"
-                    className="block w-full rounded-[24px] object-cover"
+                    className="block h-auto w-full rounded-[24px] object-contain"
                   />
                 </div>
               </div>
             </div>
 
             <div>
-              <div className="mb-3 inline-flex rounded-full border border-[#F59E0B]/20 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground shadow-sm">
+              <div className="mb-3 inline-flex rounded-full border border-[#E5A73B]/25 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-sm">
                 About
               </div>
 
-              <h2 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+              <h2 className="text-balance text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
                 Built by someone who actually runs businesses
               </h2>
 
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
                 I’m Des. I build and improve websites for small businesses that want to
                 look more professional, build trust faster, and turn visitors into real
                 enquiries, bookings, or sales.
               </p>
 
-              <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">
                 I’m not just focused on making websites look nice. I care about clarity,
                 customer trust, stronger visuals, and giving people a cleaner path to take
                 action.
@@ -818,13 +865,13 @@ export default function Home() {
 
               <div className="mt-6 rounded-[28px] bg-white p-6 shadow-[0_14px_40px_rgba(120,70,0,0.10)]">
                 <BulletList
+                  warm
                   items={[
                     "Real-world business experience",
                     "A strong eye for visuals and presentation",
                     "Practical thinking around enquiries, bookings, and sales",
                     "Focused on cleaner customer flow, not just design",
                   ]}
-                  iconTone="warm"
                 />
               </div>
             </div>
@@ -832,7 +879,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#F8FBFA]">
+      <section className="bg-[#F8FBFC]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="How it works"
@@ -860,15 +907,15 @@ export default function Home() {
             ].map((step) => (
               <Card
                 key={step.number}
-                className="rounded-[30px] border border-black/5 bg-white p-8 shadow-[0_16px_45px_rgba(7,59,58,0.09)]"
+                className="rounded-[28px] border border-black/5 bg-white p-7 shadow-[0_16px_45px_rgba(20,57,63,0.08)] sm:p-8"
               >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#073B3A] text-sm font-bold text-white shadow-md">
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#59C7E6] text-sm font-bold text-[#14393F] shadow-sm">
                   {step.number}
                 </div>
-                <h3 className="mt-5 text-xl font-semibold text-foreground">
+                <h3 className="mt-5 text-xl font-semibold text-slate-950">
                   {step.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   {step.text}
                 </p>
               </Card>
@@ -877,7 +924,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="pricing" className="bg-[#EAF8FA]">
+      <section id="pricing" className="bg-[#EAF8FC]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="Pricing"
@@ -886,9 +933,9 @@ export default function Home() {
           />
 
           <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
-            <Card className="rounded-[34px] border border-black/5 bg-white p-8 shadow-[0_18px_55px_rgba(7,59,58,0.12)] lg:p-10">
-              <h3 className="text-2xl font-bold text-foreground">Website fixes</h3>
-              <p className="mt-3 text-pretty text-muted-foreground">
+            <Card className="rounded-[30px] border border-black/5 bg-white p-8 shadow-[0_18px_55px_rgba(20,57,63,0.12)] lg:p-10">
+              <h3 className="text-2xl font-bold text-slate-950">Website fixes</h3>
+              <p className="mt-3 text-pretty text-slate-600">
                 Best for existing websites that need cleanup, mobile improvements,
                 better enquiry flow, page polish, or practical fixes.
               </p>
@@ -904,27 +951,27 @@ export default function Home() {
                 />
               </div>
 
-              <div className="mt-8 rounded-[26px] bg-[#073B3A] p-6 text-white">
-                <div className="text-sm font-semibold text-white/60">
+              <div className="mt-8 rounded-[26px] bg-[#1E4E57] p-6 text-white">
+                <div className="text-sm font-semibold text-white/65">
                   Smaller improvement jobs
                 </div>
                 <div className="mt-2 text-5xl font-bold tracking-tight">
                   From $250
                 </div>
-                <div className="mt-1 text-sm text-white/60">
+                <div className="mt-1 text-sm text-white/65">
                   AUD depending on scope
                 </div>
               </div>
             </Card>
 
-            <Card className="rounded-[34px] border border-[#F59E0B]/30 bg-white p-8 shadow-[0_18px_55px_rgba(120,70,0,0.13)] lg:p-10">
-              <div className="mb-3 inline-flex rounded-full bg-[#FFF7EA] px-3 py-1 text-xs font-semibold text-[#073B3A]">
+            <Card className="rounded-[30px] border border-[#E5A73B]/30 bg-white p-8 shadow-[0_18px_55px_rgba(120,70,0,0.12)] lg:p-10">
+              <div className="mb-3 inline-flex rounded-full bg-[#FFF8EA] px-3 py-1 text-xs font-semibold text-[#14393F]">
                 Bigger impact
               </div>
-              <h3 className="text-2xl font-bold text-foreground">
+              <h3 className="text-2xl font-bold text-slate-950">
                 New websites and online stores
               </h3>
-              <p className="mt-3 text-pretty text-muted-foreground">
+              <p className="mt-3 text-pretty text-slate-600">
                 Best for businesses that want a stronger online presence with clearer
                 pages, better structure, stronger visuals, and a more polished customer
                 experience.
@@ -932,24 +979,24 @@ export default function Home() {
 
               <div className="mt-6">
                 <BulletList
+                  warm
                   items={[
                     "New business websites",
                     "Online stores and product pages",
                     "Landing pages and lead generation pages",
                     "Quoted based on the size, platform, and value of the job",
                   ]}
-                  iconTone="warm"
                 />
               </div>
 
-              <div className="mt-8 rounded-[26px] bg-[#FFF7EA] p-6">
-                <div className="text-sm font-semibold text-muted-foreground">
+              <div className="mt-8 rounded-[26px] bg-[#FFF8EA] p-6">
+                <div className="text-sm font-semibold text-slate-600">
                   Typical starting point
                 </div>
-                <div className="mt-2 text-5xl font-bold tracking-tight text-foreground">
+                <div className="mt-2 text-5xl font-bold tracking-tight text-slate-950">
                   $750
                 </div>
-                <div className="mt-1 text-sm text-muted-foreground">
+                <div className="mt-1 text-sm text-slate-600">
                   AUD depending on scope
                 </div>
               </div>
@@ -957,14 +1004,18 @@ export default function Home() {
           </div>
 
           <div className="mt-8 text-center">
-            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-muted-foreground">
+            <p className="mx-auto max-w-2xl text-sm leading-relaxed text-slate-600">
               Not sure what category your project falls into? Send it through anyway.
               I’ll tell you pretty quickly whether it’s a tidy-up job, a bigger
               upgrade, or something that should be rebuilt properly.
             </p>
 
             <div className="mt-6">
-              <Button size="lg" asChild className="bg-[#073B3A] text-white shadow-md hover:bg-[#052f2e]">
+              <Button
+                size="lg"
+                asChild
+                className="bg-[#1E4E57] text-white shadow-md hover:bg-[#14393F]"
+              >
                 <Link href="#contact">
                   <Mail className="mr-2 h-4 w-4" />
                   Start a project
@@ -975,7 +1026,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="faq" className="bg-[#F8FBFA]">
+      <section id="faq" className="bg-[#F8FBFC]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <SectionHeading
             eyebrow="FAQ"
@@ -984,13 +1035,13 @@ export default function Home() {
           />
 
           <div className="mx-auto max-w-3xl">
-            <Card className="rounded-[34px] border border-black/5 bg-white p-6 shadow-[0_18px_55px_rgba(7,59,58,0.10)] sm:p-8">
+            <Card className="rounded-[30px] border border-black/5 bg-white p-6 shadow-[0_18px_55px_rgba(20,57,63,0.10)] sm:p-8">
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-left text-base font-semibold">
                     Do you work with WordPress websites?
                   </AccordionTrigger>
-                  <AccordionContent className="leading-relaxed text-muted-foreground">
+                  <AccordionContent className="leading-relaxed text-slate-600">
                     Yes. I can help with fixes, upgrades, layout cleanup, booking flow
                     improvements, and general front-end tidy-up work on existing
                     WordPress sites.
@@ -1001,7 +1052,7 @@ export default function Home() {
                   <AccordionTrigger className="text-left text-base font-semibold">
                     Can you help with online stores too?
                   </AccordionTrigger>
-                  <AccordionContent className="leading-relaxed text-muted-foreground">
+                  <AccordionContent className="leading-relaxed text-slate-600">
                     Yes. I can help improve online stores with better product pages,
                     cleaner buying flow, and a better experience on mobile.
                   </AccordionContent>
@@ -1011,7 +1062,7 @@ export default function Home() {
                   <AccordionTrigger className="text-left text-base font-semibold">
                     Can you help if I already have a website?
                   </AccordionTrigger>
-                  <AccordionContent className="leading-relaxed text-muted-foreground">
+                  <AccordionContent className="leading-relaxed text-slate-600">
                     Yep. Send me the link and tell me what feels off. I’ll tell you
                     whether it’s worth fixing, upgrading, or rebuilding.
                   </AccordionContent>
@@ -1021,7 +1072,7 @@ export default function Home() {
                   <AccordionTrigger className="text-left text-base font-semibold">
                     What do you need from me to get started?
                   </AccordionTrigger>
-                  <AccordionContent className="leading-relaxed text-muted-foreground">
+                  <AccordionContent className="leading-relaxed text-slate-600">
                     Just send your business name, current website if you have one, what
                     you need help with, your main goal, and any timing or budget notes.
                   </AccordionContent>
@@ -1031,7 +1082,7 @@ export default function Home() {
                   <AccordionTrigger className="text-left text-base font-semibold">
                     What platforms do you work with?
                   </AccordionTrigger>
-                  <AccordionContent className="leading-relaxed text-muted-foreground">
+                  <AccordionContent className="leading-relaxed text-slate-600">
                     Shopify stores, WordPress websites, and modern custom business
                     websites depending on what suits the project best.
                   </AccordionContent>
@@ -1041,7 +1092,7 @@ export default function Home() {
                   <AccordionTrigger className="text-left text-base font-semibold">
                     Do you only work with businesses in Far North Queensland?
                   </AccordionTrigger>
-                  <AccordionContent className="leading-relaxed text-muted-foreground">
+                  <AccordionContent className="leading-relaxed text-slate-600">
                     No. I can work with businesses Australia-wide, but I’m based in Far
                     North Queensland and especially happy to work with local businesses
                     in Cairns, the Tablelands, the Cassowary Coast, and surrounding
@@ -1054,33 +1105,37 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="relative overflow-hidden bg-[#073B3A] text-white">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(14,165,168,0.28),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.22),transparent_34%)]" />
+      <section id="contact" className="relative overflow-hidden bg-[#1E4E57] text-white">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-[-120px] top-[-140px] h-[360px] w-[360px] rounded-full bg-[#6BD4E8]/20 blur-3xl" />
+          <div className="absolute bottom-[-160px] right-[-140px] h-[380px] w-[380px] rounded-full bg-[#E5A73B]/18 blur-3xl" />
+        </div>
 
         <div className="container relative z-[1] mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
           <div className="grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
-              <div className="mb-3 inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/70 shadow-sm">
+              <div className="mb-3 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/78 shadow-sm">
                 Start a project
               </div>
 
-              <h2 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl">
+              <h2 className="text-balance text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
                 Tell me what you need fixed, built, or improved
               </h2>
 
-              <p className="mt-4 text-pretty text-lg leading-relaxed text-white/72">
+              <p className="mt-4 text-pretty text-base leading-relaxed text-white/74 sm:text-lg">
                 Send through a few details and I’ll tell you whether it looks like a quick
                 fix, a larger upgrade, or a fresh build.
               </p>
 
-              <div className="mt-8 rounded-[30px] border border-white/15 bg-white/10 p-6 shadow-xl backdrop-blur">
-                <div className="text-sm font-semibold uppercase tracking-[0.16em] text-[#FCD38A]">
+              <div className="mt-8 rounded-[28px] border border-white/16 bg-white/10 p-6 shadow-xl backdrop-blur">
+                <div className="text-sm font-semibold uppercase tracking-[0.14em] text-[#F7D68C]">
                   Good fit for
                 </div>
+
                 <div className="mt-5">
                   <BulletList
                     dark
-                    iconTone="warm"
+                    warm
                     items={[
                       "Small businesses that need a sharper website",
                       "Existing sites that feel dated or clunky",
@@ -1094,7 +1149,7 @@ export default function Home() {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="mt-7 border-white/20 bg-white/10 text-white hover:bg-white/15 hover:text-white"
+                  className="mt-7 border-white/25 bg-white/10 text-white hover:bg-white/15 hover:text-white"
                 >
                   <Link
                     href={FACEBOOK_MESSENGER_URL}
@@ -1109,7 +1164,7 @@ export default function Home() {
             </div>
 
             <form
-              className="rounded-[34px] border border-white/12 bg-white p-6 text-foreground shadow-[0_30px_90px_rgba(0,0,0,0.35)] sm:p-8"
+              className="rounded-[30px] border border-white/15 bg-white p-6 text-slate-950 shadow-[0_26px_80px_rgba(0,0,0,0.22)] sm:p-8"
               action={FORMSUBMIT_ENDPOINT}
               method="POST"
             >
@@ -1133,88 +1188,88 @@ export default function Home() {
                 autoComplete="off"
               />
 
-              <div className="mb-6 rounded-[24px] bg-[#EAF8FA] p-5">
-                <div className="text-sm font-semibold text-[#073B3A]">
+              <div className="mb-6 rounded-[24px] bg-[#EAF8FC] p-5">
+                <div className="text-sm font-semibold text-[#14393F]">
                   Project enquiry
                 </div>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-1 text-sm leading-relaxed text-slate-600">
                   The more detail you send, the easier it is for me to point you in the right direction.
                 </p>
               </div>
 
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-medium text-foreground">
+                  <label className="mb-2 block text-sm font-medium text-slate-900">
                     Business name
                   </label>
                   <input
                     type="text"
                     name="Business name"
                     required
-                    className="w-full rounded-2xl border border-border bg-[#F8FBFA] px-4 py-3 text-sm text-foreground outline-none transition focus:border-[#073B3A]"
+                    className="w-full rounded-2xl border border-slate-200 bg-[#F8FBFC] px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#59C7E6]"
                     placeholder="Your business name"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-foreground">
+                  <label className="mb-2 block text-sm font-medium text-slate-900">
                     Your name
                   </label>
                   <input
                     type="text"
                     name="Name"
                     required
-                    className="w-full rounded-2xl border border-border bg-[#F8FBFA] px-4 py-3 text-sm text-foreground outline-none transition focus:border-[#073B3A]"
+                    className="w-full rounded-2xl border border-slate-200 bg-[#F8FBFC] px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#59C7E6]"
                     placeholder="Your name"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-foreground">
+                  <label className="mb-2 block text-sm font-medium text-slate-900">
                     Email
                   </label>
                   <input
                     type="email"
                     name="Email"
                     required
-                    className="w-full rounded-2xl border border-border bg-[#F8FBFA] px-4 py-3 text-sm text-foreground outline-none transition focus:border-[#073B3A]"
+                    className="w-full rounded-2xl border border-slate-200 bg-[#F8FBFC] px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#59C7E6]"
                     placeholder="you@example.com"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-medium text-foreground">
+                  <label className="mb-2 block text-sm font-medium text-slate-900">
                     Phone
                   </label>
                   <input
                     type="tel"
                     name="Phone"
-                    className="w-full rounded-2xl border border-border bg-[#F8FBFA] px-4 py-3 text-sm text-foreground outline-none transition focus:border-[#073B3A]"
+                    className="w-full rounded-2xl border border-slate-200 bg-[#F8FBFC] px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#59C7E6]"
                     placeholder="Your phone number"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-medium text-foreground">
+                  <label className="mb-2 block text-sm font-medium text-slate-900">
                     Current website
                   </label>
                   <input
                     type="text"
                     name="Current website"
-                    className="w-full rounded-2xl border border-border bg-[#F8FBFA] px-4 py-3 text-sm text-foreground outline-none transition focus:border-[#073B3A]"
+                    className="w-full rounded-2xl border border-slate-200 bg-[#F8FBFC] px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#59C7E6]"
                     placeholder="https://"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-medium text-foreground">
+                  <label className="mb-2 block text-sm font-medium text-slate-900">
                     What do you need help with?
                   </label>
                   <textarea
                     name="Project details"
                     rows={6}
                     required
-                    className="w-full rounded-2xl border border-border bg-[#F8FBFA] px-4 py-3 text-sm text-foreground outline-none transition focus:border-[#073B3A]"
+                    className="w-full rounded-2xl border border-slate-200 bg-[#F8FBFC] px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#59C7E6]"
                     placeholder="New website, online store, fixes, redesign, booking flow improvements..."
                   />
                 </div>
@@ -1224,7 +1279,7 @@ export default function Home() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="bg-[#F59E0B] text-[#111827] shadow-md hover:bg-[#f8ae2f]"
+                  className="bg-[#E5A73B] text-[#14393F] shadow-md hover:bg-[#efb84e]"
                 >
                   <Mail className="mr-2 h-4 w-4" />
                   Send enquiry
@@ -1252,16 +1307,16 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-[#052f2e] text-white">
+      <footer className="bg-[#14393F] text-white">
         <div className="container mx-auto px-4 py-10 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-sm font-semibold">© DB Websites</p>
 
-            <p className="mt-1 text-sm text-white/60">
+            <p className="mt-1 text-sm text-white/65">
               Websites, online stores, and practical fixes for small businesses
             </p>
 
-            <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-white/60">
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-sm text-white/65">
               <a
                 href={UPWORK_URL}
                 target="_blank"
