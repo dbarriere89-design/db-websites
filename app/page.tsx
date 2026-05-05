@@ -18,7 +18,6 @@ import {
   MessageCircle,
   MonitorSmartphone,
   ShoppingBag,
-  Sparkles,
   Wrench,
 } from "lucide-react"
 
@@ -27,17 +26,6 @@ const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/desbarriere.au@gmail.com"
 const UPWORK_URL = "https://www.upwork.com/freelancers/~01bf146bd0e95935ec"
 
 const VISUALS_IMAGE = "/visuals-section.jpg"
-
-const BRAND = {
-  light: "#6BD4E8",
-  primary: "#59C7E6",
-  deep: "#1E4E57",
-  dark: "#14393F",
-  warm: "#E5A73B",
-  cream: "#FFF8EA",
-  soft: "#EAF8FC",
-  page: "#F8FBFC",
-}
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -100,7 +88,7 @@ const WORK_EXAMPLES: WorkExample[] = [
       "A stronger ecommerce experience with cleaner product pages, better mobile shopping, and a smoother path from product view to checkout.",
     image: "/work/tripple-pluggers/tp-hero.jpg",
     imageAlt: "Tripple Pluggers website screenshot",
-    stats: ["70 orders", "$4217 revenue", "Live store", "Real checkout flow"],
+    stats: ["37 orders", "$2096 revenue", "Live store", "Real checkout flow"],
     bullets: [
       "Clearer product page structure",
       "Better mobile buying experience",
@@ -287,15 +275,6 @@ function HeroPreview() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="absolute -bottom-5 -right-2 hidden max-w-[210px] rounded-2xl border border-white bg-white p-4 shadow-xl sm:block">
-        <div className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
-          Built for
-        </div>
-        <div className="mt-1 text-lg font-bold text-[#14393F]">
-          Real small businesses
         </div>
       </div>
     </div>
@@ -1327,7 +1306,7 @@ export default function Home() {
               </a>
 
               <a
-                href="https://www.facebook.com/dbwebsitesau"
+                href="https://www.facebook.com/desbarriere"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 underline hover:text-white"
