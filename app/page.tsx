@@ -88,7 +88,7 @@ const WORK_EXAMPLES: WorkExample[] = [
       "A stronger ecommerce experience with cleaner product pages, better mobile shopping, and a smoother path from product view to checkout.",
     image: "/work/tripple-pluggers/tp-hero.jpg",
     imageAlt: "Tripple Pluggers website screenshot",
-    stats: ["37 orders", "$2096 revenue", "Live store", "Real checkout flow"],
+    stats: ["70 orders", "$4217 revenue", "Live store", "Real checkout flow"],
     bullets: [
       "Clearer product page structure",
       "Better mobile buying experience",
@@ -545,7 +545,7 @@ export default function Home() {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="border-[#59C7E6]/35 bg-white/80 text-[#14393F] shadow-sm hover:bg-white"
+                  className="border-[#59C7E6]/35 bg-white/80 text-[#14393F] shadow-sm hover:bg-white hover:text-[#14393F]"
                 >
                   <Link
                     href={FACEBOOK_MESSENGER_URL}
@@ -911,8 +911,8 @@ export default function Home() {
             subtitle="Smaller jobs can usually be quoted quickly. Larger projects are priced properly based on scope, platform, and what the website needs to do."
           />
 
-          <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
-            <Card className="rounded-[30px] border border-black/5 bg-white p-8 shadow-[0_18px_55px_rgba(20,57,63,0.12)] lg:p-10">
+          <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 md:items-stretch">
+            <Card className="flex h-full flex-col rounded-[30px] border border-black/5 bg-white p-8 shadow-[0_18px_55px_rgba(20,57,63,0.12)] lg:p-10">
               <h3 className="text-2xl font-bold text-slate-950">Website fixes</h3>
               <p className="mt-3 text-pretty text-slate-600">
                 Best for existing websites that need cleanup, mobile improvements,
@@ -930,21 +930,23 @@ export default function Home() {
                 />
               </div>
 
-              <div className="mt-8 rounded-[26px] bg-[#1E4E57] p-6 text-white">
-                <div className="text-sm font-semibold text-white/65">
-                  Smaller improvement jobs
-                </div>
-                <div className="mt-2 text-5xl font-bold tracking-tight">
-                  From $250
-                </div>
-                <div className="mt-1 text-sm text-white/65">
-                  AUD depending on scope
+              <div className="mt-auto pt-8">
+                <div className="rounded-[26px] bg-[#1E4E57] p-6 text-white">
+                  <div className="text-sm font-semibold text-white/65">
+                    Smaller improvement jobs
+                  </div>
+                  <div className="mt-2 text-5xl font-bold tracking-tight">
+                    From $250
+                  </div>
+                  <div className="mt-1 text-sm text-white/65">
+                    AUD depending on scope
+                  </div>
                 </div>
               </div>
             </Card>
 
-            <Card className="rounded-[30px] border border-[#E5A73B]/30 bg-white p-8 shadow-[0_18px_55px_rgba(120,70,0,0.12)] lg:p-10">
-              <div className="mb-3 inline-flex rounded-full bg-[#FFF8EA] px-3 py-1 text-xs font-semibold text-[#14393F]">
+            <Card className="flex h-full flex-col rounded-[30px] border border-[#E5A73B]/30 bg-white p-8 shadow-[0_18px_55px_rgba(120,70,0,0.12)] lg:p-10">
+              <div className="mb-3 inline-flex w-fit rounded-full bg-[#FFF8EA] px-3 py-1 text-xs font-semibold text-[#14393F]">
                 Bigger impact
               </div>
               <h3 className="text-2xl font-bold text-slate-950">
@@ -968,15 +970,17 @@ export default function Home() {
                 />
               </div>
 
-              <div className="mt-8 rounded-[26px] bg-[#FFF8EA] p-6">
-                <div className="text-sm font-semibold text-slate-600">
-                  Typical starting point
-                </div>
-                <div className="mt-2 text-5xl font-bold tracking-tight text-slate-950">
-                  $750
-                </div>
-                <div className="mt-1 text-sm text-slate-600">
-                  AUD depending on scope
+              <div className="mt-auto pt-8">
+                <div className="rounded-[26px] bg-[#FFF8EA] p-6">
+                  <div className="text-sm font-semibold text-slate-600">
+                    Typical starting point
+                  </div>
+                  <div className="mt-2 text-5xl font-bold tracking-tight text-slate-950">
+                    $750
+                  </div>
+                  <div className="mt-1 text-sm text-slate-600">
+                    AUD depending on scope
+                  </div>
                 </div>
               </div>
             </Card>
