@@ -1,9 +1,18 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import {
+  ArrowLeft,
+  ArrowRight,
+  BedDouble,
+  CalendarCheck,
+  Check,
+  Mail,
+  MessageCircle,
+  MonitorSmartphone,
+  Sparkles,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { ArrowLeft, ArrowRight, Check, Mail, MessageCircle } from "lucide-react"
-import Lightbox from "@/components/lightbox"
 
 const FACEBOOK_MESSENGER_URL = "https://m.me/desbarriere"
 const EMAIL = "desbarriere.au@gmail.com"
@@ -101,117 +110,122 @@ const workExampleSchema = {
   ],
 }
 
-function SectionIntro(props: {
-  eyebrow?: string
-  title: string
-  text?: string
-}) {
-  return (
-    <div className="mb-8 sm:mb-10">
-      {props.eyebrow ? (
-        <div className="mb-3 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
-          {props.eyebrow}
-        </div>
-      ) : null}
+const projectImages = [
+  {
+    src: BEFORE_IMAGE,
+    alt: "FNQ Lodge before improvements screenshot",
+    title: "Before the cleanup",
+    text: "The previous version worked, but the presentation felt clunkier and the path toward booking was not as clean as it needed to be.",
+  },
+  {
+    src: AFTER_IMAGE,
+    alt: "FNQ Lodge after improvements screenshot",
+    title: "After the refresh",
+    text: "The improved version gave the property a cleaner structure, stronger presentation, and a clearer path for visitors to keep moving.",
+  },
+  {
+    src: CHECKOUT_DESKTOP_IMAGE,
+    alt: "FNQ Lodge checkout page screenshot",
+    title: "Checkout flow",
+    text: "The checkout layout was cleaned up so booking details, guest information, and payment felt easier to understand.",
+  },
+]
 
-      <h2 className="text-balance text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-        {props.title}
-      </h2>
-
-      {props.text ? (
-        <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-          {props.text}
-        </p>
-      ) : null}
-    </div>
-  )
-}
+const outcomes = [
+  {
+    icon: <BedDouble className="h-5 w-5" />,
+    title: "Better property presentation",
+    text: "The lodge needed to feel more polished, trustworthy, and appealing from the first look.",
+  },
+  {
+    icon: <CalendarCheck className="h-5 w-5" />,
+    title: "Stronger booking path",
+    text: "The flow was shaped to help visitors move from interest to booking with less confusion.",
+  },
+  {
+    icon: <MonitorSmartphone className="h-5 w-5" />,
+    title: "Mobile usability",
+    text: "Booking pages and key content needed to work better for visitors browsing on their phones.",
+  },
+  {
+    icon: <Sparkles className="h-5 w-5" />,
+    title: "Cleaner feel",
+    text: "The site was improved without needing to completely rebuild everything from scratch.",
+  },
+]
 
 export default function FNQLodgePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <main className="min-h-screen bg-[#F8FBFC] text-slate-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(workExampleSchema) }}
       />
 
-      <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-base font-semibold tracking-tight text-foreground sm:text-lg"
-          >
-            <img
-              src="/web-app-manifest-512x512.png"
-              alt="DB Websites logo"
-              className="h-8 w-8 rounded-full shadow-sm"
-            />
-            DB Websites
-          </Link>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,#EAF8FC_0%,#F8FBFC_88%)]">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-[-140px] top-[-140px] h-[360px] w-[360px] rounded-full bg-[#6BD4E8]/30 blur-3xl" />
+          <div className="absolute right-[-140px] top-[160px] h-[380px] w-[380px] rounded-full bg-[#E5A73B]/18 blur-3xl" />
+        </div>
 
-          <Button asChild variant="outline" className="shadow-sm">
-            <Link href="/">
+        <div className="container relative z-[1] mx-auto px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+          <Button
+            variant="outline"
+            asChild
+            className="mb-8 border-[#59C7E6]/35 bg-white/80 text-[#14393F] shadow-sm hover:bg-white hover:text-[#14393F]"
+          >
+            <Link href="/#work">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to home
+              Back to work
             </Link>
           </Button>
-        </div>
-      </header>
 
-      <main>
-        <section className="relative overflow-hidden premium-ambient border-b border-border bg-[linear-gradient(180deg,oklch(0.94_0.015_205),oklch(0.98_0.003_220))]">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_40%)]" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(255,214,153,0.18),transparent_32%)]" />
-            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.45),transparent_48%)]" />
-          </div>
-
-          <div className="container relative z-[2] mx-auto px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24">
-            <div className="mx-auto max-w-5xl">
-              <div className="mb-4 inline-flex rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
-                Work example
+          <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+            <div>
+              <div className="mb-4 inline-flex rounded-full border border-[#59C7E6]/30 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1E4E57] shadow-sm">
+                Accommodation booking website
               </div>
 
-              <h1 className="max-w-4xl text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              <h1 className="text-balance text-4xl font-bold tracking-tight text-[#14393F] sm:text-5xl lg:text-6xl">
                 FNQ Lodge
               </h1>
 
-              <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
-                A booking website improvement project focused on clearer page
-                structure, better mobile use, and an easier path from browsing to
-                booking.
+              <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
+                A booking website improvement project focused on clearer page structure,
+                better mobile use, and an easier path from browsing to booking.
               </p>
 
-              <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                This project was about making the property feel better presented,
-                more trustworthy, and easier for guests to move through when they were
-                ready to book.
-              </p>
-
-              <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                {stats.map((stat, index) => (
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {stats.map((stat) => (
                   <div
                     key={stat}
-                    className={`rounded-2xl border px-4 py-4 text-sm font-semibold text-foreground shadow-md backdrop-blur-sm ${
-                      index % 2 === 0
-  ? "border-[hsl(var(--brand-accent)/0.30)] bg-[hsl(var(--brand-accent)/0.10)]"
-  : "border-border bg-white/90"
-                    }`}
+                    className="rounded-2xl border border-[#59C7E6]/25 bg-white/80 px-4 py-3 text-sm font-semibold text-[#14393F] shadow-sm"
                   >
+                    <Check className="mb-2 h-4 w-4 text-[#59C7E6]" />
                     {stat}
                   </div>
                 ))}
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button asChild className="shadow-sm">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-[#1E4E57] text-white shadow-md hover:bg-[#14393F]"
+                >
                   <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
                     <Mail className="mr-2 h-4 w-4" />
                     Start a project
                   </Link>
                 </Button>
 
-                <Button asChild variant="outline" className="shadow-sm bg-background/70">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-[#59C7E6]/35 bg-white/80 text-[#14393F] shadow-sm hover:bg-white hover:text-[#14393F]"
+                >
                   <Link
                     href={FACEBOOK_MESSENGER_URL}
                     target="_blank"
@@ -222,286 +236,333 @@ export default function FNQLodgePage() {
                   </Link>
                 </Button>
               </div>
-
-              <div className="mt-10 h-px w-full bg-gradient-to-r from-transparent via-border to-transparent" />
             </div>
-          </div>
-        </section>
 
-        <section className="container mx-auto px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-          <div className="mx-auto max-w-6xl">
-            <div className="overflow-hidden rounded-[28px] border border-border bg-card shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
-              <Lightbox
-                src={HERO_IMAGE}
-                alt="FNQ Lodge improved homepage screenshot"
-                className="w-full object-cover"
-              />
-            </div>
-          </div>
-        </section>
-
-        <section className="relative border-y border-border bg-[linear-gradient(to_bottom,rgba(10,160,185,0.035),rgba(255,255,255,0.7))]">
-          <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-            <div className="mx-auto max-w-6xl">
-              <div className="grid gap-6 lg:grid-cols-2">
-                <Card className="premium-card rounded-3xl border border-[hsl(var(--brand-accent)/0.22)] bg-[linear-gradient(180deg,rgba(255,255,255,0.92),rgba(10,160,185,0.05))] p-6 shadow-sm sm:p-8">
-                  <div className="mb-4 inline-flex rounded-full border border-[hsl(var(--brand-accent)/0.18)] bg-[hsl(var(--brand-accent)/0.08)] px-3 py-1 text-xs font-medium text-foreground/80">
-                    What needed work
-                  </div>
-
-                  <h2 className="text-2xl font-bold tracking-tight text-foreground">
-                    The site needed a clearer story, cleaner structure, and a better booking path
-                  </h2>
-
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                    Visitors needed to understand the property more quickly, feel more
-                    confident in the experience, and move from browsing to booking
-                    without getting confused by awkward layout or clunky flow.
-                  </p>
-
-                  <div className="mt-6 space-y-4">
-                    {[
-                      "Make the stay feel better presented online",
-                      "Improve the booking path and calls to action",
-                      "Clean up awkward layout and presentation issues",
-                      "Make the site easier to use on mobile",
-                    ].map((item) => (
-                      <div key={item} className="flex items-start gap-3">
-                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                        <span className="text-sm leading-relaxed text-foreground sm:text-base">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </Card>
-
-                <Card className="premium-card rounded-3xl border border-[hsl(var(--brand-warm)/0.24)] bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(245,180,70,0.06))] p-6 shadow-sm sm:p-8">
-                  <div className="mb-4 inline-flex rounded-full border border-[hsl(var(--brand-warm)/0.22)] bg-[hsl(var(--brand-warm)/0.10)] px-3 py-1 text-xs font-medium text-foreground/80">
-                    What I worked on
-                  </div>
-
-                  <h2 className="text-2xl font-bold tracking-tight text-foreground">
-                    Practical improvements across layout, booking flow, mobile use, and trust
-                  </h2>
-
-                  <div className="mt-6 space-y-4">
-                    {[
-                      "WordPress layout cleanup",
-                      "Booking page and call-to-action improvements",
-                      "Booking and checkout improvements",
-                      "Better mobile presentation and usability",
-                      "Clearer structure for people looking to stay or book",
-                      "General polish to make the property feel more trustworthy",
-                    ].map((item) => (
-                      <div key={item} className="flex items-start gap-3">
-                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-warm))]" />
-                        <span className="text-sm leading-relaxed text-foreground sm:text-base">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </Card>
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-[34px] bg-[#6BD4E8]/22 blur-2xl" />
+              <div className="relative overflow-hidden rounded-[30px] border border-white bg-white p-3 shadow-[0_24px_70px_rgba(20,57,63,0.16)]">
+                <img
+                  src={HERO_IMAGE}
+                  alt="FNQ Lodge improved homepage screenshot"
+                  className="block h-auto w-full rounded-[24px] object-contain"
+                />
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="container mx-auto px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-          <div className="mx-auto max-w-6xl">
-            <SectionIntro
-              eyebrow="Before and after"
-              title="The difference becomes obvious when you compare the old version to the improved one"
-              text="This side-by-side view makes it much easier to see how the structure, presentation, and booking path were improved."
-            />
-
-            <div className="grid gap-6 md:grid-cols-2">
-              <Card className="premium-card overflow-hidden rounded-3xl border border-[hsl(var(--brand-accent)/0.20)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(10,160,185,0.04))] p-0 shadow-sm">
-                <div className="border-b border-border px-6 py-4">
-                  <div className="text-sm font-semibold text-foreground">Before</div>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Clunkier presentation, weaker page structure, and a less obvious path to booking.
-                  </p>
-                </div>
-                <div className="p-6">
-                  <Lightbox
-                    src={BEFORE_IMAGE}
-                    alt="FNQ Lodge before improvements screenshot"
-                    className="w-full object-cover"
-                  />
-                </div>
-              </Card>
-
-              <Card className="premium-card overflow-hidden rounded-3xl border border-[hsl(var(--brand-warm)/0.22)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(245,180,70,0.05))] p-0 shadow-sm">
-                <div className="border-b border-border px-6 py-4">
-                  <div className="text-sm font-semibold text-foreground">After</div>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Cleaner structure, clearer presentation, and an easier path into booking.
-                  </p>
-                </div>
-                <div className="p-6">
-                  <Lightbox
-                    src={AFTER_IMAGE}
-                    alt="FNQ Lodge after improvements screenshot"
-                    className="w-full object-cover"
-                  />
-                </div>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        <section className="relative border-y border-border bg-[linear-gradient(to_bottom,rgba(245,180,70,0.045),rgba(255,255,255,0.84))]">
-          <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-            <div className="mx-auto max-w-6xl">
-              <SectionIntro
-                eyebrow="Booking and checkout flow"
-                title="Improving the booking experience was a big part of this project"
-                text="The booking and checkout steps were cleaned up to feel clearer, more trustworthy, and easier to use across desktop and mobile."
-              />
-
-              <div className="grid gap-6 lg:grid-cols-[0.7fr_1.3fr]">
-                <Card className="premium-card overflow-hidden rounded-3xl border border-[hsl(var(--brand-accent)/0.20)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(10,160,185,0.04))] p-0 shadow-sm">
-                  <div className="border-b border-border px-6 py-4">
-                    <div className="text-sm font-semibold text-foreground">Mobile booking page</div>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      Mobile booking page with guest selection and date picker flow.
-                    </p>
-                  </div>
-                  <div className="p-6">
-                    <Lightbox
-                      src={BOOKING_MOBILE_IMAGE}
-                      alt="FNQ Lodge mobile booking page screenshot"
-                      className="mx-auto max-h-[720px] w-auto object-contain"
-                    />
-                  </div>
-                </Card>
-
-                <Card className="premium-card overflow-hidden rounded-3xl border border-[hsl(var(--brand-warm)/0.22)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(245,180,70,0.05))] p-0 shadow-sm">
-                  <div className="border-b border-border px-6 py-4">
-                    <div className="text-sm font-semibold text-foreground">Checkout page</div>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      Checkout layout with booking summary, guest details form, and payment section.
-                    </p>
-                  </div>
-                  <div className="p-6">
-                    <Lightbox
-                      src={CHECKOUT_DESKTOP_IMAGE}
-                      alt="FNQ Lodge checkout page screenshot"
-                      className="mx-auto w-full max-w-[950px] object-contain"
-                    />
-                  </div>
-                </Card>
+      {/* Project overview */}
+      <section className="bg-[#F8FBFC]">
+        <div className="container mx-auto px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+          <div className="grid gap-6 md:grid-cols-3">
+            <Card className="rounded-[28px] border border-black/5 bg-white p-7 shadow-[0_16px_45px_rgba(20,57,63,0.08)]">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                Project type
               </div>
-            </div>
+              <div className="mt-3 text-2xl font-bold text-[#14393F]">
+                Booking website refresh
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Improvements for an accommodation website with booking and checkout flow.
+              </p>
+            </Card>
+
+            <Card className="rounded-[28px] border border-black/5 bg-white p-7 shadow-[0_16px_45px_rgba(20,57,63,0.08)]">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                Main goal
+              </div>
+              <div className="mt-3 text-2xl font-bold text-[#14393F]">
+                Make booking easier
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Help guests understand the stay, trust the property, and move toward booking.
+              </p>
+            </Card>
+
+            <Card className="rounded-[28px] border border-black/5 bg-white p-7 shadow-[0_16px_45px_rgba(20,57,63,0.08)]">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                Focus
+              </div>
+              <div className="mt-3 text-2xl font-bold text-[#14393F]">
+                Presentation and flow
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                Cleaner structure, better mobile usability, stronger booking path, and before-and-after proof.
+              </p>
+            </Card>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="container mx-auto px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-          <div className="mx-auto max-w-6xl">
-            <SectionIntro
-              eyebrow="Why this matters"
-              title="Not every project needs a full rebuild to create real value"
-              text="Sometimes the strongest result comes from taking an existing website and making it cleaner, easier to use, and more effective for real customers."
-            />
-
-            <div className="grid gap-6 md:grid-cols-2">
-              <Card className="premium-card rounded-3xl border border-[hsl(var(--brand-accent)/0.20)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(10,160,185,0.04))] p-6 shadow-sm sm:p-8">
-                <h3 className="text-xl font-bold tracking-tight text-foreground">
-                  Why this matters
-                </h3>
-
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  This work example shows that the job is not always about building
-                  something from scratch. Sometimes the real value is in improving what
-                  already exists and making it work better for actual customers.
-                </p>
-
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  That matters for accommodation, tourism, service businesses, and
-                  local operators with websites that technically work but still feel
-                  messy, dated, or harder to use than they should be.
-                </p>
-              </Card>
-
-              <Card className="premium-card rounded-3xl border border-[hsl(var(--brand-warm)/0.22)] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(245,180,70,0.05))] p-6 shadow-sm sm:p-8">
-                <h3 className="text-xl font-bold tracking-tight text-foreground">
-                  Key improvements
-                </h3>
-
-                <div className="mt-6 space-y-4">
-                  {[
-                    "Clearer accommodation presentation",
-                    "A stronger booking path",
-                    "Better booking and checkout flow",
-                    "Better mobile usability",
-                    "A cleaner and more trustworthy feel",
-                  ].map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-[hsl(var(--brand-accent))]" />
-                      <span className="text-sm leading-relaxed text-foreground sm:text-base">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
+      {/* Strategy */}
+      <section className="bg-[#EAF8FC]">
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <div className="mb-4 inline-flex rounded-full border border-[#59C7E6]/30 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1E4E57] shadow-sm">
+              Booking strategy
             </div>
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Built to make the property feel clearer, more trustworthy, and easier to book
+            </h2>
+            <p className="mt-4 text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
+              Accommodation websites need to reduce uncertainty. Visitors need to understand
+              the property, trust the experience, check availability, and move through the
+              booking path without friction.
+            </p>
           </div>
-        </section>
 
-        <section className="container mx-auto px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-          <div className="mx-auto max-w-5xl">
-            <Card className="premium-card relative overflow-hidden rounded-[32px] border border-border bg-[linear-gradient(135deg,rgba(10,160,185,0.08),rgba(255,255,255,0.96),rgba(245,180,70,0.10))] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.08)] sm:p-8 lg:p-10">
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(10,160,185,0.10),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(245,180,70,0.12),transparent_32%)]" />
+          <div className="grid gap-6 lg:grid-cols-2">
+            <Card className="rounded-[30px] border border-black/5 bg-white p-7 shadow-[0_18px_55px_rgba(20,57,63,0.10)] sm:p-9">
+              <div className="mb-4 inline-flex rounded-full bg-[#FFF8EA] px-3 py-1 text-xs font-semibold text-[#14393F]">
+                What needed work
+              </div>
 
-              <div className="relative z-[1]">
-                <div className="mb-4 inline-flex rounded-full border border-border bg-background/75 px-3 py-1 text-xs font-medium text-muted-foreground">
-                  Simple takeaway
-                </div>
+              <h3 className="text-2xl font-bold tracking-tight text-slate-950">
+                The site needed a clearer story and a better booking path
+              </h3>
 
-                <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                  This project shows I can improve booking and accommodation websites so they feel clearer and easier to use
-                </h2>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                Visitors needed to understand the property more quickly, feel confident
+                in the stay, and move from browsing to booking without being slowed down
+                by awkward layout or clunky flow.
+              </p>
 
-                <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  The point is not just making the site look nicer. The point is making
-                  it easier for real guests to understand the property, trust the
-                  process, and move more confidently toward booking.
-                </p>
+              <div className="mt-6 space-y-3">
+                {[
+                  "Make the stay feel better presented online",
+                  "Improve the booking path and calls to action",
+                  "Clean up awkward layout and presentation issues",
+                  "Make the site easier to use on mobile",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#E5A73B]" />
+                    <span className="text-sm leading-relaxed text-slate-700 sm:text-base">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </Card>
 
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <Button asChild className="shadow-sm">
-                    <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
-                      <Mail className="mr-2 h-4 w-4" />
-                      Start a project
-                    </Link>
-                  </Button>
+            <Card className="rounded-[30px] border border-black/5 bg-white p-7 shadow-[0_18px_55px_rgba(20,57,63,0.10)] sm:p-9">
+              <div className="mb-4 inline-flex rounded-full bg-[#EAF8FC] px-3 py-1 text-xs font-semibold text-[#14393F]">
+                What changed
+              </div>
 
-                  <Button asChild variant="outline" className="shadow-sm bg-background/70">
-                    <Link
-                      href={FACEBOOK_MESSENGER_URL}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                    >
-                      <MessageCircle className="mr-2 h-4 w-4" />
-                      Message me
-                    </Link>
-                  </Button>
+              <h3 className="text-2xl font-bold tracking-tight text-slate-950">
+                Cleaner layout, better booking flow, mobile fixes, and stronger trust
+              </h3>
 
-                  <Button asChild variant="ghost">
-                    <Link href="/work/tripple-pluggers">
-                      Back to work examples
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                The work focused on practical improvements to make the website feel
+                cleaner, more usable, and easier for guests to act on.
+              </p>
+
+              <div className="mt-6 space-y-3">
+                {[
+                  "WordPress layout cleanup",
+                  "Booking page and call-to-action improvements",
+                  "Booking and checkout improvements",
+                  "Better mobile presentation and usability",
+                  "General polish to make the property feel more trustworthy",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#59C7E6]" />
+                    <span className="text-sm leading-relaxed text-slate-700 sm:text-base">
+                      {item}
+                    </span>
+                  </div>
+                ))}
               </div>
             </Card>
           </div>
-        </section>
-      </main>
-    </div>
+        </div>
+      </section>
+
+      {/* Screenshots */}
+      <section className="bg-[#F8FBFC]">
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <div className="mb-4 inline-flex rounded-full border border-[#59C7E6]/30 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#1E4E57] shadow-sm">
+              Before, after and flow
+            </div>
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              The difference becomes obvious when the flow is shown clearly
+            </h2>
+            <p className="mt-4 text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
+              These screenshots show the old version, the improved presentation, and the cleaned-up booking path.
+            </p>
+          </div>
+
+          <div className="grid gap-8">
+            {projectImages.map((item, index) => (
+              <Card
+                key={item.src}
+                className="overflow-hidden rounded-[30px] border border-black/5 bg-white shadow-[0_18px_55px_rgba(20,57,63,0.10)]"
+              >
+                <div className="grid items-center gap-0 lg:grid-cols-2">
+                  <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="block h-auto w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="p-7 sm:p-9 lg:p-12">
+                    <div className="mb-3 inline-flex rounded-full bg-[#FFF8EA] px-3 py-1 text-xs font-semibold text-[#14393F]">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                    <h3 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile and outcomes */}
+      <section className="bg-[#EAF8FC]">
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
+            <div>
+              <div className="mb-4 inline-flex rounded-full border border-[#E5A73B]/25 bg-[#FFF8EA] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-sm">
+                Mobile booking
+              </div>
+
+              <h2 className="text-balance text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+                The mobile booking experience needed to feel easier and cleaner
+              </h2>
+
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                Guests are often browsing accommodation on their phone. The booking page
+                needed to feel readable, usable, and clear enough for people to keep moving.
+              </p>
+
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {outcomes.map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-[24px] border border-black/5 bg-white p-5 shadow-[0_12px_35px_rgba(20,57,63,0.07)]"
+                  >
+                    <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#EAF8FC] text-[#14393F]">
+                      {item.icon}
+                    </div>
+                    <div className="text-base font-semibold text-slate-950">
+                      {item.title}
+                    </div>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative mx-auto w-full max-w-[380px]">
+              <div className="absolute -inset-4 rounded-[40px] bg-[#6BD4E8]/22 blur-2xl" />
+              <div className="relative overflow-hidden rounded-[34px] border border-white bg-white p-3 shadow-[0_24px_70px_rgba(20,57,63,0.16)]">
+                <img
+                  src={BOOKING_MOBILE_IMAGE}
+                  alt="FNQ Lodge mobile booking page screenshot"
+                  className="block h-auto w-full rounded-[26px] object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Takeaway */}
+      <section className="bg-[#FFF8EA]">
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="mb-4 inline-flex rounded-full border border-[#E5A73B]/25 bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-sm">
+              Simple takeaway
+            </div>
+
+            <h2 className="text-balance text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Not every project needs a full rebuild to create real value
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg">
+              Sometimes the strongest result comes from improving what already exists:
+              cleaner layout, clearer booking flow, better mobile usability, and a more
+              trustworthy feel for real guests.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-[#1E4E57] text-white">
+        <div className="container mx-auto px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-3xl">
+            <div className="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/78 shadow-sm">
+              Need a better booking website?
+            </div>
+
+            <h2 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+              Make your website easier for customers to trust and act on
+            </h2>
+
+            <p className="mt-4 text-pretty text-base leading-relaxed text-white/74 sm:text-lg">
+              If your booking flow feels clunky or your current site does not show the
+              experience properly, a focused refresh can make a big difference.
+            </p>
+
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <Button
+                asChild
+                size="lg"
+                className="bg-[#E5A73B] text-[#14393F] shadow-md hover:bg-[#efb84e]"
+              >
+                <Link href={`mailto:${EMAIL}?subject=${EMAIL_SUBJECT}&body=${EMAIL_BODY}`}>
+                  <Mail className="mr-2 h-4 w-4" />
+                  Start a project
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white/25 bg-white/10 text-white hover:bg-white/15 hover:text-white"
+              >
+                <Link
+                  href={FACEBOOK_MESSENGER_URL}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  Message me
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                size="lg"
+                variant="ghost"
+                className="text-white hover:bg-white/10 hover:text-white"
+              >
+                <Link href="/work/outback-lens">
+                  Back to work examples
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   )
 }
