@@ -242,14 +242,17 @@ function HeroPreview() {
               <img
                 src="/work/aircon/hero.jpg"
                 alt="Air conditioning website preview"
-                className="aspect-[16/9] w-full object-cover"
+                className="aspect-[16/11] w-full object-cover sm:aspect-[16/9]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#14393F]/75 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="inline-flex rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-[#1E4E57]">
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#14393F]/88 via-[#14393F]/28 to-transparent" />
+
+              <div className="absolute inset-x-3 bottom-3 sm:inset-x-4 sm:bottom-4">
+                <div className="inline-flex max-w-full rounded-full bg-white/92 px-3 py-1 text-[11px] font-semibold leading-none text-[#1E4E57] shadow-sm backdrop-blur sm:text-xs">
                   Recent website project
                 </div>
-                <div className="mt-3 max-w-sm text-2xl font-bold leading-tight text-white">
+
+                <div className="mt-2 max-w-[92%] text-[26px] font-bold leading-[1.03] tracking-tight text-white drop-shadow-md sm:mt-3 sm:max-w-sm sm:text-2xl">
                   Cleaner pages. Stronger trust. Easier enquiries.
                 </div>
               </div>
@@ -280,7 +283,6 @@ function HeroPreview() {
     </div>
   )
 }
-
 function FeatureCard({
   eyebrow,
   title,
