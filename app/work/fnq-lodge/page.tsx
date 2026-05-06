@@ -41,9 +41,9 @@ const EMAIL_BODY = encodeURIComponent(
 
 const HERO_IMAGE = "/work/fnq-lodge/hero.jpg"
 const BEFORE_IMAGE = "/work/fnq-lodge/before.jpg"
-const AFTER_IMAGE = "/work/fnq-lodge/after.jpg"
-const BOOKING_MOBILE_IMAGE = "/work/fnq-lodge/booking-mobile.jpg"
-const CHECKOUT_DESKTOP_IMAGE = "/work/fnq-lodge/checkout-desktop-sharp.jpg"
+const AFTER_IMAGE = "/work/fnq-lodge/after.png"
+const BOOKING_MOBILE_IMAGE = "/work/fnq-lodge/booking-mobile.png"
+const CHECKOUT_DESKTOP_IMAGE = "/work/fnq-lodge/checkout-desktop-sharp.png"
 
 const stats = [
   "Clearer presentation",
@@ -104,9 +104,9 @@ const workExampleSchema = {
   image: [
     "https://dbwebsites.au/work/fnq-lodge/hero.jpg",
     "https://dbwebsites.au/work/fnq-lodge/before.jpg",
-    "https://dbwebsites.au/work/fnq-lodge/after.jpg",
-    "https://dbwebsites.au/work/fnq-lodge/booking-mobile.jpg",
-    "https://dbwebsites.au/work/fnq-lodge/checkout-desktop-sharp.jpg",
+    "https://dbwebsites.au/work/fnq-lodge/after.png",
+    "https://dbwebsites.au/work/fnq-lodge/booking-mobile.png",
+    "https://dbwebsites.au/work/fnq-lodge/checkout-desktop-sharp.png",
   ],
 }
 
