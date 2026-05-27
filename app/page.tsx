@@ -86,7 +86,7 @@ const WORK_EXAMPLES: WorkExample[] = [
   label: "Photography and YouTube brand website",
   summary:
     "A cinematic photography and creator website built to showcase Australian travel, outdoor photography, YouTube videos, prints, and personal brand storytelling.",
-  image: "/work/outback-lens/hero.png",
+  image: "/work/outback-lens/hero.jpg",
   imageAlt: "Outback Lens photography website screenshot",
   bullets: [
     "Cinematic homepage built around strong photography",

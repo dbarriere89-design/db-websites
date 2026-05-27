@@ -5,19 +5,19 @@ import { Card } from "@/components/ui/card"
 
 const projectImages = [
   {
-    src: "/work/outback-lens/milkyway.png",
+    src: "/work/outback-lens/milkyway.jpg",
     alt: "Outback Lens Milky Way video section screenshot",
     title: "Atmospheric video section",
     text: "A stronger visual moment built around night-sky footage and the feeling of remote camping.",
   },
   {
-    src: "/work/outback-lens/gallery.png",
+    src: "/work/outback-lens/gallery.jpg",
     alt: "Outback Lens gallery screenshot",
     title: "Photography gallery",
     text: "A clean image-led layout for browsing landscapes, wildlife, travel moments, and featured work.",
   },
   {
-    src: "/work/outback-lens/prints.png",
+    src: "/work/outback-lens/prints.jpg",
     alt: "Outback Lens prints page screenshot",
     title: "Print sales path",
     text: "A clear path from browsing the brand to viewing and buying photography prints.",
@@ -118,7 +118,7 @@ export default function OutbackLensProjectPage() {
               <div className="absolute -inset-4 rounded-[34px] bg-[#6BD4E8]/22 blur-2xl" />
               <div className="relative overflow-hidden rounded-[30px] border border-white bg-white p-3 shadow-[0_24px_70px_rgba(20,57,63,0.16)]">
                 <img
-                  src="/work/outback-lens/hero.png"
+                  src="/work/outback-lens/hero.jpg"
                   alt="Outback Lens homepage screenshot"
                   className="block h-auto w-full rounded-[24px] object-contain"
                 />
@@ -263,7 +263,7 @@ export default function OutbackLensProjectPage() {
               <div className="absolute -inset-4 rounded-[40px] bg-[#6BD4E8]/22 blur-2xl" />
               <div className="relative overflow-hidden rounded-[34px] border border-white bg-white p-3 shadow-[0_24px_70px_rgba(20,57,63,0.16)]">
                 <img
-                  src="/work/outback-lens/mobile-home.png"
+                  src="/work/outback-lens/mobile-home.jpg"
                   alt="Outback Lens mobile homepage screenshot"
                   className="block h-auto w-full rounded-[26px] object-contain"
                   loading="lazy"
@@ -282,7 +282,7 @@ export default function OutbackLensProjectPage() {
               <div className="absolute -inset-4 rounded-[34px] bg-[#E5A73B]/18 blur-2xl" />
               <div className="relative overflow-hidden rounded-[30px] border border-white bg-white p-3 shadow-[0_24px_70px_rgba(120,70,0,0.16)]">
                 <img
-                  src="/work/outback-lens/about.png"
+                  src="/work/outback-lens/about.jpg"
                   alt="Outback Lens about page screenshot"
                   className="block h-auto w-full rounded-[24px] object-contain"
                   loading="lazy"
