@@ -4,12 +4,12 @@ import {
   ArrowLeft,
   ArrowRight,
   Check,
-  CreditCard,
   FileText,
   Mail,
   MessageCircle,
   MousePointerClick,
   PackageCheck,
+  Sparkles,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -39,34 +39,34 @@ const EMAIL_BODY = encodeURIComponent(
   ].join("\n")
 )
 
-const HERO_IMAGE = "/work/fifo-resume-mate-hero.jpg"
-const PRICING_IMAGE = "/work/fifo-resume-mate-pricing.jpg"
+const HERO_IMAGE = "/work/fifo-resume-mate-hero.png"
+const OUTPUT_IMAGE = "/work/fifo-resume-mate-output-crop.png"
+const PRICING_IMAGE = "/work/fifo-resume-mate-pricing.png"
 const BUILDER_IMAGE = "/work/fifo-resume-mate-builder.jpg"
-const CHECKOUT_IMAGE = "/work/fifo-resume-mate-checkout.jpg"
 
 const stats = [
   "Clearer offer",
+  "Product output shown",
   "Better pricing flow",
   "Smoother builder path",
-  "Cleaner checkout journey",
 ]
 
 export const metadata: Metadata = {
   title: "FIFO Resume Mate | Work example",
   description:
-    "A work example from DB Websites showing a clearer landing page, pricing section, builder flow, and checkout path for FIFO Resume Mate.",
+    "A work example from DB Websites showing a clearer landing page, product output, pricing section, and builder flow for FIFO Resume Mate.",
   alternates: {
     canonical: "/work/fifo-resume-mate",
   },
   openGraph: {
     title: "FIFO Resume Mate | Work example | DB Websites",
     description:
-      "A work example from DB Websites showing a clearer landing page, pricing section, builder flow, and checkout path for FIFO Resume Mate.",
+      "A work example from DB Websites showing a clearer landing page, product output, pricing section, and builder flow for FIFO Resume Mate.",
     url: "https://dbwebsites.au/work/fifo-resume-mate",
     siteName: "DB Websites",
     images: [
       {
-        url: "https://dbwebsites.au/work/fifo-resume-mate-hero.jpg",
+        url: "https://dbwebsites.au/work/fifo-resume-mate-hero.png",
         width: 1200,
         height: 630,
         alt: "FIFO Resume Mate work example by DB Websites",
@@ -79,8 +79,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FIFO Resume Mate | Work example | DB Websites",
     description:
-      "A work example from DB Websites showing a clearer landing page, pricing section, builder flow, and checkout path for FIFO Resume Mate.",
-    images: ["https://dbwebsites.au/work/fifo-resume-mate-hero.jpg"],
+      "A work example from DB Websites showing a clearer landing page, product output, pricing section, and builder flow for FIFO Resume Mate.",
+    images: ["https://dbwebsites.au/work/fifo-resume-mate-hero.png"],
   },
 }
 
@@ -90,7 +90,7 @@ const workExampleSchema = {
   name: "FIFO Resume Mate",
   url: "https://dbwebsites.au/work/fifo-resume-mate",
   description:
-    "A work example from DB Websites showing a clearer landing page, pricing section, builder flow, and checkout path for FIFO Resume Mate.",
+    "A work example from DB Websites showing a clearer landing page, product output, pricing section, and builder flow for FIFO Resume Mate.",
   creator: {
     "@type": "Person",
     name: "Des",
@@ -101,31 +101,34 @@ const workExampleSchema = {
     url: "https://dbwebsites.au",
   },
   image: [
-    "https://dbwebsites.au/work/fifo-resume-mate-hero.jpg",
-    "https://dbwebsites.au/work/fifo-resume-mate-pricing.jpg",
+    "https://dbwebsites.au/work/fifo-resume-mate-hero.png",
+    "https://dbwebsites.au/work/fifo-resume-mate-output-crop.png",
+    "https://dbwebsites.au/work/fifo-resume-mate-pricing.png",
     "https://dbwebsites.au/work/fifo-resume-mate-builder.jpg",
-    "https://dbwebsites.au/work/fifo-resume-mate-checkout.jpg",
   ],
 }
 
 const projectImages = [
   {
+    src: OUTPUT_IMAGE,
+    alt: "FIFO Resume Mate sample resume output screenshot",
+    eyebrow: "Product clarity",
+    title: "Show what the customer actually gets",
+    text: "The sample output section helps visitors understand the finished product before they buy, which makes the offer easier to trust.",
+  },
+  {
     src: PRICING_IMAGE,
     alt: "FIFO Resume Mate pricing section screenshot",
-    title: "Clearer pricing section",
-    text: "The pricing area needed to make the offer easier to understand and help visitors quickly see what they were getting.",
+    eyebrow: "Offer structure",
+    title: "Clearer pricing and package options",
+    text: "The pricing section was shaped to make each option easier to compare, with stronger positioning around the best-fit choice.",
   },
   {
     src: BUILDER_IMAGE,
-    alt: "FIFO Resume Mate builder screenshot",
-    title: "Step-by-step builder flow",
-    text: "The builder path was designed to guide people through the process without making the product feel complicated.",
-  },
-  {
-    src: CHECKOUT_IMAGE,
-    alt: "FIFO Resume Mate checkout screenshot",
-    title: "Cleaner checkout journey",
-    text: "The flow needed to move people from offer to purchase with less friction and more confidence.",
+    alt: "FIFO Resume Mate builder flow screenshot",
+    eyebrow: "Builder flow",
+    title: "A smoother path from upload to action",
+    text: "The builder page guides people through uploading their resume, adding the job ad, and understanding what happens next.",
   },
 ]
 
@@ -141,14 +144,14 @@ const outcomes = [
     text: "The pricing section was shaped to reduce hesitation and make the buying decision simpler.",
   },
   {
+    icon: <Sparkles className="h-5 w-5" />,
+    title: "Product made tangible",
+    text: "The sample output helps people see the value before they start the process.",
+  },
+  {
     icon: <MousePointerClick className="h-5 w-5" />,
     title: "Smoother path",
     text: "The page structure guides visitors from interest to action without unnecessary confusion.",
-  },
-  {
-    icon: <CreditCard className="h-5 w-5" />,
-    title: "Checkout ready",
-    text: "The checkout path supports a real purchase flow, not just a static landing page.",
   },
 ]
 
@@ -190,8 +193,8 @@ export default function FIFOResumeMatePage() {
               </h1>
 
               <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
-                A clearer landing page, pricing section, builder flow, and checkout
-                path for a digital product built around FIFO resume help.
+                A clearer landing page, product output section, pricing structure,
+                and builder flow for a digital product built around FIFO resume help.
               </p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -274,7 +277,7 @@ export default function FIFOResumeMatePage() {
                 Reduce confusion
               </div>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                Make the product, pricing, and next step easier to understand.
+                Make the product, pricing, output, and next step easier to understand.
               </p>
             </Card>
 
@@ -283,10 +286,10 @@ export default function FIFOResumeMatePage() {
                 Focus
               </div>
               <div className="mt-3 text-2xl font-bold text-[#14393F]">
-                Offer to checkout
+                Offer to action
               </div>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                Better page flow from the first message through pricing, builder, and checkout.
+                Better page flow from the first message through sample output, pricing, and builder.
               </p>
             </Card>
           </div>
@@ -305,7 +308,7 @@ export default function FIFOResumeMatePage() {
             </h2>
             <p className="mt-4 text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
               For a digital product, the page has to do a lot of work. Visitors need to
-              understand the offer, trust the process, choose the right option, and know
+              understand the offer, see what they get, choose the right option, and know
               what happens next.
             </p>
           </div>
@@ -322,15 +325,15 @@ export default function FIFOResumeMatePage() {
 
               <p className="mt-4 text-base leading-relaxed text-slate-600">
                 Visitors had to understand what was included, which option suited them,
-                and what to do next without feeling overwhelmed by the process.
+                and what the finished output looked like without feeling overwhelmed by the process.
               </p>
 
               <div className="mt-6 space-y-3">
                 {[
                   "Explain the offer more clearly",
-                  "Make the page easier to follow",
+                  "Show the sample output before buying",
                   "Help people choose the right option",
-                  "Create a smoother path to checkout",
+                  "Create a smoother path into the builder",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#E5A73B]" />
@@ -348,7 +351,7 @@ export default function FIFOResumeMatePage() {
               </div>
 
               <h3 className="text-2xl font-bold tracking-tight text-slate-950">
-                Clearer structure, pricing, calls to action, and checkout path
+                Clearer structure, product proof, pricing, and builder flow
               </h3>
 
               <p className="mt-4 text-base leading-relaxed text-slate-600">
@@ -359,10 +362,10 @@ export default function FIFOResumeMatePage() {
               <div className="mt-6 space-y-3">
                 {[
                   "Landing page layout and section flow",
+                  "Sample output section to make the product tangible",
                   "Clearer offer and pricing structure",
                   "Stronger calls to action",
                   "A smoother builder experience",
-                  "Cleaner page-to-checkout journey",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#59C7E6]" />
@@ -388,29 +391,60 @@ export default function FIFOResumeMatePage() {
               Key parts of the website flow
             </h2>
             <p className="mt-4 text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
-              These screenshots show the main points in the journey, from pricing to builder to checkout.
+              These screenshots show the main points in the journey, from product output to pricing to the builder.
             </p>
           </div>
 
-          <div className="grid gap-8">
-            {projectImages.map((item, index) => (
-              <Card
-                key={item.src}
-                className="overflow-hidden rounded-[30px] border border-black/5 bg-white shadow-[0_18px_55px_rgba(20,57,63,0.10)]"
-              >
-                <div className="grid items-center gap-0 lg:grid-cols-2">
-                  <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+          <div className="space-y-8">
+            <Card className="overflow-hidden rounded-[32px] border border-black/5 bg-white shadow-[0_18px_55px_rgba(20,57,63,0.10)]">
+              <div className="grid items-center gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+                <div className="bg-[#F8FBFC] p-3 sm:p-4 lg:p-5">
+                  <img
+                    src={OUTPUT_IMAGE}
+                    alt="FIFO Resume Mate sample resume output screenshot"
+                    className="block h-auto w-full rounded-[24px] object-contain"
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="p-7 sm:p-9 lg:p-12">
+                  <div className="mb-3 inline-flex rounded-full bg-[#FFF8EA] px-3 py-1 text-xs font-semibold text-[#14393F]">
+                    01
+                  </div>
+                  <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                    Product clarity
+                  </div>
+                  <h3 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+                    Show what the customer actually gets
+                  </h3>
+                  <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                    The sample output section helps visitors understand the finished product before they buy, which makes the offer easier to trust.
+                  </p>
+                </div>
+              </div>
+            </Card>
+
+            <div className="grid gap-8 lg:grid-cols-2">
+              {projectImages.slice(1).map((item, index) => (
+                <Card
+                  key={item.src}
+                  className="overflow-hidden rounded-[32px] border border-black/5 bg-white shadow-[0_18px_55px_rgba(20,57,63,0.10)]"
+                >
+                  <div className="bg-[#F8FBFC] p-3 sm:p-4">
                     <img
                       src={item.src}
                       alt={item.alt}
-                      className="block h-auto w-full object-contain"
+                      className="block h-auto w-full rounded-[24px] object-contain"
                       loading="lazy"
                     />
                   </div>
 
-                  <div className="p-7 sm:p-9 lg:p-12">
+                  <div className="p-7 sm:p-9">
                     <div className="mb-3 inline-flex rounded-full bg-[#FFF8EA] px-3 py-1 text-xs font-semibold text-[#14393F]">
-                      {String(index + 1).padStart(2, "0")}
+                      {String(index + 2).padStart(2, "0")}
+                    </div>
+                    <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                      {item.eyebrow}
                     </div>
                     <h3 className="text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
                       {item.title}
@@ -419,9 +453,9 @@ export default function FIFOResumeMatePage() {
                       {item.text}
                     </p>
                   </div>
-                </div>
-              </Card>
-            ))}
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -429,7 +463,7 @@ export default function FIFOResumeMatePage() {
       {/* Outcomes */}
       <section className="bg-[#EAF8FC]">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
+          <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
             <div>
               <div className="mb-4 inline-flex rounded-full border border-[#E5A73B]/25 bg-[#FFF8EA] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600 shadow-sm">
                 Customer journey
@@ -441,40 +475,28 @@ export default function FIFOResumeMatePage() {
 
               <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
                 The page had to make the offer feel clear enough that visitors could
-                move from reading to choosing an option, starting the builder, and
-                checking out.
+                move from reading to understanding the product, choosing an option,
+                and starting the builder.
               </p>
-
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                {outcomes.map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-[24px] border border-black/5 bg-white p-5 shadow-[0_12px_35px_rgba(20,57,63,0.07)]"
-                  >
-                    <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#EAF8FC] text-[#14393F]">
-                      {item.icon}
-                    </div>
-                    <div className="text-base font-semibold text-slate-950">
-                      {item.title}
-                    </div>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                      {item.text}
-                    </p>
-                  </div>
-                ))}
-              </div>
             </div>
 
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-[34px] bg-[#6BD4E8]/22 blur-2xl" />
-              <div className="relative overflow-hidden rounded-[30px] border border-white bg-white p-3 shadow-[0_24px_70px_rgba(20,57,63,0.16)]">
-                <img
-                  src={BUILDER_IMAGE}
-                  alt="FIFO Resume Mate builder flow screenshot"
-                  className="block h-auto w-full rounded-[24px] object-contain"
-                  loading="lazy"
-                />
-              </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {outcomes.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-[24px] border border-black/5 bg-white p-5 shadow-[0_12px_35px_rgba(20,57,63,0.07)]"
+                >
+                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#EAF8FC] text-[#14393F]">
+                    {item.icon}
+                  </div>
+                  <div className="text-base font-semibold text-slate-950">
+                    {item.title}
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    {item.text}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

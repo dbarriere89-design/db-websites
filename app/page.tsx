@@ -122,7 +122,7 @@ const WORK_EXAMPLES: WorkExample[] = [
     label: "Conversion-focused landing page",
     summary:
       "A clearer landing page built to explain the offer fast, reduce confusion, and move visitors toward the right action without friction.",
-    image: "/work/fifo-resume-mate-hero.jpg",
+    image: "/work/fifo-resume-mate-hero.png",
     imageAlt: "FIFO Resume Mate website screenshot",
     bullets: [
       "Cleaner offer and pricing layout",
