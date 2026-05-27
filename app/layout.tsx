@@ -11,11 +11,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://dbwebsites.au"),
 
   title: {
-    default: "DB Websites | Websites for small businesses in Far North Queensland",   template: "%s | DB Websites",
+    default: "DB Websites | Websites, online stores & fixes for small businesses",
+    template: "%s | DB Websites",
   },
 
   description:
-    "Simple, modern websites for small businesses in Cairns, the Tablelands, the Cassowary Coast and across Far North Queensland. Shopify stores, website refreshes and practical fixes built to help turn visitors into enquiries.",
+    "Clean, practical websites for small businesses, tradies, accommodation, online stores and service businesses. New builds, website refreshes and fixes without the tech waffle.",
 
   alternates: {
     canonical: "/",
@@ -31,9 +32,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "DB Websites | Websites for small businesses in Far North Queensland",
+    title: "DB Websites | Websites, online stores & fixes for small businesses",
     description:
-      "Simple, modern websites for small businesses in Cairns, the Tablelands, the Cassowary Coast and across Far North Queensland. Shopify stores, website refreshes and practical fixes built to help turn visitors into enquiries.",
+      "Clean, practical websites for small businesses, tradies, accommodation, online stores and service businesses. New builds, website refreshes and fixes without the tech waffle.",
     url: "https://dbwebsites.au",
     siteName: "DB Websites",
     images: [
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
         url: "https://dbwebsites.au/og-image.png",
         width: 1200,
         height: 630,
-        alt: "DB Websites | Websites for small businesses in Cairns & FNQ",
+        alt: "DB Websites | Websites, online stores and fixes for small businesses",
       },
     ],
     locale: "en_AU",
@@ -50,9 +51,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "DB Websites | Websites for small businesses in Far North Queensland",
+    title: "DB Websites | Websites, online stores & fixes for small businesses",
     description:
-      "Simple, modern websites for small businesses in Cairns, the Tablelands, the Cassowary Coast and across Far North Queensland.",
+      "Clean, practical websites for small businesses, tradies, accommodation, online stores and service businesses. New builds, website refreshes and fixes without the tech waffle.",
     images: ["https://dbwebsites.au/og-image.png"],
   },
 
